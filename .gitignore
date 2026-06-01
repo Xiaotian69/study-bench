@@ -1,0 +1,22 @@
+# Local course sources and copyrighted PDFs should not be committed.
+*.pdf
+
+# Secrets and local environment.
+.env
+.env.*
+!.env.example
+
+# App/build outputs for later implementation.
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Local databases and generated temporary data.
+*.db
+*.sqlite
+*.sqlite3
+tmp/
+temp/
+.cache/
