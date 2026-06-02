@@ -1,0 +1,168 @@
+{
+  "id": "math-analysis-volume-1",
+  "courseId": "math-analysis",
+  "title": "数学分析 上册",
+  "statusLegend": {
+    "planned": "已列入目录，尚未整理内容",
+    "sample-ready": "样板章节，已整理为可学习的结构化内容",
+    "draft": "正在整理，内容不完整"
+  },
+  "chapters": [
+    {
+      "id": "ch-real-numbers-functions",
+      "number": 1,
+      "title": "实数集与函数",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-real-numbers", "title": "实数", "status": "planned" },
+        { "id": "sec-number-sets-confined-functions", "title": "数集·确界原理", "status": "planned" },
+        { "id": "sec-functions-concept", "title": "函数概念", "status": "planned" },
+        { "id": "sec-special-functions", "title": "具有某些特性的函数", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-sequence-limit",
+      "number": 2,
+      "title": "数列极限",
+      "status": "sample-ready",
+      "chapterFile": "chapters/sequence-limit.json",
+      "exercisesFile": "exercises/sequence-limit.json",
+      "sections": [
+        {
+          "id": "sec-sequence-limit-concept",
+          "title": "数列极限概念",
+          "status": "sample-ready",
+          "knowledgePointIds": [
+            "sequence-intuition",
+            "epsilon-n-definition"
+          ]
+        },
+        {
+          "id": "sec-convergent-sequence-properties",
+          "title": "收敛数列的性质",
+          "status": "sample-ready",
+          "knowledgePointIds": [
+            "uniqueness-of-limit",
+            "boundedness-of-convergent",
+            "sign-preserving",
+            "arithmetic-of-limits"
+          ]
+        },
+        {
+          "id": "sec-existence-conditions",
+          "title": "数列极限存在的条件",
+          "status": "sample-ready",
+          "knowledgePointIds": [
+            "monotone-bounded-theorem",
+            "subsequence-and-convergence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-function-limit",
+      "number": 3,
+      "title": "函数极限",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-function-limit-concept", "title": "函数极限概念", "status": "planned" },
+        { "id": "sec-function-limit-properties", "title": "函数极限的性质", "status": "planned" },
+        { "id": "sec-function-limit-existence", "title": "函数极限存在的条件", "status": "planned" },
+        { "id": "sec-two-important-limits", "title": "两个重要的极限", "status": "planned" },
+        { "id": "sec-infinitesimal-infinite", "title": "无穷小量与无穷大量", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-continuity",
+      "number": 4,
+      "title": "函数的连续性",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-continuity-concept", "title": "连续性概念", "status": "planned" },
+        { "id": "sec-continuity-operations", "title": "连续函数的性质", "status": "planned" },
+        { "id": "sec-elementary-continuity", "title": "初等函数的连续性", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-derivative-differential",
+      "number": 5,
+      "title": "导数和微分",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-derivative-concept", "title": "导数的概念", "status": "planned" },
+        { "id": "sec-derivative-rules", "title": "求导法则", "status": "planned" },
+        { "id": "sec-parametric-higher-derivative", "title": "参变量函数的导数·高阶导数", "status": "planned" },
+        { "id": "sec-differential", "title": "微分", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-mean-value-theorems",
+      "number": 6,
+      "title": "微分中值定理及其应用",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-lagrange-mvt", "title": "拉格朗日中值定理和函数的单调性", "status": "planned" },
+        { "id": "sec-cauchy-lhopital", "title": "柯西中值定理和不定式极限", "status": "planned" },
+        { "id": "sec-taylor", "title": "泰勒公式", "status": "planned" },
+        { "id": "sec-function-behavior", "title": "函数的极值与最大（小）值", "status": "planned" },
+        { "id": "sec-curve-sketching", "title": "函数的凸性与拐点", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-real-completeness",
+      "number": 7,
+      "title": "实数的完备性",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-completeness-theorems", "title": "关于实数集完备性的基本定理", "status": "planned" },
+        { "id": "sec-closed-interval-continuity", "title": "闭区间上连续函数的性质", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-indefinite-integral",
+      "number": 8,
+      "title": "不定积分",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-indefinite-concept", "title": "不定积分概念与基本积分公式", "status": "planned" },
+        { "id": "sec-substitution-parts", "title": "换元积分法与分部积分法", "status": "planned" },
+        { "id": "sec-rational-functions", "title": "有理函数和可化为有理函数的不定积分", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-definite-integral",
+      "number": 9,
+      "title": "定积分",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-definite-concept", "title": "定积分概念", "status": "planned" },
+        { "id": "sec-newton-leibniz", "title": "牛顿—莱布尼茨公式", "status": "planned" },
+        { "id": "sec-integrability-conditions", "title": "可积条件", "status": "planned" },
+        { "id": "sec-definite-properties", "title": "定积分的性质", "status": "planned" },
+        { "id": "sec-fundamental-theorem", "title": "微积分学基本定理·定积分计算", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-definite-integral-applications",
+      "number": 10,
+      "title": "定积分的应用",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-area", "title": "平面图形的面积", "status": "planned" },
+        { "id": "sec-volume-arc", "title": "由平行截面面积求体积·平面曲线的弧长", "status": "planned" },
+        { "id": "sec-physics-applications", "title": "定积分在物理中的应用", "status": "planned" }
+      ]
+    },
+    {
+      "id": "ch-improper-integral",
+      "number": 11,
+      "title": "反常积分",
+      "status": "planned",
+      "sections": [
+        { "id": "sec-improper-concept", "title": "反常积分概念", "status": "planned" },
+        { "id": "sec-improper-convergence", "title": "无穷限反常积分的性质与收敛判别", "status": "planned" },
+        { "id": "sec-unbounded-improper", "title": "瑕积分的性质与收敛判别", "status": "planned" }
+      ]
+    }
+  ]
+}

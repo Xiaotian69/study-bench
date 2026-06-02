@@ -1,0 +1,368 @@
+{
+  "id": "ch-sequence-limit",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "number": 2,
+  "title": "数列极限",
+  "status": "sample-ready",
+  "overview": "数列极限是数学分析的第一个核心概念，它用 epsilon-N 语言把“无限趋近”这一直观转化为精确的数学命题。本章先建立极限的直观，再给出严格定义，随后讨论收敛数列的基本性质（唯一性、有界性、保号性、四则运算），最后给出极限存在的两个判定工具（单调有界定理、子列方法）。",
+  "knowledgePoints": [
+    {
+      "id": "sequence-intuition",
+      "title": "数列与数列极限直观",
+      "learningGoals": [
+        "理解数列是定义在正整数集上的函数，能写出通项并计算前若干项。",
+        "能用“随着 n 增大，x_n 越来越接近某个常数”的直观描述判断一个数列是否可能收敛。",
+        "认识到“接近”需要被精确刻画，为引入 epsilon-N 定义做准备。"
+      ],
+      "coreExplanation": "数列就是按正整数顺序排好的一串数 $x_1, x_2, x_3, \\\\dots$，记作 $\\\\{x_n\\\\}$，其中 $x_n$ 称为通项。我们关心的是当 $n$ 不断增大时 $x_n$ 的“走向”。例如 $x_n=\\\\frac{1}{n}$ 的项 $1,\\\\frac12,\\\\frac13,\\\\dots$ 越来越接近 $0$；而 $x_n=(-1)^n$ 在 $-1$ 和 $1$ 之间反复跳动，没有单一的趋近目标。直观上“收敛到 $a$”是指：当 $n$ 充分大以后，$x_n$ 与 $a$ 的距离要多小有多小。这个直观必须被精确化，否则“越来越接近”无法用来证明任何命题。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §1 数列极限概念（导入部分）"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "数列",
+          "statement": "以正整数集 $\\\\mathbb{N}_+$ 为定义域的函数 $f(n)=x_n$，其函数值按顺序排列成 $x_1,x_2,\\\\dots,x_n,\\\\dots$，记为 $\\\\{x_n\\\\}$。"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "对数列 $x_n=\\\\frac{n}{n+1}$，前几项是多少？你猜它趋近哪个数？",
+        "数列 $x_n=(-1)^n$ 看起来“接近”哪个数？为什么说它没有极限？",
+        "“越来越接近 $a$”这句话，如果不限定 $n$ 多大，能不能保证 $x_n$ 一定靠近 $a$？"
+      ],
+      "commonMistakes": [
+        "把数列与它的值域集合混淆，例如认为 $(-1)^n$ 的数列只有两个元素。",
+        "凭前几项的趋势就断定极限，忽略后面可能出现的反复或跳变。",
+        "把“单调”当成“收敛”的同义词。"
+      ],
+      "exampleIds": ["seq-limit-ex-001"],
+      "exerciseIds": ["seq-limit-ex-002"],
+      "diagramIds": ["sequence-eventually-inside-neighborhood", "convergent-vs-divergent-sequence"],
+      "masteryCriteria": [
+        "能区分数列与其值域集合。",
+        "能对给定通项写出前若干项并描述趋势。",
+        "能用直观语言说明为何某些数列不收敛。"
+      ]
+    },
+    {
+      "id": "epsilon-n-definition",
+      "title": "epsilon-N 定义",
+      "learningGoals": [
+        "准确陈述数列极限的 epsilon-N 定义，理解量词顺序 ∀ε>0 ∃N ∀n>N 的含义。",
+        "理解 N 一般依赖于 ε，能在简单例子中由 ε 求出一个可行的 N。",
+        "能用定义证明简单数列的极限，如 lim 1/n = 0。"
+      ],
+      "coreExplanation": "数列极限的精确定义把“接近”翻译成不等式：$\\\\lim_{n\\\\to\\\\infty} x_n = a$ 意思是，对任意给定的精度 $\\\\varepsilon>0$，都存在一个起始项号 $N$，使得从第 $N$ 项之后（即所有 $n>N$）都有 $|x_n-a|<\\\\varepsilon$。这里 $\\\\varepsilon$ 代表“任意小的精度要求”，由对方任意给出；$N$ 是我们为达到该精度而找到的“足够大”的项号，通常 $\\\\varepsilon$ 越小所需的 $N$ 越大。量词顺序不可交换：先有任意的 $\\\\varepsilon$，再找与之匹配的 $N$。证明 $\\\\lim 1/n=0$ 时，要让 $|1/n-0|=1/n<\\\\varepsilon$，只需 $n>1/\\\\varepsilon$，故取 $N=\\\\lceil 1/\\\\varepsilon\\\\rceil$ 即可。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §1 数列极限概念（定义 1）"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "数列极限（epsilon-N 定义）",
+          "statement": "设 $\\\\{x_n\\\\}$ 为数列，$a$ 为常数。若对任给 $\\\\varepsilon>0$，存在正整数 $N$，使得当 $n>N$ 时恒有 $|x_n-a|<\\\\varepsilon$，则称 $\\\\{x_n\\\\}$ 收敛于 $a$，记作 $\\\\lim_{n\\\\to\\\\infty} x_n=a$ 或 $x_n\\\\to a\\\\ (n\\\\to\\\\infty)$。"
+        },
+        {
+          "name": "邻域刻画",
+          "statement": "$\\\\lim x_n=a$ 等价于：对 $a$ 的任意 $\\\\varepsilon$ 邻域 $U(a;\\\\varepsilon)=(a-\\\\varepsilon,a+\\\\varepsilon)$，数列中只有有限项落在邻域之外。"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "用定义证极限的标准三步：(1) 任取 ε>0；(2) 分析 |x_n−a| 并放缩为关于 n 的简单表达式；(3) 解出使该表达式小于 ε 的 n，取相应的 N。"
+      ],
+      "socraticQuestions": [
+        "定义里为什么是“对任意 ε>0”，而不是“对某个 ε>0”？",
+        "如果交换量词，写成“存在 N，对任意 ε>0，当 n>N 时 |x_n−a|<ε”，这描述的是什么？还是极限吗？",
+        "证明 lim 1/n = 0 时，你取的 N 依赖 ε 吗？取更大的 N 还成立吗？"
+      ],
+      "commonMistakes": [
+        "把 ε 当成某个固定的小常数，而不是任意给定。",
+        "认为 N 与 ε 无关，或要求找“最小的 N”。",
+        "把 |x_n−a|<ε 误写成 ≤ε 或只对某些 n>N 成立。",
+        "颠倒量词顺序，导致定义变成“一致接近”而非“逐点接近”。"
+      ],
+      "exampleIds": ["seq-limit-ex-001", "seq-limit-ex-003"],
+      "exerciseIds": ["seq-limit-ex-002", "seq-limit-ex-004"],
+      "diagramIds": ["epsilon-neighborhood-on-number-line", "sequence-eventually-inside-neighborhood"],
+      "masteryCriteria": [
+        "能完整、正确地默写 epsilon-N 定义并解释每个量词。",
+        "能说明 N 对 ε 的依赖关系。",
+        "能独立用定义证明 lim 1/n=0、lim c=c 这类基础极限。"
+      ]
+    },
+    {
+      "id": "uniqueness-of-limit",
+      "title": "收敛数列的唯一性",
+      "learningGoals": [
+        "理解收敛数列的极限若存在必唯一。",
+        "掌握用反证法 + epsilon 取 |a−b|/2 证明唯一性的标准手法。"
+      ],
+      "coreExplanation": "如果一个数列既收敛到 $a$ 又收敛到 $b$，那么 $a=b$。直观上：数列最终要落入 $a$ 的任意小邻域，也要落入 $b$ 的任意小邻域，若 $a\\\\ne b$，取足够小的邻域使两者不相交，数列就无法同时落入两个不相交的邻域，矛盾。严格证明用反证法：设 $a\\\\ne b$，取 $\\\\varepsilon=\\\\frac{|a-b|}{2}>0$，由两个极限分别得到 $N_1,N_2$，当 $n>\\\\max(N_1,N_2)$ 时同时有 $|x_n-a|<\\\\varepsilon$ 和 $|x_n-b|<\\\\varepsilon$，于是 $|a-b|\\\\le|x_n-a|+|x_n-b|<2\\\\varepsilon=|a-b|$，得 $|a-b|<|a-b|$，矛盾。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §2 收敛数列的性质（唯一性定理）"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "极限唯一性定理",
+          "statement": "若数列 $\\\\{x_n\\\\}$ 收敛，则它的极限唯一。"
+        }
+      ],
+      "proofIdeas": [
+        "反证法：假设有两个不同极限 a≠b。",
+        "关键取值：令 ε=|a−b|/2，使 a、b 的 ε 邻域不相交。",
+        "用三角不等式 |a−b|≤|x_n−a|+|x_n−b| 推出 |a−b|<|a−b| 的矛盾。"
+      ],
+      "socraticQuestions": [
+        "为什么证明里要取 ε=|a−b|/2，而不是别的值？取 |a−b| 行不行？",
+        "三角不等式在这里起了什么作用？",
+        "如果数列发散，这个定理还有意义吗？"
+      ],
+      "commonMistakes": [
+        "忘记先假设 a≠b，直接证明而没有矛盾的来源。",
+        "ε 取得不够小，导致两个邻域仍可能相交，推不出矛盾。",
+        "误以为唯一性对发散数列也要讨论。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["seq-limit-ex-005"],
+      "diagramIds": ["epsilon-neighborhood-on-number-line"],
+      "masteryCriteria": [
+        "能独立用反证法写出唯一性的完整证明。",
+        "能解释 ε=|a−b|/2 这一取值的必要性。"
+      ]
+    },
+    {
+      "id": "boundedness-of-convergent",
+      "title": "收敛数列的有界性",
+      "learningGoals": [
+        "理解“收敛 ⇒ 有界”，并知道其逆命题不成立。",
+        "掌握把无穷多项分成“有限项 + 落入邻域的项”两部分来证明有界的手法。"
+      ],
+      "coreExplanation": "收敛数列必有界，即存在 $M>0$ 使所有 $|x_n|\\\\le M$。证明思路：取 $\\\\varepsilon=1$，则存在 $N$ 使 $n>N$ 时 $|x_n-a|<1$，从而 $|x_n|<|a|+1$；剩下的 $x_1,\\\\dots,x_N$ 只有有限项，取 $M=\\\\max\\\\{|x_1|,\\\\dots,|x_N|,|a|+1\\\\}$ 即可界住全部项。注意逆命题不成立：有界不一定收敛，如 $x_n=(-1)^n$ 有界（界为 1）但发散。因此有界性只是收敛的必要条件，常用于反证某数列不收敛（无界 ⇒ 发散）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §2 收敛数列的性质（有界性定理）"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "有界数列",
+          "statement": "若存在 $M>0$，使对一切 $n$ 都有 $|x_n|\\\\le M$，则称 $\\\\{x_n\\\\}$ 有界。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "有界性定理",
+          "statement": "若数列 $\\\\{x_n\\\\}$ 收敛，则 $\\\\{x_n\\\\}$ 有界。"
+        }
+      ],
+      "proofIdeas": [
+        "取 ε=1 控制 n>N 之后的所有项：|x_n|<|a|+1。",
+        "前 N 项是有限个，取最大值。",
+        "合并取 M=max{|x_1|,…,|x_N|,|a|+1}。"
+      ],
+      "socraticQuestions": [
+        "为什么这里可以随便取 ε=1，而不必让 ε 任意小？",
+        "前 N 项为什么一定能被界住？",
+        "请给出一个有界但不收敛的数列，说明逆命题为假。"
+      ],
+      "commonMistakes": [
+        "忽略前 N 项，只证明了 n>N 之后有界。",
+        "误以为有界就一定收敛（混淆必要与充分条件）。",
+        "把界 M 写成只与 a 有关而漏掉有限项的最大值。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["seq-limit-ex-006"],
+      "diagramIds": ["bounded-sequence"],
+      "masteryCriteria": [
+        "能完整证明收敛 ⇒ 有界，且不遗漏前 N 项。",
+        "能举反例说明逆命题不成立。",
+        "能用无界性反证数列发散。"
+      ]
+    },
+    {
+      "id": "sign-preserving",
+      "title": "收敛数列的保号性",
+      "learningGoals": [
+        "理解若极限为正（负），则数列从某项起也为正（负）。",
+        "理解保不等式性：若 x_n≥y_n 且都收敛，则 lim x_n≥lim y_n（注意严格不等号不被保留）。"
+      ],
+      "coreExplanation": "保号性：若 $\\\\lim x_n=a>0$，则对任意满足 $0<a'<a$ 的 $a'$，存在 $N$ 使 $n>N$ 时 $x_n>a'>0$。证明取 $\\\\varepsilon=a-a'>0$（或简单地取 $\\\\varepsilon=a/2$），则 $n>N$ 时 $x_n>a-\\\\varepsilon=a'>0$。$a<0$ 情形对称。由保号性可推出保不等式性：若 $x_n\\\\ge y_n$（从某项起）且 $\\\\lim x_n=a,\\\\lim y_n=b$，则 $a\\\\ge b$。要特别注意：即使 $x_n>y_n$ 严格成立，极限也只能得到 $a\\\\ge b$，严格不等号一般不被保留，反例 $x_n=1/n>0=y_n$ 但 $\\\\lim x_n=0$。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §2 收敛数列的性质（保号性、保不等式性）"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "保号性",
+          "statement": "若 $\\\\lim x_n=a>0$（或 $a<0$），则存在 $N$，当 $n>N$ 时 $x_n>0$（或 $x_n<0$）；更一般地对任意 $0<a'<a$ 有 $x_n>a'$。"
+        },
+        {
+          "name": "保不等式性",
+          "statement": "若 $\\\\lim x_n=a$，$\\\\lim y_n=b$，且存在 $N_0$ 使 $n>N_0$ 时 $x_n\\\\ge y_n$，则 $a\\\\ge b$。"
+        }
+      ],
+      "proofIdeas": [
+        "保号性：取 ε=a/2>0（a>0 时），则 n>N 时 x_n>a−a/2=a/2>0。",
+        "保不等式性：对 z_n=x_n−y_n≥0 用保号性的逆向思考（若 a−b<0 将与 z_n≥0 矛盾）。"
+      ],
+      "socraticQuestions": [
+        "a>0 时为什么能取 ε=a/2 而保证 x_n 为正？如果 a=0 还能保号吗？",
+        "x_n>y_n 恒成立，为什么极限只能得到 ≥ 而非 >？能否举反例？",
+        "保号性和有界性证明中取 ε 的方式有何共同点？"
+      ],
+      "commonMistakes": [
+        "误以为 x_n>y_n 能推出 lim x_n>lim y_n（严格号被错误保留）。",
+        "在 a=0 时仍想用保号性断言 x_n 为正。",
+        "把保号性的“从某项起”漏掉，错误地对所有 n 断言符号。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": [],
+      "diagramIds": ["epsilon-neighborhood-on-number-line"],
+      "masteryCriteria": [
+        "能证明保号性并指出 ε 的取法。",
+        "能解释严格不等号不被极限保留，并给出反例。"
+      ]
+    },
+    {
+      "id": "arithmetic-of-limits",
+      "title": "收敛数列的四则运算",
+      "learningGoals": [
+        "掌握极限的和、差、积、商运算法则及其成立条件。",
+        "理解商的法则要求分母极限非零，并能用四则运算法则计算具体极限。"
+      ],
+      "coreExplanation": "若 $\\\\lim x_n=a$，$\\\\lim y_n=b$，则：和差 $\\\\lim(x_n\\\\pm y_n)=a\\\\pm b$；积 $\\\\lim(x_n y_n)=ab$；商在 $b\\\\ne 0$ 时 $\\\\lim\\\\frac{x_n}{y_n}=\\\\frac{a}{b}$。证明的关键工具是三角不等式与“收敛 ⇒ 有界”。例如积的证明：$|x_n y_n-ab|=|x_n y_n-x_n b+x_n b-ab|\\\\le|x_n||y_n-b|+|b||x_n-a|$，利用 $\\\\{x_n\\\\}$ 有界（设界为 $M$）即可控制。计算时常用变形把 $\\\\infty/\\\\infty$ 或 $\\\\infty-\\\\infty$ 型化为可用法则的形式，例如 $\\\\frac{3n^2+1}{2n^2-n}=\\\\frac{3+1/n^2}{2-1/n}\\\\to\\\\frac{3}{2}$。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §2 收敛数列的性质（四则运算法则）"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "极限四则运算法则",
+          "statement": "设 $\\\\lim x_n=a$，$\\\\lim y_n=b$。则 $\\\\lim(x_n\\\\pm y_n)=a\\\\pm b$，$\\\\lim(x_n y_n)=ab$，$\\\\lim(cx_n)=ca$；当 $b\\\\ne 0$ 时 $\\\\lim\\\\frac{x_n}{y_n}=\\\\frac{a}{b}$。"
+        }
+      ],
+      "proofIdeas": [
+        "和差：直接用 |（x_n±y_n)−(a±b)|≤|x_n−a|+|y_n−b|。",
+        "积：插项 x_n y_n−ab=x_n(y_n−b)+b(x_n−a)，用 {x_n} 有界控制。",
+        "商：先证 1/y_n→1/b（用 b≠0 保证分母从某项起远离 0），再与积法则结合。"
+      ],
+      "socraticQuestions": [
+        "积法则证明里为什么要先用到 {x_n} 有界？",
+        "商法则为什么必须要求 b≠0？b=0 时会出什么问题？",
+        "计算 (3n^2+1)/(2n^2−n) 时，为什么先把分子分母同除以 n^2？"
+      ],
+      "commonMistakes": [
+        "在分母极限为 0 时仍套用商法则。",
+        "对 ∞−∞、∞/∞ 等未定型直接“代入”而不先变形。",
+        "误以为 lim(x_n y_n)=ab 在某个数列发散时仍成立。"
+      ],
+      "exampleIds": ["seq-limit-ex-003"],
+      "exerciseIds": ["seq-limit-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能正确陈述四则运算法则及商法则的条件。",
+        "能说明积法则证明中“有界性”的作用。",
+        "能用法则计算有理式型数列极限。"
+      ]
+    },
+    {
+      "id": "monotone-bounded-theorem",
+      "title": "单调有界收敛定理",
+      "learningGoals": [
+        "掌握单调有界定理：单调递增有上界（或递减有下界）的数列必收敛。",
+        "理解该定理依赖实数的完备性（确界原理）。",
+        "能用它处理递推数列与 e 的存在性等典型问题。"
+      ],
+      "coreExplanation": "单调有界定理：若数列 $\\\\{x_n\\\\}$ 单调递增且有上界，则 $\\\\{x_n\\\\}$ 收敛，且极限等于其上确界 $\\\\sup_n x_n$；单调递减且有下界时收敛于下确界。它是判断极限存在的有力工具，因为无需事先知道极限值。证明依据确界原理：递增有上界数列有上确界 $a=\\\\sup x_n$，由上确界定义，对任意 $\\\\varepsilon>0$ 存在某项 $x_N>a-\\\\varepsilon$，又因单调递增且 $a$ 是上界，$n>N$ 时 $a-\\\\varepsilon<x_N\\\\le x_n\\\\le a$，即 $|x_n-a|<\\\\varepsilon$。典型应用：证明 $\\\\left(1+\\\\frac1n\\\\right)^n$ 单调递增且有上界，从而极限存在并定义为 $e$；或处理递推 $x_{n+1}=\\\\sqrt{2+x_n}$ 这类数列。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §3 数列极限存在的条件（单调有界定理）"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "单调数列",
+          "statement": "若对一切 $n$ 有 $x_{n+1}\\\\ge x_n$，称 $\\\\{x_n\\\\}$ 单调递增；若 $x_{n+1}\\\\le x_n$，称单调递减。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "单调有界定理",
+          "statement": "在实数系中，单调递增且有上界的数列必收敛（极限为上确界）；单调递减且有下界的数列必收敛（极限为下确界）。"
+        }
+      ],
+      "proofIdeas": [
+        "由确界原理取 a=sup x_n。",
+        "用上确界定义：对任意 ε>0 存在 x_N>a−ε。",
+        "用单调性把 x_N 的下界传递到所有 n>N：a−ε<x_n≤a。"
+      ],
+      "socraticQuestions": [
+        "为什么这个定理在有理数系里不成立？这说明它依赖什么？",
+        "极限为什么恰好等于上确界，而不是某个更小的数？",
+        "对递推数列 x_{n+1}=√(2+x_n)，你会怎样先证明它单调有界？"
+      ],
+      "commonMistakes": [
+        "只验证了单调或只验证了有界，缺一不可。",
+        "误以为非单调的有界数列也能直接用此定理（应改用子列或其他方法）。",
+        "求出极限值前忘记先证明极限存在（对递推数列尤其常见）。"
+      ],
+      "exampleIds": ["seq-limit-ex-007"],
+      "exerciseIds": ["seq-limit-ex-008"],
+      "diagramIds": ["monotone-bounded-convergence"],
+      "masteryCriteria": [
+        "能正确陈述定理及其两种形式，并指出依赖确界原理。",
+        "能对一个递推数列完整地证明单调、有界并求极限。"
+      ]
+    },
+    {
+      "id": "subsequence-and-convergence",
+      "title": "子列与收敛性",
+      "learningGoals": [
+        "理解子列的定义及“收敛 ⇔ 任一子列都收敛于同一极限”。",
+        "掌握用两个子列趋于不同极限来证明数列发散的方法。"
+      ],
+      "coreExplanation": "子列是从原数列中按严格递增的下标 $n_1<n_2<\\\\cdots$ 取出的数列 $\\\\{x_{n_k}\\\\}$。基本定理：数列 $\\\\{x_n\\\\}$ 收敛于 $a$ 当且仅当它的任一子列都收敛于 $a$。一个常用推论用于证明发散：若能找到两个子列分别收敛到不同的极限，则原数列发散。例如 $x_n=(-1)^n$，偶子列 $x_{2k}=1\\\\to1$，奇子列 $x_{2k+1}=-1\\\\to-1$，两者不等，故发散。注意奇偶子列方向：若奇、偶两个子列都收敛到同一个 $a$，则原数列收敛到 $a$。此外，致密性定理（魏尔斯特拉斯）指出：任何有界数列必有收敛子列，这是后续完备性理论的重要桥梁。",
+      "textbookRefs": [
+        "数学分析（第5版）上册 第二章 §3 数列极限存在的条件（子列、致密性定理）"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "子列",
+          "statement": "设 $\\\\{x_n\\\\}$ 为数列，$n_1<n_2<\\\\cdots<n_k<\\\\cdots$ 为严格递增的正整数列，则 $\\\\{x_{n_k}\\\\}$ 称为 $\\\\{x_n\\\\}$ 的一个子列。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "子列收敛判别",
+          "statement": "$\\\\lim x_n=a$ 当且仅当 $\\\\{x_n\\\\}$ 的每一个子列都收敛于 $a$。"
+        },
+        {
+          "name": "发散判据（推论）",
+          "statement": "若 $\\\\{x_n\\\\}$ 有两个子列分别收敛于不同的极限，则 $\\\\{x_n\\\\}$ 发散。"
+        }
+      ],
+      "proofIdeas": [
+        "必要性：若 x_n→a，对子列下标 n_k≥k，故 n_k>N 时 |x_{n_k}−a|<ε。",
+        "充分性：原数列本身是自己的子列。",
+        "发散判据：用唯一性——若收敛则所有子列同极限，反推矛盾。"
+      ],
+      "socraticQuestions": [
+        "为什么子列下标必须严格递增？能否重复或减小？",
+        "如何用奇偶两个子列证明 (−1)^n 发散？",
+        "如果奇子列和偶子列都收敛到同一个数，能否断定原数列收敛？为什么？"
+      ],
+      "commonMistakes": [
+        "误认为只要存在一个收敛子列，原数列就收敛。",
+        "构造“子列”时下标没有严格递增或跳过了顺序。",
+        "用奇偶子列同极限判收敛时，忘记两个子列必须覆盖全部项。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": [],
+      "diagramIds": ["subsequence-idea", "convergent-vs-divergent-sequence"],
+      "masteryCriteria": [
+        "能准确定义子列并陈述子列收敛判别定理。",
+        "能用两个不同极限的子列证明数列发散。",
+        "能解释致密性定理的陈述及其意义。"
+      ]
+    }
+  ]
+}

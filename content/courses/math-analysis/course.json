@@ -1,0 +1,14 @@
+{
+  "id": "math-analysis",
+  "title": "数学分析",
+  "subtitle": "按教材顺序学习定义、定理、证明与习题",
+  "audience": "大学数学分析学习者",
+  "defaultVolumeId": "math-analysis-volume-1",
+  "volumes": ["math-analysis-volume-1"],
+  "textbook": {
+    "title": "数学分析（第5版）上册",
+    "note": "本课程依据教材结构整理，原始 PDF 不进入仓库，前台仅展示整理后的课程结构、讲义与训练。"
+  },
+  "schemaVersion": 1,
+  "status": "sample-ready"
+}
