@@ -222,3 +222,52 @@ textarea {
   border-left: 3px solid var(--accent);
   background: #eef7f4;
 }
+
+.tutor-panel {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.message-list {
+  display: grid;
+  gap: 10px;
+}
+
+.message {
+  white-space: pre-wrap;
+  padding: 10px 12px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.message.teacher {
+  background: #eef7f4;
+}
+
+.message.student {
+  background: #f7f2e8;
+}
+
+.tutor-form {
+  display: grid;
+  gap: 8px;
+}
