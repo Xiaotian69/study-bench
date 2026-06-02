@@ -1,0 +1,265 @@
+{
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "chapterId": "ch-sequence-limit",
+  "schemaVersion": 1,
+  "renderingPolicy": {
+    "preferredRenderer": "programmatic-svg",
+    "reason": "数学图示需要可控、可编辑、可复核，避免由 AI 随机生成导致标注或几何关系错误。",
+    "formulaRenderer": "MathJax or KaTeX"
+  },
+  "diagrams": [
+    {
+      "id": "epsilon-neighborhood-on-number-line",
+      "title": "数轴上的 epsilon 邻域",
+      "type": "number-line",
+      "knowledgePointIds": ["epsilon-n-definition"],
+      "description": "展示极限 a 及其左右 epsilon 邻域，用区间 (a-epsilon, a+epsilon) 表达 |x_n-a|<epsilon。",
+      "parameters": {
+        "axisMin": -1.4,
+        "axisMax": 1.4,
+        "limitPoint": {
+          "symbol": "a",
+          "x": 0
+        },
+        "epsilon": {
+          "symbol": "\\varepsilon",
+          "value": 0.45,
+          "leftEndpointLabel": "a-\\varepsilon",
+          "rightEndpointLabel": "a+\\varepsilon"
+        },
+        "highlightInterval": {
+          "from": -0.45,
+          "to": 0.45,
+          "label": "U(a;\\varepsilon)"
+        }
+      },
+      "teacherNotes": [
+        "先让学生把 |x_n-a|<\\varepsilon 翻译成“x_n 落在 a 左右 epsilon 的开区间内”。",
+        "强调 epsilon 是任意给定的精度要求，不是系统固定选好的小数。",
+        "说明数列极限定义要求从某一项之后所有项都落入这个邻域。"
+      ],
+      "studentPrompt": "图中哪一段表示 |x_n-a|<\\varepsilon？如果 \\varepsilon 变小，这个区间会怎样变化？",
+      "renderHints": {
+        "showOpenEndpoints": true,
+        "useShadedInterval": true,
+        "labelAboveAxis": ["a"],
+        "labelBelowAxis": ["a-\\varepsilon", "a+\\varepsilon"]
+      }
+    },
+    {
+      "id": "sequence-eventually-inside-neighborhood",
+      "title": "从某项之后全部落入 epsilon 邻域",
+      "type": "sequence-on-number-line",
+      "knowledgePointIds": ["sequence-intuition", "epsilon-n-definition"],
+      "description": "用数轴上的离散点展示数列项前期可以在邻域外波动，但从某个 N 之后必须全部落入 epsilon 邻域。",
+      "parameters": {
+        "limitPoint": {
+          "symbol": "a",
+          "x": 0
+        },
+        "epsilon": {
+          "symbol": "\\varepsilon",
+          "value": 0.35
+        },
+        "threshold": {
+          "symbol": "N",
+          "index": 6
+        },
+        "terms": [
+          { "n": 1, "x": 1.15, "inside": false },
+          { "n": 2, "x": -0.9, "inside": false },
+          { "n": 3, "x": 0.62, "inside": false },
+          { "n": 4, "x": -0.48, "inside": false },
+          { "n": 5, "x": 0.41, "inside": false },
+          { "n": 6, "x": -0.31, "inside": true },
+          { "n": 7, "x": 0.22, "inside": true },
+          { "n": 8, "x": -0.18, "inside": true },
+          { "n": 9, "x": 0.12, "inside": true },
+          { "n": 10, "x": -0.08, "inside": true }
+        ]
+      },
+      "teacherNotes": [
+        "强调有限多个早期项可以在邻域外，极限只关心 n 足够大以后的行为。",
+        "指出 N 不是最后一个在外面的项，而是保证 n>N 后全部在内的起始门槛。",
+        "配合量词 ∀ε>0 ∃N ∀n>N 逐个解释图中的对象。"
+      ],
+      "studentPrompt": "如果图里第 8 项又跑到邻域外，那么这个 N 还能证明该 epsilon 下的要求吗？",
+      "renderHints": {
+        "markOutsideTerms": true,
+        "markInsideTerms": true,
+        "drawThresholdBrace": true,
+        "termLabelPattern": "x_{n}"
+      }
+    },
+    {
+      "id": "convergent-vs-divergent-sequence",
+      "title": "收敛与不收敛数列对比",
+      "type": "two-panel-sequence-plot",
+      "knowledgePointIds": ["sequence-intuition", "epsilon-n-definition"],
+      "description": "左图展示 x_n=1/n 逐渐趋近 0，右图展示 x_n=(-1)^n 在两个值之间跳动，帮助区分“有趋势”与“有极限”。",
+      "parameters": {
+        "panels": [
+          {
+            "title": "收敛：x_n=1/n",
+            "limitLabel": "0",
+            "terms": [
+              { "n": 1, "y": 1 },
+              { "n": 2, "y": 0.5 },
+              { "n": 3, "y": 0.333 },
+              { "n": 4, "y": 0.25 },
+              { "n": 5, "y": 0.2 },
+              { "n": 8, "y": 0.125 },
+              { "n": 12, "y": 0.083 }
+            ]
+          },
+          {
+            "title": "不收敛：x_n=(-1)^n",
+            "limitLabel": "无单一极限",
+            "terms": [
+              { "n": 1, "y": -1 },
+              { "n": 2, "y": 1 },
+              { "n": 3, "y": -1 },
+              { "n": 4, "y": 1 },
+              { "n": 5, "y": -1 },
+              { "n": 6, "y": 1 }
+            ]
+          }
+        ]
+      },
+      "teacherNotes": [
+        "先让学生只看图猜趋势，再回到定义判断能否满足任意 epsilon 邻域要求。",
+        "用 (-1)^n 说明“数列项只落在有限个值里”不等于收敛。",
+        "引导学生说出右图无法找到一个 a，使得所有足够大的项都落入 U(a;epsilon)。"
+      ],
+      "studentPrompt": "为什么右图虽然很有规律，却不能说它收敛到 0？请用 epsilon 邻域语言解释。",
+      "renderHints": {
+        "showLimitLine": true,
+        "connectTermsLightly": true,
+        "useSameAxes": true
+      }
+    },
+    {
+      "id": "bounded-sequence",
+      "title": "收敛数列必有界的区间示意",
+      "type": "bounded-strip",
+      "knowledgePointIds": ["boundedness-of-convergent"],
+      "description": "展示收敛数列后段被 a 附近的固定邻域控制，前面有限项再取最大界，从而整个数列有界。",
+      "parameters": {
+        "limitPoint": {
+          "symbol": "a",
+          "value": 0
+        },
+        "tailNeighborhood": {
+          "epsilon": 1,
+          "lower": -1,
+          "upper": 1,
+          "label": "(a-1,a+1)"
+        },
+        "finitePrefix": [
+          { "n": 1, "y": 2.4 },
+          { "n": 2, "y": -1.8 },
+          { "n": 3, "y": 1.3 }
+        ],
+        "tailTerms": [
+          { "n": 4, "y": 0.85 },
+          { "n": 5, "y": -0.7 },
+          { "n": 6, "y": 0.52 },
+          { "n": 7, "y": -0.35 },
+          { "n": 8, "y": 0.2 }
+        ],
+        "globalBoundLabel": "M=max{|x_1|,...,|x_N|,|a|+1}"
+      },
+      "teacherNotes": [
+        "说明收敛性只能直接控制尾部，不能直接控制有限多个前项。",
+        "强调有限多个数一定有最大绝对值，这是证明有界性的关键补丁。",
+        "把图中的尾部邻域和全局界 M 区分开。"
+      ],
+      "studentPrompt": "为什么证明有界性时不能只说“尾部落在 a 附近”，还要处理前面有限项？",
+      "renderHints": {
+        "drawTailBand": true,
+        "drawGlobalBoundLines": true,
+        "differentiatePrefixAndTail": true
+      }
+    },
+    {
+      "id": "monotone-bounded-convergence",
+      "title": "单调有界数列趋近极限",
+      "type": "monotone-sequence-plot",
+      "knowledgePointIds": ["monotone-bounded-theorem"],
+      "description": "展示单调递增且有上界的数列被上确界从上方限制，数列项逐渐逼近 sup{x_n}。",
+      "parameters": {
+        "sequenceType": "increasing-bounded-above",
+        "terms": [
+          { "n": 1, "y": 0.3 },
+          { "n": 2, "y": 0.55 },
+          { "n": 3, "y": 0.72 },
+          { "n": 4, "y": 0.83 },
+          { "n": 5, "y": 0.9 },
+          { "n": 6, "y": 0.94 },
+          { "n": 7, "y": 0.965 }
+        ],
+        "upperBound": {
+          "value": 1.2,
+          "label": "一个上界"
+        },
+        "supremum": {
+          "value": 1,
+          "label": "s=sup{x_n}"
+        }
+      },
+      "teacherNotes": [
+        "先强调单调性负责“不回头”，有界性负责“不会无限上升”。",
+        "用上确界 s 解释极限候选值从哪里来。",
+        "证明时要用上确界性质：s-epsilon 不是上界，因此存在某项 x_N>s-epsilon。"
+      ],
+      "studentPrompt": "图中为什么极限候选应该是上确界 s，而不是随便选一个上界？",
+      "renderHints": {
+        "drawSupremumLine": true,
+        "drawUpperBoundLine": true,
+        "showEpsilonGapBelowSupremum": true
+      }
+    },
+    {
+      "id": "subsequence-idea",
+      "title": "子列与原数列的收敛关系",
+      "type": "subsequence-highlight",
+      "knowledgePointIds": ["subsequence-and-convergence"],
+      "description": "在原数列项中高亮抽取的子列，展示收敛数列的任意子列仍收敛到同一极限，以及不同子列趋向不同值可用于判定发散。",
+      "parameters": {
+        "originalSequence": [
+          { "n": 1, "y": -1, "selected": true, "subsequence": "odd" },
+          { "n": 2, "y": 1, "selected": true, "subsequence": "even" },
+          { "n": 3, "y": -1, "selected": true, "subsequence": "odd" },
+          { "n": 4, "y": 1, "selected": true, "subsequence": "even" },
+          { "n": 5, "y": -1, "selected": true, "subsequence": "odd" },
+          { "n": 6, "y": 1, "selected": true, "subsequence": "even" }
+        ],
+        "subsequences": [
+          {
+            "label": "奇数项子列",
+            "indices": [1, 3, 5],
+            "limit": "-1"
+          },
+          {
+            "label": "偶数项子列",
+            "indices": [2, 4, 6],
+            "limit": "1"
+          }
+        ],
+        "conclusion": "两个子列极限不同，因此原数列不收敛。"
+      },
+      "teacherNotes": [
+        "先说明子列是在保持原有顺序的前提下抽取无限多项。",
+        "对收敛数列，任意子列必须继承同一个极限。",
+        "对发散判定，若能找到两个子列趋向不同值，则原数列不可能收敛。"
+      ],
+      "studentPrompt": "如果原数列真的收敛到 a，为什么任意子列也必须收敛到 a？",
+      "renderHints": {
+        "highlightSubsequenceByColor": true,
+        "showSubsequenceLabels": true,
+        "showContradictoryLimits": true
+      }
+    }
+  ]
+}
