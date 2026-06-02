@@ -158,3 +158,67 @@ p {
   color: var(--accent-strong);
   font-weight: 700;
 }
+
+.main-column {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.exercise-panel {
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.exercise-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  padding: 8px 12px;
+}
+
+button.is-active,
+button:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  line-height: 1.7;
+}
+
+.exercise-actions {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.hint-list {
+  padding: 12px 18px;
+  border-left: 3px solid var(--accent);
+  background: #eef7f4;
+}
