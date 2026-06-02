@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { callOpenAICompatibleTutor, type TutorModelSettings } from "@/lib/ai/tutorRuntime";
+import { callOpenAICompatibleTutor, type TutorImageAttachmentPayload, type TutorModelSettings } from "@/lib/ai/tutorRuntime";
 import type { TutorContextEnvelope } from "@/lib/ai/tutor-contract";
 
 export const runtime = "nodejs";
@@ -7,6 +7,7 @@ export const runtime = "nodejs";
 interface TutorApiRequestBody {
   settings?: Partial<TutorModelSettings>;
   envelope?: TutorContextEnvelope;
+  attachments?: TutorImageAttachmentPayload[];
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -45,7 +46,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    const result = await callOpenAICompatibleTutor(settings, envelope);
+    const attachments = Array.isArray(body.attachments) ? body.attachments : [];
+    const result = await callOpenAICompatibleTutor(settings, envelope, fetch, attachments);
     return NextResponse.json({ result });
   } catch (error) {
     const message = error instanceof Error ? error.message : "tutor_request_failed";

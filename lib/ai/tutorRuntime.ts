@@ -20,9 +20,29 @@ export interface TutorModelSettings {
   apiKey: string;
 }
 
+export interface TutorImageAttachmentPayload {
+  id: string;
+  name: string;
+  mimeType: string;
+  sizeBytes: number;
+  dataUrl: string;
+}
+
+type TutorChatMessageContent =
+  | string
+  | Array<
+      | { type: "text"; text: string }
+      | {
+          type: "image_url";
+          image_url: {
+            url: string;
+          };
+        }
+    >;
+
 interface TutorChatMessage {
   role: "system" | "user";
-  content: string;
+  content: TutorChatMessageContent;
 }
 
 interface OpenAIChatCompletionResponse {
@@ -141,17 +161,49 @@ function buildOutputInstruction(envelope: TutorContextEnvelope) {
   });
 }
 
-export function buildTutorMessages(envelope: TutorContextEnvelope): TutorChatMessage[] {
+export function buildTutorMessages(envelope: TutorContextEnvelope, attachments: TutorImageAttachmentPayload[] = []): TutorChatMessage[] {
+  const userPrompt = buildUserPrompt(envelope);
+
+  if (attachments.length > 0) {
+    return [
+      { role: "system", content: buildSystemPrompt(envelope) },
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: [
+              userPrompt,
+              "",
+              `学生还上传了 ${attachments.length} 张手写答案图片。请先识别图片中的作答，转写为 LaTeX，再结合文本答案批改。`,
+              "如果图片局部无法看清，必须在反馈中说明不确定位置，不能假装识别准确。"
+            ].join("\n")
+          },
+          ...attachments.map((attachment) => ({
+            type: "image_url" as const,
+            image_url: {
+              url: attachment.dataUrl
+            }
+          }))
+        ]
+      }
+    ];
+  }
+
   return [
     { role: "system", content: buildSystemPrompt(envelope) },
-    { role: "user", content: buildUserPrompt(envelope) }
+    { role: "user", content: userPrompt }
   ];
 }
 
-export function buildOpenAIChatCompletionRequest(settings: TutorModelSettings, envelope: TutorContextEnvelope) {
+export function buildOpenAIChatCompletionRequest(
+  settings: TutorModelSettings,
+  envelope: TutorContextEnvelope,
+  attachments: TutorImageAttachmentPayload[] = []
+) {
   return {
     model: settings.model,
-    messages: buildTutorMessages(envelope),
+    messages: buildTutorMessages(envelope, attachments),
     temperature: tutorTaskOutputKind[envelope.task] === "json" ? 0.2 : 0.4
   };
 }
@@ -280,7 +332,8 @@ export function parseTutorModelOutput(envelope: TutorContextEnvelope, rawContent
 export async function callOpenAICompatibleTutor(
   settings: TutorModelSettings,
   envelope: TutorContextEnvelope,
-  fetcher: Fetcher = fetch
+  fetcher: Fetcher = fetch,
+  attachments: TutorImageAttachmentPayload[] = []
 ): Promise<TutorResponse> {
   if (!settings.apiKey.trim()) {
     throw new Error("missing_api_key");
@@ -300,7 +353,7 @@ export async function callOpenAICompatibleTutor(
       Authorization: `Bearer ${settings.apiKey}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(buildOpenAIChatCompletionRequest(settings, envelope))
+    body: JSON.stringify(buildOpenAIChatCompletionRequest(settings, envelope, attachments))
   });
 
   if (!response.ok) {

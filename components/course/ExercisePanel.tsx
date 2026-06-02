@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { buildTutorGradeEnvelope, requestTutorGrade } from "@/lib/ai/tutorClient";
+import { buildTutorGradeEnvelope, buildTutorImageAttachments, requestTutorGrade } from "@/lib/ai/tutorClient";
 import { MathText } from "@/components/math/MathText";
 import type { TutorGradeResponse } from "@/lib/ai/tutor-contract";
 import type { Exercise, KnowledgePoint } from "@/lib/course/types";
@@ -11,9 +11,12 @@ interface AnswerImage {
   id: string;
   name: string;
   url: string;
+  file: File;
 }
 
 type GradingStatus = "idle" | "submitting" | "success" | "error";
+const maxAnswerImageSizeLabel = "8MB";
+const maxAnswerImageBytes = 8 * 1024 * 1024;
 
 export function ExercisePanel({
   chapterId,
@@ -69,13 +72,21 @@ export function ExercisePanel({
 
     const nextAttachments = Array.from(files)
       .filter((file) => file.type.startsWith("image/"))
+      .filter((file) => file.size <= maxAnswerImageBytes)
       .map((file) => ({
         id: crypto.randomUUID(),
         name: file.name,
-        url: URL.createObjectURL(file)
+        url: URL.createObjectURL(file),
+        file
       }));
 
     setAttachments((current) => [...current, ...nextAttachments]);
+
+    const oversizedCount = Array.from(files).filter((file) => file.type.startsWith("image/") && file.size > maxAnswerImageBytes).length;
+    if (oversizedCount > 0) {
+      setGradingStatus("error");
+      setGradingError(`有 ${oversizedCount} 张图片超过 ${maxAnswerImageSizeLabel}，已跳过。`);
+    }
   }
 
   function removeAnswerImage(id: string) {
@@ -91,9 +102,9 @@ export function ExercisePanel({
   async function submitForAiGrading() {
     if (!activeExercise) return;
 
-    if (!answer.trim()) {
+    if (!answer.trim() && attachments.length === 0) {
       setGradingStatus("error");
-      setGradingError("请先写下你的解答，再提交给 AI 批改。");
+      setGradingError("请先写下你的解答，或上传手写答案照片，再提交给 AI 批改。");
       return;
     }
 
@@ -109,16 +120,18 @@ export function ExercisePanel({
     setGradeResult(null);
 
     try {
+      const studentAnswer = answer.trim() || "学生上传了手写答案照片，请根据图片转写后批改。";
+      const imageAttachments = await buildTutorImageAttachments(attachments);
       const envelope = buildTutorGradeEnvelope({
         courseId,
         chapterId,
         sectionId,
         knowledgePoint,
         exercise: activeExercise,
-        studentAnswer: answer,
+        studentAnswer,
         hintLevelUsed: hintLevel
       });
-      const result = await requestTutorGrade(settings, envelope);
+      const result = await requestTutorGrade(settings, envelope, { imageAttachments });
       setGradeResult(result);
       setGradingStatus("success");
     } catch (error) {
@@ -176,7 +189,7 @@ export function ExercisePanel({
             type="file"
           />
         </label>
-        <span>支持手写答案照片，当前先用于预览和附加，后续接视觉批改。</span>
+        <span>支持手写答案照片，单张 {maxAnswerImageSizeLabel} 以内，可随文本答案提交给支持视觉的模型。</span>
       </div>
       {attachments.length > 0 && (
         <div className="answer-image-grid">

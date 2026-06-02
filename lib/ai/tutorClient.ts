@@ -8,6 +8,7 @@ import type {
   TutorResponse
 } from "@/lib/ai/tutor-contract";
 import type { Exercise, KnowledgePoint } from "@/lib/course/types";
+import type { TutorImageAttachmentPayload } from "@/lib/ai/tutorRuntime";
 import type { TutorSettings } from "@/lib/tutor/tutorTypes";
 
 interface GradeEnvelopeInput {
@@ -26,6 +27,14 @@ interface TutorApiResponse {
 }
 
 type Fetcher = typeof fetch;
+
+interface TutorImageAttachmentInput {
+  id: string;
+  name: string;
+  file: File;
+}
+
+const maxImageBytes = 8 * 1024 * 1024;
 
 function trimKnowledgePoint(knowledgePoint: KnowledgePoint): TutorKnowledgePointContext {
   return {
@@ -87,15 +96,52 @@ export function buildTutorGradeEnvelope(input: GradeEnvelopeInput): TutorContext
   };
 }
 
+function readFileAsDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      if (typeof reader.result === "string") {
+        resolve(reader.result);
+        return;
+      }
+
+      reject(new Error("invalid_image_data_url"));
+    });
+    reader.addEventListener("error", () => reject(new Error("image_read_failed")));
+    reader.readAsDataURL(file);
+  });
+}
+
+export async function buildTutorImageAttachments(
+  imageAttachments: TutorImageAttachmentInput[]
+): Promise<TutorImageAttachmentPayload[]> {
+  return Promise.all(
+    imageAttachments.map(async (attachment) => {
+      if (attachment.file.size > maxImageBytes) {
+        throw new Error("image_too_large_8MB");
+      }
+
+      return {
+        id: attachment.id,
+        name: attachment.name,
+        mimeType: attachment.file.type,
+        sizeBytes: attachment.file.size,
+        dataUrl: await readFileAsDataUrl(attachment.file)
+      };
+    })
+  );
+}
+
 export async function requestTutorGrade(
   settings: TutorSettings,
   envelope: TutorContextEnvelope,
+  options: { imageAttachments?: TutorImageAttachmentPayload[] } = {},
   fetcher: Fetcher = fetch
 ): Promise<TutorGradeResponse> {
   const response = await fetcher("/api/tutor", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ settings, envelope })
+    body: JSON.stringify({ settings, envelope, attachments: options.imageAttachments ?? [] })
   });
 
   const data = (await response.json()) as TutorApiResponse;
