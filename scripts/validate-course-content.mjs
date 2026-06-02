@@ -79,6 +79,12 @@ for (const diagram of diagrams.diagrams) {
     Array.isArray(diagram.knowledgePointIds) && diagram.knowledgePointIds.length > 0,
     `diagram ${diagram.id} missing knowledgePointIds`
   );
+  for (const knowledgePointId of diagram.knowledgePointIds) {
+    assert(
+      knowledgePointIds.has(knowledgePointId),
+      `diagram ${diagram.id} references missing knowledge point ${knowledgePointId}`
+    );
+  }
   assert(
     Array.isArray(diagram.teacherNotes) && diagram.teacherNotes.length > 0,
     `diagram ${diagram.id} missing teacherNotes`
