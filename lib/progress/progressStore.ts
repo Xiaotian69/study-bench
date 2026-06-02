@@ -1,9 +1,16 @@
 import type { TutorSettings } from "@/lib/tutor/tutorTypes";
+import { getTutorProviderPreset } from "@/lib/tutor/modelProviders";
 
 const settingsKey = "ai-math-tutor-settings";
 
 export function getDefaultTutorSettings(): TutorSettings {
-  return { provider: "openai-compatible", model: "", apiKey: "" };
+  const preset = getTutorProviderPreset("openai-compatible");
+  return {
+    provider: preset.id,
+    model: preset.defaultModel,
+    baseUrl: preset.baseUrl,
+    apiKey: ""
+  };
 }
 
 export function loadTutorSettings(): TutorSettings {
@@ -17,7 +24,16 @@ export function loadTutorSettings(): TutorSettings {
   }
 
   try {
-    return JSON.parse(raw) as TutorSettings;
+    const stored = JSON.parse(raw) as Partial<TutorSettings>;
+    const fallback = getDefaultTutorSettings();
+    const preset = getTutorProviderPreset(stored.provider);
+
+    return {
+      provider: preset.id,
+      model: stored.model ?? preset.defaultModel ?? fallback.model,
+      baseUrl: stored.baseUrl ?? preset.baseUrl ?? fallback.baseUrl,
+      apiKey: stored.apiKey ?? fallback.apiKey
+    };
   } catch {
     return getDefaultTutorSettings();
   }

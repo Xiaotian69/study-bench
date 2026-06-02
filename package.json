@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "validate:content": "node scripts/validate-course-content.mjs"
+    "validate:content": "node scripts/validate-course-content.mjs",
+    "validate:tutor-providers": "node scripts/validate-tutor-providers.mjs"
   },
   "dependencies": {
     "@next/env": "^15.0.0",

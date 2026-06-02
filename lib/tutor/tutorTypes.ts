@@ -1,3 +1,5 @@
+import type { TutorProviderId } from "@/lib/tutor/modelProviders";
+
 export type TutorMode = "explain" | "ask" | "grade" | "hint" | "mastery";
 
 export interface TutorMessage {
@@ -7,7 +9,8 @@ export interface TutorMessage {
 }
 
 export interface TutorSettings {
-  provider: "openai-compatible" | "gemini";
+  provider: TutorProviderId;
   model: string;
+  baseUrl: string;
   apiKey: string;
 }
