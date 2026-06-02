@@ -10,7 +10,8 @@
     "validate:content": "node scripts/validate-course-content.mjs",
     "validate:tutor-providers": "node scripts/validate-tutor-providers.mjs",
     "validate:ai-contract": "node scripts/validate-ai-contract.mjs",
-    "validate:tutor-api": "node scripts/validate-tutor-api.mjs"
+    "validate:tutor-api": "node scripts/validate-tutor-api.mjs",
+    "validate:exercise-ai-grading": "node scripts/validate-exercise-ai-grading.mjs"
   },
   "dependencies": {
     "@next/env": "^15.0.0",

@@ -296,8 +296,49 @@ textarea {
 
 .exercise-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 12px 0;
+}
+
+.grading-error {
+  margin: 8px 0 0;
+  color: #9b2f25;
+  font-weight: 700;
+}
+
+.grade-result-card {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.grade-result-card.correct {
+  border-color: #65a37c;
+}
+
+.grade-result-card.partially_correct {
+  border-color: #d2a84b;
+}
+
+.grade-result-card.incorrect {
+  border-color: #c96d5d;
+}
+
+.grade-result-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.grade-result-heading span {
+  color: var(--accent-strong);
+  font-weight: 800;
 }
 
 .hint-list {

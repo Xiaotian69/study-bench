@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { buildTutorGradeEnvelope, requestTutorGrade } from "@/lib/ai/tutorClient";
 import { MathText } from "@/components/math/MathText";
-import type { Exercise } from "@/lib/course/types";
+import type { TutorGradeResponse } from "@/lib/ai/tutor-contract";
+import type { Exercise, KnowledgePoint } from "@/lib/course/types";
+import { loadTutorSettings } from "@/lib/progress/progressStore";
 
 interface AnswerImage {
   id: string;
@@ -10,11 +13,28 @@ interface AnswerImage {
   url: string;
 }
 
-export function ExercisePanel({ exercises }: { exercises: Exercise[] }) {
+type GradingStatus = "idle" | "submitting" | "success" | "error";
+
+export function ExercisePanel({
+  chapterId,
+  courseId,
+  exercises,
+  knowledgePoint,
+  sectionId
+}: {
+  chapterId: string;
+  courseId: string;
+  exercises: Exercise[];
+  knowledgePoint: KnowledgePoint;
+  sectionId: string;
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hintLevel, setHintLevel] = useState(0);
   const [answer, setAnswer] = useState("");
   const [attachments, setAttachments] = useState<AnswerImage[]>([]);
+  const [gradingStatus, setGradingStatus] = useState<GradingStatus>("idle");
+  const [gradingError, setGradingError] = useState("");
+  const [gradeResult, setGradeResult] = useState<TutorGradeResponse | null>(null);
   const attachmentsRef = useRef<AnswerImage[]>([]);
   const activeExercise = exercises[activeIndex];
 
@@ -39,6 +59,9 @@ export function ExercisePanel({ exercises }: { exercises: Exercise[] }) {
     setAttachments([]);
     setAnswer("");
     setHintLevel(0);
+    setGradingStatus("idle");
+    setGradingError("");
+    setGradeResult(null);
   }
 
   function addAnswerImages(files: FileList | null) {
@@ -63,6 +86,46 @@ export function ExercisePanel({ exercises }: { exercises: Exercise[] }) {
       }
       return current.filter((attachment) => attachment.id !== id);
     });
+  }
+
+  async function submitForAiGrading() {
+    if (!activeExercise) return;
+
+    if (!answer.trim()) {
+      setGradingStatus("error");
+      setGradingError("请先写下你的解答，再提交给 AI 批改。");
+      return;
+    }
+
+    const settings = loadTutorSettings();
+    if (!settings.apiKey.trim()) {
+      setGradingStatus("error");
+      setGradingError("请先在右侧 AI 老师区域保存模型和 API Key。");
+      return;
+    }
+
+    setGradingStatus("submitting");
+    setGradingError("");
+    setGradeResult(null);
+
+    try {
+      const envelope = buildTutorGradeEnvelope({
+        courseId,
+        chapterId,
+        sectionId,
+        knowledgePoint,
+        exercise: activeExercise,
+        studentAnswer: answer,
+        hintLevelUsed: hintLevel
+      });
+      const result = await requestTutorGrade(settings, envelope);
+      setGradeResult(result);
+      setGradingStatus("success");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "tutor_grade_request_failed";
+      setGradingStatus("error");
+      setGradingError(`AI 批改暂时不可用：${message}`);
+    }
   }
 
   if (!activeExercise) {
@@ -134,8 +197,35 @@ export function ExercisePanel({ exercises }: { exercises: Exercise[] }) {
         <button onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))} type="button">
           获取提示
         </button>
+        <button disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
+          {gradingStatus === "submitting" ? "批改中..." : "提交给 AI 批改"}
+        </button>
         <button type="button">对照评分要点</button>
       </div>
+      {gradingError && <p className="grading-error">{gradingError}</p>}
+      {gradeResult && (
+        <section className={`grade-result-card ${gradeResult.verdict}`} aria-label="AI 批改结果">
+          <div className="grade-result-heading">
+            <strong>AI 批改结果</strong>
+            <span>{gradeResult.score} 分</span>
+          </div>
+          <p>
+            <MathText text={gradeResult.feedback} />
+          </p>
+          {gradeResult.missingKeyPoints.length > 0 && (
+            <div>
+              <strong>还缺这些要点</strong>
+              <ul>
+                {gradeResult.missingKeyPoints.map((item) => (
+                  <li key={item}>
+                    <MathText text={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
       {visibleHints.length > 0 && (
         <ul className="hint-list">
           {visibleHints.map((hint) => (
