@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { MathText } from "@/components/math/MathText";
 import type { KnowledgePoint } from "@/lib/course/types";
 import { getDefaultTutorSettings, loadTutorSettings, saveTutorSettings } from "@/lib/progress/progressStore";
 import { buildLocalOpeningMessage } from "@/lib/tutor/localTutor";
@@ -48,7 +49,7 @@ export function TutorPanel({ knowledgePoint }: { knowledgePoint: KnowledgePoint 
       <div className="message-list">
         {messages.map((message) => (
           <div className={`message ${message.role}`} key={message.id}>
-            {message.content}
+            <MathText text={message.content} />
           </div>
         ))}
       </div>

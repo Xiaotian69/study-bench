@@ -1,3 +1,4 @@
+import { MathText } from "@/components/math/MathText";
 import type { DiagramSpec } from "@/lib/course/types";
 
 const points = [
@@ -15,7 +16,7 @@ export function SequencePlotDiagram({ diagram }: { diagram: DiagramSpec }) {
     <figure className="diagram-card">
       <figcaption>
         <strong>{diagram.title}</strong>
-        <span>{diagram.description}</span>
+        <MathText text={diagram.description} />
       </figcaption>
       <svg aria-label={diagram.title} role="img" viewBox="0 0 520 190">
         <line stroke="currentColor" strokeWidth="2" x1="48" x2="480" y1="150" y2="150" />
@@ -29,7 +30,9 @@ export function SequencePlotDiagram({ diagram }: { diagram: DiagramSpec }) {
           <circle cx={x} cy={y} fill="#194d47" key={`${x}-${y}-${index}`} r="5" />
         ))}
       </svg>
-      <p className="diagram-prompt">{diagram.studentPrompt}</p>
+      <p className="diagram-prompt">
+        <MathText text={diagram.studentPrompt} />
+      </p>
     </figure>
   );
 }

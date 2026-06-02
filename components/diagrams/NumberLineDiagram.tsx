@@ -1,3 +1,4 @@
+import { MathText } from "@/components/math/MathText";
 import type { DiagramSpec } from "@/lib/course/types";
 
 export function NumberLineDiagram({ diagram }: { diagram: DiagramSpec }) {
@@ -5,7 +6,7 @@ export function NumberLineDiagram({ diagram }: { diagram: DiagramSpec }) {
     <figure className="diagram-card">
       <figcaption>
         <strong>{diagram.title}</strong>
-        <span>{diagram.description}</span>
+        <MathText text={diagram.description} />
       </figcaption>
       <svg aria-label={diagram.title} role="img" viewBox="0 0 640 180">
         <line stroke="currentColor" strokeWidth="2" x1="64" x2="576" y1="96" y2="96" />
@@ -24,7 +25,9 @@ export function NumberLineDiagram({ diagram }: { diagram: DiagramSpec }) {
           |xₙ-a| &lt; ε
         </text>
       </svg>
-      <p className="diagram-prompt">{diagram.studentPrompt}</p>
+      <p className="diagram-prompt">
+        <MathText text={diagram.studentPrompt} />
+      </p>
     </figure>
   );
 }

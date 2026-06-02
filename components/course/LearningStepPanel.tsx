@@ -1,4 +1,5 @@
 import { DiagramRenderer } from "@/components/diagrams/DiagramRenderer";
+import { MathText } from "@/components/math/MathText";
 import type { DiagramSpec, KnowledgePoint } from "@/lib/course/types";
 
 export function LearningStepPanel({ diagrams, knowledgePoint }: { diagrams: DiagramSpec[]; knowledgePoint: KnowledgePoint }) {
@@ -6,7 +7,9 @@ export function LearningStepPanel({ diagrams, knowledgePoint }: { diagrams: Diag
     <article className="learning-panel">
       <p className="eyebrow">当前知识点</p>
       <h2>{knowledgePoint.title}</h2>
-      <p>{knowledgePoint.coreExplanation}</p>
+      <p>
+        <MathText text={knowledgePoint.coreExplanation} />
+      </p>
 
       <section className="learning-block">
         <h3>教学图示</h3>
@@ -21,7 +24,9 @@ export function LearningStepPanel({ diagrams, knowledgePoint }: { diagrams: Diag
         <h3>学习目标</h3>
         <ul>
           {knowledgePoint.learningGoals.map((goal) => (
-            <li key={goal}>{goal}</li>
+            <li key={goal}>
+              <MathText text={goal} />
+            </li>
           ))}
         </ul>
       </section>
@@ -30,7 +35,9 @@ export function LearningStepPanel({ diagrams, knowledgePoint }: { diagrams: Diag
         <h3>AI 追问</h3>
         <ol>
           {knowledgePoint.socraticQuestions.map((question) => (
-            <li key={question}>{question}</li>
+            <li key={question}>
+              <MathText text={question} />
+            </li>
           ))}
         </ol>
       </section>
