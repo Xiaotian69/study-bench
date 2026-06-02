@@ -122,3 +122,39 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+.diagram-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.diagram-card {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.diagram-card figcaption {
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+}
+
+.diagram-card figcaption strong {
+  color: var(--ink);
+}
+
+.diagram-card svg {
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+  color: var(--ink);
+}
+
+.diagram-prompt {
+  margin: 10px 0 0;
+  color: var(--accent-strong);
+  font-weight: 700;
+}

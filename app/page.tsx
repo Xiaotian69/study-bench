@@ -1,16 +1,17 @@
 import { CourseSidebar } from "@/components/course/CourseSidebar";
 import { LearningStepPanel } from "@/components/course/LearningStepPanel";
 import { loadMathAnalysisCourse } from "@/lib/course/loadCourse";
-import { getFirstReadyKnowledgePoint } from "@/lib/course/selectors";
+import { getDiagramsForKnowledgePoint, getFirstReadyKnowledgePoint } from "@/lib/course/selectors";
 
 export default function HomePage() {
   const bundle = loadMathAnalysisCourse();
   const firstKnowledgePoint = getFirstReadyKnowledgePoint(bundle);
+  const diagrams = getDiagramsForKnowledgePoint(bundle, firstKnowledgePoint.id);
 
   return (
     <main className="workbench-shell">
       <CourseSidebar activeChapterId={bundle.chapter.id} volume={bundle.volume} />
-      <LearningStepPanel knowledgePoint={firstKnowledgePoint} />
+      <LearningStepPanel diagrams={diagrams} knowledgePoint={firstKnowledgePoint} />
       <aside className="tutor-placeholder">
         <p className="eyebrow">AI 老师</p>
         <h2>短讲 + 追问 + 练习反馈</h2>
