@@ -5,6 +5,13 @@ import { buildTutorGradeEnvelope, buildTutorImageAttachments, requestTutorGrade 
 import { MathText } from "@/components/math/MathText";
 import type { TutorGradeResponse } from "@/lib/ai/tutor-contract";
 import type { Exercise, KnowledgePoint } from "@/lib/course/types";
+import {
+  getKnowledgePointProgress,
+  getMasteryLabel,
+  loadCourseProgress,
+  saveExerciseAttempt,
+  type MasteryState
+} from "@/lib/progress/masteryProgress";
 import { loadTutorSettings } from "@/lib/progress/progressStore";
 
 interface AnswerImage {
@@ -23,13 +30,15 @@ export function ExercisePanel({
   courseId,
   exercises,
   knowledgePoint,
-  sectionId
+  sectionId,
+  volumeId
 }: {
   chapterId: string;
   courseId: string;
   exercises: Exercise[];
   knowledgePoint: KnowledgePoint;
   sectionId: string;
+  volumeId: string;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hintLevel, setHintLevel] = useState(0);
@@ -38,6 +47,7 @@ export function ExercisePanel({
   const [gradingStatus, setGradingStatus] = useState<GradingStatus>("idle");
   const [gradingError, setGradingError] = useState("");
   const [gradeResult, setGradeResult] = useState<TutorGradeResponse | null>(null);
+  const [masteryState, setMasteryState] = useState<MasteryState>("not_started");
   const attachmentsRef = useRef<AnswerImage[]>([]);
   const activeExercise = exercises[activeIndex];
 
@@ -49,6 +59,12 @@ export function ExercisePanel({
   useEffect(() => {
     attachmentsRef.current = attachments;
   }, [attachments]);
+
+  useEffect(() => {
+    const progress = loadCourseProgress(courseId, volumeId);
+    const record = getKnowledgePointProgress(progress, knowledgePoint.id);
+    setMasteryState(record?.masteryState ?? "not_started");
+  }, [courseId, knowledgePoint.id, volumeId]);
 
   useEffect(() => {
     return () => {
@@ -133,6 +149,18 @@ export function ExercisePanel({
       });
       const result = await requestTutorGrade(settings, envelope, { imageAttachments });
       setGradeResult(result);
+      const progress = saveExerciseAttempt({
+        courseId,
+        volumeId,
+        knowledgePointId: knowledgePoint.id,
+        knowledgePointIds: activeExercise.knowledgePointIds,
+        exerciseId: activeExercise.id,
+        answerText: studentAnswer,
+        attachmentCount: attachments.length,
+        hintLevelUsed: hintLevel,
+        result
+      });
+      setMasteryState(getKnowledgePointProgress(progress, knowledgePoint.id)?.masteryState ?? result.masterySuggestion);
       setGradingStatus("success");
     } catch (error) {
       const message = error instanceof Error ? error.message : "tutor_grade_request_failed";
@@ -149,6 +177,7 @@ export function ExercisePanel({
     <section className="exercise-panel">
       <div className="exercise-header">
         <p className="eyebrow">练习</p>
+        <span className={`mastery-summary ${masteryState}`}>当前掌握状态：{getMasteryLabel(masteryState)}</span>
         <div className="exercise-tabs">
           {exercises.map((exercise, index) => (
             <button

@@ -112,6 +112,45 @@ p {
   align-items: center;
 }
 
+.progress-pill,
+.mastery-summary {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.progress-pill.not_started,
+.mastery-summary.not_started {
+  color: var(--muted);
+  background: #f6f7f4;
+}
+
+.progress-pill.emerging,
+.mastery-summary.emerging {
+  color: #245b86;
+  background: #e8f1f7;
+  border-color: #93b6cf;
+}
+
+.progress-pill.proficient,
+.mastery-summary.proficient {
+  color: #276447;
+  background: #e8f5ee;
+  border-color: #82b89a;
+}
+
+.progress-pill.weak,
+.mastery-summary.weak {
+  color: #8d5b16;
+  background: #fff4d9;
+  border-color: #d9b465;
+}
+
 .learning-panel,
 .tutor-placeholder {
   padding: 24px;

@@ -19,7 +19,7 @@ export default function HomePage() {
 
   return (
     <main className="workbench-shell">
-      <CourseSidebar activeChapterId={bundle.chapter.id} volume={bundle.volume} />
+      <CourseSidebar activeChapterId={bundle.chapter.id} courseId={bundle.course.id} volume={bundle.volume} />
       <div className="main-column">
         <LearningStepPanel diagrams={diagrams} knowledgePoint={firstKnowledgePoint} />
         <ExercisePanel
@@ -28,6 +28,7 @@ export default function HomePage() {
           exercises={exercises}
           knowledgePoint={firstKnowledgePoint}
           sectionId={firstSection.id}
+          volumeId={bundle.volume.id}
         />
       </div>
       <TutorPanel knowledgePoint={firstKnowledgePoint} />

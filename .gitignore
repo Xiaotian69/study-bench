@@ -9,6 +9,7 @@
 # App/build outputs for later implementation.
 node_modules/
 .next/
+tsconfig.tsbuildinfo
 out/
 dist/
 build/
