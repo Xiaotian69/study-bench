@@ -12,8 +12,7 @@ Open the local URL printed by Next.js.
 ## Verify
 
 ```powershell
-npm run validate:content
-npm run build
+npm run validate:all
 ```
 
 ## Content Rules
@@ -23,8 +22,9 @@ npm run build
 - Sequence-limit content is the first sample chapter.
 - Diagrams are programmatic specs, not AI-generated images.
 - User API keys stay in browser local storage for the MVP.
+- Handwritten answer images are sent only when the learner submits an answer for grading.
 
 ## Collaboration
 
-Partner AI owns odd partner task packages C and E.
-Main AI owns app implementation and even partner task packages B and D.
+Partner AI owns odd task packages.
+Main AI owns app implementation and even task packages.

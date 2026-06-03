@@ -13,7 +13,9 @@
     "validate:tutor-api": "node scripts/validate-tutor-api.mjs",
     "validate:exercise-ai-grading": "node scripts/validate-exercise-ai-grading.mjs",
     "validate:vision-grading": "node scripts/validate-vision-grading.mjs",
-    "validate:progress-state": "node scripts/validate-progress-state.mjs"
+    "validate:progress-state": "node scripts/validate-progress-state.mjs",
+    "validate:mastery-state": "node scripts/validate-mastery-state.mjs",
+    "validate:all": "node scripts/validate-all.mjs"
   },
   "dependencies": {
     "@next/env": "^15.0.0",

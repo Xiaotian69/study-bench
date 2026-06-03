@@ -116,8 +116,8 @@ AI `mastery` 任务返回 `TutorMasteryResponse`（见 `lib/ai/tutor-contract.ts
 
 `grade` 任务的 `masterySuggestion` 是**单题信号**，最终知识点掌握度应以 `mastery` 任务的综合判定为准。
 
-## 6. 不在本任务范围
+## 6. 范围边界
 
-- 不实现 UI（左侧进度徽标、题目历史视图由主 AI 任务包 8 实现）。
-- 不修改 `lib/progress/progressStore.ts`。
+- 本规范不新增 UI；左侧进度徽标和当前知识点状态已由主 AI 任务包 8 接线。
+- 模型设置继续由 `lib/progress/progressStore.ts` 维护，和学习进度分开。
 - 不引入服务端持久化或账号系统。
