@@ -21,3 +21,6 @@ build/
 tmp/
 temp/
 .cache/
+
+# Local git worktrees used for parallel AI development.
+.worktrees/
