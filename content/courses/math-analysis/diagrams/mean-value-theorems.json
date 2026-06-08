@@ -1,0 +1,39 @@
+{
+  "chapterId": "ch-mean-value-theorems",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "lagrange-mvt-illustration",
+      "title": "Lagrange 中值定理：割线与某点切线平行",
+      "description": "在 $[a,b]$ 上的曲线 $y=f(x)$：画出端点连线（割线），斜率为 $(f(b)-f(a))/(b-a)$；在内部某点 $\\xi$ 处画出切线，斜率 $f'(\\xi)$ 与割线平行（斜率相等）。箭头标注 $\\xi$ 的位置。旁标 Rolle 定理作为特例（$f(a)=f(b)$，割线水平）。",
+      "mathContext": "Lagrange 定理：$f(b)-f(a)=f'(\\xi)(b-a)$，几何上就是曲线上存在一点其切线与两端点的弦平行。Rolle 定理是 $f(a)=f(b)$ 的特例，此时弦水平，切线也水平，即 $f'(\\xi)=0$。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["rolle-lagrange-theorems"],
+      "layout": "single",
+      "annotations": [
+        { "position": "chord", "label": "割线（斜率 $\\frac{f(b)-f(a)}{b-a}$）", "note": "过端点 $(a,f(a))$ 和 $(b,f(b))$" },
+        { "position": "tangent-xi", "label": "切线（斜率 $f'(\\xi)$）", "note": "与割线平行" },
+        { "position": "xi", "label": "$\\xi \\in (a,b)$", "note": "Lagrange 定理保证的内点" }
+      ]
+    },
+    {
+      "id": "monotonicity-extrema-diagram",
+      "title": "单调区间、极值与凹凸性综合示意",
+      "description": "一条函数曲线，标注：单调递增区间（向上箭头）、单调递减区间（向下箭头）；极大值点（曲线最高点，下方标 $f'>0\\to f'<0$）、极小值点（曲线最低点，标 $f'<0\\to f'>0$）；凹区域（$f''>0$，向上弯，标阴影）、凸区域（$f''<0$，向下弯）；拐点标竖向虚线。",
+      "mathContext": "$f'>0$：递增；$f'<0$：递减。极大值：$f'$ 从正变负。极小值：$f'$ 从负变正。$f''>0$：下凸（凹）；$f''<0$：上凸（凸）。拐点：$f''$ 变号。综合图示用于函数草图分析。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["monotonicity-extrema", "convexity-inflection"],
+      "layout": "single",
+      "annotations": [
+        { "position": "increasing", "label": "$f'>0$（递增）", "note": "向上箭头" },
+        { "position": "decreasing", "label": "$f'<0$（递减）", "note": "向下箭头" },
+        { "position": "local-max", "label": "极大值", "note": "$f'$ 由正变负" },
+        { "position": "local-min", "label": "极小值", "note": "$f'$ 由负变正" },
+        { "position": "concave", "label": "$f''>0$（下凸）", "note": "碗形，向上弯" },
+        { "position": "convex", "label": "$f''<0$（上凸）", "note": "帽形，向下弯" },
+        { "position": "inflection", "label": "拐点", "note": "$f''$ 变号" }
+      ]
+    }
+  ]
+}

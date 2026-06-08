@@ -195,13 +195,41 @@
       "id": "ch-mean-value-theorems",
       "number": 6,
       "title": "微分中值定理及其应用",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/mean-value-theorems.json",
+      "exercisesFile": "exercises/mean-value-theorems.json",
+      "diagramFile": "diagrams/mean-value-theorems.json",
       "sections": [
-        { "id": "sec-lagrange-mvt", "title": "拉格朗日中值定理和函数的单调性", "status": "planned" },
-        { "id": "sec-cauchy-lhopital", "title": "柯西中值定理和不定式极限", "status": "planned" },
-        { "id": "sec-taylor", "title": "泰勒公式", "status": "planned" },
-        { "id": "sec-function-behavior", "title": "函数的极值与最大（小）值", "status": "planned" },
-        { "id": "sec-curve-sketching", "title": "函数的凸性与拐点", "status": "planned" }
+        {
+          "id": "sec-lagrange-mvt",
+          "title": "拉格朗日中值定理和函数的单调性",
+          "status": "draft",
+          "knowledgePointIds": ["rolle-lagrange-theorems"]
+        },
+        {
+          "id": "sec-cauchy-lhopital",
+          "title": "柯西中值定理和不定式极限",
+          "status": "draft",
+          "knowledgePointIds": ["cauchy-lhopital"]
+        },
+        {
+          "id": "sec-taylor",
+          "title": "泰勒公式",
+          "status": "draft",
+          "knowledgePointIds": ["taylor-formula"]
+        },
+        {
+          "id": "sec-function-behavior",
+          "title": "函数的极值与最大（小）值",
+          "status": "draft",
+          "knowledgePointIds": ["monotonicity-extrema"]
+        },
+        {
+          "id": "sec-curve-sketching",
+          "title": "函数的凸性与拐点",
+          "status": "draft",
+          "knowledgePointIds": ["convexity-inflection"]
+        }
       ]
     },
     {

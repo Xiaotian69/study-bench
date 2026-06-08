@@ -1,0 +1,251 @@
+{
+  "id": "ch-mean-value-theorems",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "number": 6,
+  "title": "微分中值定理及其应用",
+  "status": "draft",
+  "overview": "本章以可导函数的性质分析为主线。先通过 Fermat 引理建立极值的必要条件，进而证明 Rolle 定理，再推广为 Lagrange 中值定理与 Cauchy 中值定理。这三个定理统称微分中值定理，是连接导数与函数整体行为的桥梁。在应用层面：用 L'Hôpital 法则化解不定式极限；用 Taylor 公式把函数展开为多项式加余项，给出精确的局部近似；用导数符号分析函数单调性、极值、凹凸性与拐点。讲义、例子与题面均为自编或充分改写，公式用 LaTeX（四反斜线约定）。",
+  "knowledgePoints": [
+    {
+      "id": "rolle-lagrange-theorems",
+      "title": "Rolle 定理与 Lagrange 中值定理",
+      "learningGoals": [
+        "理解 Fermat 引理：可导极值点处导数为零。",
+        "掌握 Rolle 定理的条件（$[a,b]$ 连续，$(a,b)$ 可导，$f(a)=f(b)$）与结论。",
+        "掌握 Lagrange 中值定理：$f(b)-f(a)=f'(\\\\xi)(b-a)$（$\\\\xi\\\\in(a,b)$）。",
+        "理解 Lagrange 定理是导数与函数增量关系的精确陈述，能用它证明函数恒等或估算误差。"
+      ],
+      "coreExplanation": "**Fermat 引理**：若 $f$ 在 $x_0$ 的某邻域内有定义，$x_0$ 是 $f$ 的极值点（极大或极小），且 $f$ 在 $x_0$ 可导，则 $f'(x_0)=0$。直觉：极值点是"转折处"，切线必然水平。**Rolle 定理**（Fermat 推广）：若 $f$ 在 $[a,b]$ 连续，在 $(a,b)$ 可导，且 $f(a)=f(b)$，则 $\\\\exists\\\\,\\\\xi\\\\in(a,b)$ 使 $f'(\\\\xi)=0$。证明：$f$ 在 $[a,b]$ 上取到最大值和最小值（最值定理）；若两者相等则 $f$ 恒为常数，导数恒为零；若不等则必有一个在内点取到，由 Fermat 引理，该内点处导数为零。**Lagrange 中值定理**：去掉 $f(a)=f(b)$ 的假设，引入辅助线段，令 $g(x)=f(x)-\\\\dfrac{f(b)-f(a)}{b-a}(x-a)-f(a)$（几何上是把割线"减掉"），则 $g$ 满足 Rolle 定理条件，故 $g'(\\\\xi)=0$，即 $f'(\\\\xi)=\\\\dfrac{f(b)-f(a)}{b-a}$，等价于 $f(b)-f(a)=f'(\\\\xi)(b-a)$。实际上这说明区间上的"平均变化率"等于某点的"瞬时变化率"。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 6 章 微分中值定理及其应用，§1 拉格朗日中值定理和函数的单调性；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "Fermat 引理",
+          "statement": "若 $f$ 在极值点 $x_0$ 可导，则 $f'(x_0)=0$。"
+        },
+        {
+          "name": "Rolle 定理",
+          "statement": "若 $f\\\\in C[a,b]$，在 $(a,b)$ 可导，且 $f(a)=f(b)$，则 $\\\\exists\\\\,\\\\xi\\\\in(a,b)$ 使 $f'(\\\\xi)=0$。"
+        },
+        {
+          "name": "Lagrange 中值定理",
+          "statement": "若 $f\\\\in C[a,b]$，在 $(a,b)$ 可导，则 $\\\\exists\\\\,\\\\xi\\\\in(a,b)$ 使 $f(b)-f(a)=f'(\\\\xi)(b-a)$。"
+        }
+      ],
+      "proofIdeas": [
+        "Rolle → Lagrange：构造辅助函数 $g(x)=f(x)-L(x)$，$L(x)$ 为过 $(a,f(a))$ 和 $(b,f(b))$ 的割线，则 $g(a)=g(b)=0$，对 $g$ 用 Rolle 定理。",
+        "Fermat 引理：分别从左右侧考察差商极限的符号，由极值假设知左侧 $\\\\ge 0$，右侧 $\\\\le 0$（或反），两者相等故为零。"
+      ],
+      "socraticQuestions": [
+        "Lagrange 定理里 $\\\\xi$ 是否唯一？不唯一时意味着什么？",
+        "Rolle 定理是 Lagrange 定理的特例还是一般情形？",
+        "$f'(x_0)=0$ 是极值点的充分条件吗？能举一个反例吗？"
+      ],
+      "commonMistakes": [
+        "把 Fermat 引理的逆（$f'(x_0)=0\\\\Rightarrow x_0$ 是极值点）当成定理。",
+        "Rolle 定理遗漏端点相等 $f(a)=f(b)$ 的条件。",
+        "Lagrange 定理里 $\\\\xi$ 写成了端点 $a$ 或 $b$（$\\\\xi$ 必须在开区间内）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["mvt-ex-001", "mvt-ex-002"],
+      "diagramIds": ["lagrange-mvt-illustration"],
+      "masteryCriteria": [
+        "能陈述 Rolle 定理和 Lagrange 定理及其条件，并解释几何含义。",
+        "能用 Lagrange 定理证明函数不等式或估算函数值误差。"
+      ]
+    },
+    {
+      "id": "cauchy-lhopital",
+      "title": "Cauchy 中值定理与 L'Hôpital 法则",
+      "learningGoals": [
+        "理解 Cauchy 中值定理是 Lagrange 定理的参数化推广。",
+        "掌握 L'Hôpital 法则求 $0/0$ 和 $\\\\infty/\\\\infty$ 型不定式极限。",
+        "能把其他不定式（$0\\\\cdot\\\\infty$、$\\\\infty-\\\\infty$、$1^\\\\infty$、$0^0$、$\\\\infty^0$）转化后应用 L'Hôpital 法则。"
+      ],
+      "coreExplanation": "**Cauchy 中值定理**：若 $f,g\\\\in C[a,b]$，在 $(a,b)$ 可导，$g'(x)\\\\ne 0$，则 $\\\\exists\\\\,\\\\xi\\\\in(a,b)$ 使 $\\\\dfrac{f(b)-f(a)}{g(b)-g(a)}=\\\\dfrac{f'(\\\\xi)}{g'(\\\\xi)}$。取 $g(x)=x$ 即退化为 Lagrange 定理；参数曲线解释：弦的斜率等于曲线在某点的切线斜率之比。**L'Hôpital 法则（$0/0$ 型）**：若 $\\\\lim_{x\\\\to a}f(x)=\\\\lim_{x\\\\to a}g(x)=0$，且 $f,g$ 在 $a$ 附近可导，$g'\\\\ne 0$，且 $\\\\lim_{x\\\\to a}\\\\dfrac{f'(x)}{g'(x)}=L$（有限或无穷），则 $\\\\lim_{x\\\\to a}\\\\dfrac{f(x)}{g(x)}=L$。$\\\\infty/\\\\infty$ 型有类似结论。其他类型的转化：$0\\\\cdot\\\\infty$ → 写成 $f/(1/g)$ 或 $g/(1/f)$；$\\\\infty-\\\\infty$ → 通分；$1^\\\\infty,0^0,\\\\infty^0$ → 取对数化为 $0\\\\cdot\\\\infty$ 型。注意：L'Hôpital 法则是充分条件，$f'/g'$ 极限不存在不意味 $f/g$ 极限不存在（要用其他方法）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 6 章 微分中值定理及其应用，§2 柯西中值定理和不定式极限；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "Cauchy 中值定理",
+          "statement": "若 $f,g\\\\in C[a,b]$，在 $(a,b)$ 可导，$g'(x)\\\\ne 0$，则 $\\\\exists\\\\,\\\\xi\\\\in(a,b)$ 使 $\\\\dfrac{f'(\\\\xi)}{g'(\\\\xi)}=\\\\dfrac{f(b)-f(a)}{g(b)-g(a)}$。"
+        },
+        {
+          "name": "L'Hôpital 法则（0/0 型）",
+          "statement": "若 $\\\\lim f=\\\\lim g=0$，$g'\\\\ne 0$，且 $\\\\lim f'/g'=L$，则 $\\\\lim f/g=L$。"
+        }
+      ],
+      "proofIdeas": [
+        "Cauchy 定理：构造 $h(x)=f(x)-\\\\dfrac{f(b)-f(a)}{g(b)-g(a)}\\\\cdot g(x)$，满足 Rolle 条件（注意 $h(a)=h(b)$ 需验证）。",
+        "L'Hôpital：利用 Cauchy 定理，在 $(a, a+h)$ 上应用，令 $h\\\\to 0$。"
+      ],
+      "socraticQuestions": [
+        "L'Hôpital 法则里 $\\\\lim f'/g'$ 不存在（而非无穷）时，$\\\\lim f/g$ 一定不存在吗？",
+        "$\\\\infty/\\\\infty$ 型是否也可以用等价无穷大代换而不用 L'Hôpital？",
+        "$\\\\lim_{x\\\\to 0}(1/\\\\sin x-1/x)$ 属于哪种不定式？如何转化？"
+      ],
+      "commonMistakes": [
+        "在非不定式情形（$\\\\lim g\\\\ne 0$）错用 L'Hôpital 法则。",
+        "用 L'Hôpital 后结果仍是不定式，忘记继续用法则或换方法。",
+        "$\\\\lim f'/g'$ 不存在时断言 $\\\\lim f/g$ 不存在（如 $\\\\lim_{x\\\\to\\\\infty}\\\\frac{x+\\\\sin x}{x}=1$ 但 $f'/g'=(1+\\\\cos x)/1$ 振荡）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["mvt-ex-003", "mvt-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能陈述 Cauchy 中值定理及其与 Lagrange 定理的关系。",
+        "能正确识别不定式类型并灵活运用 L'Hôpital 法则。"
+      ]
+    },
+    {
+      "id": "taylor-formula",
+      "title": "Taylor 公式",
+      "learningGoals": [
+        "理解 Taylor 公式的含义：用 $n$ 次多项式近似函数，余项描述误差。",
+        "掌握 Peano 余项形式与 Lagrange 余项形式，理解其使用场合。",
+        "熟悉 $e^x$、$\\\\sin x$、$\\\\cos x$、$\\\\ln(1+x)$、$(1+x)^\\\\alpha$ 在 $x=0$ 处的 Maclaurin 展开。",
+        "能用 Taylor 展开求高阶极限或估算近似误差。"
+      ],
+      "coreExplanation": "Lagrange 中值定理给出一阶近似 $f(x)\\\\approx f(x_0)+f'(x_0)(x-x_0)$；Taylor 公式把这推广到 $n$ 阶：$$f(x)=\\\\sum_{k=0}^{n}\\\\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+R_n(x),$$其中 $R_n$ 是余项。**Peano 余项**：$R_n(x)=o((x-x_0)^n)$（$x\\\\to x_0$），只说余项是 $(x-x_0)^n$ 的高阶无穷小，用于求极限（不知道余项的绝对大小）。**Lagrange 余项**：$R_n(x)=\\\\dfrac{f^{(n+1)}(\\\\xi)}{(n+1)!}(x-x_0)^{n+1}$（$\\\\xi$ 在 $x_0,x$ 之间），给出余项的具体上界，用于误差估算。常用 Maclaurin 展开（$x_0=0$）：$e^x=\\\\sum_{k=0}^n\\\\dfrac{x^k}{k!}+o(x^n)$；$\\\\sin x=\\\\sum_{k=0}^n\\\\dfrac{(-1)^k x^{2k+1}}{(2k+1)!}+o(x^{2n+2})$；$\\\\cos x=\\\\sum_{k=0}^n\\\\dfrac{(-1)^k x^{2k}}{(2k)!}+o(x^{2n+1})$；$\\\\ln(1+x)=\\\\sum_{k=1}^n\\\\dfrac{(-1)^{k-1}x^k}{k}+o(x^n)$；$(1+x)^\\\\alpha=\\\\sum_{k=0}^n\\\\binom{\\\\alpha}{k}x^k+o(x^n)$。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 6 章 微分中值定理及其应用，§3 泰勒公式；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "Taylor 公式（Peano 余项）",
+          "statement": "若 $f$ 在 $x_0$ 处 $n$ 阶可导，则 $f(x)=\\\\sum_{k=0}^{n}\\\\dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k+o((x-x_0)^n)$。"
+        },
+        {
+          "name": "Taylor 公式（Lagrange 余项）",
+          "statement": "若 $f$ 在 $[a,b]$ 上 $n+1$ 阶可导，$x,x_0\\\\in[a,b]$，则余项 $R_n(x)=\\\\dfrac{f^{(n+1)}(\\\\xi)}{(n+1)!}(x-x_0)^{n+1}$，$\\\\xi$ 在 $x_0$ 与 $x$ 之间。"
+        }
+      ],
+      "proofIdeas": [
+        "Peano 余项：对 $R_n(x)/(x-x_0)^n$ 连续用 L'Hôpital 或归纳，利用高阶导数连续性导出 $R_n=o((x-x_0)^n)$。",
+        "Lagrange 余项：把 $R_n(x)$ 构造为某辅助函数，多次用 Rolle 定理，一步步确定余项的 Lagrange 形式。"
+      ],
+      "socraticQuestions": [
+        "Peano 余项和 Lagrange 余项分别适合用在什么场合？",
+        "Maclaurin 展开只是 Taylor 展开在 $x_0=0$ 的特例，那 $\\\\ln x$ 能在 $x_0=0$ 展开吗？为什么？",
+        "如何用 Taylor 展开求 $\\\\lim_{x\\\\to 0}\\\\dfrac{x-\\\\sin x}{x^3}$？"
+      ],
+      "commonMistakes": [
+        "把 Taylor 展开的系数 $f^{(k)}(x_0)/k!$ 误写为 $f^{(k)}(x_0)$（漏 $k!$）。",
+        "Lagrange 余项里的 $\\\\xi$ 取成了端点。",
+        "用 Peano 余项估算误差（其只说是高阶小，不给具体界）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["mvt-ex-005", "mvt-ex-006"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能写出 5 个常用函数的 Maclaurin 展开（到指定阶）。",
+        "能用 Taylor 展开求 $x\\\\to 0$ 的不定式极限。"
+      ]
+    },
+    {
+      "id": "monotonicity-extrema",
+      "title": "函数的单调性与极值",
+      "learningGoals": [
+        "掌握用导数符号判断函数单调性：$f'>0$ → 单调递增，$f'<0$ → 单调递减。",
+        "掌握极值的一阶充分条件（导数变号）与二阶充分条件（$f'=0$ 且 $f''\\\\ne 0$）。",
+        "能求函数在给定区间上的极值和最大值、最小值。"
+      ],
+      "coreExplanation": "由 Lagrange 定理：若 $f'(x)>0$ 在 $(a,b)$ 上恒成立，则对任意 $x_1<x_2$ 在 $(a,b)$ 内，$f(x_2)-f(x_1)=f'(\\\\xi)(x_2-x_1)>0$，故 $f$ 在 $(a,b)$ 单调递增；$f'<0$ 类推。极值点的**必要条件**（Fermat 引理）：可导极值点处 $f'=0$（驻点）。驻点不一定是极值（如 $f(x)=x^3$ 在 $x=0$），还要看导数变号情况。**一阶充分条件**：在驻点 $x_0$ 的邻域内，$f'$ 从正变负 → 极大；从负变正 → 极小；不变号 → 不是极值。**二阶充分条件**：若 $f'(x_0)=0$，$f''(x_0)>0$ → 极小值；$f''(x_0)<0$ → 极大值；$f''(x_0)=0$ → 此条件失效，退回一阶。**最大/最小值**在闭区间上：比较所有驻点、不可导点（含端点）的函数值，最大者为最大值，最小者为最小值。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 6 章 微分中值定理及其应用，§4 函数的极值与最大（小）值；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "极值点与驻点",
+          "statement": "若 $f(x_0)$ 是局部最大（小）值，称 $x_0$ 为极大（小）值点；若 $f'(x_0)=0$，称 $x_0$ 为驻点。极值点处若可导必为驻点，但驻点未必是极值点。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "单调性判别法",
+          "statement": "若 $f'(x)>0$（$<0$）在 $(a,b)$ 上成立，则 $f$ 在 $(a,b)$ 上严格单调递增（减）。"
+        },
+        {
+          "name": "极值二阶充分条件",
+          "statement": "若 $f'(x_0)=0$，$f''(x_0)>0$，则 $x_0$ 为极小值点；$f''(x_0)<0$ 则为极大值点。"
+        }
+      ],
+      "proofIdeas": [
+        "单调性判别：直接由 Lagrange 定理，$f(x_2)-f(x_1)=f'(\\\\xi)(x_2-x_1)$，符号由 $f'(\\\\xi)$ 决定。",
+        "二阶条件：$f''(x_0)>0$ 说明 $f'$ 在 $x_0$ 从负变正（由 $f'(x_0)=0$ 和 $f''(x_0)>0$，$f'$ 在 $x_0$ 附近为增函数），故 $x_0$ 是极小值点。"
+      ],
+      "socraticQuestions": [
+        "$f'(x_0)=0$ 是极值点的充分条件吗？$f'$ 不变号时发生什么？",
+        "在 $[a,b]$ 上，函数的最大值一定在驻点处取到吗？",
+        "二阶条件 $f''(x_0)=0$ 时，如何判断 $x_0$ 是否是极值点？"
+      ],
+      "commonMistakes": [
+        "驻点全部当极值点，不验证导数变号。",
+        "求最大值时只考虑驻点，忘记端点和不可导点。",
+        "二阶条件 $f''=0$ 时仍强行判断极值（二阶条件已失效）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["mvt-ex-007", "mvt-ex-008"],
+      "diagramIds": ["monotonicity-extrema-diagram"],
+      "masteryCriteria": [
+        "能用导数符号确定函数的单调区间。",
+        "能求函数的所有极值点并判断极大/极小。"
+      ]
+    },
+    {
+      "id": "convexity-inflection",
+      "title": "函数的凸性与拐点",
+      "learningGoals": [
+        "掌握函数凸性（上凸/下凸）的定义及用二阶导数判断：$f''>0$ → 下凸（凹），$f''<0$ → 上凸（凸）。",
+        "理解拐点的定义：凸性改变的点，二阶导数变号处。",
+        "能画出函数的完整草图（含单调性、极值、凹凸性、拐点、渐近线）。"
+      ],
+      "coreExplanation": "函数的**凸性**描述曲线的弯曲方向。定义（下凸，也称凹）：若对 $(a,b)$ 内任意 $x_1<x_2$，总有 $f\\\\left(\\\\dfrac{x_1+x_2}{2}\\\\right)\\\\le\\\\dfrac{f(x_1)+f(x_2)}{2}$（中点处函数值不超过两端点均值），则称 $f$ 在 $(a,b)$ 上是下凸的（凹的）；反之为上凸。用二阶导数判别（定理）：若 $f''(x)>0$ 在 $(a,b)$ 上恒成立，则 $f$ 在 $(a,b)$ 下凸；$f''<0$ 则上凸。几何解释：$f''>0$ 意味斜率递增，曲线越来越"向上弯"（像 $y=x^2$，碗形）。**拐点**是凸性改变的点：$f''$ 在 $x_0$ 处变号（从正到负或从负到正）。拐点处 $f''(x_0)=0$ 或不存在，但 $f''=0$ 不一定是拐点（要看变号，如 $y=x^4$ 在 $x=0$：$f''(0)=0$ 但无变号）。**函数作图**综合以上内容：找定义域、奇偶性、周期性；求渐近线（水平、垂直、斜）；求 $f'$ 确定单调区间和极值；求 $f''$ 确定凹凸区间和拐点；描关键点连曲线。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 6 章 微分中值定理及其应用，§5 函数的凸性与拐点；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "下凸函数（凹函数）",
+          "statement": "若对任意 $x_1,x_2\\\\in(a,b)$，$\\\\lambda\\\\in(0,1)$，有 $f(\\\\lambda x_1+(1-\\\\lambda)x_2)\\\\le\\\\lambda f(x_1)+(1-\\\\lambda)f(x_2)$，则 $f$ 在 $(a,b)$ 上是下凸的（凹的，弓形开口向上）。"
+        },
+        {
+          "name": "拐点",
+          "statement": "曲线上从上凸变下凸（或反）的点称为拐点；拐点处 $f''$ 变号。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "二阶导数判凸",
+          "statement": "若 $f''(x)>0$ 在 $(a,b)$ 上成立，则 $f$ 在 $(a,b)$ 下凸；$f''<0$ 则上凸。"
+        }
+      ],
+      "proofIdeas": [
+        "$f''>0$ → 下凸：由 Lagrange 定理，$f''(x)>0$ 使 $f'$ 严格递增；对任意中点 $c=(x_1+x_2)/2$，用 Lagrange 定理估算 $f(x_1)$、$f(x_2)$ 与 $f(c)$ 的关系。"
+      ],
+      "socraticQuestions": [
+        "下凸、上凸和"凹"、"凸"的中文约定有时不统一，如何在做题时避免混淆？",
+        "$f''(x_0)=0$ 处一定是拐点吗？$y=x^4$ 的例子说明了什么？",
+        "如何判断 $y=x^{1/3}$ 在 $x=0$ 处是否是拐点（此处 $f''$ 不存在）？"
+      ],
+      "commonMistakes": [
+        "把 $f''=0$ 的点全当成拐点而不验证凸性是否改变。",
+        "上凸/下凸与正/负的 $f''$ 对应关系记反。",
+        "作图时遗漏渐近线或不可导点的讨论。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["mvt-ex-009", "mvt-ex-010"],
+      "diagramIds": ["monotonicity-extrema-diagram"],
+      "masteryCriteria": [
+        "能用 $f''$ 判断凸性区间并找到拐点。",
+        "能画出函数的完整草图（含极值、凹凸、拐点）。"
+      ]
+    }
+  ]
+}
