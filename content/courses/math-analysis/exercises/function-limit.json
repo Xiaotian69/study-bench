@@ -1,0 +1,264 @@
+{
+  "chapterId": "ch-function-limit",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "sourceTypeLegend": {
+    "textbook-example": "教材例题",
+    "textbook-exercise": "教材课后习题",
+    "adapted": "由教材题改编",
+    "bridging": "自编过渡题，仅用于衔接，不作为正式题"
+  },
+  "intakeNote": "本章题面为自编或充分改写，未直接照搬教材原题；sourceRef 记录对应章节，题号标注“待核对题源”，待对照本地教材核对后再回填具体题号。",
+  "exercises": [
+    {
+      "id": "function-limit-ex-001",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1 函数极限概念",
+      "knowledgePointIds": ["function-limit-intuition"],
+      "difficulty": "basic",
+      "type": "definition-understanding",
+      "recommendedTiming": "after-lecture",
+      "prompt": "函数 $f(x)=\\\\dfrac{x^2-1}{x-1}$ 在 $x=1$ 处没有定义。请说明 $\\\\lim_{x\\\\to 1}f(x)$ 是否存在，并解释“极限值”与“函数在该点的取值”为什么是两件不同的事。",
+      "gradingRubric": [
+        "指出 $x\\\\ne 1$ 时 $f(x)=x+1$，故 $\\\\lim_{x\\\\to 1}f(x)=2$",
+        "说明极限只看去心邻域 $0<|x-1|<\\\\delta$ 上的行为，与 $x=1$ 处是否有定义无关",
+        "明确区分极限值 2 与“函数在 1 处取值”（此处无定义）"
+      ],
+      "hints": [
+        "先在 $x\\\\ne 1$ 的前提下化简 $f(x)$。",
+        "回忆极限定义里对自变量的限制是 $0<|x-x_0|$。",
+        "把“趋近过程的结果”和“某一点的取值”分开表述。"
+      ],
+      "commonMistakes": [
+        "因为 $x=1$ 处无定义就断言极限不存在",
+        "把极限值与 $f(1)$ 混为一谈",
+        "化简时未声明 $x\\\\ne 1$"
+      ]
+    },
+    {
+      "id": "function-limit-ex-002",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1（ε-δ 定义应用）",
+      "knowledgePointIds": ["x-to-x0-limit-definition"],
+      "difficulty": "basic",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用 ε-δ 定义证明 $\\\\lim_{x\\\\to 2}(3x+1)=7$。",
+      "gradingRubric": [
+        "任取 $\\\\varepsilon>0$ 作为证明起点",
+        "由 $|(3x+1)-7|=3|x-2|<\\\\varepsilon$ 解出 $|x-2|<\\\\varepsilon/3$",
+        "取 $\\\\delta=\\\\varepsilon/3$，验证 $0<|x-2|<\\\\delta$ 时 $|(3x+1)-7|<\\\\varepsilon$"
+      ],
+      "hints": [
+        "写出 $|f(x)-7|$ 并提出公因子。",
+        "把目标不等式解成关于 $|x-2|$ 的限制。",
+        "据此取 $\\\\delta$ 并回代验证。"
+      ],
+      "commonMistakes": [
+        "没有先“任取 $\\\\varepsilon>0$”",
+        "$\\\\delta$ 取得与 $\\\\varepsilon$ 无关",
+        "漏掉 $0<|x-2|$ 这一侧"
+      ]
+    },
+    {
+      "id": "function-limit-ex-003",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1（单侧极限）",
+      "knowledgePointIds": ["one-sided-limits"],
+      "difficulty": "basic",
+      "type": "definition-understanding",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\dfrac{|x|}{x}$（$x\\\\ne 0$）。求 $f(0^+)$ 与 $f(0^-)$，并判断 $\\\\lim_{x\\\\to 0}f(x)$ 是否存在。",
+      "gradingRubric": [
+        "$x>0$ 时 $f(x)=1$，故 $f(0^+)=1$",
+        "$x<0$ 时 $f(x)=-1$，故 $f(0^-)=-1$",
+        "左右极限不相等，故 $\\\\lim_{x\\\\to 0}f(x)$ 不存在"
+      ],
+      "hints": [
+        "分别在 $x>0$ 和 $x<0$ 化简 $\\\\frac{|x|}{x}$。",
+        "右极限只看 $x\\\\to 0^+$，左极限只看 $x\\\\to 0^-$。",
+        "用“双侧极限存在 ⟺ 左右极限相等”判断。"
+      ],
+      "commonMistakes": [
+        "只算一侧就下结论",
+        "误以为左右极限存在就一定相等",
+        "把 $f(0)$ 当作极限（此处 $0$ 不在定义域）"
+      ]
+    },
+    {
+      "id": "function-limit-ex-004",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1（x→∞ 极限）",
+      "knowledgePointIds": ["infinite-limits-and-limits-at-infinity"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\\\lim_{x\\\\to+\\\\infty}\\\\dfrac{2x^2+1}{x^2-3}$，并说明依据。",
+      "gradingRubric": [
+        "分子分母同除以最高次幂 $x^2$",
+        "用 $\\\\lim_{x\\\\to+\\\\infty}\\\\frac{1}{x^2}=0$ 等",
+        "得到极限 $2$，并指出分母极限 $1\\\\ne 0$ 才能用商法则"
+      ],
+      "hints": [
+        "观察分子分母最高次数。",
+        "同除以 $x^2$ 后哪些项趋于 0？",
+        "确认分母极限非零再用商法则。"
+      ],
+      "commonMistakes": [
+        "直接代入得到 $\\\\infty/\\\\infty$ 未定型",
+        "分母极限未确认非零就用商法则",
+        "把 $x\\\\to+\\\\infty$ 与 $x\\\\to x_0$ 的处理混用"
+      ]
+    },
+    {
+      "id": "function-limit-ex-005",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1（ε-δ 定义，非线性）",
+      "knowledgePointIds": ["x-to-x0-limit-definition"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "review",
+      "prompt": "用 ε-δ 定义证明 $\\\\lim_{x\\\\to 3}x^2=9$。",
+      "gradingRubric": [
+        "任取 $\\\\varepsilon>0$，写出 $|x^2-9|=|x-3|\\\\,|x+3|$",
+        "先限定 $\\\\delta\\\\le 1$，从而 $|x+3|<7$（由 $2<x<4$）",
+        "取 $\\\\delta=\\\\min\\\\{1,\\\\varepsilon/7\\\\}$，验证 $0<|x-3|<\\\\delta$ 时 $|x^2-9|<\\\\varepsilon$"
+      ],
+      "hints": [
+        "把 $|x^2-9|$ 因式分解为 $|x-3||x+3|$。",
+        "$|x+3|$ 随 $x$ 变化，需先用 $\\\\delta\\\\le 1$ 把它界住。",
+        "最后取两个限制的较小者作为 $\\\\delta$。"
+      ],
+      "commonMistakes": [
+        "不先限定 $\\\\delta\\\\le 1$ 就估计 $|x+3|$",
+        "$\\\\delta$ 只取 $\\\\varepsilon/7$ 而忽略对 $|x+3|$ 的控制",
+        "忘记取 $\\\\min$"
+      ]
+    },
+    {
+      "id": "function-limit-ex-006",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §4（第一重要极限）",
+      "knowledgePointIds": ["two-important-limits", "function-limit-properties"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\\\lim_{x\\\\to 0}\\\\dfrac{1-\\\\cos x}{x^2}$。",
+      "gradingRubric": [
+        "用半角变形 $1-\\\\cos x=2\\\\sin^2\\\\frac{x}{2}$",
+        "凑出第一重要极限 $\\\\frac{\\\\sin(x/2)}{x/2}\\\\to 1$",
+        "得到极限 $\\\\frac{1}{2}$"
+      ],
+      "hints": [
+        "把 $1-\\\\cos x$ 用半角公式改写。",
+        "凑成 $\\\\left(\\\\frac{\\\\sin(x/2)}{x/2}\\\\right)^2$ 的形式。",
+        "注意分母 $x^2$ 与 $(x/2)^2$ 的系数关系。"
+      ],
+      "commonMistakes": [
+        "直接对分子分母代入得 $0/0$ 不再变形",
+        "在加减项里乱用等价代换",
+        "凑形时系数处理出错"
+      ]
+    },
+    {
+      "id": "function-limit-ex-007",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §4（第二重要极限）",
+      "knowledgePointIds": ["two-important-limits"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "review",
+      "prompt": "求 $\\\\lim_{x\\\\to\\\\infty}\\\\left(1+\\\\dfrac{2}{x}\\\\right)^{x}$。",
+      "gradingRubric": [
+        "换元或凑形：$\\\\left(1+\\\\frac{2}{x}\\\\right)^{x}=\\\\left[\\\\left(1+\\\\frac{2}{x}\\\\right)^{x/2}\\\\right]^{2}$",
+        "令 $t=x/2\\\\to\\\\infty$，内层趋于 $e$",
+        "得到极限 $e^2$"
+      ],
+      "hints": [
+        "目标是凑成 $\\\\left(1+\\\\frac{1}{t}\\\\right)^{t}$ 的标准形。",
+        "把指数 $x$ 拆成与括号内增量匹配的形式。",
+        "内层趋于 $e$ 后别忘了外层指数。"
+      ],
+      "commonMistakes": [
+        "指数与括号内增量不匹配凑形",
+        "误认为极限是 $e$ 而漏掉平方",
+        "对 $1^{\\\\infty}$ 型直接当作 1"
+      ]
+    },
+    {
+      "id": "function-limit-ex-008",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §5（等价无穷小）",
+      "knowledgePointIds": ["infinitesimal-and-infinite", "function-limit-properties"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "review",
+      "prompt": "求 $\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\tan x-\\\\sin x}{x^3}$，并说明为何不能直接把 $\\\\tan x$ 与 $\\\\sin x$ 都用 $x$ 等价代换。",
+      "gradingRubric": [
+        "提取公因子 $\\\\tan x-\\\\sin x=\\\\sin x\\\\left(\\\\frac{1}{\\\\cos x}-1\\\\right)=\\\\sin x\\\\cdot\\\\frac{1-\\\\cos x}{\\\\cos x}$",
+        "用 $\\\\sin x\\\\sim x$、$1-\\\\cos x\\\\sim\\\\frac{x^2}{2}$、$\\\\cos x\\\\to 1$ 得到极限 $\\\\frac{1}{2}$",
+        "说明加减项中直接各自代换会得到错误的 $0$，等价代换只对乘除因子整体成立"
+      ],
+      "hints": [
+        "先把 $\\\\tan x-\\\\sin x$ 提出 $\\\\sin x$。",
+        "剩下的因子用 $1-\\\\cos x$ 的等价无穷小。",
+        "整理后分母 $x^3$ 恰与分子的阶匹配。"
+      ],
+      "commonMistakes": [
+        "把 $\\\\tan x$、$\\\\sin x$ 各自换成 $x$ 得到错误的 $0$",
+        "未提取公因子直接展开",
+        "等价代换用在加减项上"
+      ]
+    },
+    {
+      "id": "function-limit-ex-009",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §3（归结原则）",
+      "knowledgePointIds": ["heine-definition"],
+      "difficulty": "hard",
+      "type": "proof",
+      "recommendedTiming": "chapter-quiz",
+      "prompt": "用归结原则证明 $\\\\lim_{x\\\\to 0}\\\\sin\\\\dfrac{1}{x}$ 不存在。",
+      "gradingRubric": [
+        "陈述归结原则：函数极限存在要求对每个 $x_n\\\\to 0$（$x_n\\\\ne 0$）都有 $f(x_n)$ 趋于同一值",
+        "构造 $x_n=\\\\frac{1}{n\\\\pi}\\\\to 0$，得 $\\\\sin\\\\frac{1}{x_n}=\\\\sin(n\\\\pi)=0$",
+        "构造 $x_n'=\\\\frac{1}{2n\\\\pi+\\\\pi/2}\\\\to 0$，得 $\\\\sin\\\\frac{1}{x_n'}=1$；两列极限不同，故极限不存在"
+      ],
+      "hints": [
+        "回忆归结原则证明“不存在”的标准套路。",
+        "找一个让 $\\\\sin\\\\frac1x=0$ 的数列。",
+        "再找一个让 $\\\\sin\\\\frac1x=1$ 的数列，比较两者极限。"
+      ],
+      "commonMistakes": [
+        "只用一个数列就下结论",
+        "构造的数列没有趋于 0 或取到 $x_n=0$",
+        "误算 $\\\\sin(n\\\\pi)$ 或 $\\\\sin(2n\\\\pi+\\\\pi/2)$ 的值"
+      ]
+    },
+    {
+      "id": "function-limit-ex-010",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §5（无穷小阶的比较）",
+      "knowledgePointIds": ["infinitesimal-and-infinite"],
+      "difficulty": "hard",
+      "type": "comprehensive",
+      "recommendedTiming": "chapter-quiz",
+      "prompt": "当 $x\\\\to 0$ 时，比较无穷小量 $1-\\\\cos x$ 与 $x\\\\sin x$ 的阶（高阶、同阶还是等价），并给出理由。",
+      "gradingRubric": [
+        "用等价无穷小：$1-\\\\cos x\\\\sim\\\\frac{x^2}{2}$，$x\\\\sin x\\\\sim x\\\\cdot x=x^2$",
+        "计算比值极限 $\\\\lim_{x\\\\to 0}\\\\frac{1-\\\\cos x}{x\\\\sin x}=\\\\frac{1}{2}$",
+        "结论：二者同阶但不等价（比值为非零常数 $\\\\tfrac12$，不为 1）"
+      ],
+      "hints": [
+        "分别写出两个无穷小量的等价形式。",
+        "比较阶就是看比值极限。",
+        "比值是 1 才叫等价，是其它非零常数叫同阶。"
+      ],
+      "commonMistakes": [
+        "把“同阶”与“等价”混为一谈",
+        "$x\\\\sin x$ 的阶判断错误",
+        "未计算比值就凭直觉下结论"
+      ]
+    }
+  ]
+}

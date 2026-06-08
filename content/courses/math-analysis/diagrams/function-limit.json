@@ -1,0 +1,105 @@
+{
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "chapterId": "ch-function-limit",
+  "schemaVersion": 1,
+  "renderingPolicy": {
+    "preferredRenderer": "programmatic-svg",
+    "reason": "数学图示需要可控、可编辑、可复核，避免由 AI 随机生成导致标注或几何关系错误。",
+    "formulaRenderer": "MathJax or KaTeX"
+  },
+  "diagrams": [
+    {
+      "id": "function-limit-epsilon-delta-neighborhood",
+      "title": "epsilon-delta 定义的几何图示",
+      "type": "cartesian-epsilon-delta",
+      "knowledgePointIds": ["x-to-x0-limit-definition", "function-limit-intuition"],
+      "description": "在直角坐标系中展示：给定 y 轴上以 A 为中心、宽 2\\varepsilon 的水平带，需在 x 轴上找到以 x_0 为中心、宽 2\\delta 的去心区间，使该区间内（x≠x_0）的函数图像落在水平带内。",
+      "parameters": {
+        "limitPointX": { "symbol": "x_0", "x": 2 },
+        "limitValueY": { "symbol": "A", "y": 3 },
+        "epsilonBand": {
+          "symbol": "\\varepsilon",
+          "value": 0.5,
+          "lowerLabel": "A-\\varepsilon",
+          "upperLabel": "A+\\varepsilon"
+        },
+        "deltaInterval": {
+          "symbol": "\\delta",
+          "value": 0.4,
+          "leftLabel": "x_0-\\delta",
+          "rightLabel": "x_0+\\delta"
+        },
+        "curveHint": "一条经过 (x_0, A) 附近的连续曲线（x_0 处可挖去一点以示去心）"
+      },
+      "teacherNotes": [
+        "先固定 y 轴上的 \\varepsilon 带，强调它是对函数值精度的任意要求。",
+        "再在 x 轴上寻找 \\delta 区间，使去心区间上的图像整体落入 \\varepsilon 带。",
+        "强调 x_0 处挖去一点，体现极限与该点取值无关。"
+      ],
+      "studentPrompt": "如果把 \\varepsilon 带变窄，\\delta 区间一般会怎样变化？为什么？"
+    },
+    {
+      "id": "one-sided-limit-comparison",
+      "title": "左右极限不相等的跳跃",
+      "type": "piecewise-function-plot",
+      "knowledgePointIds": ["one-sided-limits"],
+      "description": "展示一个在 x_0 处发生跳跃的分段函数：右极限与左极限分别趋于不同的水平高度，用空心圆标出两侧的极限值，说明双侧极限不存在。",
+      "parameters": {
+        "breakPointX": { "symbol": "x_0", "x": 0 },
+        "leftBranch": { "approaches": "f(x_0^-)", "y": -1 },
+        "rightBranch": { "approaches": "f(x_0^+)", "y": 1 },
+        "openCircles": [
+          { "x": 0, "y": -1 },
+          { "x": 0, "y": 1 }
+        ]
+      },
+      "teacherNotes": [
+        "用空心圆强调极限值是“趋近的高度”，不一定是该点的函数值。",
+        "指出左右极限都存在却不相等，因此双侧极限不存在。",
+        "可与 |x|/x 的例子对照。"
+      ],
+      "studentPrompt": "图中左右两个高度差就是跳跃量。若把它们调成相等，双侧极限会怎样？"
+    },
+    {
+      "id": "limit-at-infinity-approach",
+      "title": "x→+∞ 时趋近水平渐近线",
+      "type": "function-plot-asymptote",
+      "knowledgePointIds": ["infinite-limits-and-limits-at-infinity"],
+      "description": "展示当 x 足够大（x>M）时，函数图像被夹在水平线 y=A 附近的 \\varepsilon 带内，对应 lim_{x→+∞} f(x)=A 的定义。",
+      "parameters": {
+        "asymptote": { "symbol": "A", "y": 1 },
+        "epsilonBand": { "symbol": "\\varepsilon", "value": 0.3 },
+        "threshold": { "symbol": "M", "x": 5 },
+        "curveHint": "形如 1+1/x 的曲线，随 x 增大单调贴近 y=A"
+      },
+      "teacherNotes": [
+        "把“x 足够大”用阈值 M 表达，类比有限点极限里的 \\delta。",
+        "强调只要 x>M，图像就落入 (A-\\varepsilon, A+\\varepsilon)。",
+        "区分自变量趋于无穷与函数值趋于无穷两类情形。"
+      ],
+      "studentPrompt": "若把 \\varepsilon 带收窄，阈值 M 需要变大还是变小？"
+    },
+    {
+      "id": "infinitesimal-order-comparison",
+      "title": "无穷小量趋于 0 的快慢比较",
+      "type": "multi-curve-plot",
+      "knowledgePointIds": ["infinitesimal-and-infinite"],
+      "description": "在 x→0 附近比较 y=x、y=x^2/2（对应 1-cos x）等无穷小量趋于 0 的快慢，直观说明高阶无穷小比同阶无穷小更快趋于 0。",
+      "parameters": {
+        "domain": { "from": -0.8, "to": 0.8 },
+        "curves": [
+          { "label": "y=x（一阶）", "expr": "x" },
+          { "label": "y=x^2/2（与 1-\\cos x 同阶）", "expr": "x^2/2" },
+          { "label": "y=x^3（更高阶）", "expr": "x^3" }
+        ]
+      },
+      "teacherNotes": [
+        "强调“阶越高，趋于 0 越快”，在 0 附近曲线越贴近 x 轴。",
+        "把 1-\\cos x 与 x^2/2 的等价关系和图像对应起来。",
+        "提醒等价代换只对乘除因子整体成立。"
+      ],
+      "studentPrompt": "在 0 附近，哪条曲线最快贴近 x 轴？它对应哪一类无穷小？"
+    }
+  ]
+}

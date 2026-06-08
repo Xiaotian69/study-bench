@@ -1,0 +1,364 @@
+{
+  "id": "ch-function-limit",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "number": 3,
+  "title": "函数极限",
+  "status": "draft",
+  "overview": "本章把数列极限的“无限趋近”推广到函数：当自变量沿某种方式趋近时，函数值是否趋近某个定值。先建立 x→x0 的 ε-δ 定义，再讨论单侧极限、无穷处与无穷大极限，然后给出函数极限的性质与归结原则（把函数极限化归为数列极限），最后处理两个重要极限以及无穷小量、无穷大量及其阶的比较。讲义、例子与题面均为自编或充分改写，公式用 LaTeX。",
+  "knowledgePoints": [
+    {
+      "id": "function-limit-intuition",
+      "title": "函数极限直观",
+      "learningGoals": [
+        "能区分“自变量的趋近过程”和“函数值的趋近结果”这两件事。",
+        "理解 $\\\\lim_{x\\\\to x_0} f(x)$ 关心的是 $x$ 靠近 $x_0$（但不等于 $x_0$）时 $f(x)$ 的走向，与 $f$ 在 $x_0$ 处是否有定义、取何值无关。",
+        "能用直观语言判断一个简单函数在某点是否“看起来有极限”。"
+      ],
+      "coreExplanation": "函数极限研究的是一种“趋近”：当自变量 $x$ 沿着某种方式靠近目标 $x_0$ 时，函数值 $f(x)$ 是否稳定地靠近某个定值 $A$。这里有两条独立的“趋近”要分清：一条是自变量怎么趋近 $x_0$（左边、右边、还是双侧），另一条是函数值趋近的结果 $A$。关键约定是：讨论 $x\\\\to x_0$ 时，我们只看 $x$ 在 $x_0$ 附近、但 $x\\\\ne x_0$ 的行为，因此 $f$ 在 $x_0$ 处是否有定义、取值多少，都不影响极限。例如 $f(x)=\\\\frac{x^2-1}{x-1}$ 在 $x=1$ 处无定义，但当 $x\\\\to 1$ 时 $f(x)=x+1\\\\to 2$，极限照样存在且等于 $2$。这正是极限比“代入求值”更精细的地方。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§1 函数极限概念；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "去心邻域",
+          "statement": "点 $x_0$ 的去心 $\\\\delta$ 邻域指 $\\\\{x: 0<|x-x_0|<\\\\delta\\\\}$，即在 $x_0$ 附近但不含 $x_0$ 本身的点集。函数极限只在去心邻域上考察 $f$。"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "为什么讨论 $x\\\\to x_0$ 的极限时，要把 $x=x_0$ 这一点排除在外？",
+        "如果 $f(x_0)$ 被人为改成另一个值，$\\\\lim_{x\\\\to x_0}f(x)$ 会改变吗？为什么？",
+        "“$x$ 趋近 $x_0$”和“$f(x)$ 趋近 $A$”这两个趋近过程是同一件事吗？"
+      ],
+      "commonMistakes": [
+        "把 $\\\\lim_{x\\\\to x_0}f(x)$ 直接当成 $f(x_0)$，忽略二者可能不同。",
+        "认为 $f$ 在 $x_0$ 处无定义就一定没有极限。",
+        "把自变量的趋近方式和函数值的结果混为一谈。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["function-limit-ex-001"],
+      "diagramIds": ["function-limit-epsilon-delta-neighborhood"],
+      "masteryCriteria": [
+        "能举例说明极限值与函数在该点取值的区别。",
+        "能解释去心邻域中排除 $x_0$ 的原因。"
+      ]
+    },
+    {
+      "id": "x-to-x0-limit-definition",
+      "title": "x→x0 的 epsilon-delta 定义",
+      "learningGoals": [
+        "准确陈述 $\\\\lim_{x\\\\to x_0}f(x)=A$ 的 ε-δ 定义，理解量词顺序 ∀ε>0 ∃δ>0 ∀x(0<|x-x_0|<δ)。",
+        "理解 δ 一般依赖 ε，能对线性或简单函数由 ε 求出可行的 δ。",
+        "能用定义证明形如 $\\\\lim_{x\\\\to x_0}(kx+b)=kx_0+b$ 的基本极限。"
+      ],
+      "coreExplanation": "ε-δ 定义把“$x$ 靠近 $x_0$ 时 $f(x)$ 靠近 $A$”翻译成不等式语言：对任意给定的精度 $\\\\varepsilon>0$，都存在一个“靠近程度” $\\\\delta>0$，使得只要 $0<|x-x_0|<\\\\delta$，就有 $|f(x)-A|<\\\\varepsilon$。其中 $\\\\varepsilon$ 是对函数值精度的任意要求，由对方先给出；$\\\\delta$ 是我们为达到该精度而找到的、对自变量的限制，通常 $\\\\varepsilon$ 越小所需的 $\\\\delta$ 越小。量词顺序不可交换：先有任意 $\\\\varepsilon$，再找与之匹配的 $\\\\delta$。证明 $\\\\lim_{x\\\\to 2}(3x+1)=7$ 时，由 $|(3x+1)-7|=3|x-2|<\\\\varepsilon$ 只需 $|x-2|<\\\\varepsilon/3$，故取 $\\\\delta=\\\\varepsilon/3$ 即可。它与数列极限的 ε-N 定义结构一致，区别在于这里限制自变量的是 $\\\\delta$ 邻域而非项号 $N$。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§1 函数极限概念（定义）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "函数极限（epsilon-delta 定义）",
+          "statement": "设 $f$ 在 $x_0$ 的某去心邻域上有定义。若对任给 $\\\\varepsilon>0$，存在 $\\\\delta>0$，使当 $0<|x-x_0|<\\\\delta$ 时恒有 $|f(x)-A|<\\\\varepsilon$，则称 $x\\\\to x_0$ 时 $f$ 以 $A$ 为极限，记 $\\\\lim_{x\\\\to x_0}f(x)=A$。"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "用定义证极限三步：任取 ε>0；分析 |f(x)−A| 并放缩为含 |x−x0| 的式子；解出使其小于 ε 的 |x−x0| 范围，据此取 δ（可含对 δ 的预先限制，如 δ≤1）。"
+      ],
+      "socraticQuestions": [
+        "定义里为什么对自变量限制写成 $0<|x-x_0|<\\\\delta$ 而不是 $|x-x_0|<\\\\delta$？",
+        "δ 可以与 ε 无关吗？如果某人给的 δ 不依赖 ε，能说明什么？",
+        "证明 $\\\\lim_{x\\\\to 2}(3x+1)=7$ 时，你取的 δ 是怎样由 ε 得到的？"
+      ],
+      "commonMistakes": [
+        "把 ε 当成某个固定小数，而不是任意给定。",
+        "漏掉 $0<|x-x_0|$ 这一侧，错误地把 $x=x_0$ 也纳入。",
+        "对非线性函数放缩时不先限定 δ 的范围（如 δ≤1）就直接估计。",
+        "颠倒量词顺序，写成“存在 δ 对任意 ε”。"
+      ],
+      "exampleIds": ["function-limit-ex-002"],
+      "exerciseIds": ["function-limit-ex-002", "function-limit-ex-005"],
+      "diagramIds": ["function-limit-epsilon-delta-neighborhood"],
+      "masteryCriteria": [
+        "能完整、正确地默写 ε-δ 定义并解释每个量词。",
+        "能说明 δ 对 ε 的依赖关系。",
+        "能独立用定义证明线性函数在一点的极限。"
+      ]
+    },
+    {
+      "id": "one-sided-limits",
+      "title": "单侧极限",
+      "learningGoals": [
+        "理解左极限 $f(x_0^-)$ 与右极限 $f(x_0^+)$ 的定义。",
+        "掌握判据：$\\\\lim_{x\\\\to x_0}f(x)=A$ 当且仅当 $f(x_0^-)=f(x_0^+)=A$。",
+        "能用单侧极限判断分段函数在分界点处极限是否存在。"
+      ],
+      "coreExplanation": "有些函数在一点两侧的行为不同，需要分别考察。左极限只让 $x$ 从小于 $x_0$ 的一侧趋近（记 $x\\\\to x_0^-$，即 $x_0-\\\\delta<x<x_0$），右极限只让 $x$ 从大于 $x_0$ 的一侧趋近（$x\\\\to x_0^+$）。双侧极限存在的充要条件是左、右极限都存在且相等：$\\\\lim_{x\\\\to x_0}f(x)=A\\\\iff f(x_0^-)=f(x_0^+)=A$。典型例子是符号函数或分段函数：$f(x)=\\\\dfrac{|x|}{x}$ 在 $0$ 处右极限为 $1$、左极限为 $-1$，二者不等，故 $\\\\lim_{x\\\\to 0}f(x)$ 不存在。单侧极限是分析跳跃间断、分段函数衔接的基本工具。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§1（单侧极限）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "右极限 / 左极限",
+          "statement": "若对任给 $\\\\varepsilon>0$ 存在 $\\\\delta>0$，使当 $x_0<x<x_0+\\\\delta$ 时 $|f(x)-A|<\\\\varepsilon$，则称 $A$ 为右极限，记 $f(x_0^+)=A$；把条件换成 $x_0-\\\\delta<x<x_0$ 即得左极限 $f(x_0^-)$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "双侧与单侧极限的关系",
+          "statement": "$\\\\lim_{x\\\\to x_0}f(x)=A$ 成立，当且仅当 $f(x_0^-)$ 与 $f(x_0^+)$ 都存在且都等于 $A$。"
+        }
+      ],
+      "proofIdeas": [
+        "充要条件的证明：双侧的 δ 邻域同时覆盖左右两侧，故双侧极限 ⇒ 两个单侧极限相等；反之取两侧 δ 的较小者即可合并。"
+      ],
+      "socraticQuestions": [
+        "左极限和右极限都存在，但不相等，双侧极限存在吗？",
+        "对 $f(x)=\\\\dfrac{|x|}{x}$，$f(0^+)$ 和 $f(0^-)$ 各是多少？",
+        "为什么分段函数要在分界点单独检查左右极限？"
+      ],
+      "commonMistakes": [
+        "只算一侧极限就断定双侧极限存在。",
+        "认为左右极限存在就一定相等。",
+        "把 $f(x_0)$ 的值误当作单侧极限。"
+      ],
+      "exampleIds": ["function-limit-ex-003"],
+      "exerciseIds": ["function-limit-ex-003"],
+      "diagramIds": ["one-sided-limit-comparison"],
+      "masteryCriteria": [
+        "能写出左、右极限定义并说明与双侧极限的关系。",
+        "能用单侧极限判断分段函数在分界点的极限是否存在。"
+      ]
+    },
+    {
+      "id": "infinite-limits-and-limits-at-infinity",
+      "title": "无穷极限与 x→∞ 的极限",
+      "learningGoals": [
+        "理解 $x\\\\to\\\\infty$（含 $+\\\\infty$、$-\\\\infty$）时函数极限的定义。",
+        "理解 $\\\\lim_{x\\\\to x_0}f(x)=\\\\infty$ 这类“函数值无限增大”的精确含义。",
+        "能区分“自变量趋于无穷”与“函数值趋于无穷”两类情形。"
+      ],
+      "coreExplanation": "把趋近目标从有限点推广到无穷，有两类情况。第一类是自变量趋于无穷：$\\\\lim_{x\\\\to+\\\\infty}f(x)=A$ 指对任给 $\\\\varepsilon>0$ 存在 $M>0$，使 $x>M$ 时 $|f(x)-A|<\\\\varepsilon$；这里用“$x>M$ 足够大”代替了去心邻域。第二类是函数值趋于无穷：$\\\\lim_{x\\\\to x_0}f(x)=+\\\\infty$ 指对任给 $G>0$ 存在 $\\\\delta>0$，使 $0<|x-x_0|<\\\\delta$ 时 $f(x)>G$。两类可以组合，如 $\\\\lim_{x\\\\to+\\\\infty}\\\\frac{1}{x}=0$、$\\\\lim_{x\\\\to 0^+}\\\\frac{1}{x}=+\\\\infty$。注意“极限为无穷”表示一种确定的发散趋势，并不意味着极限存在（极限存在特指趋于有限值）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§1（x→∞ 与无穷极限）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "x→+∞ 时的极限",
+          "statement": "若对任给 $\\\\varepsilon>0$ 存在 $M>0$，使 $x>M$ 时 $|f(x)-A|<\\\\varepsilon$，则 $\\\\lim_{x\\\\to+\\\\infty}f(x)=A$。"
+        },
+        {
+          "name": "x→x0 时的无穷极限",
+          "statement": "若对任给 $G>0$ 存在 $\\\\delta>0$，使 $0<|x-x_0|<\\\\delta$ 时 $f(x)>G$，则 $\\\\lim_{x\\\\to x_0}f(x)=+\\\\infty$（$<-G$ 则为 $-\\\\infty$）。"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "证 x→+∞ 型极限：把 |f(x)−A|<ε 解成 x>(某个由 ε 决定的界)，取该界为 M。",
+        "证无穷极限：把 f(x)>G 解成 0<|x−x0|<(由 G 决定的 δ)。"
+      ],
+      "socraticQuestions": [
+        "$\\\\lim_{x\\\\to+\\\\infty}f(x)=A$ 的定义里，$M$ 扮演的角色和有限点极限中的 δ 有何异同？",
+        "“$\\\\lim_{x\\\\to x_0}f(x)=+\\\\infty$”能不能说成“极限存在”？为什么？",
+        "$\\\\lim_{x\\\\to 0}\\\\frac{1}{x}$ 存在吗？左右两侧分别是什么？"
+      ],
+      "commonMistakes": [
+        "把“极限为无穷”当成“极限存在”。",
+        "x→∞ 时仍想用 δ 邻域，而不是用“x 足够大”的 M。",
+        "忽略 $x\\\\to\\\\infty$ 与 $x\\\\to+\\\\infty$、$x\\\\to-\\\\infty$ 的区别。"
+      ],
+      "exampleIds": ["function-limit-ex-004"],
+      "exerciseIds": ["function-limit-ex-004"],
+      "diagramIds": ["limit-at-infinity-approach"],
+      "masteryCriteria": [
+        "能写出 x→+∞ 型与无穷极限两类定义。",
+        "能解释“极限为无穷”不等于“极限存在”。"
+      ]
+    },
+    {
+      "id": "function-limit-properties",
+      "title": "函数极限的性质",
+      "learningGoals": [
+        "掌握函数极限的唯一性、局部有界性、局部保号性。",
+        "掌握四则运算法则与迫敛性（夹逼定理）。",
+        "能用这些性质计算与论证简单极限。"
+      ],
+      "coreExplanation": "函数极限与数列极限共享一整套性质，证明思路也平行。唯一性：极限若存在必唯一。局部有界性：若 $\\\\lim_{x\\\\to x_0}f(x)=A$，则 $f$ 在 $x_0$ 的某去心邻域上有界。局部保号性：若 $A>0$，则在某去心邻域内 $f(x)>0$（$A<0$ 对称）。四则运算：当 $\\\\lim f=A$、$\\\\lim g=B$ 时，$\\\\lim(f\\\\pm g)=A\\\\pm B$，$\\\\lim(fg)=AB$，$B\\\\ne 0$ 时 $\\\\lim\\\\frac{f}{g}=\\\\frac{A}{B}$。迫敛性（夹逼）：若在 $x_0$ 的去心邻域上 $g(x)\\\\le f(x)\\\\le h(x)$ 且 $\\\\lim g=\\\\lim h=A$，则 $\\\\lim f=A$。这些性质把复杂极限拆解为已知极限的组合，是计算的主力工具；其证明只需把数列极限相应证明里的“$n>N$”换成“$0<|x-x_0|<\\\\delta$”。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§2 函数极限的性质；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "四则运算法则",
+          "statement": "设 $\\\\lim_{x\\\\to x_0}f(x)=A$，$\\\\lim_{x\\\\to x_0}g(x)=B$，则 $\\\\lim(f\\\\pm g)=A\\\\pm B$，$\\\\lim(fg)=AB$；当 $B\\\\ne 0$ 时 $\\\\lim\\\\frac{f}{g}=\\\\frac{A}{B}$。"
+        },
+        {
+          "name": "迫敛性（夹逼定理）",
+          "statement": "若在 $x_0$ 的某去心邻域上 $g(x)\\\\le f(x)\\\\le h(x)$，且 $\\\\lim_{x\\\\to x_0}g(x)=\\\\lim_{x\\\\to x_0}h(x)=A$，则 $\\\\lim_{x\\\\to x_0}f(x)=A$。"
+        }
+      ],
+      "proofIdeas": [
+        "四则运算：与数列情形同构，积法则用插项 fg−AB=f(g−B)+B(f−A) 并借局部有界性控制。",
+        "夹逼：由两边同趋于 A，对任意 ε 找到公共 δ，使 f 被夹在 (A−ε, A+ε) 内。"
+      ],
+      "socraticQuestions": [
+        "为什么商法则要求 $B\\\\ne 0$？",
+        "局部保号性中的“局部”二字为何不能省略？",
+        "用夹逼定理时，两个夹住的函数必须趋于同一个极限，这个条件能放松吗？"
+      ],
+      "commonMistakes": [
+        "分母极限为 0 时仍套用商法则。",
+        "把局部保号性说成在整个定义域上保号。",
+        "夹逼时两边极限不相等却仍下结论。"
+      ],
+      "exampleIds": ["function-limit-ex-006"],
+      "exerciseIds": ["function-limit-ex-006", "function-limit-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能正确陈述四则运算法则与夹逼定理及其条件。",
+        "能用夹逼定理处理一个含三角函数的极限。"
+      ]
+    },
+    {
+      "id": "heine-definition",
+      "title": "归结原则（Heine 定理）",
+      "learningGoals": [
+        "理解归结原则：函数极限可化归为数列极限。",
+        "掌握用两个趋于 $x_0$ 的不同数列得到不同函数值极限来证明函数极限不存在。",
+        "理解归结原则把数列极限的全部工具迁移到函数极限。"
+      ],
+      "coreExplanation": "归结原则（Heine 定理）建立了函数极限与数列极限的桥梁：$\\\\lim_{x\\\\to x_0}f(x)=A$ 成立，当且仅当对每一个满足 $x_n\\\\to x_0$ 且 $x_n\\\\ne x_0$ 的数列 $\\\\{x_n\\\\}$，都有 $f(x_n)\\\\to A$。它有两个重要用途：其一，把数列极限的性质（四则运算、单调有界、子列方法等）直接搬到函数极限上；其二，提供了证明函数极限不存在的标准武器——只要找到两个都趋于 $x_0$ 的数列，使 $f$ 沿它们趋于不同的值，就说明 $\\\\lim_{x\\\\to x_0}f(x)$ 不存在。经典例子：$f(x)=\\\\sin\\\\frac{1}{x}$ 在 $x\\\\to 0$ 时，取 $x_n=\\\\frac{1}{n\\\\pi}\\\\to 0$ 得 $f(x_n)=0$，取 $x_n'=\\\\frac{1}{2n\\\\pi+\\\\pi/2}\\\\to 0$ 得 $f(x_n')=1$，两列极限不同，故极限不存在。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§3 函数极限存在的条件（归结原则）；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "归结原则（Heine）",
+          "statement": "$\\\\lim_{x\\\\to x_0}f(x)=A$ 当且仅当：对任意满足 $x_n\\\\to x_0$、$x_n\\\\ne x_0$ 的数列 $\\\\{x_n\\\\}$，都有 $\\\\lim_{n\\\\to\\\\infty}f(x_n)=A$。"
+        }
+      ],
+      "proofIdeas": [
+        "必要性：由 ε-δ 定义，对 x_n→x0 取 δ 对应的项号 N 即得 f(x_n)→A。",
+        "充分性（反证）：若函数极限不为 A，则存在某 ε0，可构造 x_n→x0 而 |f(x_n)−A|≥ε0，与假设矛盾。",
+        "证不存在：构造两个 x_n→x0 使 f 沿它们趋于不同值。"
+      ],
+      "socraticQuestions": [
+        "为什么归结原则要求“对每一个”趋于 $x_0$ 的数列都成立，而不是“存在一个”？",
+        "如何用归结原则说明 $\\\\lim_{x\\\\to 0}\\\\sin\\\\frac{1}{x}$ 不存在？",
+        "归结原则把数列极限的哪些工具迁移到了函数极限？"
+      ],
+      "commonMistakes": [
+        "只用一个数列验证就断言函数极限存在。",
+        "构造数列时忘记要求 $x_n\\\\ne x_0$。",
+        "误以为找到一个使 $f(x_n)$ 收敛的数列就能确定极限值。"
+      ],
+      "exampleIds": ["function-limit-ex-009"],
+      "exerciseIds": ["function-limit-ex-009"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能准确陈述归结原则及其双向含义。",
+        "能用两个不同数列证明某函数极限不存在。"
+      ]
+    },
+    {
+      "id": "two-important-limits",
+      "title": "两个重要极限",
+      "learningGoals": [
+        "掌握 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin x}{x}=1$ 及其在计算中的运用。",
+        "掌握 $\\\\lim_{x\\\\to\\\\infty}\\\\left(1+\\\\frac{1}{x}\\\\right)^x=e$ 及等价形式。",
+        "能把复杂极限通过换元化归为这两个重要极限。"
+      ],
+      "coreExplanation": "两个重要极限是后续计算的基石。第一个 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin x}{x}=1$，几何上来自单位圆中 $\\\\sin x<x<\\\\tan x$（$0<x<\\\\pi/2$）的面积/长度比较，再用夹逼定理得到；它给出 $x\\\\to 0$ 时 $\\\\sin x\\\\sim x$ 的等价关系。第二个 $\\\\lim_{x\\\\to\\\\infty}\\\\left(1+\\\\frac{1}{x}\\\\right)^x=e$，是数列极限 $\\\\left(1+\\\\frac{1}{n}\\\\right)^n\\\\to e$ 向连续变量的推广，并有等价形式 $\\\\lim_{t\\\\to 0}(1+t)^{1/t}=e$。使用时常配合换元：例如 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin 3x}{x}=3\\\\lim_{x\\\\to0}\\\\frac{\\\\sin 3x}{3x}=3$，又如 $\\\\lim_{x\\\\to\\\\infty}\\\\left(1+\\\\frac{2}{x}\\\\right)^x=e^2$。要点是把目标式凑成标准形再套用。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§4 两个重要的极限；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "第一重要极限",
+          "statement": "$\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\sin x}{x}=1$，从而 $x\\\\to 0$ 时 $\\\\sin x\\\\sim x$。"
+        },
+        {
+          "name": "第二重要极限",
+          "statement": "$\\\\lim_{x\\\\to\\\\infty}\\\\left(1+\\\\dfrac{1}{x}\\\\right)^x=e$，等价地 $\\\\lim_{t\\\\to 0}(1+t)^{1/t}=e$。"
+        }
+      ],
+      "proofIdeas": [
+        "第一极限：用单位圆面积不等式 sin x < x < tan x 夹逼。",
+        "第二极限：由数列结果加单调性/夹逼推广到连续变量，换元 t=1/x。",
+        "计算时统一手法：换元把式子凑成标准形 sin(□)/□ 或 (1+□)^{1/□}。"
+      ],
+      "socraticQuestions": [
+        "$\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin 3x}{x}$ 为什么等于 3，而不是 1？",
+        "如何把 $\\\\left(1+\\\\frac{2}{x}\\\\right)^x$ 凑成第二重要极限的标准形？",
+        "第一重要极限里能不能把 $x$ 换成度数？为什么必须用弧度？"
+      ],
+      "commonMistakes": [
+        "$\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin kx}{x}$ 忘记乘系数 $k$。",
+        "用第二重要极限时指数与括号内的增量没有匹配凑形。",
+        "在角度制下误用 $\\\\sin x\\\\sim x$。"
+      ],
+      "exampleIds": ["function-limit-ex-006", "function-limit-ex-007"],
+      "exerciseIds": ["function-limit-ex-006", "function-limit-ex-007"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能陈述两个重要极限及其等价形式。",
+        "能通过换元把给定极限化归为标准形并求值。"
+      ]
+    },
+    {
+      "id": "infinitesimal-and-infinite",
+      "title": "无穷小量与无穷大量",
+      "learningGoals": [
+        "理解无穷小量、无穷大量的定义及二者的倒数关系。",
+        "掌握无穷小量阶的比较（高阶、同阶、等价）与等价代换的使用条件。",
+        "能用等价无穷小简化极限计算。"
+      ],
+      "coreExplanation": "在某趋近过程下极限为 $0$ 的变量称为无穷小量，极限为 $\\\\infty$ 的称为无穷大量；在同一过程里，非零无穷小量的倒数是无穷大量，反之亦然。比较两个无穷小量 $\\\\alpha,\\\\beta$（$\\\\beta\\\\ne 0$）看比值 $\\\\lim\\\\frac{\\\\alpha}{\\\\beta}$：极限为 $0$ 称 $\\\\alpha$ 是 $\\\\beta$ 的高阶无穷小（记 $\\\\alpha=o(\\\\beta)$）；为非零常数称同阶；特别地极限为 $1$ 称等价，记 $\\\\alpha\\\\sim\\\\beta$。$x\\\\to 0$ 时常用等价：$\\\\sin x\\\\sim x$、$\\\\tan x\\\\sim x$、$1-\\\\cos x\\\\sim\\\\frac{x^2}{2}$、$\\\\ln(1+x)\\\\sim x$、$e^x-1\\\\sim x$。等价代换能简化计算，但**只可对乘除因子整体替换**，对加减项中的部分直接替换可能出错（如 $\\\\tan x-\\\\sin x$ 不能把两项各自换成 $x$ 而得 $0$，正确结果是 $\\\\frac{x^3}{2}$ 阶）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 3 章 函数极限，§5 无穷小量与无穷大量；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "无穷小量 / 无穷大量",
+          "statement": "在给定趋近过程下，若 $\\\\lim\\\\alpha=0$ 称 $\\\\alpha$ 为无穷小量；若 $\\\\lim\\\\alpha=\\\\infty$ 称为无穷大量。非零无穷小量与无穷大量互为倒数。"
+        },
+        {
+          "name": "无穷小量阶的比较",
+          "statement": "设 $\\\\alpha,\\\\beta$ 为同一过程的无穷小量且 $\\\\beta\\\\ne 0$。若 $\\\\lim\\\\frac{\\\\alpha}{\\\\beta}=0$ 则 $\\\\alpha=o(\\\\beta)$；若极限为非零常数则同阶；若极限为 $1$ 则 $\\\\alpha\\\\sim\\\\beta$（等价）。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "等价代换原理",
+          "statement": "在乘除运算中，无穷小因子可用其等价无穷小整体替换而不改变极限；加减项中的部分替换一般不成立。"
+        }
+      ],
+      "proofIdeas": [
+        "倒数关系：由 ε-G 定义直接互推。",
+        "等价代换：把 α/β 写成 (α/α')(α'/β')(β'/β) 并用等价因子的比值趋于 1。"
+      ],
+      "socraticQuestions": [
+        "为什么 $\\\\tan x-\\\\sin x$ 不能把两项各自用 $x$ 等价代换？",
+        "$x\\\\to 0$ 时 $1-\\\\cos x$ 与 $x^2$ 是什么阶的关系？",
+        "无穷小量的倒数一定是无穷大量吗？需要什么前提？"
+      ],
+      "commonMistakes": [
+        "在加减项中对部分项做等价代换导致结果错误。",
+        "把“无穷小量”当成“很小的固定数”。",
+        "忘记等价代换只对乘除因子整体成立。"
+      ],
+      "exampleIds": ["function-limit-ex-008", "function-limit-ex-010"],
+      "exerciseIds": ["function-limit-ex-008", "function-limit-ex-010"],
+      "diagramIds": ["infinitesimal-order-comparison"],
+      "masteryCriteria": [
+        "能定义无穷小/无穷大量并说明倒数关系。",
+        "能判断两个无穷小量的阶并正确使用等价代换。"
+      ]
+    }
+  ]
+}

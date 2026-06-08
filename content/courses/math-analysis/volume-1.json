@@ -63,13 +63,46 @@
       "id": "ch-function-limit",
       "number": 3,
       "title": "函数极限",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/function-limit.json",
+      "exercisesFile": "exercises/function-limit.json",
+      "diagramFile": "diagrams/function-limit.json",
       "sections": [
-        { "id": "sec-function-limit-concept", "title": "函数极限概念", "status": "planned" },
-        { "id": "sec-function-limit-properties", "title": "函数极限的性质", "status": "planned" },
-        { "id": "sec-function-limit-existence", "title": "函数极限存在的条件", "status": "planned" },
-        { "id": "sec-two-important-limits", "title": "两个重要的极限", "status": "planned" },
-        { "id": "sec-infinitesimal-infinite", "title": "无穷小量与无穷大量", "status": "planned" }
+        {
+          "id": "sec-function-limit-concept",
+          "title": "函数极限概念",
+          "status": "draft",
+          "knowledgePointIds": [
+            "function-limit-intuition",
+            "x-to-x0-limit-definition",
+            "one-sided-limits",
+            "infinite-limits-and-limits-at-infinity"
+          ]
+        },
+        {
+          "id": "sec-function-limit-properties",
+          "title": "函数极限的性质",
+          "status": "draft",
+          "knowledgePointIds": ["function-limit-properties"]
+        },
+        {
+          "id": "sec-function-limit-existence",
+          "title": "函数极限存在的条件",
+          "status": "draft",
+          "knowledgePointIds": ["heine-definition"]
+        },
+        {
+          "id": "sec-two-important-limits",
+          "title": "两个重要的极限",
+          "status": "draft",
+          "knowledgePointIds": ["two-important-limits"]
+        },
+        {
+          "id": "sec-infinitesimal-infinite",
+          "title": "无穷小量与无穷大量",
+          "status": "draft",
+          "knowledgePointIds": ["infinitesimal-and-infinite"]
+        }
       ]
     },
     {
