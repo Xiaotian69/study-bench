@@ -1,0 +1,199 @@
+{
+  "chapterId": "ch-multivariable-limit-continuity",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "mvlc-ex-001",
+      "knowledgePointId": "planar-point-sets",
+      "title": "判断平面点集的类型",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "对下列各点集，指出其内点、边界点，判断是否为开集、闭集、有界集，并说明是否构成区域。\n1. $E_1=\\\\{(x,y):\\,1<x^2+y^2<4\\\\}$\n2. $E_2=\\\\{(x,y):\\,x^2+y^2\\\\leq 1,\\\\,x\\\\geq 0\\\\}$\n3. $E_3=\\\\{(x,y):\\,x^2-y^2>0\\\\}$",
+      "solution": "**1. $E_1$（环形区域）：**\n- 内点：满足 $1<x^2+y^2<4$ 的所有点，即 $E_1$ 本身。\n- 边界：$x^2+y^2=1$（内圆）和 $x^2+y^2=4$（外圆），均不属于 $E_1$。\n- 开集（每点均为内点）、非闭集（边界不含）；有界集（含在半径 $2$ 的圆内）。\n- 是区域（开集且连通）。\n\n**2. $E_2$（半圆盘含边界）：**\n- 内点：$x^2+y^2<1$，$x>0$ 的部分（即在 $E_2$ 内部且不在边界的点）。\n- 边界：圆弧 $x^2+y^2=1,x\\\\geq 0$ 和直径 $x=0,y\\\\in[-1,1]$，均属于 $E_2$。\n- 非开集（边界点不是内点）；闭集（包含所有边界点）；有界集。\n- 不是（开）区域（有边界点属于集合，且集合非开集）。\n\n**3. $E_3$（双曲线区域）：**\n$x^2-y^2>0 \\\\iff |x|>|y|$，即位于直线 $y=x$ 和 $y=-x$ 之间的两个角形区域（$x>|y|$ 或 $x<-|y|$）。\n- 内点：$E_3$ 本身的每个点。\n- 边界：$x=y$ 和 $x=-y$ 两条直线，不属于 $E_3$。\n- 开集（每点为内点）、非闭集；无界集（向无穷延伸）。\n- $E_3$ 有两个连通分支（$x>|y|$ 和 $x<-|y|$），不连通，故**不是区域**（区域需连通）。",
+      "gradingRubric": [
+        { "criterion": "$E_1$ 正确识别内点、边界，判断开集和区域", "points": 3 },
+        { "criterion": "$E_2$ 正确识别边界含于集合，判断为闭集非区域", "points": 3 },
+        { "criterion": "$E_3$ 正确识别开集但不连通，判断非区域", "points": 4 }
+      ],
+      "hints": [
+        "$E_3$ 中 $|x|>|y|$ 在 $(x,y)=(1,0)$ 和 $(-1,0)$ 附近分成两块，不能通过 $y=\\\\pm x$ 连接"
+      ],
+      "commonMistakes": [
+        "认为\"开集\"即\"不含边界的几何图形\"——$E_3$ 是两个分开的开集，不连通",
+        "$E_2$ 的半圆形含边界（$\\\\leq$），是闭集，不是区域"
+      ],
+      "tags": ["point-sets", "open-closed-sets", "regions", "connectivity"]
+    },
+    {
+      "id": "mvlc-ex-002",
+      "knowledgePointId": "two-variable-limit",
+      "title": "二元极限计算（夹逼法）",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "计算下列极限：\n1. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,0)}\\\\frac{x^2y}{x^2+y^2}$\n2. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,0)}(x^2+y^2)\\\\sin\\\\frac{1}{xy}$（设 $xy\\\\neq 0$）\n3. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(1,0)}\\\\frac{\\\\ln(1+y)}{x+y-1}$",
+      "solution": "**1.** 用不等式 $|y|\\\\leq\\\\sqrt{x^2+y^2}$：\n$$\\\\left|\\\\frac{x^2y}{x^2+y^2}\\\\right|\\\\leq\\\\frac{x^2|y|}{x^2+y^2}\\\\leq|y|\\\\to 0.$$\n（注：$x^2/(x^2+y^2)\\\\leq 1$。）故极限为 $0$。\n\n**2.** $\\\\left|(x^2+y^2)\\\\sin\\\\frac{1}{xy}\\\\right|\\\\leq x^2+y^2\\\\to 0$（因 $|\\\\sin|\\\\leq 1$）。极限为 $0$。\n\n**3.** 令 $u=x-1,v=y$，则 $(u,v)\\\\to(0,0)$，原式变为 $\\\\frac{\\\\ln(1+v)}{u+v}$。\n当 $v\\\\to 0$，$\\\\ln(1+v)\\\\sim v$，故 $\\\\frac{\\\\ln(1+v)}{u+v}\\\\to\\\\frac{v}{u+v}$——这个极限依赖于 $u,v\\\\to 0$ 的路径（沿 $u=0$：极限为 $1$；沿 $v=0$：未定义）。\n\n更严格地：$\\\\frac{\\\\ln(1+v)}{u+v}=\\\\frac{\\\\ln(1+v)}{v}\\\\cdot\\\\frac{v}{u+v}$，当 $u=0$ 时第二因子为 $1$，当 $u\\\\neq 0,v/u\\\\to 0$ 时第二因子 $\\\\to 0$。极限不存在。\n\n（若题意为沿 $x=1$ 方向，则 $u=0$，极限为 $1$；但作为二元极限不存在。）",
+      "gradingRubric": [
+        { "criterion": "第1题夹逼 $|f|\\\\leq|y|\\\\to 0$", "points": 3 },
+        { "criterion": "第2题用 $|\\\\sin|\\\\leq 1$ 夹逼", "points": 3 },
+        { "criterion": "第3题换元后正确判断极限不存在（路径分析）", "points": 4 }
+      ],
+      "hints": [
+        "第1题：$x^2/(x^2+y^2)$ 有界，乘 $|y|\\\\to 0$",
+        "第3题：令 $y=t,x-1=t$ 和 $y=t,x=1$ 给出不同极限"
+      ],
+      "commonMistakes": [
+        "第2题虽然 $1/(xy)\\\\to\\\\infty$，但整体 $(x^2+y^2)\\\\cdot\\\\sin$ 趋零（振荡但幅度趋零）",
+        "第3题不能分别对 $x\\\\to 1$，$y\\\\to 0$ 做累次极限来代替二元极限"
+      ],
+      "tags": ["squeeze-theorem", "limit-computation", "path-dependence"]
+    },
+    {
+      "id": "mvlc-ex-003",
+      "knowledgePointId": "two-variable-limit",
+      "title": "证明二元极限不存在",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "证明下列极限不存在：\n1. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,0)}\\\\frac{xy}{x^2+y^2}$\n2. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,0)}\\\\frac{x^2-y^2}{x^2+y^2}$\n3. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,0)}\\\\frac{x^2y^2}{x^2y^2+(x-y)^2}$（经典陷阱）",
+      "solution": "**1.** 沿 $y=0$：$f=0$；沿 $y=x$（$x\\\\neq 0$）：$f=x^2/(2x^2)=1/2$。两路径极限不同，极限不存在。\n\n**2.** 极坐标：$x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta$：$f=\\\\cos^2\\\\theta-\\\\sin^2\\\\theta=\\\\cos 2\\\\theta$（与 $r$ 无关）。沿不同方向 $\\\\theta$ 趋近原点，极限值为 $\\\\cos 2\\\\theta$，不唯一。故极限不存在。\n\n**3.** 这是经典陷阱：沿所有直线 $y=kx$（$k\\\\neq 0,1$）：\n$$f=\\\\frac{k^2x^4}{k^2x^4+x^2(1-k)^2}=\\\\frac{k^2x^2}{k^2x^2+(1-k)^2}\\\\to 0\\\\quad(x\\\\to 0).$$\n沿 $y=0$ 或 $x=0$：$f=0$。看似沿所有直线极限均为 $0$！\n但沿**抛物线** $y=x^2$（$x\\\\to 0$）：\n$$f=\\\\frac{x^4}{x^4+(x-x^2)^2}=\\\\frac{x^4}{x^4+x^2(1-x)^2}=\\\\frac{x^2}{x^2+(1-x)^2}\\\\to\\\\frac{0}{0+1}=0.$$\n再沿 $y=x-x^2$（令 $x-y=x^2$）：\n$$f=\\\\frac{x^2(x-x^2)^2}{x^2(x-x^2)^2+x^4}=\\\\frac{(1-x)^2}{(1-x)^2+x^2}\\\\to\\\\frac{1}{1+0}=1.$$\n故沿不同路径极限不同（$0$ 和 $1$），极限不存在。",
+      "gradingRubric": [
+        { "criterion": "第1题取两条直线路径", "points": 2 },
+        { "criterion": "第2题用极坐标正确分析", "points": 3 },
+        { "criterion": "第3题：指出沿直线均给出 $0$，但沿曲线路径给出不同值", "points": 5 }
+      ],
+      "hints": [
+        "第3题：沿直线 $y=kx$ 不足以代表所有路径，需要尝试曲线路径（令分母中某项为 $0$ 的方向）",
+        "令 $x-y=x^n$ 来构造使分母某项消失的路径"
+      ],
+      "commonMistakes": [
+        "第3题：沿所有直线极限为 $0$，误以为极限存在——这是\"沿直线≠全路径\"的经典反例",
+        "极坐标 $r\\\\to 0$ 时，若含 $\\\\theta$ 的因子不趋零，则极限不一定存在"
+      ],
+      "tags": ["limit-does-not-exist", "path-method", "parabola-path", "classic-trap"]
+    },
+    {
+      "id": "mvlc-ex-004",
+      "knowledgePointId": "two-variable-continuity",
+      "title": "二元函数的连续性判断",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "判断下列函数在指定点的连续性：\n1. $f(x,y)=\\\\begin{cases}\\\\dfrac{\\\\sin(xy)}{\\\\sqrt{x^2+y^2}}, & (x,y)\\\\neq(0,0) \\\\\\\\ 0, & (x,y)=(0,0)\\\\end{cases}$，在 $(0,0)$。\n2. $g(x,y)=\\\\begin{cases}\\\\dfrac{xy}{x^2-y^2}, & x^2\\\\neq y^2 \\\\\\\\ 0, & x^2=y^2\\\\end{cases}$，在 $(1,1)$ 附近。",
+      "solution": "**1.** 验证 $\\\\lim_{(x,y)\\\\to(0,0)}f(x,y)=f(0,0)=0$。\n$$\\\\left|\\\\frac{\\\\sin(xy)}{\\\\sqrt{x^2+y^2}}\\\\right|\\\\leq\\\\frac{|xy|}{\\\\sqrt{x^2+y^2}}\\\\leq\\\\frac{(x^2+y^2)/2}{\\\\sqrt{x^2+y^2}}=\\\\frac{\\\\sqrt{x^2+y^2}}{2}\\\\to 0.$$\n（用 $|\\\\sin t|\\\\leq|t|$ 和 $|xy|\\\\leq(x^2+y^2)/2$。）极限为 $0=f(0,0)$，故在 $(0,0)$ 连续。\n\n**2.** 在 $(1,1)$ 处：当 $(x,y)\\\\to(1,1)$，沿 $y\\\\neq x$ 路径，$g(x,y)=xy/(x^2-y^2)$，分母 $x^2-y^2=(x-y)(x+y)\\\\to 0$，分子 $xy\\\\to 1\\\\neq 0$，故 $|g|\\\\to\\\\infty$。\n$g$ 在 $(1,1)$ 附近无界，无法连续（不管如何定义 $g(1,1)$）。$(1,1)$ 是 $g$ 的间断点。",
+      "gradingRubric": [
+        { "criterion": "第1题用 $|\\\\sin(xy)|\\\\leq|xy|$ 和均值不等式夹逼", "points": 5 },
+        { "criterion": "第2题识别 $(1,1)$ 使分母为零，判断无界间断", "points": 5 }
+      ],
+      "hints": [
+        "第1题：$|\\\\sin t|\\\\leq|t|$，$|xy|\\\\leq(x^2+y^2)/2$，$\\\\sqrt{x^2+y^2}\\\\to 0$",
+        "第2题：$x^2-y^2=0$ 在 $(1,1)$ 处不是孤立点（整条对角线使分母为零）"
+      ],
+      "commonMistakes": [
+        "第1题：$|\\\\sin(xy)|\\\\leq|xy|$ 而非直接 $\\\\leq 1$（需要这步才能用分母消去）",
+        "第2题：$g(1,1)=0$ 是按分段给出的，但极限趋无穷，故不连续"
+      ],
+      "tags": ["continuity", "piecewise-function", "squeeze-theorem"]
+    },
+    {
+      "id": "mvlc-ex-005",
+      "knowledgePointId": "two-variable-continuity",
+      "title": "累次极限与二元极限的关系",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "设 $f(x,y)=\\\\begin{cases}\\\\dfrac{x^2-y^2}{x^2+y^2}, & (x,y)\\\\neq(0,0) \\\\\\\\ 0, & (x,y)=(0,0)\\\\end{cases}$。\n1. 计算累次极限 $\\\\lim_{x\\\\to 0}\\\\left(\\\\lim_{y\\\\to 0}f(x,y)\\\\right)$ 和 $\\\\lim_{y\\\\to 0}\\\\left(\\\\lim_{x\\\\to 0}f(x,y)\\\\right)$。\n2. 判断二元极限 $\\\\lim_{(x,y)\\\\to(0,0)}f(x,y)$ 是否存在，并说明理由。\n3. $f$ 在 $(0,0)$ 是否连续？",
+      "solution": "**1. 累次极限：**\n- 先令 $y\\\\to 0$（$x$ 固定，$x\\\\neq 0$）：$f(x,0)=x^2/x^2=1$，故 $\\\\lim_{x\\\\to 0}1=1$。\n- 先令 $x\\\\to 0$（$y$ 固定，$y\\\\neq 0$）：$f(0,y)=-y^2/y^2=-1$，故 $\\\\lim_{y\\\\to 0}(-1)=-1$。\n两个累次极限分别为 $1$ 和 $-1$，不相等。\n\n**2. 二元极限：**\n两累次极限不等，可以推出二元极限不存在（若二元极限 $L$ 存在，则两累次极限均等于 $L$，矛盾）。\n更直接地，沿 $y=0$：$f=1$；沿 $x=0$：$f=-1$，两路径极限不同，二元极限不存在。\n\n**3. 连续性：**\n二元极限不存在，故 $f$ 在 $(0,0)$ 不连续（无法满足极限等于函数值的条件）。",
+      "gradingRubric": [
+        { "criterion": "正确计算两个累次极限（各 $2$ 分）", "points": 4 },
+        { "criterion": "说明两累次极限不等 $\\\\Rightarrow$ 二元极限不存在", "points": 3 },
+        { "criterion": "用路径法直接验证二元极限不存在", "points": 2 },
+        { "criterion": "结论：在 $(0,0)$ 不连续", "points": 1 }
+      ],
+      "hints": [
+        "累次极限：先固定一个变量趋极限，再对另一个变量求极限",
+        "若二元极限存在，两个累次极限（若存在）必然相等——此题反用：累次极限不等 $\\\\Rightarrow$ 二元极限不存在"
+      ],
+      "commonMistakes": [
+        "误以为\"两个累次极限存在\"就意味着\"二元极限存在\"——恰恰相反，此题说明累次极限存在也可以不等",
+        "将\"累次极限\"与\"沿坐标轴的路径极限\"混淆（后者是一种特殊路径，但更通用的累次极限含义不同）"
+      ],
+      "tags": ["iterated-limit", "two-variable-limit", "continuity", "distinction"]
+    },
+    {
+      "id": "mvlc-ex-006",
+      "knowledgePointId": "two-variable-limit",
+      "title": "用极坐标计算二元极限",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "用极坐标法计算：$\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,0)}\\\\frac{x^3+y^3}{x^2+y^2}$。",
+      "solution": "令 $x=r\\\\cos\\\\theta$，$y=r\\\\sin\\\\theta$（$r>0$，$\\\\theta\\\\in[0,2\\\\pi)$），则\n$$\\\\frac{x^3+y^3}{x^2+y^2}=\\\\frac{r^3(\\\\cos^3\\\\theta+\\\\sin^3\\\\theta)}{r^2}=r(\\\\cos^3\\\\theta+\\\\sin^3\\\\theta).$$\n由于 $|\\\\cos^3\\\\theta+\\\\sin^3\\\\theta|\\\\leq|\\\\cos\\\\theta|^3+|\\\\sin\\\\theta|^3\\\\leq 2$，有\n$$\\\\left|\\\\frac{x^3+y^3}{x^2+y^2}\\\\right|\\\\leq 2r\\\\to 0\\\\quad(r\\\\to 0^+).$$\n（对所有 $\\\\theta$ 一致成立。）故极限为 $0$。",
+      "gradingRubric": [
+        { "criterion": "正确作极坐标替换，分子分母化简", "points": 3 },
+        { "criterion": "指出含 $\\\\theta$ 的因子有界（有界性是关键）", "points": 4 },
+        { "criterion": "结论：$|f|\\\\leq 2r\\\\to 0$，极限为 $0$", "points": 3 }
+      ],
+      "hints": [
+        "极坐标后因子 $\\\\cos^3\\\\theta+\\\\sin^3\\\\theta$ 与 $r$ 无关且有界（绝对值 $\\\\leq 2$）",
+        "关键点：有界函数乘 $r\\\\to 0$，整体趋零（对所有 $\\\\theta$ 一致）"
+      ],
+      "commonMistakes": [
+        "极坐标后出现含 $\\\\theta$ 的因子不一致趋零——需先验证含 $\\\\theta$ 项有界",
+        "若结果为 $r\\\\cdot g(\\\\theta)$ 而 $g(\\\\theta)$ 无界，极坐标法不能直接得出极限为零"
+      ],
+      "tags": ["polar-coordinates", "limit-computation", "uniform-bound"]
+    },
+    {
+      "id": "mvlc-ex-007",
+      "knowledgePointId": "two-variable-continuity",
+      "title": "多元初等函数的极限",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "计算下列极限（直接代入法）：\n1. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(0,1)}\\\\frac{e^{xy}-1}{\\\\arctan(x+y)-\\\\pi/4}$\n2. $\\\\displaystyle\\\\lim_{(x,y)\\\\to(\\\\pi,0)}\\\\frac{\\\\sin(x+y)}{y+\\\\tan x}$",
+      "solution": "**1.** 令 $u=xy\\\\to 0\\\\cdot 1=0$，$v=x+y\\\\to 0+1=1$，$\\\\arctan(1)=\\\\pi/4$，故分母趋 $0$。\n\n分子：$e^{xy}-1\\\\sim xy$（$xy\\\\to 0$）。分母：$\\\\arctan(x+y)-\\\\pi/4\\\\sim\\\\frac{(x+y)-1}{1+1^2}=\\\\frac{x+y-1}{2}$（$x+y\\\\to 1$ 时用 $\\\\arctan'(1)=1/2$）。\n\n但沿不同路径 $(x+y-1)/xy$ 变化：令 $x=t,y=1$，则比值 $=t/(t\\\\cdot 2/1)$…需仔细分析。\n实际上，令 $x\\\\to 0,y\\\\to 1$：分子 $\\\\sim xy=x$，分母 $\\\\sim (x+y-1)/2$。沿 $y=1$（直线路径）：$x/(x/2)=2$；沿 $x=t,y=1+t$：分子 $\\\\sim t(1+t)\\\\sim t$，分母 $\\\\sim 2t/2=t$，比值 $\\\\to 1$。两路径不同，极限不存在。\n\n（此题极限不存在——作为计算练习暴露\"不能直接代入\"的陷阱。）\n\n**2.** $(\\\\pi,0)$：$\\\\tan\\\\pi=0$，$\\\\sin(\\\\pi+0)=0$，分子分母均趋 $0$。\n\n令 $x=\\\\pi+s$（$s\\\\to 0$）：$\\\\sin(\\\\pi+s+y)=-\\\\sin(s+y)\\\\approx -(s+y)$；$\\\\tan(\\\\pi+s)=\\\\tan s\\\\approx s$。\n$$\\\\frac{-\\\\sin(s+y)}{y+\\\\tan s}\\\\approx\\\\frac{-(s+y)}{y+s}=-1.$$\n故 $\\\\lim_{(x,y)\\\\to(\\\\pi,0)}\\\\frac{\\\\sin(x+y)}{y+\\\\tan x}=-1$。",
+      "gradingRubric": [
+        { "criterion": "第1题：识别分子分母均趋零，不能直接代入", "points": 3 },
+        { "criterion": "第1题：取两条路径得不同极限，说明不存在", "points": 3 },
+        { "criterion": "第2题：令 $x=\\\\pi+s$ 换元，用等价无穷小化简", "points": 4 }
+      ],
+      "hints": [
+        "第1题：先代入 $(0,1)$ 看分子分母是否趋零——两者均趋零，需进一步分析",
+        "第2题：$\\\\tan(\\\\pi+s)=\\\\tan s\\\\approx s$，$\\\\sin(\\\\pi+\\\\theta)=-\\\\sin\\\\theta$"
+      ],
+      "commonMistakes": [
+        "第1题：直接用等价无穷小 $e^{xy}-1\\\\sim xy$ 后误以为可以化简，忽视路径依赖",
+        "第2题：$\\\\tan\\\\pi=0$，$\\\\tan$ 在 $\\\\pi$ 处连续（不是无穷大），可以正常展开"
+      ],
+      "tags": ["elementary-functions", "limit-computation", "equivalent-infinitesimals"]
+    },
+    {
+      "id": "mvlc-ex-008",
+      "knowledgePointId": "two-variable-continuity",
+      "title": "有界闭区域上连续函数的应用",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 16 章",
+      "problem": "设 $f(x,y)$ 在有界闭区域 $D$ 上连续，$f>0$（处处正值），且 $\\\\iint_D f(x,y)\\,\\\\mathrm{d}A=1$（面积积分，面积 $|D|>0$）。\n证明：存在点 $(x_0,y_0)\\\\in D$ 使 $f(x_0,y_0)=1/|D|$（面积平均值定理）。",
+      "solution": "**证明：**\n$D$ 为有界闭区域，$f$ 连续，由最值定理，$f$ 在 $D$ 上取到最大值 $M=\\\\max_D f$ 和最小值 $m=\\\\min_D f$。\n\n由 $f>0$ 知 $m>0,M>0$。对积分用单调性：\n$$m\\\\cdot|D|\\\\leq\\\\iint_D f\\,\\\\mathrm{d}A=1\\\\leq M\\\\cdot|D|.$$\n故 $m\\\\leq 1/|D|\\\\leq M$。\n\n由 $f$ 在 $D$ 上连续且取到 $m$ 和 $M$，由介值定理（中值定理推广），$f$ 能取到 $m$ 和 $M$ 之间的任何值。因 $1/|D|\\\\in[m,M]$，存在 $(x_0,y_0)\\\\in D$ 使 $f(x_0,y_0)=1/|D|$。$\\\\square$",
+      "gradingRubric": [
+        { "criterion": "引用最值定理得到 $m,M$", "points": 2 },
+        { "criterion": "用积分单调性建立 $m\\\\leq 1/|D|\\\\leq M$", "points": 4 },
+        { "criterion": "引用介值定理得到结论", "points": 3 },
+        { "criterion": "逻辑严密，结论正确", "points": 1 }
+      ],
+      "hints": [
+        "积分单调性：$m\\\\cdot|D|\\\\leq\\\\iint_D f\\,\\\\mathrm{d}A\\\\leq M\\\\cdot|D|$（$m,M$ 是 $f$ 的最小最大值）",
+        "介值定理：连续函数在 $[m,M]$ 内任何值均可取到"
+      ],
+      "commonMistakes": [
+        "积分中值定理的条件：$D$ 连通（区域）、$f$ 连续——此处均满足",
+        "需先说明 $1/|D|\\\\in[m,M]$（由积分不等式推出），再用介值定理"
+      ],
+      "tags": ["mean-value-theorem", "extremum-theorem", "intermediate-value-theorem", "continuous-function"]
+    }
+  ]
+}

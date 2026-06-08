@@ -117,11 +117,29 @@
       "id": "ch-multivariable-limit-continuity",
       "number": 16,
       "title": "多元函数的极限与连续",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/multivariable-limit-continuity.json",
+      "exercisesFile": "exercises/multivariable-limit-continuity.json",
+      "diagramFile": "diagrams/multivariable-limit-continuity.json",
       "sections": [
-        { "id": "sec-planar-point-sets", "title": "平面点集与多元函数", "status": "planned" },
-        { "id": "sec-two-variable-limit", "title": "二元函数的极限", "status": "planned" },
-        { "id": "sec-two-variable-continuity", "title": "二元函数的连续性", "status": "planned" }
+        {
+          "id": "sec-planar-point-sets",
+          "title": "平面点集与多元函数",
+          "status": "draft",
+          "knowledgePointIds": ["planar-point-sets"]
+        },
+        {
+          "id": "sec-two-variable-limit",
+          "title": "二元函数的极限",
+          "status": "draft",
+          "knowledgePointIds": ["two-variable-limit"]
+        },
+        {
+          "id": "sec-two-variable-continuity",
+          "title": "二元函数的连续性",
+          "status": "draft",
+          "knowledgePointIds": ["two-variable-continuity"]
+        }
       ]
     },
     {

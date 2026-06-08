@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-multivariable-limit-continuity",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "path-dependence-diagram",
+      "title": "二元极限的路径依赖示例",
+      "description": "以 $f(x,y)=xy/(x^2+y^2)$ 为例，展示从不同方向趋近原点时函数值不同。三条路径标注在图上：(1) $y=0$（沿 $x$ 轴），颜色标注函数值 $0$；(2) $y=x$（对角线），函数值 $1/2$；(3) $y=-x$，函数值 $-1/2$。每条路径用箭头指向原点，旁边注明该路径上的极限值。图中心写\"极限不存在（路径相关）\"。右侧 3D 曲面辅助图：$z=xy/(x^2+y^2)$ 在原点附近的曲面，截面随方向变化，直观说明不连续。",
+      "mathContext": "二元函数极限要求从**所有**路径趋近给定点时极限相同。若存在两条路径给出不同极限值，则极限不存在。$f(x,y)=xy/(x^2+y^2)$ 是教材标准反例：在极坐标下 $f=\\frac{1}{2}\\sin 2\\theta$，与 $r$ 无关，不同方向 $\\theta$ 对应不同常数，极限不存在。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["two-variable-limit"],
+      "layout": "double",
+      "annotations": [
+        { "panel": "left", "label": "路径 $y=0$：极限 $=0$", "note": "沿 $x$ 轴水平趋近" },
+        { "panel": "left", "label": "路径 $y=x$：极限 $=1/2$", "note": "沿对角线趋近" },
+        { "panel": "right", "label": "3D 曲面截面随 $\\theta$ 变化", "note": "不同方向截面高度不同" }
+      ]
+    }
+  ]
+}
