@@ -330,11 +330,29 @@
       "id": "ch-definite-integral-applications",
       "number": 10,
       "title": "定积分的应用",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/definite-integral-applications.json",
+      "exercisesFile": "exercises/definite-integral-applications.json",
+      "diagramFile": "diagrams/definite-integral-applications.json",
       "sections": [
-        { "id": "sec-area", "title": "平面图形的面积", "status": "planned" },
-        { "id": "sec-volume-arc", "title": "由平行截面面积求体积·平面曲线的弧长", "status": "planned" },
-        { "id": "sec-physics-applications", "title": "定积分在物理中的应用", "status": "planned" }
+        {
+          "id": "sec-area",
+          "title": "平面图形的面积",
+          "status": "draft",
+          "knowledgePointIds": ["area-calculation"]
+        },
+        {
+          "id": "sec-volume-arc",
+          "title": "由平行截面面积求体积·平面曲线的弧长",
+          "status": "draft",
+          "knowledgePointIds": ["volume-arc-length"]
+        },
+        {
+          "id": "sec-physics-applications",
+          "title": "定积分在物理中的应用",
+          "status": "draft",
+          "knowledgePointIds": ["physics-applications"]
+        }
       ]
     },
     {

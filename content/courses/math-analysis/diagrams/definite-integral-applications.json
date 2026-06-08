@@ -1,0 +1,33 @@
+{
+  "chapterId": "ch-definite-integral-applications",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "area-calculation-diagram",
+      "title": "平面面积计算示意",
+      "description": "两幅并排图。左图（直角坐标）：曲线 $y=f(x)$ 和 $y=g(x)$（$f\\geq g$）之间的区域，竖向阴影细条宽 $\\mathrm{d}x$、高 $f(x)-g(x)$，标注面积微元 $\\mathrm{d}A=[f(x)-g(x)]\\mathrm{d}x$。右图（极坐标）：极轴和两条射线 $\\theta=\\alpha$、$\\theta=\\beta$ 夹住的扇形区域，曲线 $r=r(\\theta)$，阴影小扇形张角 $\\mathrm{d}\\theta$，标注面积微元 $\\mathrm{d}A=\\frac{1}{2}r^2\\,\\mathrm{d}\\theta$（与圆扇形面积类比）。",
+      "mathContext": "两坐标系下的面积微元：直角坐标 $\\mathrm{d}A=(f-g)\\mathrm{d}x$；极坐标 $\\mathrm{d}A=\\frac{1}{2}r^2\\,\\mathrm{d}\\theta$（扇形面积公式 $S=\\frac{1}{2}r^2\\theta$ 的微分形式）。注意极坐标面积公式对应的是\"扫过的面积\"，不是弧长乘以半径。",
+      "diagramType": "geometry",
+      "knowledgePointIds": ["area-calculation"],
+      "layout": "two-panel-horizontal",
+      "annotations": [
+        { "panel": "left", "label": "$\\mathrm{d}A=[f(x)-g(x)]\\mathrm{d}x$", "note": "竖向细条，高为两曲线之差" },
+        { "panel": "right", "label": "$\\mathrm{d}A=\\frac{1}{2}r^2(\\theta)\\,\\mathrm{d}\\theta$", "note": "小扇形，与圆扇形面积公式对应" }
+      ]
+    },
+    {
+      "id": "volume-disk-diagram",
+      "title": "旋转体体积：圆盘法与柱壳法",
+      "description": "两幅对比图。左图（圆盘法）：曲线 $y=f(x)$ 绕 $x$ 轴旋转，在 $x$ 处切一薄片，显示为半径 $f(x)$、厚 $\\mathrm{d}x$ 的圆盘，标注 $\\mathrm{d}V=\\pi[f(x)]^2\\,\\mathrm{d}x$。右图（柱壳法）：同一曲线绕 $y$ 轴旋转，在 $x$ 处竖向细条旋转成空心圆柱壳，半径 $x$，高 $f(x)$，厚 $\\mathrm{d}x$，展开后近似矩形，标注 $\\mathrm{d}V=2\\pi x f(x)\\,\\mathrm{d}x$。",
+      "mathContext": "圆盘法：$V=\\pi\\int_a^b[f(x)]^2\\,\\mathrm{d}x$（绕 $x$ 轴）。柱壳法：$V=2\\pi\\int_a^b x f(x)\\,\\mathrm{d}x$（绕 $y$ 轴）。对同一旋转体，两种方法积分不同但结果相同；选择哪种方法取决于哪种被积函数更容易处理。",
+      "diagramType": "geometry",
+      "knowledgePointIds": ["volume-arc-length"],
+      "layout": "two-panel-horizontal",
+      "annotations": [
+        { "panel": "left", "label": "圆盘法：$\\mathrm{d}V=\\pi[f(x)]^2\\,\\mathrm{d}x$", "note": "绕 $x$ 轴，截面为圆盘" },
+        { "panel": "right", "label": "柱壳法：$\\mathrm{d}V=2\\pi x f(x)\\,\\mathrm{d}x$", "note": "绕 $y$ 轴，展开为矩形壳" }
+      ]
+    }
+  ]
+}
