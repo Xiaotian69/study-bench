@@ -236,10 +236,30 @@
       "id": "ch-real-completeness",
       "number": 7,
       "title": "实数的完备性",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/real-completeness.json",
+      "exercisesFile": "exercises/real-completeness.json",
+      "diagramFile": "diagrams/real-completeness.json",
       "sections": [
-        { "id": "sec-completeness-theorems", "title": "关于实数集完备性的基本定理", "status": "planned" },
-        { "id": "sec-closed-interval-continuity", "title": "闭区间上连续函数的性质", "status": "planned" }
+        {
+          "id": "sec-completeness-theorems",
+          "title": "关于实数集完备性的基本定理",
+          "status": "draft",
+          "knowledgePointIds": [
+            "completeness-axioms",
+            "nested-interval-theorem",
+            "bolzano-weierstrass"
+          ]
+        },
+        {
+          "id": "sec-closed-interval-continuity",
+          "title": "闭区间上连续函数的性质",
+          "status": "draft",
+          "knowledgePointIds": [
+            "uniform-continuity",
+            "closed-interval-theorems"
+          ]
+        }
       ]
     },
     {

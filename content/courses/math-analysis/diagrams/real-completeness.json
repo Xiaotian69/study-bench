@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-real-completeness",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "nested-intervals-diagram",
+      "title": "闭区间套：嵌套收缩趋向单点",
+      "description": "数轴上画出一列嵌套的闭区间 $[a_1,b_1]\\supset[a_2,b_2]\\supset[a_3,b_3]\\supset\\cdots$，每层区间用不同颜色标出，向中心收缩。标注左端点序列 $a_1<a_2<a_3<\\cdots$ 单调递增，右端点序列 $b_1>b_2>b_3>\\cdots$ 单调递减，两者逐步逼近唯一公共点 $c$（当 $b_n-a_n\\to 0$ 时）。旁标：若长度不趋零（如各区间退化为半轴），则公共点可以是一段区间而非单点。",
+      "mathContext": "闭区间套定理：$[a_n,b_n]\\supset[a_{n+1},b_{n+1}]$，则 $\\bigcap[a_n,b_n]\\ne\\emptyset$；若 $b_n-a_n\\to 0$，则交集为单点 $c=\\sup a_n=\\inf b_n$。对比开区间套反例：$(0,1/n)$ 的交集为空。",
+      "diagramType": "number-line",
+      "knowledgePointIds": ["nested-interval-theorem"],
+      "layout": "single",
+      "annotations": [
+        { "position": "left-endpoints", "label": "$a_1<a_2<a_3<\\cdots$", "note": "单调递增，趋于 $c$" },
+        { "position": "right-endpoints", "label": "$b_1>b_2>b_3>\\cdots$", "note": "单调递减，趋于 $c$" },
+        { "position": "limit-point", "label": "$c = \\sup\\{a_n\\} = \\inf\\{b_n\\}$", "note": "唯一公共点（长度趋零时）" }
+      ]
+    }
+  ]
+}

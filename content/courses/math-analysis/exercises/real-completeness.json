@@ -1,0 +1,223 @@
+{
+  "chapterId": "ch-real-completeness",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "sourceTypeLegend": {
+    "textbook-example": "教材例题",
+    "textbook-exercise": "教材课后习题",
+    "adapted": "由教材题改编",
+    "bridging": "自编过渡题，仅用于衔接，不作为正式题"
+  },
+  "intakeNote": "本章题面为自编或充分改写，未直接照搬教材原题；sourceRef 记录对应章节，题号标注"待核对题源"，待对照本地教材核对后再回填具体题号。",
+  "exercises": [
+    {
+      "id": "completeness-ex-001",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §1 确界原理",
+      "knowledgePointIds": ["completeness-axioms"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求集合 $A=\\\\{1-\\\\dfrac{1}{n}:n\\\\in\\\\mathbb{N}^+\\\\}$ 的上确界和下确界，并验证上确界的逼近性。",
+      "gradingRubric": [
+        "$A=\\\\{0,\\\\frac{1}{2},\\\\frac{2}{3},\\\\frac{3}{4},\\\\ldots\\\\}$，元素 $1-1/n<1$，故 $1$ 是上界",
+        "验证 $1$ 是最小上界（逼近性）：对任意 $\\\\varepsilon>0$，取 $n>1/\\\\varepsilon$，则 $1-1/n>1-\\\\varepsilon$，故 $A$ 中存在元素大于 $1-\\\\varepsilon$",
+        "故 $\\\\sup A=1$（注意 $1\\\\notin A$）",
+        "下界：$1-1/n>0$ 恒成立，$0$ 是下界；取 $n=1$ 得 $1-1=0\\\\in A$，故 $\\\\inf A=0$（$0\\\\in A$，$0$ 本身是最小元）"
+      ],
+      "hints": [
+        "先找 $A$ 元素的一般规律，判断上界的候选值。",
+        "验证上确界用逼近性：对任给 $\\\\varepsilon>0$，找到 $A$ 中大于 $\\\\sup A-\\\\varepsilon$ 的元素。",
+        "下确界若在集合内，直接是最小值。"
+      ],
+      "commonMistakes": [
+        "认为 $\\\\sup A=1$ 需要 $1\\\\in A$（上确界不必在集合内）",
+        "逼近性验证时不指定具体的 $n$（需要显示地取 $n>1/\\\\varepsilon$）",
+        "混淆 sup 与 max 的区别"
+      ]
+    },
+    {
+      "id": "completeness-ex-002",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §1（Cauchy 准则）",
+      "knowledgePointIds": ["nested-interval-theorem"],
+      "difficulty": "basic",
+      "type": "judgment",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用 Cauchy 收敛准则判断数列 $x_n=\\\\dfrac{\\\\sin 1}{1}+\\\\dfrac{\\\\sin 2}{2^2}+\\\\cdots+\\\\dfrac{\\\\sin n}{n^2}$（部分和数列）是否收敛。",
+      "gradingRubric": [
+        "设 $m>n$，则 $|x_m-x_n|=\\\\left|\\\\sum_{k=n+1}^{m}\\\\dfrac{\\\\sin k}{k^2}\\\\right|\\\\le\\\\sum_{k=n+1}^{m}\\\\dfrac{|\\\\sin k|}{k^2}\\\\le\\\\sum_{k=n+1}^{m}\\\\dfrac{1}{k^2}$",
+        "由比较：$\\\\sum_{k=n+1}^{m}\\\\dfrac{1}{k^2}\\\\le\\\\sum_{k=n+1}^{m}\\\\dfrac{1}{k(k-1)}=\\\\sum_{k=n+1}^{m}\\\\left(\\\\dfrac{1}{k-1}-\\\\dfrac{1}{k}\\\\right)=\\\\dfrac{1}{n}-\\\\dfrac{1}{m}<\\\\dfrac{1}{n}$",
+        "对任给 $\\\\varepsilon>0$，取 $N=[1/\\\\varepsilon]+1$，则 $m>n>N$ 时 $|x_m-x_n|<1/n<1/N<\\\\varepsilon$",
+        "由 Cauchy 准则，$\\\\{x_n\\\\}$ 收敛"
+      ],
+      "hints": [
+        "对部分和之差 $x_m-x_n$（$m>n$）用三角不等式放缩。",
+        "$|\\\\sin k|\\\\le 1$，故 $|\\\\sin k|/k^2 \\\\le 1/k^2$。",
+        "$\\\\sum 1/k^2$ 的尾部可用 $\\\\sum 1/k(k-1)$ 做放缩（裂项法）。"
+      ],
+      "commonMistakes": [
+        "用 $|x_m-x_n|\\\\le\\\\sum|\\\\sin k|/k^2 \\\\le \\\\sum 1/k^2$ 但不知道如何进一步估计 $\\\\sum 1/k^2$ 的尾部",
+        "裂项放缩时把 $1/k(k-1)$ 写错",
+        "Cauchy 准则中量词顺序写错（先 $\\\\exists N$，再 $\\\\forall m,n>N$）"
+      ]
+    },
+    {
+      "id": "completeness-ex-003",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §1（闭区间套）",
+      "knowledgePointIds": ["nested-interval-theorem"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "证明：若数列 $\\\\{x_n\\\\}$ 满足 $|x_{n+1}-x_n|\\\\le \\\\dfrac{1}{2^n}$（$n=1,2,\\\\ldots$），则 $\\\\{x_n\\\\}$ 收敛。",
+      "gradingRubric": [
+        "对 $m>n$，用三角不等式：$|x_m-x_n|\\\\le|x_m-x_{m-1}|+\\\\cdots+|x_{n+1}-x_n|\\\\le\\\\dfrac{1}{2^{m-1}}+\\\\cdots+\\\\dfrac{1}{2^n}$",
+        "几何级数求和：$\\\\dfrac{1/2^n+\\\\cdots+1/2^{m-1}}{1}=\\\\dfrac{1/2^n(1-1/2^{m-n})}{1-1/2}<\\\\dfrac{1/2^n}{1/2}=\\\\dfrac{1}{2^{n-1}}$",
+        "对任给 $\\\\varepsilon>0$，取 $N$ 使 $2^{N-1}>1/\\\\varepsilon$（即 $N>1+\\\\log_2(1/\\\\varepsilon)$）",
+        "则 $m>n>N$ 时 $|x_m-x_n|<1/2^{n-1}<1/2^{N-1}<\\\\varepsilon$，由 Cauchy 准则，$\\\\{x_n\\\\}$ 收敛"
+      ],
+      "hints": [
+        "用三角不等式把 $|x_m-x_n|$ 拆成 $n$ 到 $m-1$ 的相邻差之和。",
+        "相邻差之和是等比数列求和，可用公式或放缩成 $2/2^n$。",
+        "最后用 Cauchy 准则的标准格式给出 $N$ 的选取。"
+      ],
+      "commonMistakes": [
+        "等比数列求和化简错误（符号混乱）",
+        "放缩结果仍含 $m$（最终界应只含 $n$）",
+        "不写 $N$ 的具体选取，仅说"取足够大的 $N$""
+      ]
+    },
+    {
+      "id": "completeness-ex-004",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §1（B–W 定理）",
+      "knowledgePointIds": ["bolzano-weierstrass"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设数列 $\\\\{x_n\\\\}$ 满足 $0\\\\le x_n\\\\le 1$，且 $|x_{n+1}-x_n^2|\\\\le \\\\dfrac{1}{n}$。证明 $\\\\{x_n\\\\}$ 有收敛子列，并说明收敛子列的极限满足什么方程。",
+      "gradingRubric": [
+        "有界性：$0\\\\le x_n\\\\le 1$，$\\\\{x_n\\\\}$ 有界",
+        "由 B–W 定理，$\\\\{x_n\\\\}$ 有收敛子列 $x_{n_k}\\\\to c\\\\in[0,1]$",
+        "由 $|x_{n_{k+1}}-x_{n_k}^2|\\\\le 1/n_k\\\\to 0$，故 $x_{n_{k+1}}-x_{n_k}^2\\\\to 0$",
+        "取极限：$c-c^2=0$，即 $c(1-c)=0$，故 $c=0$ 或 $c=1$",
+        "（注意：题目只要求收敛子列存在及极限方程，不需要确定 $c$ 的具体值）"
+      ],
+      "hints": [
+        "B–W 定理：有界数列必有收敛子列。先验证有界性。",
+        "设子列 $x_{n_k}\\\\to c$，然后分析 $x_{n_{k+1}}$ 与 $x_{n_k}^2$ 的关系在取极限后变成什么。",
+        "极限等式告诉你 $c$ 满足某个代数方程。"
+      ],
+      "commonMistakes": [
+        "把 B–W 定理用于无界数列（此处有界条件已给出）",
+        "取极限时忘记 $1/n_k\\\\to 0$，保留了 $1/n$ 项",
+        "极限方程的推导中混淆了 $x_{n_{k+1}}$ 和 $x_{n_k+1}$"
+      ]
+    },
+    {
+      "id": "completeness-ex-005",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §2 一致连续性",
+      "knowledgePointIds": ["uniform-continuity"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "证明 $f(x)=\\\\sin x$ 在 $\\\\mathbb{R}$ 上一致连续。",
+      "gradingRubric": [
+        "对任给 $\\\\varepsilon>0$，寻找与 $x_1,x_2$ 无关的 $\\\\delta$",
+        "$|f(x_1)-f(x_2)|=|\\\\sin x_1-\\\\sin x_2|=\\\\left|2\\\\cos\\\\dfrac{x_1+x_2}{2}\\\\sin\\\\dfrac{x_1-x_2}{2}\\\\right|\\\\le 2\\\\left|\\\\sin\\\\dfrac{x_1-x_2}{2}\\\\right|\\\\le 2\\\\cdot\\\\dfrac{|x_1-x_2|}{2}=|x_1-x_2|$",
+        "（用到 $|\\\\sin t|\\\\le |t|$）",
+        "取 $\\\\delta=\\\\varepsilon$，则 $|x_1-x_2|<\\\\delta$ 时 $|\\\\sin x_1-\\\\sin x_2|\\\\le|x_1-x_2|<\\\\varepsilon$，与 $x_1,x_2$ 无关",
+        "故 $\\\\sin x$ 在 $\\\\mathbb{R}$ 上一致连续"
+      ],
+      "hints": [
+        "用和差化积公式：$\\\\sin x_1-\\\\sin x_2=2\\\\cos\\\\frac{x_1+x_2}{2}\\\\sin\\\\frac{x_1-x_2}{2}$。",
+        "利用 $|\\\\cos u|\\\\le 1$ 和 $|\\\\sin t|\\\\le|t|$ 放缩。",
+        "最终 $\\\\delta$ 不含 $x_1,x_2$，这是一致连续的关键。"
+      ],
+      "commonMistakes": [
+        "放缩时没有消去 $\\\\cos$ 因子（用 $|\\\\cos|\\\\le 1$ 放缩）",
+        "$\\\\delta$ 的选取依赖了 $x_1$ 或 $x_2$（那就只是逐点连续）",
+        "没有最终写出"与 $x_1,x_2$ 无关"的说明"
+      ]
+    },
+    {
+      "id": "completeness-ex-006",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §2（有界性定理）",
+      "knowledgePointIds": ["closed-interval-theorems"],
+      "difficulty": "basic",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用反证法和 Bolzano–Weierstrass 定理证明：若 $f\\\\in C[a,b]$，则 $f$ 在 $[a,b]$ 上有界。",
+      "gradingRubric": [
+        "反证：假设 $f$ 无上界，则对每个 $n\\\\in\\\\mathbb{N}^+$，$\\\\exists x_n\\\\in[a,b]$ 使 $f(x_n)>n$",
+        "$\\\\{x_n\\\\}\\\\subset[a,b]$ 有界，由 B–W 定理，存在子列 $x_{n_k}\\\\to c$（$c\\\\in[a,b]$，因闭区间）",
+        "由 $f$ 在 $c$ 连续：$f(x_{n_k})\\\\to f(c)$（有限值）",
+        "但 $f(x_{n_k})>n_k\\\\to\\\\infty$，矛盾",
+        "故假设不成立，$f$ 在 $[a,b]$ 上有上界；类似证有下界"
+      ],
+      "hints": [
+        "反证：假设无界，则每个正整数 $n$ 对应一个使 $f>n$ 的点 $x_n$。",
+        "这样的点列 $\\\\{x_n\\\\}$ 在 $[a,b]$ 内，用 B–W 定理取收敛子列。",
+        "利用连续性：子列收敛 → 函数值收敛；但构造保证函数值趋于无穷 → 矛盾。"
+      ],
+      "commonMistakes": [
+        "没有显式地构造 $\\\\{x_n\\\\}$ 只是说"无界"，论证不够严格",
+        "子列的极限点 $c$ 忘记说明在 $[a,b]$ 内（需要闭区间条件）",
+        "矛盾结论写不清楚"
+      ]
+    },
+    {
+      "id": "completeness-ex-007",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §2（零点定理严格证明）",
+      "knowledgePointIds": ["closed-interval-theorems"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "严格证明零点定理：若 $f\\\\in C[a,b]$，$f(a)<0$，$f(b)>0$，则 $\\\\exists\\\\xi\\\\in(a,b)$ 使 $f(\\\\xi)=0$。（提示：用 $E=\\\\{x\\\\in[a,b]:f(x)<0\\\\}$，取 $c=\\\\sup E$。）",
+      "gradingRubric": [
+        "令 $E=\\\\{x\\\\in[a,b]:f(x)<0\\\\}$；$a\\\\in E$（$f(a)<0$），故 $E$ 非空；$b$ 是 $E$ 的上界，由确界原理 $c=\\\\sup E$ 存在且 $c\\\\in[a,b]$",
+        "证 $f(c)\\\\ge 0$：若 $f(c)<0$，由连续性存在邻域 $(c-\\\\delta,c+\\\\delta)$ 使 $f(x)<0$，则 $c+\\\\delta/2\\\\in E$ 且 $c+\\\\delta/2>c$，与 $c=\\\\sup E$ 矛盾",
+        "证 $f(c)\\\\le 0$：若 $f(c)>0$，由连续性存在 $\\\\delta'>0$ 使 $f(x)>0$ 在 $(c-\\\\delta',c+\\\\delta')$ 上；则 $E\\\\subset[a,c-\\\\delta']$，故 $c-\\\\delta'$ 也是 $E$ 的上界，比 $c$ 小，与 $c=\\\\sup E$ 矛盾",
+        "故 $f(c)=0$；且 $c\\\\in(a,b)$（因 $f(a)<0\\\\ne 0$ 故 $c\\\\ne a$；$f(b)>0\\\\ne 0$ 故 $c\\\\ne b$）"
+      ],
+      "hints": [
+        "令 $E$ 为 $f$ 取负值的点集，用确界原理取 $c=\\\\sup E$。",
+        "分别证 $f(c)\\\\ge 0$ 和 $f(c)\\\\le 0$，利用连续性假设矛盾。",
+        "最后说明 $c\\\\ne a,b$，从而 $c\\\\in(a,b)$。"
+      ],
+      "commonMistakes": [
+        "不用确界直接猜 $\\\\xi$ 的位置（证明需要严格构造）",
+        "证 $f(c)\\\\le 0$ 时逻辑方向写反",
+        "忘记证明 $c$ 在开区间 $(a,b)$ 内（不是端点）"
+      ]
+    },
+    {
+      "id": "completeness-ex-008",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 7 章 §2（反例构造）",
+      "knowledgePointIds": ["closed-interval-theorems"],
+      "difficulty": "hard",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "（1）构造一个函数 $f$ 使得：$f$ 在 $[0,1]$ 上有界但取不到最大值（提示：$f$ 不连续）。（2）构造一个函数 $f$ 使得：$f$ 在 $(0,1)$ 上连续但无界（提示：$f$ 不在闭区间上）。分别说明它们违反了最值定理的哪个条件。",
+      "gradingRubric": [
+        "(1) 令 $f(x)=x$（$0\\\\le x<1$），$f(1)=0$；则 $f$ 在 $[0,1]$ 有界（$0\\\\le f\\\\le 1$），但 $\\\\sup f=1$ 在 $x=1$ 处不取到（$f(1)=0\\\\ne 1$）；违反的条件：$f$ 在 $x=1$ 不连续（$\\\\lim_{x\\\\to 1^-}f(x)=1\\\\ne 0=f(1)$）",
+        "(2) 令 $f(x)=1/x$（$0<x<1$）；$f$ 在 $(0,1)$ 上连续，但当 $x\\\\to 0^+$ 时 $f(x)\\\\to+\\\\infty$，无界；违反的条件：区间不是闭区间（端点 $0$ 不在定义域内）"
+      ],
+      "hints": [
+        "(1) 需要 $\\\\sup f$ 存在但不被取到，可以通过在取到上确界处改变函数值。",
+        "(2) 连续性没问题，但区间端点处函数值趋于无穷。",
+        "说明"违反哪个条件"需要明确指出：连续性条件或闭区间条件。"
+      ],
+      "commonMistakes": [
+        "(1) 构造的 $f$ 本身就在 $[0,1]$ 上连续（则反例无效，仍取到最大值）",
+        "(2) 构造的 $f$ 在 $(0,1)$ 上有间断点（则不连续，不是"连续但无界"的反例）",
+        "没有说明违反了哪条条件"
+      ]
+    }
+  ]
+}

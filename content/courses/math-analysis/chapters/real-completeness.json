@@ -1,0 +1,251 @@
+{
+  "id": "ch-real-completeness",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "number": 7,
+  "title": "实数的完备性",
+  "status": "draft",
+  "overview": "本章把前几章"预告"过但未严格证明的几个核心定理补齐证明，同时揭示实数完备性的多种等价刻画。六个基本定理相互等价：确界原理（Dedekind 完备性）、单调有界定理（用于数列）、闭区间套定理（Cantor 定理）、Bolzano–Weierstrass 聚点定理、Cauchy 收敛准则、有限覆盖定理（Heine–Borel）。以确界原理为出发点，依次推导其他定理，并将闭区间上连续函数的有界性定理、最值定理、一致连续性定理、介值定理和零点定理严格证明。讲义、例子与题面均为自编或充分改写，公式用 LaTeX（四反斜线约定）。",
+  "knowledgePoints": [
+    {
+      "id": "completeness-axioms",
+      "title": "确界原理与实数完备性",
+      "learningGoals": [
+        "理解确界（上确界 sup、下确界 inf）的定义：最小上界与最大下界。",
+        "掌握确界原理：实数中任何非空有上界的集合都有上确界（公理级陈述）。",
+        "理解确界原理是区分实数集与有理数集的关键：$\\\\mathbb{Q}$ 不满足确界原理（$\\\\{x\\\\in\\\\mathbb{Q}:x^2<2\\\\}$ 无有理上确界）。"
+      ],
+      "coreExplanation": "**上界与上确界**：集合 $A\\\\subset\\\\mathbb{R}$ 若有上界（$\\\\exists M$ 使 $\\\\forall x\\\\in A,x\\\\le M$），则所有上界中最小者称为**上确界**（supremum），记 $\\\\sup A$。上确界有两条等价刻画：① $\\\\sup A\\\\ge x$（$\\\\forall x\\\\in A$）；② 对任意 $\\\\varepsilon>0$，$\\\\exists x\\\\in A$ 使 $x>\\\\sup A-\\\\varepsilon$（"逼近性"）。下确界 $\\\\inf A$ 对称定义。**确界原理（实数完备性公理）**：$\\\\mathbb{R}$ 中非空有上界的集合必有上确界；非空有下界的集合必有下确界。这是实数公理体系的一部分，不需要（也不能被）证明，而是构建实数系的出发点。**与有理数的对比**：$\\\\{x\\\\in\\\\mathbb{Q}:x^2<2\\\\}$ 在 $\\\\mathbb{Q}$ 中有上界但没有有理数的上确界（$\\\\sqrt{2}\\\\notin\\\\mathbb{Q}$），说明 $\\\\mathbb{Q}$ 不满足确界原理，实数的完备性本质上来自"没有空洞"。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 7 章 实数的完备性，§1 关于实数集完备性的基本定理；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "上确界（supremum）",
+          "statement": "$M=\\\\sup A$ 当且仅当：(1) $\\\\forall x\\\\in A,x\\\\le M$；(2) $\\\\forall\\\\varepsilon>0,\\\\exists x\\\\in A$ 使 $x>M-\\\\varepsilon$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "确界原理",
+          "statement": "$\\\\mathbb{R}$ 中非空有上界（有下界）的集合必有上确界（下确界）。"
+        }
+      ],
+      "proofIdeas": [
+        "确界原理作为公理无需证明；以它为出发点推导其他完备性定理。",
+        "验证上确界的逼近性：若 $M-\\\\varepsilon$ 不是上界，则存在 $x>M-\\\\varepsilon$；若 $M$ 是最小上界（上确界），则任意 $M-\\\\varepsilon$ 都不是上界。"
+      ],
+      "socraticQuestions": [
+        "上确界一定属于集合 $A$ 吗？举例说明。",
+        "有理数集 $\\\\mathbb{Q}$ 中 $\\\\{x:x^2<2\\\\}$ 有上确界吗？为什么？",
+        "确界原理说的是"存在性"，如何用它证明某个数就是上确界？"
+      ],
+      "commonMistakes": [
+        "把"最大值"与"上确界"混同（上确界可以不属于集合）。",
+        "忘记上确界的逼近性（第二条定义），只会证明"上界"而不能证明"最小上界"。",
+        "认为有理数满足确界原理（反例：$\\\\{x\\\\in\\\\mathbb{Q}:x^2<2\\\\}$）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["completeness-ex-001"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能陈述确界原理及上/下确界的两条等价定义。",
+        "能用逼近性验证某个数是上确界。"
+      ]
+    },
+    {
+      "id": "nested-interval-theorem",
+      "title": "闭区间套定理与 Cauchy 收敛准则",
+      "learningGoals": [
+        "掌握闭区间套定理（Cantor 定理）：嵌套闭区间序列有公共点，若区间长度趋零则公共点唯一。",
+        "掌握 Cauchy 收敛准则：数列收敛当且仅当它是 Cauchy 列（任意两项最终任意接近）。",
+        "理解 Cauchy 准则的"内部"判敛意义：无需知道极限值，只要验证项间距趋零即可。"
+      ],
+      "coreExplanation": "**闭区间套定理**：设 $\\\\{[a_n,b_n]\\\\}$ 满足 $[a_1,b_1]\\\\supset[a_2,b_2]\\\\supset\\\\cdots$（每个包含下一个），则 $\\\\bigcap_{n=1}^{\\\\infty}[a_n,b_n]\\\\ne\\\\emptyset$；若还有 $b_n-a_n\\\\to 0$，则交集恰好是一个点。证明：$\\\\{a_n\\\\}$ 单调递增有上界（$b_1$），$\\\\{b_n\\\\}$ 单调递减有下界（$a_1$），由单调有界定理各自收敛，再由 $b_n-a_n\\\\to 0$ 知两个极限相等。**Cauchy 收敛准则**：数列 $\\\\{x_n\\\\}$ 收敛 $\\\\iff$ 它是 Cauchy 列，即 $\\\\forall\\\\varepsilon>0,\\\\exists N$，使 $m,n>N$ 时 $|x_m-x_n|<\\\\varepsilon$。充分性证明：先用 Bolzano–Weierstrass 定理（Cauchy 列有界）取收敛子列，再由 Cauchy 条件推出全列收敛于同一极限。这两个定理都是从确界原理出发，通过"逐步构造+取极限"的方式证明。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 7 章 实数的完备性，§1（闭区间套定理、Cauchy 收敛准则）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "闭区间套",
+          "statement": "满足 $[a_1,b_1]\\\\supset[a_2,b_2]\\\\supset\\\\cdots$（嵌套）的闭区间序列。"
+        },
+        {
+          "name": "Cauchy 列",
+          "statement": "$\\\\{x_n\\\\}$ 是 Cauchy 列指：$\\\\forall\\\\varepsilon>0,\\\\exists N$，使 $m,n>N$ 时 $|x_m-x_n|<\\\\varepsilon$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "闭区间套定理（Cantor）",
+          "statement": "嵌套的闭区间序列有非空交集；若区间长度趋零，则交集为单点。"
+        },
+        {
+          "name": "Cauchy 收敛准则",
+          "statement": "$\\\\{x_n\\\\}$ 收敛 $\\\\iff$ $\\\\{x_n\\\\}$ 是 Cauchy 列。"
+        }
+      ],
+      "proofIdeas": [
+        "闭区间套：$\\\\sup\\\\{a_n\\\\}$ 和 $\\\\inf\\\\{b_n\\\\}$ 都在每个 $[a_n,b_n]$ 内，由 $b_n-a_n\\\\to 0$ 两者相等。",
+        "Cauchy 充分性：Cauchy 列有界（取 $N_0$ 后外加有限项），由 Bolzano–Weierstrass 定理有收敛子列 $x_{n_k}\\\\to L$；再对整列用 Cauchy 条件（三角不等式）导出 $x_n\\\\to L$。"
+      ],
+      "socraticQuestions": [
+        "开区间套 $\\\\{(a_n,b_n)\\\\}$ 嵌套时，公共点集可以为空吗？给出反例。",
+        "为什么 Cauchy 准则在 $\\\\mathbb{Q}$ 中不成立？",
+        "Cauchy 列一定有界吗？如何证明？"
+      ],
+      "commonMistakes": [
+        "闭区间套定理里遗漏"闭区间"条件，开区间时结论可能不成立（$(0,1/n)\\\\to\\\\emptyset$）。",
+        "Cauchy 准则的量词顺序写错：先 $\\\\forall\\\\varepsilon$，再 $\\\\exists N$，最后 $\\\\forall m,n>N$。",
+        "认为 Cauchy 列必须收敛到某个已知的极限值——Cauchy 准则的优点正是无需知道极限值。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["completeness-ex-002", "completeness-ex-003"],
+      "diagramIds": ["nested-intervals-diagram"],
+      "masteryCriteria": [
+        "能陈述闭区间套定理并说明开区间套为何不成立。",
+        "能用 Cauchy 准则判断数列收敛性（不需要先求极限）。"
+      ]
+    },
+    {
+      "id": "bolzano-weierstrass",
+      "title": "Bolzano–Weierstrass 定理",
+      "learningGoals": [
+        "掌握 Bolzano–Weierstrass 定理：有界数列必有收敛子列。",
+        "理解聚点定理：有界无穷点集必有聚点。",
+        "能用 B–W 定理证明某些存在性结论。"
+      ],
+      "coreExplanation": "**Bolzano–Weierstrass（B–W）定理**：实数轴上的有界数列 $\\\\{x_n\\\\}$ 必有收敛的子列。证明策略（区间二分法）：设 $\\\\{x_n\\\\}\\\\subset[a,b]$，把 $[a,b]$ 二分，必有某半段含无穷多项；在该半段选一项，再二分，再选……这样构造出一个闭区间套，由闭区间套定理得极限点 $c$；该 $c$ 正是某个子列的极限（在每个区间段内选出一项构成子列）。等价陈述（聚点形式）：有界无穷点集 $A\\\\subset\\\\mathbb{R}$ 必有聚点（极限点）$c$，即 $c$ 的任意邻域内含有 $A$ 的无穷多点。B–W 定理是实变函数论、泛函分析的基础工具；在数学分析层面，它用于证明 Cauchy 准则的充分性、以及闭区间上连续函数的有界性定理。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 7 章 实数的完备性，§1（Bolzano–Weierstrass 定理）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "聚点（极限点）",
+          "statement": "点 $c$ 是集合 $A$ 的聚点，若 $c$ 的任意邻域 $(c-\\\\delta,c+\\\\delta)$ 内含有 $A$ 中无穷多个不等于 $c$ 的点。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Bolzano–Weierstrass 定理",
+          "statement": "有界数列必有收敛子列。等价地，有界无穷实数点集必有聚点。"
+        }
+      ],
+      "proofIdeas": [
+        "区间二分：$\\\\{x_n\\\\}\\\\subset[a,b]$，每次二分选含无穷多项的半段，取其中一项；这样得到闭区间套 $[a_k,b_k]$（$b_k-a_k=(b-a)/2^k\\\\to 0$）；闭区间套定理给出唯一交点 $c$；由构造，选出的项 $x_{n_k}\\\\in[a_k,b_k]$ 且 $[a_k,b_k]\\\\ni c$，故 $x_{n_k}\\\\to c$。"
+      ],
+      "socraticQuestions": [
+        "无界数列有没有收敛子列？一定没有吗？",
+        "B–W 定理只保证"存在收敛子列"，原数列本身一定收敛吗？",
+        "在 $\\\\mathbb{Q}$ 中，有界序列一定有收敛（到有理数）的子列吗？"
+      ],
+      "commonMistakes": [
+        "把 B–W 定理误读为"有界数列收敛"（实际是"有界数列有收敛子列"）。",
+        "聚点定义中忘记"无穷多个"的要求（单个孤立点的邻域也可含集合中的点）。",
+        "认为 B–W 定理在有理数系中成立（反例：$\\\\sqrt{2}$ 是 $\\\\{x\\\\in\\\\mathbb{Q}:x<\\\\sqrt{2}\\\\}$ 的聚点，但 $\\\\notin\\\\mathbb{Q}$）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["completeness-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能陈述 B–W 定理并给出区间二分证明的框架。",
+        "能用 B–W 定理证明某数列有收敛子列（给出有界性）。"
+      ]
+    },
+    {
+      "id": "uniform-continuity",
+      "title": "一致连续性",
+      "learningGoals": [
+        "理解一致连续的定义：$\\\\delta$ 只依赖 $\\\\varepsilon$，不依赖具体的点。",
+        "区分逐点连续与一致连续：逐点连续的 $\\\\delta$ 可能依赖点，一致连续的 $\\\\delta$ 对全域一致。",
+        "掌握 Cantor 定理：闭区间上的连续函数一致连续。"
+      ],
+      "coreExplanation": "逐点连续的定义是：对每个 $x_0$，给定 $\\\\varepsilon>0$，可找到 $\\\\delta>0$（可能依赖 $x_0$）使 $|x-x_0|<\\\\delta$ 时 $|f(x)-f(x_0)|<\\\\varepsilon$。**一致连续**要求这个 $\\\\delta$ 对区间内所有点"统一有效"：对任给 $\\\\varepsilon>0$，$\\\\exists\\\\delta>0$，使对**所有** $x_1,x_2$ 满足 $|x_1-x_2|<\\\\delta$ 时都有 $|f(x_1)-f(x_2)|<\\\\varepsilon$。量词区别：逐点连续 $\\\\forall\\\\varepsilon\\\\forall x_0\\\\exists\\\\delta\\\\cdots$；一致连续 $\\\\forall\\\\varepsilon\\\\exists\\\\delta\\\\forall x_1,x_2\\\\cdots$——$\\\\delta$ 独立于 $x_0$。反例：$f(x)=1/x$ 在 $(0,1]$ 上逐点连续但非一致连续（越靠近 $0$ 需要 $\\\\delta$ 越小）。**Cantor 定理**：若 $f\\\\in C[a,b]$（闭区间上连续），则 $f$ 在 $[a,b]$ 上一致连续。证明用有限覆盖（Heine–Borel）或 B–W 定理的反证法。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 7 章 实数的完备性，§2 闭区间上连续函数的性质（一致连续性）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "一致连续",
+          "statement": "$f$ 在 $E$ 上一致连续指：$\\\\forall\\\\varepsilon>0,\\\\exists\\\\delta>0$，使对所有 $x_1,x_2\\\\in E$，$|x_1-x_2|<\\\\delta\\\\Rightarrow|f(x_1)-f(x_2)|<\\\\varepsilon$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Cantor 定理（闭区间上连续 → 一致连续）",
+          "statement": "若 $f\\\\in C[a,b]$，则 $f$ 在 $[a,b]$ 上一致连续。"
+        }
+      ],
+      "proofIdeas": [
+        "反证：设 $f$ 不一致连续，则存在 $\\\\varepsilon_0>0$ 和两个数列 $x_n',x_n''$ 满足 $|x_n'-x_n''|<1/n$ 但 $|f(x_n')-f(x_n'')|\\\\ge\\\\varepsilon_0$；由 B–W 定理取收敛子列 $x_{n_k}'\\\\to c\\\\in[a,b]$；$|x_{n_k}'-x_{n_k}''|\\\\to 0$ 故 $x_{n_k}''\\\\to c$；由 $f$ 在 $c$ 连续，$f(x_{n_k}')\\\\to f(c)$ 且 $f(x_{n_k}'')\\\\to f(c)$，与 $|f(x_n')-f(x_n'')|\\\\ge\\\\varepsilon_0$ 矛盾。"
+      ],
+      "socraticQuestions": [
+        "逐点连续和一致连续的量词顺序有何不同？",
+        "$f(x)=x^2$ 在 $\\\\mathbb{R}$ 上逐点连续，在有界闭区间 $[-M,M]$ 上一致连续，在整个 $\\\\mathbb{R}$ 上一致连续吗？",
+        "Cantor 定理的条件"闭区间"能否改为开区间？举 $f(x)=1/x$ 在 $(0,1)$ 上的反例说明。"
+      ],
+      "commonMistakes": [
+        "认为逐点连续就是一致连续。",
+        "一致连续的定义中 $\\\\delta$ 的位置写在 $x_0$ 之后（退化为逐点连续）。",
+        "Cantor 定理只对有界闭区间成立，误用于无穷区间。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["completeness-ex-005"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能写出一致连续的定义，并与逐点连续区分。",
+        "能说明 Cantor 定理的条件并给出反证法框架。"
+      ]
+    },
+    {
+      "id": "closed-interval-theorems",
+      "title": "闭区间上连续函数的性质（严格证明）",
+      "learningGoals": [
+        "在第 4 章预览的基础上，给出最值定理（有界性+最大最小值）的严格证明。",
+        "给出零点定理和介值定理的严格证明（基于确界原理或闭区间套）。",
+        "理解为什么这些定理需要"闭区间"与"连续"两个条件，并能构造反例说明缺少条件时定理不成立。"
+      ],
+      "coreExplanation": "**有界性定理**：若 $f\\\\in C[a,b]$，则 $f$ 有界。反证：若无上界，则存在 $x_n\\\\in[a,b]$ 使 $f(x_n)>n$；由 B–W 定理取 $x_{n_k}\\\\to c\\\\in[a,b]$；$f$ 在 $c$ 连续故 $f(x_{n_k})\\\\to f(c)$ 有限，与 $f(x_{n_k})>n_k\\\\to\\\\infty$ 矛盾。**最大值定理**：$f$ 在 $[a,b]$ 有界，故 $\\\\sup_{[a,b]}f=M$ 存在（确界原理）；存在 $x_n\\\\in[a,b]$ 使 $f(x_n)\\\\to M$（上确界逼近性）；B–W 取子列 $x_{n_k}\\\\to c\\\\in[a,b]$；$f$ 连续故 $f(c)=M$，即最大值在 $c$ 处取到。**零点定理**：设 $f(a)<0<f(b)$（不妨设），令 $E=\\\\{x\\\\in[a,b]:f(x)<0\\\\}$，$E$ 非空有上界，$c=\\\\sup E\\\\in[a,b]$；由连续性 $f(c)=\\\\lim_{x\\\\to c}f(x)$；若 $f(c)>0$ 或 $<0$ 都导致矛盾，故 $f(c)=0$。**介值定理**：把 $f$ 换成 $f-c$ 应用零点定理。**条件不可缺**：开区间上的连续函数可以无界（$1/x$ 在 $(0,1)$）；不连续函数在闭区间上可以没有最大值（Dirichlet 函数）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 7 章 实数的完备性，§2 闭区间上连续函数的性质；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "有界性定理",
+          "statement": "若 $f\\\\in C[a,b]$，则 $f$ 在 $[a,b]$ 上有界。"
+        },
+        {
+          "name": "最大（小）值定理",
+          "statement": "若 $f\\\\in C[a,b]$，则 $f$ 在 $[a,b]$ 上取到最大值与最小值。"
+        },
+        {
+          "name": "零点定理（严格证明）",
+          "statement": "若 $f\\\\in C[a,b]$，$f(a)f(b)<0$，则 $\\\\exists\\\\xi\\\\in(a,b)$ 使 $f(\\\\xi)=0$。"
+        }
+      ],
+      "proofIdeas": [
+        "有界性：B–W + 连续性 → 反证得矛盾。",
+        "最值：有界性给出 sup；用 sup 的逼近性取趋近上确界的数列；B–W 取子列；连续性保证子列极限处函数值等于 sup。",
+        "零点：上确界 + 连续性 → 在 sup E 处函数值被夹为零（两侧极限都满足零）。"
+      ],
+      "socraticQuestions": [
+        "最大值定理里，若 $f$ 只在开区间 $(a,b)$ 连续（而非闭区间），结论还成立吗？",
+        "零点定理的证明里，"$\\\\sup E$"的值就是零点，这是为什么？",
+        "介值定理怎么从零点定理推出？ $f$ 取到介值 $c$ 意味着什么方程有根？"
+      ],
+      "commonMistakes": [
+        "有界性定理误用于开区间。",
+        "最值定理混淆"上确界"与"最大值"——两者在有界闭区间上连续的条件下才能保证一致。",
+        "零点定理中忘记 $\\\\xi$ 在开区间 $(a,b)$ 内（不包含端点）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["completeness-ex-006", "completeness-ex-007", "completeness-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能给出最值定理和零点定理的证明框架（关键步骤）。",
+        "能构造反例说明缺少"闭区间"或"连续性"条件时定理不成立。"
+      ]
+    }
+  ]
+}
