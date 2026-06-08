@@ -216,11 +216,29 @@
       "id": "ch-parameter-integrals",
       "number": 19,
       "title": "含参量积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/parameter-integrals.json",
+      "exercisesFile": "exercises/parameter-integrals.json",
+      "diagramFile": "diagrams/parameter-integrals.json",
       "sections": [
-        { "id": "sec-proper-parameter-integral", "title": "含参量正常积分", "status": "planned" },
-        { "id": "sec-improper-parameter-integral", "title": "含参量反常积分", "status": "planned" },
-        { "id": "sec-euler-integrals", "title": "欧拉积分", "status": "planned" }
+        {
+          "id": "sec-proper-parameter-integral",
+          "title": "含参量正常积分",
+          "status": "draft",
+          "knowledgePointIds": ["proper-parameter-integral"]
+        },
+        {
+          "id": "sec-improper-parameter-integral",
+          "title": "含参量反常积分",
+          "status": "draft",
+          "knowledgePointIds": ["improper-parameter-integral"]
+        },
+        {
+          "id": "sec-euler-integrals",
+          "title": "欧拉积分",
+          "status": "draft",
+          "knowledgePointIds": ["euler-integrals"]
+        }
       ]
     },
     {

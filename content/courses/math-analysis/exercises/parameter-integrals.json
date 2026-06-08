@@ -1,0 +1,200 @@
+{
+  "chapterId": "ch-parameter-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "pi-ex-001",
+      "knowledgePointId": "proper-parameter-integral",
+      "title": "积分号下求导（Leibniz 法则）",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "利用含参量积分对参数的微分，计算：\n1. $\\\\displaystyle I(\\\\alpha)=\\\\int_0^1\\\\frac{x^\\\\alpha-1}{\\\\ln x}\\,\\\\mathrm{d}x$（$\\\\alpha>-1$）。（提示：对 $\\\\alpha$ 求导。）\n2. $\\\\displaystyle\\\\int_0^1\\\\ln x\\,\\\\mathrm{d}x$ 用 Leibniz 方法验证。",
+      "solution": "**1.** 引入参数 $\\\\alpha$，对 $I(\\\\alpha)$ 求导：\n$$I'(\\\\alpha)=\\\\int_0^1\\\\frac{\\\\partial}{\\\\partial\\\\alpha}\\\\frac{x^\\\\alpha-1}{\\\\ln x}\\,\\\\mathrm{d}x=\\\\int_0^1\\\\frac{x^\\\\alpha\\\\ln x}{\\\\ln x}\\,\\\\mathrm{d}x=\\\\int_0^1 x^\\\\alpha\\,\\\\mathrm{d}x=\\\\frac{1}{\\\\alpha+1}.$$\n（$f_\\\\alpha=(x^\\\\alpha\\\\ln x)/\\\\ln x=x^\\\\alpha$ 连续，Leibniz 法则适用。）\n积分：$I(\\\\alpha)=\\\\int_0^\\\\alpha\\\\frac{1}{t+1}\\,\\\\mathrm{d}t+I(0)$，$I(0)=\\\\int_0^1 0/\\\\ln x\\,\\\\mathrm{d}x=0$。\n故 $I(\\\\alpha)=\\\\ln(\\\\alpha+1)$，即\n$$\\\\int_0^1\\\\frac{x^\\\\alpha-1}{\\\\ln x}\\,\\\\mathrm{d}x=\\\\ln(1+\\\\alpha)\\\\quad(\\\\alpha>-1).$$\n\n**2.** 由上式令 $\\\\alpha=1$：$\\\\int_0^1\\\\frac{x-1}{\\\\ln x}\\,\\\\mathrm{d}x=\\\\ln 2$。\n对 $\\\\int_0^1\\\\ln x\\,\\\\mathrm{d}x$ 的直接计算：$[x\\\\ln x-x]_0^1=(-1)-(\\\\lim_{x\\\\to 0^+}x\\\\ln x-0)=-1-0=-1$。\n（这是直接计算，不是 Leibniz 方法的示例；Leibniz 方法需要不同的起点函数。）",
+      "gradingRubric": [
+        { "criterion": "对 $I(\\\\alpha)$ 关于 $\\\\alpha$ 微分，得 $I'(\\\\alpha)=1/(\\\\alpha+1)$", "points": 4 },
+        { "criterion": "说明 $I(0)=0$，积分得 $I(\\\\alpha)=\\\\ln(1+\\\\alpha)$", "points": 4 },
+        { "criterion": "验证：$\\\\int_0^1\\\\ln x\\,\\\\mathrm{d}x=-1$ 的直接计算", "points": 2 }
+      ],
+      "hints": [
+        "$\\\\partial/\\\\partial\\\\alpha[x^\\\\alpha-1]/\\\\ln x=(x^\\\\alpha\\\\ln x)/\\\\ln x=x^\\\\alpha$（分子求导约掉 $\\\\ln x$）",
+        "初始条件 $I(0)=\\\\int_0^1 0\\,\\\\mathrm{d}x=0$"
+      ],
+      "commonMistakes": [
+        "$x^\\\\alpha$ 对 $\\\\alpha$ 的导数是 $x^\\\\alpha\\\\ln x$（$\\\\ln x$ 是 $\\\\alpha$ 的指数因子）",
+        "$I(0)=0$ 需单独说明（被积函数在 $\\\\alpha=0$ 时为 $0/\\\\ln x=0$，但需注意 $0/0$ 形式，用 L'Hopital 或 $x^0-1=0$ 直接得零）"
+      ],
+      "tags": ["leibniz-rule", "parameter-integral", "differentiation-under-integral"]
+    },
+    {
+      "id": "pi-ex-002",
+      "knowledgePointId": "proper-parameter-integral",
+      "title": "变限含参量积分",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "设 $F(\\\\alpha)=\\\\int_\\\\alpha^{\\\\alpha^2}e^{-\\\\alpha t}\\,\\\\mathrm{d}t$（$\\\\alpha>0$），求 $F'(\\\\alpha)$。",
+      "solution": "用广义 Leibniz 公式（变上下限）：\n$$F'(\\\\alpha)=e^{-\\\\alpha\\\\cdot\\\\alpha^2}\\\\cdot 2\\\\alpha-e^{-\\\\alpha\\\\cdot\\\\alpha}\\\\cdot 1+\\\\int_\\\\alpha^{\\\\alpha^2}\\\\frac{\\\\partial}{\\\\partial\\\\alpha}(e^{-\\\\alpha t})\\,\\\\mathrm{d}t.$$\n$$=2\\\\alpha e^{-\\\\alpha^3}-e^{-\\\\alpha^2}+\\\\int_\\\\alpha^{\\\\alpha^2}(-t)e^{-\\\\alpha t}\\,\\\\mathrm{d}t.$$\n\n（若需要进一步化简 $\\\\int_\\\\alpha^{\\\\alpha^2}te^{-\\\\alpha t}\\,\\\\mathrm{d}t$，用分部积分，但题目要求到此即可。）\n$$F'(\\\\alpha)=2\\\\alpha e^{-\\\\alpha^3}-e^{-\\\\alpha^2}-\\\\int_\\\\alpha^{\\\\alpha^2}te^{-\\\\alpha t}\\,\\\\mathrm{d}t.$$",
+      "gradingRubric": [
+        { "criterion": "正确写出端点贡献（上限项 $f(\\\\alpha^2,\\\\alpha)\\\\cdot 2\\\\alpha$ 和下限项 $-f(\\\\alpha,\\\\alpha)\\\\cdot 1$）", "points": 5 },
+        { "criterion": "正确写出参数求导积分项 $\\\\int(-t)e^{-\\\\alpha t}\\,\\\\mathrm{d}t$", "points": 3 },
+        { "criterion": "最终表达式合并正确", "points": 2 }
+      ],
+      "hints": [
+        "变限 Leibniz：$F'(\\\\alpha)=f(\\\\varphi(\\\\alpha),\\\\alpha)\\\\varphi'(\\\\alpha)-f(\\\\psi(\\\\alpha),\\\\alpha)\\\\psi'(\\\\alpha)+\\\\int_{\\\\psi}^{\\\\varphi}f_\\\\alpha\\,\\\\mathrm{d}t$",
+        "上限 $\\\\varphi(\\\\alpha)=\\\\alpha^2$，$\\\\varphi'=2\\\\alpha$；下限 $\\\\psi(\\\\alpha)=\\\\alpha$，$\\\\psi'=1$"
+      ],
+      "commonMistakes": [
+        "上限和下限均依赖 $\\\\alpha$，两个端点都有贡献（下限项有负号）",
+        "参数 $\\\\alpha$ 还出现在被积函数 $e^{-\\\\alpha t}$ 中，需要额外的积分项"
+      ],
+      "tags": ["leibniz-rule", "variable-limits", "chain-rule"]
+    },
+    {
+      "id": "pi-ex-003",
+      "knowledgePointId": "improper-parameter-integral",
+      "title": "含参量反常积分的一致收敛性",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "讨论下列含参量反常积分在指定区间上的一致收敛性：\n1. $I_1(\\\\alpha)=\\\\int_1^{+\\\\infty}\\\\frac{\\\\sin x}{x^\\\\alpha}\\,\\\\mathrm{d}x$，$\\\\alpha\\\\in[\\\\alpha_0,+\\\\infty)$（$\\\\alpha_0>0$）。\n2. $I_2(\\\\alpha)=\\\\int_0^{+\\\\infty}e^{-\\\\alpha x}\\,\\\\mathrm{d}x$，$\\\\alpha\\\\in(0,1]$ vs $\\\\alpha\\\\in[\\\\alpha_0,+\\\\infty)$（$\\\\alpha_0>0$）。",
+      "solution": "**1. $I_1(\\\\alpha)=\\\\int_1^{+\\\\infty}(\\\\sin x/x^\\\\alpha)\\,\\\\mathrm{d}x$，$\\\\alpha\\\\geq\\\\alpha_0>0$：**\n用 Dirichlet 判别法：$\\\\int_1^A\\\\sin x\\,\\\\mathrm{d}x$ 有界（$|\\\\int_1^A\\\\sin x\\,\\\\mathrm{d}x|\\\\leq 2$），$g(x,\\\\alpha)=1/x^\\\\alpha$ 关于 $x$ 单调递减趋零，且在 $\\\\alpha\\\\geq\\\\alpha_0>0$ 上 $1/x^\\\\alpha\\\\leq 1/x^{\\\\alpha_0}\\\\to 0$ 关于 $\\\\alpha$ 一致。\n故 $I_1$ 在 $[\\\\alpha_0,+\\\\infty)$ 上**一致收敛**。\n\n**2. $I_2(\\\\alpha)=\\\\int_0^{+\\\\infty}e^{-\\\\alpha x}\\,\\\\mathrm{d}x=1/\\\\alpha$（$\\\\alpha>0$）：**\n- 在 $\\\\alpha\\\\in(0,1]$：$\\\\int_A^{+\\\\infty}e^{-\\\\alpha x}\\,\\\\mathrm{d}x=e^{-\\\\alpha A}/\\\\alpha$。当 $\\\\alpha\\\\to 0^+$，$e^{-\\\\alpha A}/\\\\alpha\\\\to 1/\\\\alpha\\\\to+\\\\infty$（取 $\\\\alpha$ 充分小），尾部不一致小，**不一致收敛**。\n- 在 $\\\\alpha\\\\in[\\\\alpha_0,+\\\\infty)$（$\\\\alpha_0>0$）：$|\\\\int_A^{+\\\\infty}e^{-\\\\alpha x}\\,\\\\mathrm{d}x|=e^{-\\\\alpha A}/\\\\alpha\\\\leq e^{-\\\\alpha_0 A}/\\\\alpha_0\\\\to 0$（与 $\\\\alpha$ 无关），**一致收敛**。",
+      "gradingRubric": [
+        { "criterion": "第1题：识别 Dirichlet 判别法的条件（有界性 + 单调一致趋零）", "points": 4 },
+        { "criterion": "第2题：$(0,1]$ 上不一致收敛（取 $\\\\alpha\\\\to 0^+$ 尾部不小）", "points": 3 },
+        { "criterion": "第2题：$[\\\\alpha_0,+\\\\infty)$ 上一致收敛（尾部上界与 $\\\\alpha$ 无关）", "points": 3 }
+      ],
+      "hints": [
+        "Weierstrass M-检验：$|\\\\sin x/x^\\\\alpha|\\\\leq 1/x^{\\\\alpha_0}$，但 $\\\\int 1/x^{\\\\alpha_0}$ 在 $\\\\alpha_0\\\\leq 1$ 时可能发散——应用 Dirichlet 判别法更合适",
+        "不一致收敛：找一列 $\\\\alpha_n\\\\to 0^+$ 使尾部积分不趋零"
+      ],
+      "commonMistakes": [
+        "Weierstrass M-检验要求 $\\\\int M<\\\\infty$；对振荡函数（如 $\\\\sin x/x^\\\\alpha$）不适用，改用 Dirichlet 判别法",
+        "一致收敛条件取决于参数的范围：开区间 $(0,1]$ 含 $\\\\alpha=0$ 的邻域，不一致；闭区间 $[\\\\alpha_0,1]$ 一致"
+      ],
+      "tags": ["uniform-convergence", "improper-integral", "dirichlet-test", "weierstrass-test"]
+    },
+    {
+      "id": "pi-ex-004",
+      "knowledgePointId": "improper-parameter-integral",
+      "title": "Dirichlet 积分的计算",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "利用含参量积分计算 Dirichlet 积分 $\\\\int_0^{+\\\\infty}\\\\frac{\\\\sin x}{x}\\,\\\\mathrm{d}x$。\n（提示：令 $I(\\\\alpha)=\\\\int_0^{+\\\\infty}\\\\frac{\\\\sin x}{x}e^{-\\\\alpha x}\\,\\\\mathrm{d}x$，$\\\\alpha>0$，先求 $I'(\\\\alpha)$。）",
+      "solution": "**设 $I(\\\\alpha)=\\\\int_0^{+\\\\infty}\\\\frac{\\\\sin x}{x}e^{-\\\\alpha x}\\,\\\\mathrm{d}x$（$\\\\alpha>0$）。**\n\n由于 $|\\\\sin x\\\\cdot e^{-\\\\alpha x}/x|\\\\leq e^{-\\\\alpha x}$（用 $|\\\\sin x|\\\\leq 1$），$\\\\int_0^{+\\\\infty}e^{-\\\\alpha x}\\,\\\\mathrm{d}x=1/\\\\alpha<\\\\infty$，故 $I(\\\\alpha)$ 在 $\\\\alpha\\\\geq\\\\alpha_0>0$ 上一致收敛（Weierstrass M）；可以积分号下求导。\n\n$$I'(\\\\alpha)=\\\\int_0^{+\\\\infty}\\\\frac{\\\\sin x}{x}\\\\cdot(-x)e^{-\\\\alpha x}\\,\\\\mathrm{d}x=-\\\\int_0^{+\\\\infty}\\\\sin x\\cdot e^{-\\\\alpha x}\\,\\\\mathrm{d}x.$$\n\n计算 $\\\\int_0^{+\\\\infty}\\\\sin x\\cdot e^{-\\\\alpha x}\\,\\\\mathrm{d}x$（分部积分两次）：\n$$=\\\\left[-e^{-\\\\alpha x}\\\\cos x/\\\\alpha+\\\\int(-e^{-\\\\alpha x}/\\\\alpha)\\\\cdot(-\\\\cos x)\\,\\\\mathrm{d}x\\\\right]$$——\n\n用公式 $\\\\int_0^{+\\\\infty}e^{-\\\\alpha x}\\\\sin x\\,\\\\mathrm{d}x=\\\\frac{1}{1+\\\\alpha^2}$（标准结果）。\n\n故 $I'(\\\\alpha)=-\\\\frac{1}{1+\\\\alpha^2}$。\n\n积分：$I(\\\\alpha)=-\\\\arctan\\\\alpha+C$。\n\n初始条件：$\\\\lim_{\\\\alpha\\\\to+\\\\infty}I(\\\\alpha)=0$（因 $|I(\\\\alpha)|\\\\leq 1/\\\\alpha\\\\to 0$），故 $0=-\\\\pi/2+C$，$C=\\\\pi/2$。\n\n$$I(\\\\alpha)=\\\\frac{\\\\pi}{2}-\\\\arctan\\\\alpha.$$\n\n**Dirichlet 积分**：利用 $I(\\\\alpha)$ 在 $\\\\alpha\\\\geq\\\\alpha_0>0$ 上关于 $\\\\alpha_0$ 一致收敛且 $I(\\\\alpha)$ 在 $\\\\alpha=0$ 处连续（可验证），令 $\\\\alpha\\\\to 0^+$：\n$$\\\\int_0^{+\\\\infty}\\\\frac{\\\\sin x}{x}\\,\\\\mathrm{d}x=\\\\lim_{\\\\alpha\\\\to 0^+}I(\\\\alpha)=\\\\frac{\\\\pi}{2}-\\\\arctan 0=\\\\boxed{\\\\frac{\\\\pi}{2}}.$$",
+      "gradingRubric": [
+        { "criterion": "引入 $I(\\\\alpha)=\\\\int_0^{+\\\\infty}(\\\\sin x/x)e^{-\\\\alpha x}\\,\\\\mathrm{d}x$ 并说明可以积分号下求导", "points": 2 },
+        { "criterion": "$I'(\\\\alpha)=-\\\\int_0^{+\\\\infty}\\\\sin x\\cdot e^{-\\\\alpha x}\\,\\\\mathrm{d}x=-1/(1+\\\\alpha^2)$", "points": 4 },
+        { "criterion": "积分得 $I(\\\\alpha)=\\\\pi/2-\\\\arctan\\\\alpha$（含初始条件 $C=\\\\pi/2$）", "points": 3 },
+        { "criterion": "令 $\\\\alpha\\\\to 0^+$ 得最终结果 $\\\\pi/2$", "points": 1 }
+      ],
+      "hints": [
+        "$\\\\int_0^{+\\\\infty}e^{-\\\\alpha x}\\\\sin x\\,\\\\mathrm{d}x=1/(1+\\\\alpha^2)$（可用分部积分或复数方法验证）",
+        "初始条件用 $I(+\\\\infty)=0$ 确定常数 $C$"
+      ],
+      "commonMistakes": [
+        "积分号下求导需要先验证 $f_\\\\alpha=-(\\\\sin x)e^{-\\\\alpha x}$ 对 $\\\\alpha\\\\geq\\\\alpha_0>0$ 一致收敛",
+        "令 $\\\\alpha\\\\to 0^+$ 取极限需要 $I(\\\\alpha)$ 在 $\\\\alpha=0$ 处的连续性（可验证）"
+      ],
+      "tags": ["dirichlet-integral", "leibniz-rule", "improper-integral", "pi-formula"]
+    },
+    {
+      "id": "pi-ex-005",
+      "knowledgePointId": "euler-integrals",
+      "title": "Γ 函数的基本计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "计算：\n1. $\\\\Gamma(7/2)$\n2. $\\\\int_0^{+\\\\infty}x^4e^{-x^2}\\,\\\\mathrm{d}x$\n3. $\\\\int_0^{+\\\\infty}e^{-x^3}\\,\\\\mathrm{d}x$",
+      "solution": "**1. $\\\\Gamma(7/2)$：** 用递推 $\\\\Gamma(s+1)=s\\\\Gamma(s)$：\n$$\\\\Gamma(7/2)=\\\\frac{5}{2}\\\\Gamma(5/2)=\\\\frac{5}{2}\\\\cdot\\\\frac{3}{2}\\\\Gamma(3/2)=\\\\frac{5}{2}\\\\cdot\\\\frac{3}{2}\\\\cdot\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{15}{8}\\\\cdot\\\\sqrt{\\\\pi}.$$\n\n**2.** $\\\\int_0^{+\\\\infty}x^4e^{-x^2}\\,\\\\mathrm{d}x$：令 $t=x^2$，$x=\\\\sqrt{t}$，$\\\\mathrm{d}x=\\\\mathrm{d}t/(2\\\\sqrt{t})$：\n$$=\\\\int_0^{+\\\\infty}t^2e^{-t}\\\\frac{\\\\mathrm{d}t}{2\\\\sqrt{t}}=\\\\frac{1}{2}\\\\int_0^{+\\\\infty}t^{3/2}e^{-t}\\,\\\\mathrm{d}t=\\\\frac{1}{2}\\\\Gamma(5/2)=\\\\frac{1}{2}\\\\cdot\\\\frac{3}{2}\\\\cdot\\\\frac{1}{2}\\\\cdot\\\\sqrt{\\\\pi}=\\\\frac{3\\\\sqrt{\\\\pi}}{8}.$$\n\n**3.** $\\\\int_0^{+\\\\infty}e^{-x^3}\\,\\\\mathrm{d}x$：令 $t=x^3$，$x=t^{1/3}$，$\\\\mathrm{d}x=t^{-2/3}/3\\,\\\\mathrm{d}t$：\n$$=\\\\int_0^{+\\\\infty}e^{-t}\\\\cdot\\\\frac{t^{-2/3}}{3}\\,\\\\mathrm{d}t=\\\\frac{1}{3}\\\\Gamma(1/3).$$",
+      "gradingRubric": [
+        { "criterion": "$\\\\Gamma(7/2)=15\\\\sqrt{\\\\pi}/8$", "points": 3 },
+        { "criterion": "换元 $t=x^2$，化为 $\\\\Gamma(5/2)/2$", "points": 4 },
+        { "criterion": "换元 $t=x^3$，化为 $\\\\Gamma(1/3)/3$", "points": 3 }
+      ],
+      "hints": [
+        "$\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$，递推 $\\\\Gamma(s+1)=s\\\\Gamma(s)$ 从 $1/2$ 向上递推",
+        "换元后 $\\\\int_0^{+\\\\infty}t^{s-1}e^{-t}\\,\\\\mathrm{d}t=\\\\Gamma(s)$，注意识别 $s$"
+      ],
+      "commonMistakes": [
+        "递推 $\\\\Gamma(3/2)=(1/2)\\\\Gamma(1/2)$，$\\\\Gamma(5/2)=(3/2)\\\\Gamma(3/2)$（不是 $(3/2)!$）",
+        "换元 $t=x^2$：$x^4=t^2$，$\\\\mathrm{d}x=\\\\mathrm{d}t/(2\\\\sqrt{t})=t^{-1/2}/2\\,\\\\mathrm{d}t$，合并为 $t^{3/2}$"
+      ],
+      "tags": ["gamma-function", "substitution", "factorial-generalization"]
+    },
+    {
+      "id": "pi-ex-006",
+      "knowledgePointId": "euler-integrals",
+      "title": "B 函数计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "计算：\n1. $\\\\displaystyle\\\\int_0^1 x^3(1-x)^4\\,\\\\mathrm{d}x$\n2. $\\\\displaystyle\\\\int_0^{\\\\pi/2}\\\\sin^5\\\\theta\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta$\n3. $\\\\displaystyle\\\\int_0^{\\\\pi/2}\\\\sqrt{\\\\tan\\\\theta}\\,\\\\mathrm{d}\\\\theta$",
+      "solution": "**1.** $B(4,5)=\\\\Gamma(4)\\\\Gamma(5)/\\\\Gamma(9)=3!\\\\cdot 4!/8!=6\\\\cdot 24/40320=144/40320=1/280$。\n\n**2.** $\\\\sin^5\\\\theta\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta$：令 $t=\\\\sin^2\\\\theta$，$\\\\mathrm{d}t=2\\\\sin\\\\theta\\\\cos\\\\theta\\,\\\\mathrm{d}\\\\theta$：\n$$\\\\int_0^{\\\\pi/2}\\\\sin^5\\\\theta\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{1}{2}\\\\int_0^1 t^{5/2-1}(1-t)^{3/2-1}\\,\\\\mathrm{d}t=\\\\frac{1}{2}B(5/2,3/2).$$\n（更直接：公式 $\\\\int_0^{\\\\pi/2}\\\\sin^m\\\\theta\\\\cos^n\\\\theta=\\\\frac{1}{2}B((m+1)/2,(n+1)/2)$。\n$m=5,n=3$：$\\\\frac{1}{2}B(3,2)=\\\\frac{1}{2}\\\\cdot\\\\Gamma(3)\\\\Gamma(2)/\\\\Gamma(5)=\\\\frac{1}{2}\\\\cdot 2\\\\cdot 1/24=1/24$。）\n\n**3.** $\\\\int_0^{\\\\pi/2}\\\\sqrt{\\\\tan\\\\theta}\\,\\\\mathrm{d}\\\\theta=\\\\int_0^{\\\\pi/2}\\\\sin^{1/2}\\\\theta\\\\cos^{-1/2}\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{1}{2}B(3/4,1/4)=\\\\frac{\\\\Gamma(3/4)\\\\Gamma(1/4)}{2\\\\Gamma(1)}=\\\\frac{\\\\Gamma(1/4)\\\\Gamma(3/4)}{2}$。\n用余元公式 $\\\\Gamma(s)\\\\Gamma(1-s)=\\\\pi/\\\\sin(\\\\pi s)$（$s=1/4$）：$\\\\Gamma(1/4)\\\\Gamma(3/4)=\\\\pi/\\\\sin(\\\\pi/4)=\\\\pi\\\\sqrt{2}$，故结果 $=\\\\pi\\\\sqrt{2}/2=\\\\pi/\\\\sqrt{2}$。",
+      "gradingRubric": [
+        { "criterion": "第1题 $B(4,5)=1/280$ 正确", "points": 3 },
+        { "criterion": "第2题识别为 $B(3,2)/2=1/24$", "points": 3 },
+        { "criterion": "第3题化为 $B(3/4,1/4)/2$，用余元公式得 $\\\\pi/\\\\sqrt{2}$", "points": 4 }
+      ],
+      "hints": [
+        "公式：$\\\\int_0^{\\\\pi/2}\\\\sin^m\\\\theta\\\\cos^n\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{1}{2}B\\\\left(\\\\frac{m+1}{2},\\\\frac{n+1}{2}\\\\right)$",
+        "余元公式 $\\\\Gamma(s)\\\\Gamma(1-s)=\\\\pi/\\\\sin(\\\\pi s)$（$0<s<1$）"
+      ],
+      "commonMistakes": [
+        "第2题 $\\\\sin^5$：$m=5$，$(m+1)/2=3$（不是 $5/2$）",
+        "$B(p,q)=\\\\Gamma(p)\\\\Gamma(q)/\\\\Gamma(p+q)$：分母是 $\\\\Gamma(p+q)$，不是 $\\\\Gamma(p)\\\\Gamma(q)$"
+      ],
+      "tags": ["beta-function", "trigonometric-integral", "reflection-formula"]
+    },
+    {
+      "id": "pi-ex-007",
+      "knowledgePointId": "euler-integrals",
+      "title": "Wallis 公式推广",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "利用 Γ 函数和 B 函数的关系：\n1. 推导 Wallis 公式：$\\\\frac{\\\\pi}{2}=\\\\prod_{n=1}^\\\\infty\\\\frac{(2n)(2n)}{(2n-1)(2n+1)}$。\n2. 计算 $\\\\displaystyle\\\\int_0^{\\\\pi/2}\\\\sin^{2n}\\\\theta\\,\\\\mathrm{d}\\\\theta$ 和 $\\\\displaystyle\\\\int_0^{\\\\pi/2}\\\\sin^{2n+1}\\\\theta\\,\\\\mathrm{d}\\\\theta$。",
+      "solution": "**2. 先计算 Wallis 积分（为1做准备）：**\n$I_n=\\\\int_0^{\\\\pi/2}\\\\sin^n\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{1}{2}B\\\\left(\\\\frac{n+1}{2},\\\\frac{1}{2}\\\\right)=\\\\frac{\\\\sqrt{\\\\pi}\\\\,\\\\Gamma((n+1)/2)}{2\\\\Gamma(n/2+1)}$。\n\n- 偶数 $n=2m$：$I_{2m}=\\\\frac{(2m-1)!!}{(2m)!!}\\\\cdot\\\\frac{\\\\pi}{2}=\\\\frac{\\\\pi}{2}\\\\cdot\\\\frac{(2m)!}{4^m(m!)^2}$。\n- 奇数 $n=2m+1$：$I_{2m+1}=\\\\frac{(2m)!!}{(2m+1)!!}=\\\\frac{4^m(m!)^2}{(2m+1)!}$。\n\n**1. Wallis 公式推导：**\n$I_{2m}\\\\cdot I_{2m+1}\\\\to\\\\frac{\\\\pi}{2}$？\n$I_{2m}=\\\\frac{(2m-1)!!}{(2m)!!}\\\\cdot\\\\frac{\\\\pi}{2}$，$I_{2m+1}=\\\\frac{(2m)!!}{(2m+1)!!}$，\n$I_{2m}\\\\cdot I_{2m+1}=\\\\frac{\\\\pi}{2}\\\\cdot\\\\frac{(2m-1)!!\\\\cdot(2m)!!}{(2m)!!\\\\cdot(2m+1)!!}=\\\\frac{\\\\pi}{2}\\\\cdot\\\\frac{(2m-1)!!}{(2m+1)!!}$。\n\n另一途径：注意 $I_{2m+2}\\\\leq I_{2m+1}\\\\leq I_{2m}$（$\\\\sin^n$ 递减）且 $I_{2m+2}/I_{2m}\\\\to 1$（可验证），\n$$\\\\frac{\\\\pi}{2}=I_{2m}\\\\cdot\\\\frac{I_{2m+1}}{I_{2m}}\\\\cdot\\\\frac{1}{I_{2m+1}}\\\\cdot I_{2m}\\\\to\\\\text{...}$$\n（完整推导较复杂，关键步骤：$\\\\prod_{k=1}^m\\\\frac{(2k)^2}{(2k-1)(2k+1)}=\\\\frac{I_{2m}}{I_{2m+1}}\\\\cdot\\\\frac{\\\\pi}{2}\\\\to\\\\frac{\\\\pi}{2}$，因 $I_{2m}/I_{2m+1}\\\\to 1$。）",
+      "gradingRubric": [
+        { "criterion": "正确写出 $I_n$ 的 B/Γ 函数表达式", "points": 3 },
+        { "criterion": "偶次 $I_{2m}$ 和奇次 $I_{2m+1}$ 的化简", "points": 4 },
+        { "criterion": "说明 $I_{2m}/I_{2m+1}\\\\to 1$ 且推导 Wallis 公式的核心步骤", "points": 3 }
+      ],
+      "hints": [
+        "$I_n$ 用 B 函数：$\\\\int_0^{\\\\pi/2}\\\\sin^n\\\\theta=\\\\frac{1}{2}B((n+1)/2,1/2)$，用 $\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$",
+        "Wallis 公式的关键：$I_{2m+2}/I_{2m}=(2m+1)/(2m+2)\\\\to 1$"
+      ],
+      "commonMistakes": [
+        "$(2m-1)!! = 1\\\\cdot 3\\\\cdot 5\\\\cdots(2m-1)$，$(2m)!!=2\\\\cdot 4\\\\cdots(2m)=2^m m!$",
+        "Wallis 公式证明依赖 $I_{2m}/I_{2m+1}\\\\to 1$（夹逼），不能直接代入"
+      ],
+      "tags": ["wallis-formula", "gamma-function", "beta-function", "double-factorial"]
+    },
+    {
+      "id": "pi-ex-008",
+      "knowledgePointId": "euler-integrals",
+      "title": "利用 Γ 函数计算综合积分",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 19 章",
+      "problem": "计算 $\\\\displaystyle I=\\\\int_0^1\\\\left(\\\\ln\\\\frac{1}{x}\\\\right)^n\\,\\\\mathrm{d}x$（$n$ 为正整数）。",
+      "solution": "令 $t=-\\\\ln x$，即 $x=e^{-t}$，$\\\\mathrm{d}x=-e^{-t}\\,\\\\mathrm{d}t$（$x:0\\\\to 1$，$t:+\\\\infty\\\\to 0$）：\n$$I=\\\\int_0^{+\\\\infty}t^n\\\\cdot e^{-t}\\,\\\\mathrm{d}t=\\\\Gamma(n+1)=n!.$$\n（注意 $\\\\ln(1/x)=-\\\\ln x=t>0$ 当 $0<x<1$。）\n\n**结论：** $\\\\displaystyle\\\\int_0^1\\\\left(\\\\ln\\\\frac{1}{x}\\\\right)^n\\,\\\\mathrm{d}x=n!$",
+      "gradingRubric": [
+        { "criterion": "换元 $t=-\\\\ln x$，正确变换积分上下限", "points": 3 },
+        { "criterion": "化为 $\\\\Gamma(n+1)=n!$", "points": 5 },
+        { "criterion": "结论正确", "points": 2 }
+      ],
+      "hints": [
+        "$(\\\\ln(1/x))^n=(-\\\\ln x)^n=t^n$（$t=-\\\\ln x>0$ 对 $0<x<1$）",
+        "换元后积分 $\\\\int_0^{+\\\\infty}t^n e^{-t}\\,\\\\mathrm{d}t=\\\\Gamma(n+1)$"
+      ],
+      "commonMistakes": [
+        "$x=0$ 时 $t=+\\\\infty$，$x=1$ 时 $t=0$，换元后积分上下限反转（加负号后恢复正向）",
+        "$\\\\mathrm{d}x=e^{-t}\\,\\\\mathrm{d}t\\\\cdot(-1)$，负号与上下限互换抵消"
+      ],
+      "tags": ["gamma-function", "substitution", "log-integral", "factorial"]
+    }
+  ]
+}

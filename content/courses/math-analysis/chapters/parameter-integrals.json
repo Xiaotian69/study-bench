@@ -1,0 +1,135 @@
+{
+  "chapterId": "ch-parameter-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "proper-parameter-integral",
+      "title": "含参量正常积分",
+      "chapterId": "ch-parameter-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握含参量正常积分的连续性、可微性和可积性",
+        "能在积分号下求导（Leibniz 法则）",
+        "掌握含参量积分的变限情形（上下限也依赖参数）"
+      ],
+      "coreExplanation": "**含参量正常积分**：$I(\\\\alpha)=\\\\int_a^b f(x,\\\\alpha)\\,\\\\mathrm{d}x$（$\\\\alpha$ 为参数，$a,b$ 固定）。\n**连续性**：若 $f(x,\\\\alpha)$ 在 $[a,b]\\\\times[\\\\alpha_1,\\\\alpha_2]$ 上连续，则 $I(\\\\alpha)$ 在 $[\\\\alpha_1,\\\\alpha_2]$ 上连续（可将 $\\\\lim$ 移入积分）。\n**可微性（Leibniz 积分法则）**：若 $f,f_\\\\alpha$ 在 $[a,b]\\\\times[\\\\alpha_1,\\\\alpha_2]$ 上连续，则 $I(\\\\alpha)$ 可微且\n$$I'(\\\\alpha)=\\\\int_a^b f_\\\\alpha(x,\\\\alpha)\\,\\\\mathrm{d}x.$$\n（积分号下求导：直接对参数 $\\\\alpha$ 求导移入积分。）\n**可积性**：$I(\\\\alpha)$ 在 $[\\\\alpha_1,\\\\alpha_2]$ 上可积，且可交换积分顺序：$\\\\int_{\\\\alpha_1}^{\\\\alpha_2}I(\\\\alpha)\\,\\\\mathrm{d}\\\\alpha=\\\\int_a^b\\,\\\\mathrm{d}x\\\\int_{\\\\alpha_1}^{\\\\alpha_2}f(x,\\\\alpha)\\,\\\\mathrm{d}\\\\alpha$（Fubini 定理，正常积分情形）。\n**变上限情形**：$I(\\\\alpha)=\\\\int_a^{\\\\varphi(\\\\alpha)}f(x,\\\\alpha)\\,\\\\mathrm{d}x$，则 $I'(\\\\alpha)=f(\\\\varphi(\\\\alpha),\\\\alpha)\\\\varphi'(\\\\alpha)+\\\\int_a^{\\\\varphi(\\\\alpha)}f_\\\\alpha(x,\\\\alpha)\\,\\\\mathrm{d}x$。",
+      "textbookRefs": ["数学分析（第5版）下册 §19.1"],
+      "keyDefinitions": [
+        {
+          "term": "Leibniz 积分法则",
+          "definition": "$\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}\\\\alpha}\\\\int_a^b f(x,\\\\alpha)\\,\\\\mathrm{d}x=\\\\int_a^b\\\\frac{\\\\partial f}{\\\\partial\\\\alpha}(x,\\\\alpha)\\,\\\\mathrm{d}x$（条件：$f,f_\\\\alpha$ 连续）"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "**Leibniz 法则**：$I(\\\\alpha+\\\\Delta\\\\alpha)-I(\\\\alpha)=\\\\int_a^b[f(x,\\\\alpha+\\\\Delta\\\\alpha)-f(x,\\\\alpha)]\\,\\\\mathrm{d}x$，由均值定理 $=\\\\int_a^b f_\\\\alpha(x,\\\\alpha+\\\\theta\\\\Delta\\\\alpha)\\\\Delta\\\\alpha\\,\\\\mathrm{d}x$，除以 $\\\\Delta\\\\alpha$ 令 $\\\\Delta\\\\alpha\\\\to 0$，由 $f_\\\\alpha$ 连续得积分极限即 $\\\\int_a^b f_\\\\alpha\\,\\\\mathrm{d}x$。"
+      ],
+      "socraticQuestions": [
+        "$\\\\int_0^1 x^\\\\alpha\\,\\\\mathrm{d}x=1/(\\\\alpha+1)$（$\\\\alpha>-1$），对 $\\\\alpha$ 求导得什么？（$\\\\int_0^1 x^\\\\alpha\\\\ln x\\,\\\\mathrm{d}x=-1/(\\\\alpha+1)^2$。）",
+        "若 $f(x,\\\\alpha)$ 在某点不连续，Leibniz 法则不一定成立——能举出反例吗？",
+        "双重积分 $\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^1 f(x,y)\\,\\\\mathrm{d}y=\\\\int_0^1\\,\\\\mathrm{d}y\\\\int_0^1 f(x,y)\\,\\\\mathrm{d}x$ 是 Fubini 定理，它和含参量积分的可积性有何关系？"
+      ],
+      "commonMistakes": [
+        "Leibniz 法则要求 $f_\\\\alpha$ 连续才能积分号下求导；若不连续需先验证",
+        "变上限 $\\\\varphi(\\\\alpha)$ 时有额外项 $f(\\\\varphi(\\\\alpha),\\\\alpha)\\\\cdot\\\\varphi'(\\\\alpha)$（端点贡献）"
+      ],
+      "exerciseIds": ["pi-ex-001", "pi-ex-002"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能对含参量正常积分在积分号下求导",
+        "能处理变上限含参量积分的导数"
+      ]
+    },
+    {
+      "id": "improper-parameter-integral",
+      "title": "含参量反常积分（一致收敛）",
+      "chapterId": "ch-parameter-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握含参量反常积分一致收敛的定义和判别法",
+        "理解一致收敛的重要性（连续性、可微性的条件）",
+        "掌握 Weierstrass M-检验、Dirichlet/Abel 判别法"
+      ],
+      "coreExplanation": "**含参量反常积分**：$I(\\\\alpha)=\\\\int_a^{+\\\\infty}f(x,\\\\alpha)\\,\\\\mathrm{d}x$（上限为无穷大，或被积函数有奇点）。\n**一致收敛定义**：$I(\\\\alpha)$ 在 $[\\\\alpha_1,\\\\alpha_2]$ 上**一致收敛** $\\\\iff$ $\\\\forall\\\\varepsilon>0,\\\\,\\\\exists A_0$，当 $A>A_0$ 时，对所有 $\\\\alpha\\\\in[\\\\alpha_1,\\\\alpha_2]$ 均有 $\\\\left|\\\\int_A^{+\\\\infty}f(x,\\\\alpha)\\,\\\\mathrm{d}x\\\\right|<\\\\varepsilon$（尾部对参数一致小）。\n**判别法**：\n- **Weierstrass M-检验**：若 $|f(x,\\\\alpha)|\\\\leq M(x)$ 且 $\\\\int_a^{+\\\\infty}M(x)\\,\\\\mathrm{d}x<\\\\infty$，则一致收敛（绝对且一致）。\n- **Dirichlet 判别法**：若 $F(x,\\\\alpha)=\\\\int_a^x f(t,\\\\alpha)\\,\\\\mathrm{d}t$ 一致有界，$g(x,\\\\alpha)$ 对 $x$ 单调趋零且一致，则 $\\\\int f\\\\cdot g$ 一致收敛。\n- **Abel 判别法**：若 $\\\\int f(x,\\\\alpha)$ 一致收敛，$g(x,\\\\alpha)$ 对 $x$ 单调且关于 $\\\\alpha$ 一致有界，则 $\\\\int f\\\\cdot g$ 一致收敛。\n**一致收敛的性质**：\n- **连续性**：若 $f(x,\\\\alpha)$ 连续且 $I(\\\\alpha)$ 一致收敛，则 $I(\\\\alpha)$ 连续。\n- **可微性**：若 $f_\\\\alpha$ 连续且 $\\\\int f_\\\\alpha$ 一致收敛，则 $I'(\\\\alpha)=\\\\int f_\\\\alpha\\,\\\\mathrm{d}x$（积分号下求导）。\n- **可积性**：一致收敛时可交换积分顺序。",
+      "textbookRefs": ["数学分析（第5版）下册 §19.2"],
+      "keyDefinitions": [
+        {
+          "term": "含参量反常积分一致收敛",
+          "definition": "$I(\\\\alpha)=\\\\int_a^{+\\\\infty}f\\,\\\\mathrm{d}x$ 在 $\\\\Lambda$ 上一致收敛：$\\\\forall\\\\varepsilon>0,\\\\,\\\\exists A_0$ 与 $\\\\alpha$ 无关，当 $A>A_0$ 时 $\\\\sup_{\\\\alpha\\\\in\\\\Lambda}|\\\\int_A^{+\\\\infty}f\\,\\\\mathrm{d}x|<\\\\varepsilon$"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Weierstrass M-检验（含参量反常积分）",
+          "statement": "$|f(x,\\\\alpha)|\\\\leq M(x)$，$\\\\int M<\\\\infty$ $\\\\Rightarrow$ $\\\\int f(x,\\\\alpha)\\,\\\\mathrm{d}x$ 一致收敛",
+          "significance": "最常用的一致收敛判别法，与函数级数的 M-检验完全类比"
+        }
+      ],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "Dirichlet 积分 $\\\\int_0^{+\\\\infty}\\\\sin x/x\\,\\\\mathrm{d}x$ 收敛，但不是一致收敛——对 $\\\\alpha\\\\in(0,+\\\\infty)$ 中 $\\\\int_0^{+\\\\infty}(\\\\sin(\\\\alpha x)/x)\\,\\\\mathrm{d}x$ 在 $\\\\alpha\\\\to 0$ 处是否连续？",
+        "$\\\\int_0^{+\\\\infty}e^{-\\\\alpha x}\\,\\\\mathrm{d}x$ 对 $\\\\alpha\\\\geq\\\\alpha_0>0$ 一致收敛，但对 $\\\\alpha>0$ 不一致收敛——为什么区间的开闭影响一致性？",
+        "能否不加一致收敛条件就交换积分顺序？举出反例。"
+      ],
+      "commonMistakes": [
+        "非一致收敛时积分号下求导可能失效，要先验证一致收敛",
+        "Dirichlet 判别法要求 $g\\\\to 0$ 且单调——两个条件缺一不可"
+      ],
+      "exerciseIds": ["pi-ex-003", "pi-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用 Weierstrass M-检验判断含参量反常积分的一致收敛性",
+        "理解一致收敛是积分号下求导和换序的前提"
+      ]
+    },
+    {
+      "id": "euler-integrals",
+      "title": "欧拉积分（B 函数和 Γ 函数）",
+      "chapterId": "ch-parameter-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握 B 函数和 Γ 函数的定义及其收敛条件",
+        "掌握 B 函数和 Γ 函数之间的关系 $B(p,q)=\\\\Gamma(p)\\\\Gamma(q)/\\\\Gamma(p+q)$",
+        "能用欧拉积分计算实际积分"
+      ],
+      "coreExplanation": "**Γ 函数**：$\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$（$s>0$）。\n主要性质：$\\\\Gamma(s+1)=s\\\\Gamma(s)$，$\\\\Gamma(1)=1$，$\\\\Gamma(n+1)=n!$，$\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$。\n\n**B 函数**：$B(p,q)=\\\\int_0^1 t^{p-1}(1-t)^{q-1}\\,\\\\mathrm{d}t$（$p,q>0$）。\n对称性：$B(p,q)=B(q,p)$。等价表示：$B(p,q)=\\\\int_0^{+\\\\infty}\\\\frac{u^{p-1}}{(1+u)^{p+q}}\\,\\\\mathrm{d}u$（令 $t=u/(1+u)$）。\n\n**核心关系式**：$B(p,q)=\\\\dfrac{\\\\Gamma(p)\\\\Gamma(q)}{\\\\Gamma(p+q)}$。\n\n**应用**：\n- $\\\\int_0^{\\\\pi/2}\\\\sin^{2m-1}\\\\theta\\\\cos^{2n-1}\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{1}{2}B(m,n)=\\\\frac{\\\\Gamma(m)\\\\Gamma(n)}{2\\\\Gamma(m+n)}$。\n- Wallis 公式 $\\\\int_0^{\\\\pi/2}\\\\sin^n\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{\\\\sqrt{\\\\pi}}{2}\\\\cdot\\\\frac{\\\\Gamma((n+1)/2)}{\\\\Gamma(n/2+1)}$。\n- 高斯积分 $\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x=\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$（令 $x^2=t$）。",
+      "textbookRefs": ["数学分析（第5版）下册 §19.3"],
+      "keyDefinitions": [
+        {
+          "term": "B 函数（Beta 函数）",
+          "definition": "$B(p,q)=\\\\int_0^1 t^{p-1}(1-t)^{q-1}\\,\\\\mathrm{d}t$（$p,q>0$），是含参量反常积分"
+        },
+        {
+          "term": "Γ 函数（Gamma 函数）",
+          "definition": "$\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$（$s>0$），阶乘的连续推广"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "B-Γ 关系式",
+          "statement": "$B(p,q)=\\\\Gamma(p)\\\\Gamma(q)/\\\\Gamma(p+q)$",
+          "significance": "把 B 函数的计算归结为 Γ 函数（阶乘），大幅简化含幂函数的积分计算"
+        }
+      ],
+      "proofIdeas": [
+        "**B-Γ 关系推导思路**：$\\\\Gamma(p)\\\\Gamma(q)=\\\\int_0^{+\\\\infty}\\\\int_0^{+\\\\infty}x^{p-1}y^{q-1}e^{-(x+y)}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$，令 $x=st,y=s(1-t)$（$s=x+y\\\\in[0,\\\\infty),t=x/(x+y)\\\\in[0,1]$），Jacobi 行列式 $J=s$，积分分解为 $\\\\Gamma(p+q)\\\\cdot B(p,q)$。"
+      ],
+      "socraticQuestions": [
+        "$\\\\int_0^1 x^3(1-x)^5\\,\\\\mathrm{d}x=B(4,6)=\\\\Gamma(4)\\\\Gamma(6)/\\\\Gamma(10)=3!\\\\cdot 5!/9!=6\\\\cdot 120/362880=720/362880=1/504$——你能验证吗？",
+        "$\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$ 如何推出？（利用高斯积分 $\\\\int_{-\\\\infty}^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x=\\\\sqrt{\\\\pi}$。）",
+        "$B(p,q)=B(q,p)$ 的证明：令 $t\\\\to 1-t$ 即可。这是什么对称性？"
+      ],
+      "commonMistakes": [
+        "$B(p,q)$ 中 $p,q>0$，指数 $p-1,q-1$ 可以为负（但需积分收敛，即 $p,q>0$）",
+        "$\\\\Gamma(s+1)=s!$ 仅对正整数 $s$ 成立；非整数 $s$ 时 $\\\\Gamma(s)$ 是阶乘的推广"
+      ],
+      "exerciseIds": ["pi-ex-005", "pi-ex-006", "pi-ex-007", "pi-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能将积分化为 B 函数或 Γ 函数的标准形式并计算",
+        "能利用 B-Γ 关系式和递推公式 $\\\\Gamma(s+1)=s\\\\Gamma(s)$ 化简"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "chapterId": "ch-parameter-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "gamma-function-diagram",
+      "title": "Γ 函数图像",
+      "description": "绘制 $\\Gamma(s)$ 在 $s\\in(0,4]$ 上的图像（实线）。标注关键点：$\\Gamma(1)=1$，$\\Gamma(2)=1$，$\\Gamma(3)=2$，$\\Gamma(4)=6$，$\\Gamma(1/2)=\\sqrt{\\pi}\\approx 1.772$。曲线在 $s\\in(0,1)$ 急剧下降，在 $s=1$ 处取值 $1$，$s>1$ 后递增（向上凸起）。虚线延伸展示递推关系 $\\Gamma(s+1)=s\\Gamma(s)$：从 $(1,1)$ 经 $(2,1)$ 到 $(3,2)$ 再到 $(4,6)$，相邻点纵坐标比为 $n$。右上角小图：$\\Gamma(1/2)=\\sqrt{\\pi}$ 与高斯积分 $\\int_0^{+\\infty}e^{-t^2}\\mathrm{d}t=\\sqrt{\\pi}/2$ 的对应关系标注。",
+      "mathContext": "Γ 函数是阶乘在正实数上的推广：$\\Gamma(n+1)=n!$ 对正整数 $n$ 成立。图像在 $s\\to 0^+$ 和 $s\\to+\\infty$ 时均趋向无穷大，在 $(1,2)$ 之间有唯一极小值（约 $\\Gamma(1.46)\\approx 0.886$）。递推关系 $\\Gamma(s+1)=s\\Gamma(s)$ 使得各正整数点的值恰好是阶乘序列。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["euler-integrals"],
+      "layout": "single",
+      "annotations": [
+        { "panel": "main", "label": "$\\Gamma(1/2)=\\sqrt{\\pi}$", "note": "半整数值来自高斯积分" },
+        { "panel": "main", "label": "整数点：$\\Gamma(n+1)=n!$", "note": "与阶乘的对应关系" }
+      ]
+    }
+  ]
+}
