@@ -1,0 +1,163 @@
+{
+  "chapterId": "ch-implicit-function-theorem",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "implicit-function",
+      "title": "隐函数定理",
+      "chapterId": "ch-implicit-function-theorem",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握隐函数存在唯一性定理（一个方程的情形）",
+        "理解隐函数定理的条件和结论",
+        "能用隐函数定理求偏导数"
+      ],
+      "coreExplanation": "**隐函数定理（一个方程）**：设 $F(x_0,y_0)=0$，在 $(x_0,y_0)$ 的邻域内 $F_x,F_y$ 连续，且 $F_y(x_0,y_0)\\\\neq 0$，则：\n1. 在 $x_0$ 的某邻域 $I$ 内存在唯一的连续函数 $y=f(x)$，使 $F(x,f(x))=0$，$f(x_0)=y_0$。\n2. $f$ 在 $I$ 内有连续导数：$f'(x)=-F_x/F_y$。\n**三元情形**：$F(x,y,z)=0$，$F_z(P_0)\\\\neq 0$，则局部确定 $z=f(x,y)$，\n$$\\\\frac{\\\\partial z}{\\\\partial x}=-\\\\frac{F_x}{F_z},\\\\quad\\\\frac{\\\\partial z}{\\\\partial y}=-\\\\frac{F_y}{F_z}.$$\n**理解要点**：定理是**存在性**定理（保证局部存在），不给出全局的显式 $y=f(x)$。条件 $F_y\\\\neq 0$ 防止\"切线竖直\"（曲线 $F=0$ 在该点局部有单值图象）。\n**一阶近似**：在 $(x_0,y_0)$ 附近，隐函数 $y\\\\approx y_0-\\\\frac{F_x(x_0,y_0)}{F_y(x_0,y_0)}(x-x_0)$（线性近似）。",
+      "textbookRefs": ["数学分析（第5版）下册 §18.1"],
+      "keyDefinitions": [
+        {
+          "term": "隐函数",
+          "definition": "由方程 $F(x,y)=0$ 隐式定义的函数 $y=f(x)$（区别于显式定义 $y=g(x)$）"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "隐函数存在唯一性定理",
+          "statement": "$F(x_0,y_0)=0$，$F_y(x_0,y_0)\\\\neq 0$，$F_x,F_y$ 在 $P_0$ 邻域连续，则局部存在唯一可微的隐函数 $y=f(x)$，$f'=-F_x/F_y$",
+          "significance": "将隐函数的存在性和微分规则系统化；是反函数定理和正则曲面理论的基础"
+        }
+      ],
+      "proofIdeas": [
+        "**证明思路（构造+压缩映射）**：将 $F(x,y)=0$ 改写为 $y=y-\\\\lambda F(x,y)$（适当 $\\\\lambda$），用压缩映射定理在 $(x_0,y_0)$ 附近得到唯一不动点 $y=f(x)$。微分性由链式法则直接得出。"
+      ],
+      "socraticQuestions": [
+        "单位圆 $x^2+y^2=1$ 在 $(0,1)$ 处 $F_y=2y=2\\\\neq 0$，可以定义 $y=f(x)$；在 $(1,0)$ 处 $F_y=0$，能定义 $y=f(x)$ 吗？能定义 $x=g(y)$ 吗？",
+        "若 $F_y(x_0,y_0)=0$ 但 $F_x(x_0,y_0)\\\\neq 0$，能否改用 $x=g(y)$？",
+        "隐函数定理给出\"局部\"存在性——为何不能保证\"全局\"（即 $y=f(x)$ 在整个 $\\\\mathbb{R}$ 上存在）？"
+      ],
+      "commonMistakes": [
+        "隐函数导数公式有负号：$y'=-F_x/F_y$（不是 $F_x/F_y$）",
+        "公式中 $F_y\\\\neq 0$ 是前提，不满足时公式无效"
+      ],
+      "exerciseIds": ["ift-ex-001", "ift-ex-002"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能应用隐函数定理验证隐函数存在并求其导数",
+        "能判断在哪些点隐函数定理的条件满足"
+      ]
+    },
+    {
+      "id": "implicit-function-system",
+      "title": "方程组确定的隐函数",
+      "chapterId": "ch-implicit-function-theorem",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握由方程组确定隐函数的条件（Jacobi 行列式）",
+        "能用 Jacobi 矩阵方法求偏导数",
+        "理解 Jacobi 行列式与变量变换的关系"
+      ],
+      "coreExplanation": "**方程组隐函数定理**：设方程组 $\\\\begin{cases}F(x,y,u,v)=0\\\\\\\\G(x,y,u,v)=0\\\\end{cases}$，在 $P_0=(x_0,y_0,u_0,v_0)$ 处满足 $F,G,F_u,F_v,G_u,G_v$ 连续，且 **Jacobi 行列式**\n$$J=\\\\frac{\\\\partial(F,G)}{\\\\partial(u,v)}=\\\\begin{vmatrix}F_u&F_v\\\\\\\\G_u&G_v\\\\end{vmatrix}\\\\neq 0,$$\n则在 $P_0$ 邻域内唯一确定可微函数 $u=u(x,y),v=v(x,y)$，且\n$$\\\\frac{\\\\partial u}{\\\\partial x}=-\\\\frac{1}{J}\\\\begin{vmatrix}F_x&F_v\\\\\\\\G_x&G_v\\\\end{vmatrix},\\\\quad\\\\frac{\\\\partial v}{\\\\partial x}=-\\\\frac{1}{J}\\\\begin{vmatrix}F_u&F_x\\\\\\\\G_u&G_x\\\\end{vmatrix}.$$\n（Cramer 法则替换对应列。）\n**实用方法（全微分法）**：两方程分别求全微分，得含 $\\\\mathrm{d}u,\\\\mathrm{d}v$ 的线性方程组，用 Cramer 法则或消元法解出。\n**Jacobi 矩阵**：$J_f=\\\\partial(f_1,\\\\ldots,f_m)/\\\\partial(x_1,\\\\ldots,x_n)$，是链式法则和变量变换的核心工具。",
+      "textbookRefs": ["数学分析（第5版）下册 §18.2"],
+      "keyDefinitions": [
+        {
+          "term": "Jacobi 行列式",
+          "definition": "$J=\\\\partial(F,G)/\\\\partial(u,v)=\\\\det\\\\begin{pmatrix}F_u&F_v\\\\\\\\G_u&G_v\\\\end{pmatrix}$，非零是方程组确定隐函数的充分条件"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "**全微分法实例**：对 $F(x,y,u,v)=0$，两边全微分：$F_x\\,\\\\mathrm{d}x+F_y\\,\\\\mathrm{d}y+F_u\\,\\\\mathrm{d}u+F_v\\,\\\\mathrm{d}v=0$，类似 $G$。将 $\\\\mathrm{d}u,\\\\mathrm{d}v$ 移到右边，令系数矩阵为 Jacobi 行列式，用 Cramer 法则解出 $\\\\mathrm{d}u,\\\\mathrm{d}v$ 的系数即偏导数。"
+      ],
+      "socraticQuestions": [
+        "若方程组中有 $3$ 个方程 $3$ 个未知数，Jacobi 行列式是 $3\\\\times 3$ 的吗？",
+        "全微分法和 Jacobi 行列式法在计算中哪个更简便？（通常全微分法更直接。）",
+        "Jacobi 行列式 $J\\\\neq 0$ 的几何含义：变量变换 $(u,v)\\\\leftrightarrow(x,y)$ 是局部双射（不\"压缩\"面积到零）。"
+      ],
+      "commonMistakes": [
+        "全微分法中 $\\\\mathrm{d}x,\\\\mathrm{d}y$ 是自变量（独立），$\\\\mathrm{d}u,\\\\mathrm{d}v$ 是因变量，线性方程组的未知数是 $\\\\mathrm{d}u,\\\\mathrm{d}v$",
+        "Jacobi 行列式是 $F,G$ 对 $(u,v)$ 的偏导（被确定的变量），不是对 $(x,y)$ 的偏导"
+      ],
+      "exerciseIds": ["ift-ex-003"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用全微分法求方程组确定的隐函数的偏导数",
+        "能计算 Jacobi 行列式并判断隐函数的存在性"
+      ]
+    },
+    {
+      "id": "geometric-applications",
+      "title": "隐函数定理的几何应用",
+      "chapterId": "ch-implicit-function-theorem",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "能求平面曲线的切线和法线方程",
+        "能求空间曲线的切线和法平面方程",
+        "能求空间曲面的切平面和法线方程"
+      ],
+      "coreExplanation": "**平面曲线 $F(x,y)=0$ 的切线/法线（$(x_0,y_0)$ 处）：**\n- 切线方向：$(1,-F_x/F_y)$（若 $F_y\\\\neq 0$），即斜率 $k=-F_x/F_y$。\n- 切线方程：$F_x(x_0,y_0)(x-x_0)+F_y(x_0,y_0)(y-y_0)=0$。\n- 法线：斜率为 $F_y/F_x$，方向为 $(F_x,F_y)=\\\\nabla F$（梯度方向）。\n**空间曲面 $F(x,y,z)=0$ 在 $(x_0,y_0,z_0)$ 处：**\n- **法向量**：$\\\\boldsymbol{n}=(F_x,F_y,F_z)$（梯度向量）。\n- **切平面**：$F_x(x-x_0)+F_y(y-y_0)+F_z(z-z_0)=0$。\n- **法线**：$\\\\dfrac{x-x_0}{F_x}=\\\\dfrac{y-y_0}{F_y}=\\\\dfrac{z-z_0}{F_z}$。\n**空间曲线**（参数式 $\\\\boldsymbol{r}(t)=(x(t),y(t),z(t))$ 在 $t_0$ 处）：\n- 切向量：$\\\\boldsymbol{r}'(t_0)=(x'(t_0),y'(t_0),z'(t_0))$。\n- 切线：$\\\\dfrac{x-x_0}{x'}=\\\\dfrac{y-y_0}{y'}=\\\\dfrac{z-z_0}{z'}$。\n- 法平面：$x'(x-x_0)+y'(y-y_0)+z'(z-z_0)=0$（过 $P_0$，垂直切向量）。\n**曲线由方程组确定** $F(x,y,z)=0,G(x,y,z)=0$：切向量 $=\\\\nabla F\\\\times\\\\nabla G$（两曲面法向量的叉积）。",
+      "textbookRefs": ["数学分析（第5版）下册 §18.3"],
+      "keyDefinitions": [
+        {
+          "term": "曲面的切平面",
+          "definition": "曲面 $F(x,y,z)=0$ 在 $P_0$ 处所有切线构成的平面，法向量为 $\\\\nabla F(P_0)$"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "球面 $x^2+y^2+z^2=R^2$ 在 $(R,0,0)$ 处的法向量是什么？切平面方程是什么？",
+        "圆柱面 $x^2+y^2=1$ 沿母线 $z$ 方向无法定义法线（法向量的 $z$ 分量为零），这与切平面有什么关系？",
+        "曲面 $z=f(x,y)$ 改写为 $F(x,y,z)=f(x,y)-z=0$，法向量 $\\\\nabla F=(f_x,f_y,-1)$——与之前学的切平面一致吗？"
+      ],
+      "commonMistakes": [
+        "切平面法向量是 $\\\\nabla F$（不是 $-\\\\nabla F$），两者都垂直于切平面，方向不同",
+        "空间曲线的切线方向是 $\\\\nabla F\\\\times\\\\nabla G$（两法向量叉积），不是 $\\\\nabla F$ 或 $\\\\nabla G$ 本身"
+      ],
+      "exerciseIds": ["ift-ex-004", "ift-ex-005"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能求给定曲面在指定点的切平面和法线方程",
+        "能求空间曲线在指定点的切线和法平面方程"
+      ]
+    },
+    {
+      "id": "conditional-extrema",
+      "title": "条件极值与 Lagrange 乘数法",
+      "chapterId": "ch-implicit-function-theorem",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解条件极值的概念和与无条件极值的区别",
+        "掌握 Lagrange 乘数法",
+        "能将实际优化问题建模并求解"
+      ],
+      "coreExplanation": "**条件极值**：求 $f(x,y)$ 在约束 $g(x,y)=0$ 下的极值。\n**几何直觉**：极值点处，$\\\\nabla f$ 与 $\\\\nabla g$（约束曲线法向量）平行（即 $f$ 的等值线与约束曲线相切）。\n**Lagrange 乘数法**：引入参数 $\\\\lambda$（Lagrange 乘子），极值点满足\n$$\\\\nabla f=\\\\lambda\\\\nabla g,\\\\quad g(x,y)=0,$$\n即三个方程：$f_x=\\\\lambda g_x$，$f_y=\\\\lambda g_y$，$g=0$。\n**多约束推广**：两约束 $g_1=0,g_2=0$，引入两乘子 $\\\\lambda_1,\\\\lambda_2$：$\\\\nabla f=\\\\lambda_1\\\\nabla g_1+\\\\lambda_2\\\\nabla g_2$。\n**实际判断极值**：Lagrange 方程的解是**候选极值点**，需比较所有候选点的函数值，最大/最小值即为极值（若问题有界则最值一定取到）。\n**典型应用**：等周问题（给定周长求最大面积），最短距离，椭圆上的极值，生产计划优化。",
+      "textbookRefs": ["数学分析（第5版）下册 §18.4"],
+      "keyDefinitions": [
+        {
+          "term": "Lagrange 乘数法",
+          "definition": "求 $f$ 在约束 $g=0$ 下极值：令 $\\\\nabla f=\\\\lambda\\\\nabla g$（乘以参数 $\\\\lambda$），联立 $g=0$ 求解"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "**Lagrange 条件推导**：约束曲线 $g=0$ 上的极值点 $P_0$，曲线在 $P_0$ 处的切向量 $\\\\boldsymbol{t}$ 满足 $\\\\mathrm{d}g(\\\\boldsymbol{t})=\\\\nabla g\\\\cdot\\\\boldsymbol{t}=0$；极值条件 $\\\\mathrm{d}f(\\\\boldsymbol{t})=0$ 意味着 $\\\\nabla f\\\\cdot\\\\boldsymbol{t}=0$，即 $\\\\nabla f\\\\perp\\\\boldsymbol{t}$。由 $\\\\nabla g\\\\perp\\\\boldsymbol{t}$ 和 $\\\\nabla f\\\\perp\\\\boldsymbol{t}$（均在二维空间中），两者共线：$\\\\nabla f=\\\\lambda\\\\nabla g$。"
+      ],
+      "socraticQuestions": [
+        "在约束 $x+y=1$ 下最大化 $xy$，Lagrange 方程是什么？解是什么？",
+        "若约束是不等式 $g(x,y)\\\\leq 0$，Lagrange 方法如何处理（KKT 条件）？",
+        "Lagrange 方程只给出**候选点**，如何判断是最大值还是最小值？（比较候选点函数值。）"
+      ],
+      "commonMistakes": [
+        "Lagrange 方程的解不一定都是极值点（可能是边界情形），需代入比较函数值",
+        "问题中的 $\\\\lambda$ 是辅助变量，最终结果中不需要 $\\\\lambda$ 的值（除非题目要求）"
+      ],
+      "exerciseIds": ["ift-ex-006", "ift-ex-007", "ift-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用 Lagrange 乘数法建立方程组并求解条件极值",
+        "能将等周问题、距离最短问题等建模为条件极值"
+      ]
+    }
+  ]
+}

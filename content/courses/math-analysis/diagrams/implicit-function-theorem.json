@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-implicit-function-theorem",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "lagrange-geometric-diagram",
+      "title": "Lagrange 乘数法的几何直觉",
+      "description": "以二维情形为例：目标函数 $f(x,y)=x^2+y^2$（同心圆等值线 $f=1,4,9$），约束曲线 $g(x,y)=x+2y-3=0$（直线）。图中画出：等值线族（虚线圆）、约束直线（实线）、以及最优点 $P^*$ 处的两个梯度向量 $\\nabla f$ 和 $\\nabla g$。在最优点处，$\\nabla f \\parallel \\nabla g$（两向量方向相同或相反），等值线与约束线相切。标注：非最优点（$\\nabla f$ 与 $\\nabla g$ 不平行，等值线穿过约束线），最优点（切点，$\\nabla f=\\lambda\\nabla g$）。",
+      "mathContext": "Lagrange 条件 $\\nabla f=\\lambda\\nabla g$ 的几何意义：在约束曲线上，目标函数的等值线与约束曲线相切时取到极值——此时沿约束曲线的方向导数为零（即 $\\nabla f$ 在约束切线方向上的分量为零，因此 $\\nabla f\\perp$ 约束切线，但 $\\nabla g$ 也 $\\perp$ 约束切线，所以两者共线）。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["conditional-extrema"],
+      "layout": "single",
+      "annotations": [
+        { "panel": "main", "label": "等值线族（$f=c$）", "note": "从内到外 $f$ 增大" },
+        { "panel": "main", "label": "最优点 $P^*$", "note": "$\\nabla f \\parallel \\nabla g$，等值线与约束线相切" },
+        { "panel": "main", "label": "约束 $g=0$", "note": "可行域（直线/曲线）" }
+      ]
+    }
+  ]
+}

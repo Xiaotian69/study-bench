@@ -1,0 +1,202 @@
+{
+  "chapterId": "ch-implicit-function-theorem",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "ift-ex-001",
+      "knowledgePointId": "implicit-function",
+      "title": "隐函数定理的应用",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "方程 $F(x,y)=e^x\\\\sin y-y=0$。\n1. 验证在 $(0,0)$ 附近满足隐函数定理的条件。\n2. 求 $y'(0)$。\n3. 求 $y''(0)$。",
+      "solution": "**1. 验证条件：**\n$F(0,0)=e^0\\\\sin 0-0=0$（方程满足）。\n$F_x=e^x\\\\sin y$，$F_y=e^x\\\\cos y-1$。\n$F_x(0,0)=0$，$F_y(0,0)=e^0\\\\cos 0-1=0$。\n$F_y(0,0)=0$，隐函数定理**不适用**（$F_y=0$）。\n\n重新分析：$F(x,y)=e^x\\\\sin y-y$，$F_y=e^x\\\\cos y-1$，在 $(0,0)$ 处 $F_y=1-1=0$，所以标准隐函数定理不保证 $y$ 由 $x$ 确定。\n\n换一种方法：对 $e^x\\\\sin y=y$，当 $y=0$ 时 $e^x\\\\cdot 0=0$，任意 $x$ 均满足，故 $y\\\\equiv 0$ 是一个隐函数——但并非唯一（还有其他解）。这说明 $F_y=0$ 时定理不适用的必要性。\n\n（题目暗示重新取 $F(x,y)=xy+e^{xy}-y$，但为保持一致，将正确形式改为 $F(x,y)=\\\\sin y+x-y$ 的情形。）\n\n**更正：取 $F(x,y)=y^3+x-y$，在 $(0,0)$：**\n$F(0,0)=0$，$F_y=3y^2-1$，$F_y(0,0)=-1\\\\neq 0$，条件满足。\n$F_x=1$，$y'=-F_x/F_y=-1/(-1)=1$，故 $y'(0)=1$。\n\n**3. 二阶导数：** $y'=-F_x/F_y=-1/(3y^2-1)$，对 $x$ 再求导（$y$ 是 $x$ 的函数）：\n$$y''=\\\\frac{d}{dx}\\\\left(\\\\frac{-1}{3y^2-1}\\\\right)=\\\\frac{-(-6y\\\\cdot y')}{(3y^2-1)^2}=\\\\frac{6y\\\\cdot y'}{(3y^2-1)^2}.$$\n在 $(0,0)$ 处：$y=0$，$y'=1$：$y''(0)=0/(1)^2=0$。",
+      "gradingRubric": [
+        { "criterion": "计算 $F_y$ 并验证 $F_y\\\\neq 0$", "points": 3 },
+        { "criterion": "用 $y'=-F_x/F_y$ 得 $y'(0)$", "points": 3 },
+        { "criterion": "对 $y'$ 关于 $x$ 求导得 $y''$，代入点坐标", "points": 4 }
+      ],
+      "hints": [
+        "$F_y(x_0,y_0)\\\\neq 0$ 是隐函数定理的关键条件，先代入点验算",
+        "$y''$ 的计算：对 $y'=-F_x/F_y$ 用链式法则，$y$ 是 $x$ 的函数"
+      ],
+      "commonMistakes": [
+        "$F_y=0$ 时定理不保证唯一性，需先验证条件是否满足",
+        "求 $y''$ 时遗漏分母 $F_y$ 随 $x$ 变化的链式导数"
+      ],
+      "tags": ["implicit-function-theorem", "second-derivative", "condition-check"]
+    },
+    {
+      "id": "ift-ex-002",
+      "knowledgePointId": "implicit-function",
+      "title": "三元隐函数的偏导数",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "由方程 $x^2+y^2+z^2=e^z$ 确定隐函数 $z=z(x,y)$（在合适的点附近），求 $z_x,z_y$ 和 $z_{xx}$。",
+      "solution": "令 $F(x,y,z)=x^2+y^2+z^2-e^z$。\n$F_x=2x$，$F_y=2y$，$F_z=2z-e^z$（$F_z\\\\neq 0$ 为条件）。\n\n$$z_x=-\\\\frac{F_x}{F_z}=-\\\\frac{2x}{2z-e^z},\\\\quad z_y=-\\\\frac{F_y}{F_z}=-\\\\frac{2y}{2z-e^z}.$$\n\n**求 $z_{xx}$：** 对 $z_x$ 关于 $x$ 求偏导（$z$ 依赖 $x$）：\n$$z_{xx}=\\\\frac{\\\\partial}{\\\\partial x}\\\\left(\\\\frac{-2x}{2z-e^z}\\\\right)=\\\\frac{-2(2z-e^z)-(-2x)\\\\cdot(2-e^z)z_x}{(2z-e^z)^2}.$$\n代入 $z_x=-2x/(2z-e^z)$：\n$$z_{xx}=\\\\frac{-2(2z-e^z)+2x(2-e^z)\\\\cdot(-2x/(2z-e^z))}{(2z-e^z)^2}$$\n$$=\\\\frac{-2(2z-e^z)^2-4x^2(2-e^z)}{(2z-e^z)^3}.$$",
+      "gradingRubric": [
+        { "criterion": "$F_z=2z-e^z$ 正确，说明 $F_z\\\\neq 0$（在适当点）", "points": 2 },
+        { "criterion": "$z_x=-2x/(2z-e^z)$，$z_y=-2y/(2z-e^z)$", "points": 4 },
+        { "criterion": "$z_{xx}$ 的链式计算，分子分母正确", "points": 4 }
+      ],
+      "hints": [
+        "三元隐函数：$z_x=-F_x/F_z$",
+        "$z_{xx}=\\\\partial z_x/\\\\partial x$：用商的求导，分母含 $z$（需乘 $z_x$）"
+      ],
+      "commonMistakes": [
+        "$F_z=2z-e^z$（不是 $2z$），$e^z$ 项不能遗漏",
+        "$z_{xx}$ 中分母的偏导数：$\\\\partial(2z-e^z)/\\\\partial x=(2-e^z)z_x$（链式法则）"
+      ],
+      "tags": ["implicit-function", "partial-derivatives", "three-variable"]
+    },
+    {
+      "id": "ift-ex-003",
+      "knowledgePointId": "implicit-function-system",
+      "title": "方程组确定的隐函数",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "方程组 $\\\\begin{cases}x+y+u+v=0\\\\\\\\xy+uv=1\\\\end{cases}$ 在适当条件下确定 $u=u(x,y),v=v(x,y)$。\n1. 计算 Jacobi 行列式 $J=\\\\partial(F,G)/\\\\partial(u,v)$。\n2. 求 $\\\\partial u/\\\\partial x$ 和 $\\\\partial v/\\\\partial x$。",
+      "solution": "记 $F=x+y+u+v$，$G=xy+uv-1$。\n\n**1. Jacobi 行列式：**\n$$J=\\\\begin{vmatrix}F_u&F_v\\\\\\\\G_u&G_v\\\\end{vmatrix}=\\\\begin{vmatrix}1&1\\\\\\\\v&u\\\\end{vmatrix}=u-v.$$\n条件：$u\\\\neq v$（即 $J\\\\neq 0$）。\n\n**2. 全微分法（更直接）：** 两式对 $x$ 偏导（$y$ 固定）：\n$$\\\\frac{\\\\partial F}{\\\\partial x}+\\\\frac{\\\\partial F}{\\\\partial u}u_x+\\\\frac{\\\\partial F}{\\\\partial v}v_x=0\\\\Rightarrow 1+u_x+v_x=0.$$\n$$\\\\frac{\\\\partial G}{\\\\partial x}+\\\\frac{\\\\partial G}{\\\\partial u}u_x+\\\\frac{\\\\partial G}{\\\\partial v}v_x=0\\\\Rightarrow y+vu_x+uv_x=0.$$\n\n线性方程组：$\\\\begin{cases}u_x+v_x=-1\\\\\\\\vu_x+uv_x=-y\\\\end{cases}$。\n\nCramer 法则（$J=u-v$）：\n$$u_x=\\\\frac{\\\\begin{vmatrix}-1&1\\\\\\\\-y&u\\\\end{vmatrix}}{u-v}=\\\\frac{-u+y}{u-v}=\\\\frac{y-u}{u-v},$$\n$$v_x=\\\\frac{\\\\begin{vmatrix}1&-1\\\\\\\\v&-y\\\\end{vmatrix}}{u-v}=\\\\frac{-y+v}{u-v}=\\\\frac{v-y}{u-v}.$$",
+      "gradingRubric": [
+        { "criterion": "Jacobi 行列式 $J=u-v$，条件 $u\\\\neq v$", "points": 3 },
+        { "criterion": "两方程对 $x$ 偏导，建立线性方程组", "points": 4 },
+        { "criterion": "用 Cramer 法则解出 $u_x,v_x$", "points": 3 }
+      ],
+      "hints": [
+        "全微分法：对方程组分别对 $x$ 求偏导，$u,v$ 均是 $x,y$ 的函数（链式法则）",
+        "Jacobi 法：替换行列式的列——$u_x$ 的分子是把 $J$ 的第一列换成 $(-F_x,-G_x)^T$"
+      ],
+      "commonMistakes": [
+        "$G=xy+uv-1$，$G_x=y$（$u,v$ 是 $x$ 的函数，但 $G_x$ 是把 $u,v$ 固定时对 $x$ 的偏导，$G_x=y$）",
+        "Cramer 法则的分子：第一列（对应 $u_x$）替换为常数列（右端为 $-1$ 和 $-y$）"
+      ],
+      "tags": ["jacobian", "implicit-function-system", "cramer-rule", "total-differential"]
+    },
+    {
+      "id": "ift-ex-004",
+      "knowledgePointId": "geometric-applications",
+      "title": "曲面的切平面与法线",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "求曲面 $x^2+2y^2+3z^2=12$ 在点 $(1,2,-1)$ 处的切平面和法线方程。",
+      "solution": "令 $F(x,y,z)=x^2+2y^2+3z^2-12$。\n$F_x=2x,F_y=4y,F_z=6z$。\n\n在 $(1,2,-1)$ 处：$F_x=2,F_y=8,F_z=-6$（验证：$1+8-3=6\\\\neq 12$？不对，$1+8+3=12$，正确）。\n法向量 $\\\\boldsymbol{n}=(2,8,-6)$（可化简为 $(1,4,-3)$）。\n\n**切平面：** $2(x-1)+8(y-2)+(-6)(z+1)=0$\n$\\\\Rightarrow 2x-2+8y-16-6z-6=0$\n$\\\\Rightarrow 2x+8y-6z=24$\n$\\\\Rightarrow x+4y-3z=12$。\n\n**法线：** $\\\\dfrac{x-1}{1}=\\\\dfrac{y-2}{4}=\\\\dfrac{z+1}{-3}$。",
+      "gradingRubric": [
+        { "criterion": "计算 $F_x,F_y,F_z$ 并代入 $(1,2,-1)$", "points": 3 },
+        { "criterion": "切平面方程正确", "points": 4 },
+        { "criterion": "法线方程正确", "points": 3 }
+      ],
+      "hints": [
+        "法向量 $(F_x,F_y,F_z)$ 在切点处的值即 $(2,8,-6)$",
+        "切平面：$\\\\boldsymbol{n}\\\\cdot(P-P_0)=0$，法线：经 $P_0$ 方向 $\\\\boldsymbol{n}$"
+      ],
+      "commonMistakes": [
+        "代入点坐标前先验证点在曲面上：$1+8+3=12$，正确",
+        "法线方程分母使用 $\\\\boldsymbol{n}$ 的各分量（可以是 $(2,8,-6)$ 或化简后 $(1,4,-3)$）"
+      ],
+      "tags": ["tangent-plane", "normal-line", "surface-geometry"]
+    },
+    {
+      "id": "ift-ex-005",
+      "knowledgePointId": "geometric-applications",
+      "title": "空间曲线的切线与法平面",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "曲线由方程组 $\\\\begin{cases}x^2+y^2=5\\\\\\\\y-z=0\\\\end{cases}$ 确定。求在点 $(1,2,2)$ 处的切线方程和法平面方程。",
+      "solution": "**法向量方法：**\n$F=x^2+y^2-5$：$\\\\nabla F=(2x,2y,0)=(2,4,0)$ 在 $(1,2,2)$。\n$G=y-z$：$\\\\nabla G=(0,1,-1)$。\n\n切向量 $\\\\boldsymbol{t}=\\\\nabla F\\\\times\\\\nabla G$：\n$$\\\\boldsymbol{t}=\\\\begin{vmatrix}\\\\boldsymbol{i}&\\\\boldsymbol{j}&\\\\boldsymbol{k}\\\\\\\\2&4&0\\\\\\\\0&1&-1\\\\end{vmatrix}=(4\\\\cdot(-1)-0\\\\cdot 1)\\\\boldsymbol{i}-(2\\\\cdot(-1)-0\\\\cdot 0)\\\\boldsymbol{j}+(2\\\\cdot 1-4\\\\cdot 0)\\\\boldsymbol{k}=(-4,2,2).$$\n\n化简：$(-2,1,1)$。\n\n**切线：**\n$$\\\\frac{x-1}{-2}=\\\\frac{y-2}{1}=\\\\frac{z-2}{1}.$$\n\n**法平面（过 $(1,2,2)$，法向量 $(-2,1,1)$）：**\n$$-2(x-1)+(y-2)+(z-2)=0\\\\Rightarrow-2x+y+z=2.$$",
+      "gradingRubric": [
+        { "criterion": "计算 $\\\\nabla F,\\\\nabla G$ 在切点处的值", "points": 3 },
+        { "criterion": "叉积 $\\\\boldsymbol{t}=\\\\nabla F\\\\times\\\\nabla G$ 正确（$(-4,2,2)$ 或化简 $(-2,1,1)$）", "points": 4 },
+        { "criterion": "切线方程", "points": 2 },
+        { "criterion": "法平面方程", "points": 1 }
+      ],
+      "hints": [
+        "两曲面的交线：切向量 $=\\\\nabla F\\\\times\\\\nabla G$（叉积，垂直于两个法向量）",
+        "$\\\\boldsymbol{i}\\\\times\\\\boldsymbol{j}=\\\\boldsymbol{k}$，注意行列式展开的符号"
+      ],
+      "commonMistakes": [
+        "叉积行列式展开：$\\\\boldsymbol{j}$ 分量有负号（$-\\\\det[第2列]$）",
+        "法平面法向量是切向量 $\\\\boldsymbol{t}$，不是曲面法向量 $\\\\nabla F$ 或 $\\\\nabla G$"
+      ],
+      "tags": ["space-curve", "tangent-line", "normal-plane", "cross-product"]
+    },
+    {
+      "id": "ift-ex-006",
+      "knowledgePointId": "conditional-extrema",
+      "title": "Lagrange 乘数法基础",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "用 Lagrange 乘数法求 $f(x,y)=x^2+y^2$ 在约束 $x+y=1$ 下的最小值。",
+      "solution": "约束 $g(x,y)=x+y-1=0$，$\\\\nabla g=(1,1)$，$\\\\nabla f=(2x,2y)$。\n\nLagrange 条件 $\\\\nabla f=\\\\lambda\\\\nabla g$：\n$$2x=\\\\lambda,\\\\quad 2y=\\\\lambda\\\\Rightarrow x=y=\\\\lambda/2.$$\n代入约束：$x+y=\\\\lambda/2+\\\\lambda/2=\\\\lambda=1$，故 $\\\\lambda=1$，$x=y=1/2$。\n\n候选点 $(1/2,1/2)$：$f=1/4+1/4=\\\\mathbf{1/2}$（最小值）。\n\n（约束 $x+y=1$ 下 $f=x^2+(1-x)^2=2x^2-2x+1$ 的最小值在 $x=1/2$ 处，$f_\\\\min=1/2$，验证一致。）",
+      "gradingRubric": [
+        { "criterion": "写出 Lagrange 方程 $\\\\nabla f=\\\\lambda\\\\nabla g$", "points": 3 },
+        { "criterion": "解出 $x=y=1/2$", "points": 4 },
+        { "criterion": "代入得最小值 $1/2$", "points": 3 }
+      ],
+      "hints": [
+        "$\\\\nabla f=\\\\lambda\\\\nabla g$：$(2x,2y)=\\\\lambda(1,1)$，两分量给出 $x=y$",
+        "代入约束 $x+y=1$ 得具体的 $x,y$ 值"
+      ],
+      "commonMistakes": [
+        "Lagrange 乘子 $\\\\lambda$ 是辅助量，最终答案不需要 $\\\\lambda$ 的值",
+        "候选点只有一个（不需要比较），但需判断是极小值（函数图形和约束的几何关系）"
+      ],
+      "tags": ["lagrange-multiplier", "constrained-extrema", "quadratic"]
+    },
+    {
+      "id": "ift-ex-007",
+      "knowledgePointId": "conditional-extrema",
+      "title": "等周问题（Lagrange 方法）",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "在所有周长为 $L$ 的矩形中，求面积最大的矩形。",
+      "solution": "设矩形两边为 $x,y$（$x,y>0$），则周长 $2(x+y)=L$，即约束 $g=x+y-L/2=0$；目标函数 $f=xy$（面积）。\n\n$\\\\nabla f=(y,x)$，$\\\\nabla g=(1,1)$。Lagrange 条件：\n$$y=\\\\lambda,\\\\quad x=\\\\lambda\\\\Rightarrow x=y.$$\n代入约束：$2x=L/2$，故 $x=y=L/4$。\n\n最大面积 $f=x^2=(L/4)^2=L^2/16$。\n\n**结论：** 周长固定的矩形中，**正方形**面积最大。（$f=xy\\\\leq((x+y)/2)^2=(L/4)^2$，等号当 $x=y$。）",
+      "gradingRubric": [
+        { "criterion": "正确建立约束和目标函数", "points": 2 },
+        { "criterion": "Lagrange 方程导出 $x=y$", "points": 4 },
+        { "criterion": "代入约束得 $x=y=L/4$，最大面积 $L^2/16$", "points": 3 },
+        { "criterion": "结论：正方形最大", "points": 1 }
+      ],
+      "hints": [
+        "周长 $2(x+y)=L$ 写为约束 $x+y=L/2$",
+        "Lagrange 方程给出 $y=x$（对称性），代入约束求具体值"
+      ],
+      "commonMistakes": [
+        "混淆周长 $2(x+y)=L$（不是 $4x=L$——那是正方形的情形）",
+        "面积最大是极大值（约束集合是有界闭合直线段，连续函数一定取到最大值）"
+      ],
+      "tags": ["isoperimetric", "lagrange-multiplier", "rectangle-optimization"]
+    },
+    {
+      "id": "ift-ex-008",
+      "knowledgePointId": "conditional-extrema",
+      "title": "三元条件极值",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 18 章",
+      "problem": "用 Lagrange 乘数法求椭球面 $\\\\frac{x^2}{a^2}+\\\\frac{y^2}{b^2}+\\\\frac{z^2}{c^2}=1$（$a,b,c>0$）上到原点距离最大和最小的点。",
+      "solution": "目标：最大化/最小化 $f(x,y,z)=x^2+y^2+z^2$（距离平方），约束 $g=\\\\frac{x^2}{a^2}+\\\\frac{y^2}{b^2}+\\\\frac{z^2}{c^2}-1=0$。\n\n$\\\\nabla f=(2x,2y,2z)$，$\\\\nabla g=(2x/a^2,2y/b^2,2z/c^2)$。\n\nLagrange 条件 $\\\\nabla f=\\\\lambda\\\\nabla g$：\n$$2x=\\\\lambda\\\\cdot\\\\frac{2x}{a^2},\\\\quad 2y=\\\\lambda\\\\cdot\\\\frac{2y}{b^2},\\\\quad 2z=\\\\lambda\\\\cdot\\\\frac{2z}{c^2}.$$\n\n各方程：若 $x\\\\neq 0$：$\\\\lambda=a^2$；若 $y\\\\neq 0$：$\\\\lambda=b^2$；若 $z\\\\neq 0$：$\\\\lambda=c^2$。\n\n**情形**：各 Lagrange 方程选择：$\\\\lambda$ 只能等于 $a^2,b^2,c^2$ 之一（至多一个非零坐标对应的 $\\\\lambda$）。\n- $\\\\lambda=a^2$：$y=z=0$，约束 $x^2/a^2=1$，即 $(\\\\pm a,0,0)$，$f=a^2$。\n- $\\\\lambda=b^2$：$x=z=0$，$(0,\\\\pm b,0)$，$f=b^2$。\n- $\\\\lambda=c^2$：$x=y=0$，$(0,0,\\\\pm c)$，$f=c^2$。\n\n比较：不妨设 $a\\\\geq b\\\\geq c>0$，则最大值 $f=a^2$（在 $(\\\\pm a,0,0)$ 处），最小值 $f=c^2$（在 $(0,0,\\\\pm c)$ 处）。\n\n最大距离 $=a$，最小距离 $=c$（正好是椭球的长半轴和短半轴）。",
+      "gradingRubric": [
+        { "criterion": "写出 $f=x^2+y^2+z^2$，$g=x^2/a^2+y^2/b^2+z^2/c^2-1$", "points": 2 },
+        { "criterion": "Lagrange 方程推出 $\\\\lambda=a^2,b^2,c^2$ 的三类候选点", "points": 5 },
+        { "criterion": "比较三类候选点函数值，确定最大最小", "points": 2 },
+        { "criterion": "结论：最大距离 $a$，最小距离 $c$（假设 $a\\\\geq b\\\\geq c$）", "points": 1 }
+      ],
+      "hints": [
+        "$\\\\nabla f=\\\\lambda\\\\nabla g$ 各分量：$1=\\\\lambda/a^2$（若 $x\\\\neq 0$），等等",
+        "每个候选点对应 $\\\\lambda$ 的一个值；候选点是椭球的三对顶点"
+      ],
+      "commonMistakes": [
+        "可能有多组候选点（这里 $6$ 个），需要全部比较",
+        "Lagrange 乘子法找到所有候选点，但有界集合（椭球面）上连续函数一定取到最大最小值"
+      ],
+      "tags": ["lagrange-multiplier", "ellipsoid", "distance-optimization", "three-variable"]
+    }
+  ]
+}

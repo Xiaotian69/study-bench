@@ -181,12 +181,35 @@
       "id": "ch-implicit-function-theorem",
       "number": 18,
       "title": "隐函数定理及其应用",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/implicit-function-theorem.json",
+      "exercisesFile": "exercises/implicit-function-theorem.json",
+      "diagramFile": "diagrams/implicit-function-theorem.json",
       "sections": [
-        { "id": "sec-implicit-function", "title": "隐函数", "status": "planned" },
-        { "id": "sec-implicit-function-system", "title": "隐函数组", "status": "planned" },
-        { "id": "sec-geometric-applications", "title": "几何应用", "status": "planned" },
-        { "id": "sec-conditional-extrema", "title": "条件极值", "status": "planned" }
+        {
+          "id": "sec-implicit-function",
+          "title": "隐函数",
+          "status": "draft",
+          "knowledgePointIds": ["implicit-function"]
+        },
+        {
+          "id": "sec-implicit-function-system",
+          "title": "隐函数组",
+          "status": "draft",
+          "knowledgePointIds": ["implicit-function-system"]
+        },
+        {
+          "id": "sec-geometric-applications",
+          "title": "几何应用",
+          "status": "draft",
+          "knowledgePointIds": ["geometric-applications"]
+        },
+        {
+          "id": "sec-conditional-extrema",
+          "title": "条件极值",
+          "status": "draft",
+          "knowledgePointIds": ["conditional-extrema"]
+        }
       ]
     },
     {
