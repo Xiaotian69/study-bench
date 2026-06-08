@@ -1,0 +1,377 @@
+{
+  "id": "ch-derivative-differential",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "number": 5,
+  "title": "导数和微分",
+  "status": "draft",
+  "overview": "本章引入微积分的核心工具：导数与微分。从速度、切线等直观问题出发，给出导数的精确定义（差商极限），讨论可导与连续的关系，再系统建立求导法则（四则运算、反函数、复合函数链式法则）和初等函数导数公式表。延伸到隐函数与参变量函数的求导方法，以及高阶导数的概念与 Leibniz 公式。最后引入微分：一阶近似的精确描述，以及微分形式不变性。讲义、例子与题面均为自编或充分改写，公式用 LaTeX（四反斜线约定）。",
+  "knowledgePoints": [
+    {
+      "id": "derivative-definition",
+      "title": "导数的定义",
+      "learningGoals": [
+        "理解导数是差商的极限，能给出 $f'(x_0)$ 的精确定义。",
+        "理解单侧导数（左导数 $f'_-(x_0)$、右导数 $f'_+(x_0)$）的定义及与导数的关系。",
+        "能用定义求简单函数（常数、幂函数、$\\\\sin x$）的导数。",
+        "理解可导与连续的关系：可导必连续，连续不必可导。"
+      ],
+      "coreExplanation": "导数刻画函数在一点处的"变化率"。设 $f$ 在 $x_0$ 的某邻域内有定义，给自变量一个增量 $\\\\Delta x$（$x\\\\to x_0+\\\\Delta x$），函数对应增量 $\\\\Delta y=f(x_0+\\\\Delta x)-f(x_0)$。差商 $\\\\dfrac{\\\\Delta y}{\\\\Delta x}$ 是这一段的平均变化率，令 $\\\\Delta x\\\\to 0$，若极限存在，就称 $f$ 在 $x_0$ 处**可导**，极限值为**导数**：$$f'(x_0)=\\\\lim_{\\\\Delta x\\\\to 0}\\\\frac{\\\\Delta y}{\\\\Delta x}=\\\\lim_{\\\\Delta x\\\\to 0}\\\\frac{f(x_0+\\\\Delta x)-f(x_0)}{\\\\Delta x}.$$等价形式（令 $x=x_0+\\\\Delta x$）：$f'(x_0)=\\\\lim_{x\\\\to x_0}\\\\dfrac{f(x)-f(x_0)}{x-x_0}$。单侧导数把极限过程限制到单侧，可导的充要条件是左右导数均存在且相等。**可导与连续的关系**：可导 $\\\\Rightarrow$ 连续（由 $\\\\Delta y = f'(x_0)\\\\Delta x+o(\\\\Delta x)\\\\to 0$），但连续不一定可导——经典反例是 $f(x)=|x|$ 在 $x=0$：连续，但左导数为 $-1$、右导数为 $1$，不相等，不可导。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§1 导数的概念；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "导数",
+          "statement": "$f'(x_0)=\\\\lim_{\\\\Delta x\\\\to 0}\\\\dfrac{f(x_0+\\\\Delta x)-f(x_0)}{\\\\Delta x}$，极限存在则称 $f$ 在 $x_0$ 可导。"
+        },
+        {
+          "name": "左导数 / 右导数",
+          "statement": "$f'_-(x_0)=\\\\lim_{\\\\Delta x\\\\to 0^-}\\\\dfrac{f(x_0+\\\\Delta x)-f(x_0)}{\\\\Delta x}$，右侧类推；$f$ 在 $x_0$ 可导 $\\\\iff$ $f'_-(x_0)=f'_+(x_0)$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "可导必连续",
+          "statement": "若 $f$ 在 $x_0$ 处可导，则 $f$ 在 $x_0$ 处连续。"
+        }
+      ],
+      "proofIdeas": [
+        "可导必连续：$\\\\Delta y = \\\\dfrac{\\\\Delta y}{\\\\Delta x}\\\\cdot\\\\Delta x \\\\to f'(x_0)\\\\cdot 0=0$，故 $\\\\Delta y\\\\to 0$，即连续。",
+        "反例 $|x|$：左导数 $\\\\lim_{\\\\Delta x\\\\to 0^-}\\\\dfrac{|\\\\Delta x|}{\\\\Delta x}=\\\\lim_{\\\\Delta x\\\\to 0^-}\\\\dfrac{-\\\\Delta x}{\\\\Delta x}=-1$；右导数为 $+1$；不相等，不可导。"
+      ],
+      "socraticQuestions": [
+        "差商 $\\\\dfrac{\\\\Delta y}{\\\\Delta x}$ 的几何意义是什么？",
+        "为什么连续但不可导的函数不矛盾？$|x|$ 在 $x=0$ 处的图像说明了什么？",
+        "定义导数时，为什么要求 $\\\\Delta x\\\\to 0$，而不是取一个固定的小增量？"
+      ],
+      "commonMistakes": [
+        "把导数定义里的 $\\\\Delta x$ 限定为正数，漏掉从左侧趋近的情形。",
+        "认为连续就一定可导。",
+        "定义式里把 $f(x_0+\\\\Delta x)-f(x_0)$ 写成 $f(x_0)$ 的某种变换，代入混淆。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-001", "deriv-ex-002"],
+      "diagramIds": ["derivative-tangent-chord"],
+      "masteryCriteria": [
+        "能完整写出导数定义并解释差商极限的含义。",
+        "能用定义求 $c$、$x^n$（$n$ 为正整数）的导数。",
+        "能说明可导与连续的关系，并给出连续不可导的反例。"
+      ]
+    },
+    {
+      "id": "derivative-geometric-meaning",
+      "title": "导数的几何意义与物理意义",
+      "learningGoals": [
+        "理解导数的几何意义：切线斜率 $k=f'(x_0)$，能写出切线和法线方程。",
+        "理解导数作为瞬时变化率的物理意义（速度、加速度等）。",
+        "能由导数值判断函数在一点的增减趋势。"
+      ],
+      "coreExplanation": "差商 $\\\\dfrac{f(x_0+\\\\Delta x)-f(x_0)}{\\\\Delta x}$ 正是过点 $(x_0,f(x_0))$ 和 $(x_0+\\\\Delta x,f(x_0+\\\\Delta x))$ 的**割线**斜率。令 $\\\\Delta x\\\\to 0$，割线极限趋向**切线**，故导数 $f'(x_0)$ 是曲线 $y=f(x)$ 在点 $(x_0,f(x_0))$ 处切线的斜率。切线方程：$y-f(x_0)=f'(x_0)(x-x_0)$；法线（与切线垂直）斜率为 $-1/f'(x_0)$（$f'(x_0)\\\\ne 0$）。物理上：若 $s=s(t)$ 是位移，则 $s'(t_0)=\\\\lim_{\\\\Delta t\\\\to 0}\\\\dfrac{\\\\Delta s}{\\\\Delta t}$ 是 $t_0$ 时刻的**瞬时速度**；速度的导数是**加速度**。一般地，$f'(x_0)>0$ 意味函数在 $x_0$ 附近局部单调递增，$f'(x_0)<0$ 则局部单调递减（注意这仅是局部的、一阶信息）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§1 导数的概念（几何/物理含义）；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "切线方程",
+          "statement": "曲线 $y=f(x)$ 在点 $(x_0,f(x_0))$ 处切线方程为 $y-f(x_0)=f'(x_0)(x-x_0)$。"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "割线斜率 → 切线斜率：当第二点趋向 $(x_0,f(x_0))$ 时，割线的极限位置定义为切线。"
+      ],
+      "socraticQuestions": [
+        "若 $f'(x_0)=0$，切线是什么方向？这是否意味着该点是极值点？",
+        "法线的斜率公式在 $f'(x_0)=0$ 时应如何处理？",
+        "瞬时速度和平均速度在什么情况下相等？"
+      ],
+      "commonMistakes": [
+        "把切线方程的斜率和截距弄混，误写为 $y=f'(x_0)x+f(x_0)$。",
+        "认为 $f'(x_0)=0$ 一定是极值点，忽略拐点（如 $f(x)=x^3$ 在 $x=0$）。",
+        "法线斜率用 $f'(x_0)$ 而非其负倒数。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-003"],
+      "diagramIds": ["derivative-tangent-chord"],
+      "masteryCriteria": [
+        "能写出曲线在给定点的切线和法线方程。",
+        "能解释导数作为瞬时变化率的意义。"
+      ]
+    },
+    {
+      "id": "derivative-rules-basic",
+      "title": "基本求导法则",
+      "learningGoals": [
+        "掌握导数的四则运算法则：$(f\\\\pm g)'$、$(fg)'$、$(f/g)'$。",
+        "掌握复合函数求导的**链式法则**：$(f\\\\circ g)'(x)=f'(g(x))\\\\cdot g'(x)$。",
+        "掌握反函数求导法则：$\\\\dfrac{\\\\mathrm{d}x}{\\\\mathrm{d}y}=\\\\dfrac{1}{\\\\mathrm{d}y/\\\\mathrm{d}x}$。",
+        "能熟练地将这些法则组合使用，对常见函数求导。"
+      ],
+      "coreExplanation": "**四则法则**：若 $f,g$ 在 $x$ 处可导，则 $(f\\\\pm g)'=f'\\\\pm g'$；$(fg)'=f'g+fg'$（乘积法则，Leibniz 一阶形式）；$\\\\left(\\\\dfrac{f}{g}\\\\right)'=\\\\dfrac{f'g-fg'}{g^2}$（$g\\\\ne 0$）。这些都可由极限的四则运算直接推出。**链式法则**（复合函数求导）：若 $y=f(u)$，$u=g(x)$，且 $g$ 在 $x$ 可导，$f$ 在 $u=g(x)$ 可导，则 $\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}u}\\\\cdot\\\\dfrac{\\\\mathrm{d}u}{\\\\mathrm{d}x}$，即"外层导数×内层导数"；链式法则可嵌套多层。**反函数求导**：若 $y=f(x)$ 在 $x_0$ 附近严格单调且可导，$f'(x_0)\\\\ne 0$，则其反函数 $x=f^{-1}(y)$ 也在 $y_0=f(x_0)$ 处可导，且 $\\\\dfrac{\\\\mathrm{d}x}{\\\\mathrm{d}y}\\\\bigg|_{y_0}=\\\\dfrac{1}{f'(x_0)}$。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§2 求导法则；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "乘积法则（Leibniz 一阶）",
+          "statement": "$(fg)'=f'g+fg'$。"
+        },
+        {
+          "name": "链式法则",
+          "statement": "若 $y=f(u)$，$u=g(x)$，则 $\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=f'(g(x))\\\\cdot g'(x)$。"
+        },
+        {
+          "name": "反函数求导",
+          "statement": "严格单调可导且 $f'\\\\ne 0$ 处，反函数导数 $=(f')^{-1}$，即 $\\\\dfrac{\\\\mathrm{d}x}{\\\\mathrm{d}y}=\\\\dfrac{1}{\\\\mathrm{d}y/\\\\mathrm{d}x}$。"
+        }
+      ],
+      "proofIdeas": [
+        "乘积法则：$\\\\Delta(fg)=f(x+\\\\Delta x)g(x+\\\\Delta x)-f(x)g(x)$，插项分解为 $g(x+\\\\Delta x)\\\\Delta f+f(x)\\\\Delta g$，除以 $\\\\Delta x$ 取极限即得。",
+        "链式法则：当 $\\\\Delta u\\\\ne 0$ 时可直接因式分解 $\\\\Delta y/\\\\Delta x = (\\\\Delta y/\\\\Delta u)(\\\\Delta u/\\\\Delta x)$，再令极限；需单独处理 $\\\\Delta u=0$ 的情形（用等价定义绕开）。",
+        "反函数：由 $f(f^{-1}(y))=y$ 两边对 $y$ 求导，链式法则给出 $f'(x)\\\\cdot(f^{-1})'(y)=1$。"
+      ],
+      "socraticQuestions": [
+        "$(fg)'=f'g'$ 这个公式对吗？错在哪里？",
+        "链式法则中"外层导数"是在哪里取值的？",
+        "$\\\\sin^{-1}x$ 的导数如何由反函数求导公式得到？"
+      ],
+      "commonMistakes": [
+        "乘积求导用 $(fg)'=f'g'$（漏掉两项中的一项）。",
+        "链式法则外层求导后忘乘内层导数 $g'(x)$。",
+        "商法则分子 $f'g-fg'$ 写成 $fg'-f'g$（符号反）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-004", "deriv-ex-005"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能独立运用四则法则、链式法则和反函数法则对中等复杂函数求导。",
+        "能识别复合函数层次并正确嵌套链式法则。"
+      ]
+    },
+    {
+      "id": "derivative-table",
+      "title": "基本初等函数的导数公式",
+      "learningGoals": [
+        "记忆并能推导基本初等函数的导数：$x^n$、$\\\\sin x$、$\\\\cos x$、$\\\\tan x$、$e^x$、$a^x$、$\\\\ln x$、$\\\\log_a x$、$\\\\arcsin x$、$\\\\arctan x$ 等。",
+        "能综合运用公式表与求导法则对一般初等函数求导。"
+      ],
+      "coreExplanation": "常用基本导数公式（从定义或法则推出，无需死记硬背，理解推导）：\n- $(c)'=0$（常数）\n- $(x^n)'=nx^{n-1}$（幂函数，对任意实数 $n$）\n- $(\\\\sin x)'=\\\\cos x$，$(\\\\cos x)'=-\\\\sin x$\n- $(\\\\tan x)'=\\\\sec^2 x=\\\\dfrac{1}{\\\\cos^2 x}$，$(\\\\cot x)'=-\\\\csc^2 x$\n- $(e^x)'=e^x$，$(a^x)'=a^x\\\\ln a$（$a>0,a\\\\ne 1$）\n- $(\\\\ln x)'=\\\\dfrac{1}{x}$，$(\\\\log_a x)'=\\\\dfrac{1}{x\\\\ln a}$\n- $(\\\\arcsin x)'=\\\\dfrac{1}{\\\\sqrt{1-x^2}}$，$(\\\\arctan x)'=\\\\dfrac{1}{1+x^2}$\n\n这些公式结合四则法则与链式法则，可以求任意初等函数的导数。例如 $(e^{x^2})'=e^{x^2}\\\\cdot 2x$（链式）；$(x\\\\ln x)'=\\\\ln x+x\\\\cdot\\\\dfrac{1}{x}=\\\\ln x+1$（乘积法则）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§2（基本求导公式）；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "幂函数导数",
+          "statement": "$(x^n)'=nx^{n-1}$，对任意实数 $n$ 成立（整数情形由定义推出；一般情形由对数求导法）。"
+        },
+        {
+          "name": "指数函数与对数函数导数",
+          "statement": "$(e^x)'=e^x$；$(\\\\ln x)'=\\\\dfrac{1}{x}$；$(a^x)'=a^x\\\\ln a$（$a>0,a\\\\ne 1$）。"
+        }
+      ],
+      "proofIdeas": [
+        "$(\\\\sin x)'$：利用 $\\\\sin(x+\\\\Delta x)-\\\\sin x=2\\\\cos(x+\\\\Delta x/2)\\\\sin(\\\\Delta x/2)$，除以 $\\\\Delta x$ 并用第一重要极限得 $\\\\cos x$。",
+        "$(e^x)'$：$\\\\dfrac{e^{x+\\\\Delta x}-e^x}{\\\\Delta x}=e^x\\\\dfrac{e^{\\\\Delta x}-1}{\\\\Delta x}\\\\to e^x$（$e^t-1\\\\sim t$）。",
+        "$(\\\\arcsin x)'$：令 $y=\\\\arcsin x$，则 $\\\\sin y=x$，两边对 $x$ 求导得 $\\\\cos y\\\\cdot y'=1$，故 $y'=1/\\\\cos y=1/\\\\sqrt{1-\\\\sin^2 y}=1/\\\\sqrt{1-x^2}$。"
+      ],
+      "socraticQuestions": [
+        "$(\\\\ln|x|)'$ 等于什么？对 $x<0$ 时有变化吗？",
+        "$(a^x)'=a^x\\\\ln a$ 中，为什么 $a=e$ 时导数最简单？",
+        "$\\\\arctan x$ 的导数 $1/(1+x^2)$ 能从反函数求导法直接推出吗？"
+      ],
+      "commonMistakes": [
+        "$(\\\\ln x)'=1/x^2$（忘记 $1/x$ 中没有平方）。",
+        "$(\\\\cos x)'=\\\\sin x$（漏掉负号）。",
+        "$(\\\\arcsin x)'=\\\\sqrt{1-x^2}$（分子分母倒置）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-004", "deriv-ex-006"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能写出 8 个以上基本初等函数的导数公式，并能快速推导任意一个。",
+        "能对中等复杂的初等函数熟练求导（3 步以内）。"
+      ]
+    },
+    {
+      "id": "implicit-parametric-derivatives",
+      "title": "隐函数与参变量函数的导数",
+      "learningGoals": [
+        "掌握对隐函数 $F(x,y)=0$ 两边对 $x$ 求导（把 $y$ 视为 $x$ 的函数）来求 $y'$ 的方法。",
+        "掌握参变量函数 $\\\\begin{cases}x=\\\\varphi(t)\\\\\\\\y=\\\\psi(t)\\\\end{cases}$ 的求导公式 $\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=\\\\dfrac{\\\\psi'(t)}{\\\\varphi'(t)}$。",
+        "了解对数求导法：先取对数再求导，适合幂指函数或多因子乘积。"
+      ],
+      "coreExplanation": "**隐函数求导**：若 $y$ 由方程 $F(x,y)=0$ 隐式确定，对方程两边关于 $x$ 求导，把 $y$ 看作 $x$ 的函数，遇 $y$ 的函数用链式法则乘以 $y'$，最后解出 $y'$。例如 $x^2+y^2=r^2$ 两边对 $x$ 求导：$2x+2y\\\\cdot y'=0$，故 $y'=-x/y$。**参变量求导**：$x=\\\\varphi(t)$，$y=\\\\psi(t)$，由链式法则 $\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=\\\\dfrac{\\\\mathrm{d}y/\\\\mathrm{d}t}{\\\\mathrm{d}x/\\\\mathrm{d}t}=\\\\dfrac{\\\\psi'(t)}{\\\\varphi'(t)}$（$\\\\varphi'(t)\\\\ne 0$）。**对数求导法**：对 $y=u(x)^{v(x)}$ 这类幂指函数，取 $\\\\ln y=v\\\\ln u$，两边对 $x$ 求导，解出 $y'$；对多因子乘积（如 $y=\\\\dfrac{\\\\sqrt{x}(x+1)^2}{(x+2)^3}$）先取对数再各项对 $x$ 求导，比逐项用乘积/商法则更简洁。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§3 参变量函数的导数·高阶导数（含隐函数求导）；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "参变量函数导数公式",
+          "statement": "设 $x=\\\\varphi(t)$，$y=\\\\psi(t)$，$\\\\varphi'(t)\\\\ne 0$，则 $\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=\\\\dfrac{\\\\psi'(t)}{\\\\varphi'(t)}$。"
+        }
+      ],
+      "proofIdeas": [
+        "隐函数求导：把 $F(x,y(x))=0$ 对 $x$ 求导，链式法则给出 $F_x+F_y\\\\cdot y'=0$，故 $y'=-F_x/F_y$（不需要记这个公式，只需掌握方法）。",
+        "参变量：链式法则 $\\\\mathrm{d}y/\\\\mathrm{d}x=(\\\\mathrm{d}y/\\\\mathrm{d}t)/(\\\\mathrm{d}x/\\\\mathrm{d}t)$。"
+      ],
+      "socraticQuestions": [
+        "隐函数 $xy+\\\\ln y=1$ 中，对 $x$ 求导时 $\\\\ln y$ 如何处理？",
+        "参变量求导公式的分母 $\\\\varphi'(t)=0$ 时为什么会出问题？",
+        "对数求导法求 $y=x^x$ 的导数，步骤是什么？"
+      ],
+      "commonMistakes": [
+        "隐函数求导时，对 $y^2$ 对 $x$ 求导只写 $2y$，漏掉 $\\\\cdot y'$。",
+        "参变量求导把 $\\\\psi'/\\\\varphi'$ 的分子分母写反。",
+        "对数求导法取 $\\\\ln$ 后，对 $x$ 求导时忘记 $\\\\ln y$ 的链式：$(\\\\ln y)'=y'/y$。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-007"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能对给定隐函数方程正确求出 $y'$。",
+        "能用参变量求导公式求参数曲线的切线斜率。"
+      ]
+    },
+    {
+      "id": "higher-order-derivatives",
+      "title": "高阶导数",
+      "learningGoals": [
+        "理解高阶导数的定义：$n$ 阶导数是 $(n-1)$ 阶导数的导数。",
+        "掌握 Leibniz 公式 $(fg)^{(n)}=\\\\sum_{k=0}^{n}\\\\binom{n}{k}f^{(k)}g^{(n-k)}$。",
+        "能求常见函数（$\\\\sin x$、$e^{ax}$、$x^n\\\\cdot e^x$ 等）的高阶导数。"
+      ],
+      "coreExplanation": "若 $f'(x)$ 可导，则 $(f')'$ 称为 $f$ 的**二阶导数**，记 $f''(x)$ 或 $\\\\dfrac{\\\\mathrm{d}^2 y}{\\\\mathrm{d}x^2}$；依此类推，$f^{(n)}(x)$ 或 $\\\\dfrac{\\\\mathrm{d}^n y}{\\\\mathrm{d}x^n}$ 是 $n$ 阶导数。常见函数的 $n$ 阶导数：$(\\\\sin x)^{(n)}=\\\\sin(x+n\\\\pi/2)$；$(\\\\cos x)^{(n)}=\\\\cos(x+n\\\\pi/2)$；$(e^{ax})^{(n)}=a^n e^{ax}$；$(x^m)^{(n)}=m(m-1)\\\\cdots(m-n+1)x^{m-n}$（$n\\\\le m$ 时非零，$n>m$ 时为零）。**Leibniz 公式**对乘积高阶导数特别有用：$$(fg)^{(n)}=\\\\sum_{k=0}^{n}\\\\binom{n}{k}f^{(k)}g^{(n-k)},$$形式上与二项式定理完全类比，其中 $f^{(0)}=f$，$g^{(0)}=g$。典型用途：对 $f=x^m$（高阶导数在 $k>m$ 时为零）与 $g=e^x$ 或 $\\\\sin x$ 的乘积，多数项消失，大幅简化计算。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§3 高阶导数；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "n 阶导数",
+          "statement": "$f^{(n)}(x)=(f^{(n-1)})'(x)$，$f^{(0)}=f$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Leibniz 公式",
+          "statement": "$(fg)^{(n)}=\\\\sum_{k=0}^{n}\\\\binom{n}{k}f^{(k)}g^{(n-k)}$。"
+        }
+      ],
+      "proofIdeas": [
+        "Leibniz 公式用归纳法：$n=1$ 即乘积法则；假设 $n-1$ 成立，对 $(fg)^{(n-1)}$ 再求一次导，合并组合数 $\\\\binom{n-1}{k}+\\\\binom{n-1}{k-1}=\\\\binom{n}{k}$ 得到 $n$ 阶情形。"
+      ],
+      "socraticQuestions": [
+        "$(\\\\sin x)^{(100)}$ 是什么？",
+        "Leibniz 公式与二项式定理的类比体现在哪里？",
+        "为什么 $f=x^2$ 时，Leibniz 公式里大多数项为零？"
+      ],
+      "commonMistakes": [
+        "$(\\\\sin x)^{(n)}$ 的相位 $n\\\\pi/2$ 算错（如 $(\\\\sin x)^{(4)}$ 应为 $\\\\sin(x+2\\\\pi)=\\\\sin x$，而不是 $0$）。",
+        "Leibniz 公式里 $f^{(k)}$ 和 $g^{(n-k)}$ 分配搞反。",
+        "把高阶导数的记号 $y^{(n)}$ 误读为 $y^n$（幂次）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能求 $\\\\sin x$、$e^{ax}$、$x^m$ 等的 $n$ 阶导数通式。",
+        "能用 Leibniz 公式处理 $x^m e^{ax}$ 型函数的高阶导数。"
+      ]
+    },
+    {
+      "id": "differential-definition",
+      "title": "微分的概念",
+      "learningGoals": [
+        "理解微分的定义：$\\\\mathrm{d}y=f'(x_0)\\\\,\\\\mathrm{d}x$，它是 $\\\\Delta y$ 的线性主部。",
+        "理解 $f$ 在 $x_0$ 处可微与可导等价，且 $\\\\mathrm{d}y=f'(x_0)\\\\Delta x$（当 $\\\\mathrm{d}x=\\\\Delta x$）。",
+        "掌握微分形式不变性：无论 $x$ 是自变量还是中间变量，$\\\\mathrm{d}y=f'(u)\\\\,\\\\mathrm{d}u$ 形式不变。"
+      ],
+      "coreExplanation": "导数关注"变化率"，微分关注"变化量的线性逼近"。若增量 $\\\\Delta y=f(x_0+\\\\Delta x)-f(x_0)$ 可以写成$$\\\\Delta y=A\\\\Delta x+o(\\\\Delta x)\\\\quad(\\\\Delta x\\\\to 0),$$其中 $A$ 是与 $\\\\Delta x$ 无关的常数，则称 $f$ 在 $x_0$ 处**可微**，$A\\\\Delta x$ 称为**微分** $\\\\mathrm{d}y$（或 $\\\\mathrm{d}f|_{x_0}$）。可以证明，$f$ 在 $x_0$ 可微 $\\\\iff$ 可导，且 $A=f'(x_0)$，故 $\\\\mathrm{d}y=f'(x_0)\\\\,\\\\mathrm{d}x$（约定自变量 $x$ 的微分 $\\\\mathrm{d}x=\\\\Delta x$）。**微分形式不变性**：若 $y=f(u)$，无论 $u$ 是自变量还是 $u=g(x)$ 的函数，都有 $\\\\mathrm{d}y=f'(u)\\\\,\\\\mathrm{d}u$；只需最后把 $\\\\mathrm{d}u$ 换成对应表达式。这使微分的书写形式独立于变量层次，是符号微积分的重要优雅之处。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§4 微分；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "微分",
+          "statement": "若 $\\\\Delta y=A\\\\Delta x+o(\\\\Delta x)$，则 $\\\\mathrm{d}y=A\\\\,\\\\mathrm{d}x$，其中 $A=f'(x_0)$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "可微等价于可导",
+          "statement": "$f$ 在 $x_0$ 处可微 $\\\\iff$ 可导，且可微时 $\\\\mathrm{d}y=f'(x_0)\\\\,\\\\mathrm{d}x$。"
+        },
+        {
+          "name": "微分形式不变性",
+          "statement": "若 $y=f(u)$，则无论 $u$ 是自变量还是中间变量，恒有 $\\\\mathrm{d}y=f'(u)\\\\,\\\\mathrm{d}u$。"
+        }
+      ],
+      "proofIdeas": [
+        "可微 ⇒ 可导：由 $\\\\Delta y=A\\\\Delta x+o(\\\\Delta x)$ 除以 $\\\\Delta x$ 取极限，得 $\\\\lim\\\\Delta y/\\\\Delta x=A$，故 $f'(x_0)=A$。",
+        "可导 ⇒ 可微：令 $\\\\alpha(\\\\Delta x)=\\\\Delta y/\\\\Delta x-f'(x_0)\\\\to 0$，则 $\\\\Delta y=f'(x_0)\\\\Delta x+\\\\alpha(\\\\Delta x)\\\\Delta x$，其中后项是 $o(\\\\Delta x)$。",
+        "微分形式不变性：$\\\\mathrm{d}y=(f\\\\circ g)'(x)\\\\,\\\\mathrm{d}x=f'(g(x))g'(x)\\\\,\\\\mathrm{d}x=f'(u)\\\\,\\\\mathrm{d}u$（$\\\\mathrm{d}u=g'(x)\\\\mathrm{d}x$）。"
+      ],
+      "socraticQuestions": [
+        "微分 $\\\\mathrm{d}y$ 和增量 $\\\\Delta y$ 相差了什么？",
+        "为什么要求 $\\\\Delta y$ 被分解为线性部分加高阶无穷小，而不是允许任意形式？",
+        "微分形式不变性中，$u$ 是中间变量时 $\\\\mathrm{d}u$ 的含义是什么？"
+      ],
+      "commonMistakes": [
+        "把 $\\\\mathrm{d}y$ 和 $\\\\Delta y$ 混同，不区分微分与增量。",
+        "认为可微比可导是更强的条件（实际等价，在一元函数中）。",
+        "微分形式不变性用错：当 $u=g(x)$ 时忘记把 $\\\\mathrm{d}u=g'(x)\\\\mathrm{d}x$ 代入。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-009"],
+      "diagramIds": ["differential-linear-approximation"],
+      "masteryCriteria": [
+        "能写出微分定义并解释线性主部的含义。",
+        "能利用微分形式不变性计算复合函数的微分。"
+      ]
+    },
+    {
+      "id": "differential-approximation",
+      "title": "微分的近似计算",
+      "learningGoals": [
+        "理解 $f(x_0+\\\\Delta x)\\\\approx f(x_0)+f'(x_0)\\\\Delta x$ 的近似公式及其误差来源。",
+        "能用微分近似计算 $\\\\sqrt[n]{a+h}$、$\\\\sin(\\\\pi/6+\\\\varepsilon)$ 等常见近似问题。",
+        "了解常用近似公式（$x\\\\to 0$ 时）：$(1+x)^\\\\alpha\\\\approx 1+\\\\alpha x$、$e^x\\\\approx 1+x$、$\\\\ln(1+x)\\\\approx x$ 等。"
+      ],
+      "coreExplanation": "由微分定义，当 $|\\\\Delta x|$ 很小时 $\\\\Delta y\\\\approx \\\\mathrm{d}y=f'(x_0)\\\\Delta x$，故 $f(x_0+\\\\Delta x)\\\\approx f(x_0)+f'(x_0)\\\\Delta x$。这是用切线近似曲线：在 $x_0$ 附近，曲线和切线的差是 $o(\\\\Delta x)$，即高阶无穷小。常用近似（$x\\\\to 0$）：$(1+x)^\\\\alpha\\\\approx 1+\\\\alpha x$；$e^x\\\\approx 1+x$；$\\\\ln(1+x)\\\\approx x$；$\\\\sin x\\\\approx x$；$\\\\tan x\\\\approx x$；$1-\\\\cos x\\\\approx x^2/2$。这些实际上就是等价无穷小的重新叙述，也是泰勒展开（下一章）的一阶版本。误差：近似的绝对误差是 $|\\\\Delta y-\\\\mathrm{d}y|=|o(\\\\Delta x)|$，当 $\\\\Delta x$ 足够小时可以控制；但若需要更精确的估计，需用泰勒公式的余项。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 5 章 导数和微分，§4 微分的近似计算；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "一阶微分近似",
+          "statement": "当 $|\\\\Delta x|$ 很小时，$f(x_0+\\\\Delta x)\\\\approx f(x_0)+f'(x_0)\\\\Delta x$，误差为 $o(\\\\Delta x)$。"
+        }
+      ],
+      "proofIdeas": [
+        "直接由 $\\\\Delta y=f'(x_0)\\\\Delta x+o(\\\\Delta x)$ 忽略高阶项。",
+        "几何上：用切线替代曲线，切线值与曲线值之差在 $x_0$ 附近可以忽略。"
+      ],
+      "socraticQuestions": [
+        "$\\\\sqrt{1.04}\\\\approx 1+0.04/2=1.02$，这个估计的误差大约是多少量级？",
+        "一阶近似公式 $(1+x)^\\\\alpha\\\\approx 1+\\\\alpha x$ 在 $|x|$ 较大时还适用吗？",
+        "微分近似和等价无穷小（上一章）有什么关系？"
+      ],
+      "commonMistakes": [
+        "近似公式用到 $|\\\\Delta x|$ 较大的情形，误差变大仍认为结果准确。",
+        "$(1+x)^\\\\alpha\\\\approx 1+\\\\alpha x$ 中 $\\\\alpha$ 误用为 $(1+\\\\alpha)x$。",
+        "忘记近似公式的前提：$x$ 或 $\\\\Delta x$ 必须足够小。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["deriv-ex-010"],
+      "diagramIds": ["differential-linear-approximation"],
+      "masteryCriteria": [
+        "能写出微分近似公式并用于数值估算。",
+        "能说明常用近似公式与等价无穷小的关系。"
+      ]
+    }
+  ]
+}

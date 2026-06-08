@@ -1,0 +1,37 @@
+{
+  "chapterId": "ch-derivative-differential",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "derivative-tangent-chord",
+      "title": "割线趋向切线：导数的几何意义",
+      "description": "在曲线 $y=f(x)$ 上取定点 $P=(x_0,f(x_0))$，另取邻近点 $Q=(x_0+\\Delta x, f(x_0+\\Delta x))$。图中画出多条割线 $PQ$（$\\Delta x$ 逐步减小），箭头示意割线绕 $P$ 旋转趋近切线的过程。最终切线在 $P$ 处的斜率即为导数 $f'(x_0)$。同时标注差商 $\\Delta y / \\Delta x$ 和极限。",
+      "mathContext": "割线斜率 $= \\frac{f(x_0+\\Delta x)-f(x_0)}{\\Delta x}$，令 $\\Delta x \\to 0$ 得切线斜率 $= f'(x_0)$。切线方程：$y - f(x_0) = f'(x_0)(x-x_0)$。法线斜率 $= -1/f'(x_0)$（$f'(x_0) \\ne 0$）。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["derivative-definition", "derivative-geometric-meaning"],
+      "layout": "single",
+      "annotations": [
+        { "position": "P", "label": "$P = (x_0, f(x_0))$", "note": "固定点" },
+        { "position": "Q", "label": "$Q = (x_0+\\Delta x, f(x_0+\\Delta x))$", "note": "$\\Delta x \\to 0$ 时 $Q\\to P$" },
+        { "position": "slope-label", "label": "割线斜率 $= \\Delta y / \\Delta x$", "note": "极限即为导数" },
+        { "position": "tangent", "label": "切线", "note": "斜率 $= f'(x_0)$" }
+      ]
+    },
+    {
+      "id": "differential-linear-approximation",
+      "title": "微分：用切线近似曲线",
+      "description": "在 $x_0$ 附近，曲线 $y=f(x)$ 与其切线（即微分近似 $f(x_0)+f'(x_0)(x-x_0)$）对比。图中标出：$\\Delta x$（自变量增量）、$\\Delta y$（曲线上实际增量，沿曲线量）、$\\mathrm{d}y = f'(x_0)\\Delta x$（切线上对应增量），以及误差 $\\Delta y - \\mathrm{d}y = o(\\Delta x)$（高阶无穷小，为两者的竖向差距）。",
+      "mathContext": "$\\Delta y = f'(x_0)\\Delta x + o(\\Delta x)$，其中 $\\mathrm{d}y = f'(x_0)\\Delta x$ 是 $\\Delta y$ 的线性主部。当 $|\\Delta x|$ 小时，$\\mathrm{d}y \\approx \\Delta y$，切线近似曲线。误差 $\\Delta y - \\mathrm{d}y$ 是比 $\\Delta x$ 更高阶的无穷小。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["differential-definition", "differential-approximation"],
+      "layout": "single",
+      "annotations": [
+        { "position": "base", "label": "$\\Delta x$", "note": "自变量增量（水平方向）" },
+        { "position": "curve", "label": "$\\Delta y$", "note": "曲线上的实际增量" },
+        { "position": "tangent", "label": "$\\mathrm{d}y = f'(x_0)\\Delta x$", "note": "微分，即切线上的增量" },
+        { "position": "gap", "label": "$o(\\Delta x)$", "note": "高阶无穷小误差" }
+      ]
+    }
+  ]
+}

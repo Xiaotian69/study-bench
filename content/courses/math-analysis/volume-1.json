@@ -148,12 +148,47 @@
       "id": "ch-derivative-differential",
       "number": 5,
       "title": "导数和微分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/derivative-differential.json",
+      "exercisesFile": "exercises/derivative-differential.json",
+      "diagramFile": "diagrams/derivative-differential.json",
       "sections": [
-        { "id": "sec-derivative-concept", "title": "导数的概念", "status": "planned" },
-        { "id": "sec-derivative-rules", "title": "求导法则", "status": "planned" },
-        { "id": "sec-parametric-higher-derivative", "title": "参变量函数的导数·高阶导数", "status": "planned" },
-        { "id": "sec-differential", "title": "微分", "status": "planned" }
+        {
+          "id": "sec-derivative-concept",
+          "title": "导数的概念",
+          "status": "draft",
+          "knowledgePointIds": [
+            "derivative-definition",
+            "derivative-geometric-meaning"
+          ]
+        },
+        {
+          "id": "sec-derivative-rules",
+          "title": "求导法则",
+          "status": "draft",
+          "knowledgePointIds": [
+            "derivative-rules-basic",
+            "derivative-table"
+          ]
+        },
+        {
+          "id": "sec-parametric-higher-derivative",
+          "title": "参变量函数的导数·高阶导数",
+          "status": "draft",
+          "knowledgePointIds": [
+            "implicit-parametric-derivatives",
+            "higher-order-derivatives"
+          ]
+        },
+        {
+          "id": "sec-differential",
+          "title": "微分",
+          "status": "draft",
+          "knowledgePointIds": [
+            "differential-definition",
+            "differential-approximation"
+          ]
+        }
       ]
     },
     {

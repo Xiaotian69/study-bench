@@ -1,0 +1,272 @@
+{
+  "chapterId": "ch-derivative-differential",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "sourceTypeLegend": {
+    "textbook-example": "教材例题",
+    "textbook-exercise": "教材课后习题",
+    "adapted": "由教材题改编",
+    "bridging": "自编过渡题，仅用于衔接，不作为正式题"
+  },
+  "intakeNote": "本章题面为自编或充分改写，未直接照搬教材原题；sourceRef 记录对应章节，题号标注"待核对题源"，待对照本地教材核对后再回填具体题号。",
+  "exercises": [
+    {
+      "id": "deriv-ex-001",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §1 导数的概念",
+      "knowledgePointIds": ["derivative-definition"],
+      "difficulty": "basic",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用导数定义求 $f(x)=x^2+2x$ 在 $x=1$ 处的导数 $f'(1)$。",
+      "gradingRubric": [
+        "写出定义式 $f'(1)=\\\\lim_{\\\\Delta x\\\\to 0}\\\\dfrac{f(1+\\\\Delta x)-f(1)}{\\\\Delta x}$",
+        "计算 $f(1+\\\\Delta x)=(1+\\\\Delta x)^2+2(1+\\\\Delta x)=1+2\\\\Delta x+(\\\\Delta x)^2+2+2\\\\Delta x=3+4\\\\Delta x+(\\\\Delta x)^2$",
+        "所以 $f(1+\\\\Delta x)-f(1)=3+4\\\\Delta x+(\\\\Delta x)^2-3=4\\\\Delta x+(\\\\Delta x)^2$",
+        "差商 $\\\\dfrac{4\\\\Delta x+(\\\\Delta x)^2}{\\\\Delta x}=4+\\\\Delta x$，令 $\\\\Delta x\\\\to 0$ 得 $f'(1)=4$"
+      ],
+      "hints": [
+        "先写出导数的定义式，把 $x_0=1$ 代入。",
+        "展开 $f(1+\\\\Delta x)$ 并与 $f(1)$ 作差。",
+        "约去 $\\\\Delta x$ 后再取极限。"
+      ],
+      "commonMistakes": [
+        "把 $(1+\\\\Delta x)^2$ 展开错误（如忘记中间项 $2\\\\Delta x$）",
+        "约分时直接令 $\\\\Delta x=0$ 而不先化简",
+        "忘记差商的分母是 $\\\\Delta x$ 而不是 $\\\\Delta x^2$"
+      ]
+    },
+    {
+      "id": "deriv-ex-002",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §1（可导与连续）",
+      "knowledgePointIds": ["derivative-definition"],
+      "difficulty": "basic",
+      "type": "judgment",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=|x-1|$。判断 $f$ 在 $x=1$ 处是否可导，并说明理由。",
+      "gradingRubric": [
+        "计算右导数：$f'_+(1)=\\\\lim_{\\\\Delta x\\\\to 0^+}\\\\dfrac{|\\\\Delta x|}{\\\\Delta x}=\\\\lim_{\\\\Delta x\\\\to 0^+}1=1$",
+        "计算左导数：$f'_-(1)=\\\\lim_{\\\\Delta x\\\\to 0^-}\\\\dfrac{|\\\\Delta x|}{\\\\Delta x}=\\\\lim_{\\\\Delta x\\\\to 0^-}(-1)=-1$",
+        "左右导数不等（$-1\\\\ne 1$），故 $f$ 在 $x=1$ 处不可导",
+        "注意 $f$ 在 $x=1$ 处连续（$f(1)=0$，$\\\\lim_{x\\\\to 1}f(x)=0$），体现"连续不一定可导""
+      ],
+      "hints": [
+        "分别计算 $\\\\Delta x\\\\to 0^+$ 和 $\\\\Delta x\\\\to 0^-$ 时差商的极限。",
+        "当 $\\\\Delta x>0$ 时，$|\\\\Delta x|=\\\\Delta x$；当 $\\\\Delta x<0$ 时，$|\\\\Delta x|=-\\\\Delta x$。",
+        "判断可导需要左导数等于右导数。"
+      ],
+      "commonMistakes": [
+        "只算一侧导数就判断不可导",
+        "把 $|x-1|$ 在 $x=1$ 附近的增量写错（未正确分类正负）",
+        "认为不可导就不连续"
+      ]
+    },
+    {
+      "id": "deriv-ex-003",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §1（几何意义）",
+      "knowledgePointIds": ["derivative-geometric-meaning"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求曲线 $y=x^3-x$ 在点 $(1,0)$ 处的切线方程和法线方程。",
+      "gradingRubric": [
+        "求导：$y'=3x^2-1$",
+        "在 $x=1$ 处：$y'|_{x=1}=3(1)^2-1=2$，即切线斜率为 $2$",
+        "切线方程：$y-0=2(x-1)$，即 $y=2x-2$",
+        "法线斜率为 $-1/2$，法线方程：$y-0=-\\\\dfrac{1}{2}(x-1)$，即 $y=-\\\\dfrac{x-1}{2}$"
+      ],
+      "hints": [
+        "先对 $y=x^3-x$ 求导，再把 $x=1$ 代入求切线斜率。",
+        "切线方程用点斜式：$y-y_0=k(x-x_0)$。",
+        "法线与切线垂直，斜率互为负倒数。"
+      ],
+      "commonMistakes": [
+        "切线斜率求错（如把 $y'=3x^2$ 漏掉 $-1$）",
+        "点坐标代入时用 $(0,1)$ 而非 $(1,0)$",
+        "法线斜率用切线斜率本身而不是其负倒数"
+      ]
+    },
+    {
+      "id": "deriv-ex-004",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §2 求导法则",
+      "knowledgePointIds": ["derivative-rules-basic", "derivative-table"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求下列函数的导数：$(1)\\;y=x^3\\\\ln x$；$(2)\\;y=\\\\dfrac{\\\\sin x}{1+\\\\cos x}$。",
+      "gradingRubric": [
+        "(1) 乘积法则：$y'=(x^3)'\\\\ln x+x^3(\\\\ln x)'=3x^2\\\\ln x+x^3\\\\cdot\\\\dfrac{1}{x}=3x^2\\\\ln x+x^2=x^2(3\\\\ln x+1)$",
+        "(2) 商法则：$y'=\\\\dfrac{(\\\\sin x)'(1+\\\\cos x)-\\\\sin x(1+\\\\cos x)'}{(1+\\\\cos x)^2}=\\\\dfrac{\\\\cos x(1+\\\\cos x)-\\\\sin x(-\\\\sin x)}{(1+\\\\cos x)^2}$",
+        "分子化简：$\\\\cos x+\\\\cos^2 x+\\\\sin^2 x=\\\\cos x+1$",
+        "故 $y'=\\\\dfrac{\\\\cos x+1}{(1+\\\\cos x)^2}=\\\\dfrac{1}{1+\\\\cos x}$（定义域 $\\\\cos x\\\\ne -1$）"
+      ],
+      "hints": [
+        "(1) 看到两个函数相乘，用乘积法则 $(fg)'=f'g+fg'$。",
+        "(2) 看到分式，用商法则 $(f/g)'=(f'g-fg')/g^2$。",
+        "(2) 分子化简时注意 $\\\\sin^2 x+\\\\cos^2 x=1$。"
+      ],
+      "commonMistakes": [
+        "(1) 把 $(x^3\\\\ln x)'$ 错写成 $3x^2\\\\cdot(1/x)$，忘记乘积法则的两项",
+        "(2) 商法则分子符号写成 $f'g+fg'$（符号错）",
+        "(2) 不化简分子，留下冗余形式"
+      ]
+    },
+    {
+      "id": "deriv-ex-005",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §2（链式法则）",
+      "knowledgePointIds": ["derivative-rules-basic"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求下列复合函数的导数：$(1)\\;y=\\\\ln(1+e^{2x})$；$(2)\\;y=\\\\arctan\\\\sqrt{x^2-1}$（$x>1$）。",
+      "gradingRubric": [
+        "(1) 链式：$y'=\\\\dfrac{1}{1+e^{2x}}\\\\cdot(e^{2x})'=\\\\dfrac{1}{1+e^{2x}}\\\\cdot e^{2x}\\\\cdot 2=\\\\dfrac{2e^{2x}}{1+e^{2x}}$",
+        "(2) 令 $u=\\\\sqrt{x^2-1}$，$y=\\\\arctan u$；$y'=\\\\dfrac{1}{1+u^2}\\\\cdot u'$",
+        "$u'=(\\\\sqrt{x^2-1})'=\\\\dfrac{x}{\\\\sqrt{x^2-1}}$",
+        "$1+u^2=1+(x^2-1)=x^2$，故 $y'=\\\\dfrac{1}{x^2}\\\\cdot\\\\dfrac{x}{\\\\sqrt{x^2-1}}=\\\\dfrac{1}{x\\\\sqrt{x^2-1}}$"
+      ],
+      "hints": [
+        "(1) 把 $y=\\\\ln(\\\\cdot)$ 的外层对 $e^{2x}$ 求导，内层 $e^{2x}$ 再链式。",
+        "(2) 分三层：最外 $\\\\arctan$，中间 $\\\\sqrt{\\\\cdot}$，内层 $x^2-1$。",
+        "(2) 化简时注意 $1+(\\\\sqrt{x^2-1})^2=1+(x^2-1)=x^2$。"
+      ],
+      "commonMistakes": [
+        "(1) 忘记对 $2x$ 再链式，只求 $e^{2x}$ 的导数得 $e^{2x}/(1+e^{2x})$（少乘 2）",
+        "(2) 把 $\\\\arctan u$ 的导数写成 $1/\\\\sqrt{1-u^2}$（与 $\\\\arcsin$ 混淆）",
+        "(2) 化简 $1+u^2$ 时误算"
+      ]
+    },
+    {
+      "id": "deriv-ex-006",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §2（基本公式）",
+      "knowledgePointIds": ["derivative-table"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用对数求导法求 $y=x^{\\\\sin x}$（$x>0$）的导数。",
+      "gradingRubric": [
+        "取对数：$\\\\ln y=\\\\sin x\\\\cdot\\\\ln x$",
+        "两边对 $x$ 求导（$y$ 视为 $x$ 的函数）：$\\\\dfrac{y'}{y}=(\\\\sin x\\\\cdot\\\\ln x)'=\\\\cos x\\\\cdot\\\\ln x+\\\\sin x\\\\cdot\\\\dfrac{1}{x}$",
+        "故 $y'=y\\\\left(\\\\cos x\\\\ln x+\\\\dfrac{\\\\sin x}{x}\\\\right)=x^{\\\\sin x}\\\\left(\\\\cos x\\\\ln x+\\\\dfrac{\\\\sin x}{x}\\\\right)$"
+      ],
+      "hints": [
+        "幂指函数 $f^g$ 无法直接用幂函数或指数函数公式，应先取对数。",
+        "取对数后，左边是 $\\\\ln y$，对 $x$ 求导得 $y'/y$。",
+        "最后把 $y$ 换回 $x^{\\\\sin x}$。"
+      ],
+      "commonMistakes": [
+        "把 $x^{\\\\sin x}$ 误用幂函数公式 $(x^n)'=nx^{n-1}$，得 $\\\\sin x\\\\cdot x^{\\\\sin x-1}$",
+        "取对数后 $(\\\\ln y)'$ 写成 $1/y$ 而忘记链式乘 $y'$",
+        "乘积法则里 $(\\\\sin x)'=\\\\cos x$ 位置写错"
+      ]
+    },
+    {
+      "id": "deriv-ex-007",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §3（隐函数/参变量）",
+      "knowledgePointIds": ["implicit-parametric-derivatives"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设曲线由参数方程 $\\\\begin{cases}x=a(t-\\\\sin t)\\\\\\\\y=a(1-\\\\cos t)\\\\end{cases}$（$a>0$，摆线）给出，求 $\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}$ 及 $t=\\\\pi/2$ 处的切线斜率。",
+      "gradingRubric": [
+        "$\\\\dfrac{\\\\mathrm{d}x}{\\\\mathrm{d}t}=a(1-\\\\cos t)$，$\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}t}=a\\\\sin t$",
+        "$\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=\\\\dfrac{a\\\\sin t}{a(1-\\\\cos t)}=\\\\dfrac{\\\\sin t}{1-\\\\cos t}$（$t\\\\ne 0,2k\\\\pi$）",
+        "在 $t=\\\\pi/2$：$\\\\dfrac{\\\\mathrm{d}y}{\\\\mathrm{d}x}\\bigg|_{t=\\\\pi/2}=\\\\dfrac{\\\\sin(\\\\pi/2)}{1-\\\\cos(\\\\pi/2)}=\\\\dfrac{1}{1-0}=1$"
+      ],
+      "hints": [
+        "分别对参数 $t$ 求 $\\\\mathrm{d}x/\\\\mathrm{d}t$ 和 $\\\\mathrm{d}y/\\\\mathrm{d}t$，然后相除。",
+        "代入 $t=\\\\pi/2$ 时注意 $\\\\sin(\\\\pi/2)=1$，$\\\\cos(\\\\pi/2)=0$。",
+        "注意分母 $1-\\\\cos t=0$ 时（即 $t=0,2k\\\\pi$）参数求导不适用。"
+      ],
+      "commonMistakes": [
+        "分子分母弄反（$\\\\mathrm{d}x/\\\\mathrm{d}t$ 作分子）",
+        "$(a(t-\\\\sin t))'$ 对 $t$ 求导写成 $a(1+\\\\sin t)$（符号错）",
+        "代入后三角函数值算错"
+      ]
+    },
+    {
+      "id": "deriv-ex-008",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §3（高阶导数）",
+      "knowledgePointIds": ["higher-order-derivatives"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "利用 Leibniz 公式求 $(x^2 e^x)^{(n)}$。",
+      "gradingRubric": [
+        "令 $f=x^2$，$g=e^x$，则 $f^{(k)}=\\\\begin{cases}x^2,&k=0\\\\\\\\2x,&k=1\\\\\\\\2,&k=2\\\\\\\\0,&k\\\\ge 3\\end{cases}$，$g^{(k)}=e^x$",
+        "Leibniz 公式：$(x^2 e^x)^{(n)}=\\\\sum_{k=0}^{n}\\\\binom{n}{k}f^{(k)}g^{(n-k)}$",
+        "只有 $k=0,1,2$ 项非零：$\\\\binom{n}{0}x^2 e^x+\\\\binom{n}{1}2x\\\\cdot e^x+\\\\binom{n}{2}\\\\cdot 2\\\\cdot e^x$",
+        "化简：$e^x\\left(x^2+2nx+n(n-1)\\\\right)$"
+      ],
+      "hints": [
+        "列出 $f=x^2$ 的各阶导数：$f'=2x$，$f''=2$，$f^{(k)}=0$（$k\\\\ge 3$）。",
+        "Leibniz 公式求和虽然到 $n$，但 $f^{(k)}=0$（$k\\\\ge 3$）使大多数项消失。",
+        "注意 $\\\\binom{n}{2}=n(n-1)/2$，乘以 $f''=2$ 后得 $n(n-1)$。"
+      ],
+      "commonMistakes": [
+        "忘记当 $k\\\\ge 3$ 时 $f^{(k)}=0$，写出了多余的项",
+        "$\\\\binom{n}{2}$ 计算错误",
+        "Leibniz 公式里 $f^{(0)}=f=x^2$ 写成了 $f^{(0)}=0$"
+      ]
+    },
+    {
+      "id": "deriv-ex-009",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §4 微分",
+      "knowledgePointIds": ["differential-definition"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求函数 $y=\\\\ln(x+\\\\sqrt{x^2+1})$ 的微分 $\\\\mathrm{d}y$。",
+      "gradingRubric": [
+        "先求导：$y'=\\\\dfrac{1}{x+\\\\sqrt{x^2+1}}\\\\cdot\\\\left(1+\\\\dfrac{x}{\\\\sqrt{x^2+1}}\\\\right)$",
+        "化简分子：$1+\\\\dfrac{x}{\\\\sqrt{x^2+1}}=\\\\dfrac{\\\\sqrt{x^2+1}+x}{\\\\sqrt{x^2+1}}$",
+        "故 $y'=\\\\dfrac{1}{x+\\\\sqrt{x^2+1}}\\\\cdot\\\\dfrac{\\\\sqrt{x^2+1}+x}{\\\\sqrt{x^2+1}}=\\\\dfrac{1}{\\\\sqrt{x^2+1}}$",
+        "微分：$\\\\mathrm{d}y=\\\\dfrac{1}{\\\\sqrt{x^2+1}}\\\\,\\\\mathrm{d}x$"
+      ],
+      "hints": [
+        "先用链式法则求导：外层 $\\\\ln$，内层 $x+\\\\sqrt{x^2+1}$。",
+        "$\\\\sqrt{x^2+1}$ 的导数是 $x/\\\\sqrt{x^2+1}$（幂函数+链式）。",
+        "化简时注意分子 $\\\\sqrt{x^2+1}+x$ 与分母 $x+\\\\sqrt{x^2+1}$ 相同，可约去。"
+      ],
+      "commonMistakes": [
+        "$(\\\\sqrt{x^2+1})'$ 求错（如算成 $1/(2\\\\sqrt{x^2+1})$ 而没有对内层求导）",
+        "化简分子分母时疏漏，没有约去 $(x+\\\\sqrt{x^2+1})$ 因子",
+        "把微分写成 $\\\\mathrm{d}y=y'$ 而遗漏 $\\\\mathrm{d}x$"
+      ]
+    },
+    {
+      "id": "deriv-ex-010",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 5 章 §4 微分的近似计算",
+      "knowledgePointIds": ["differential-approximation"],
+      "difficulty": "hard",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "（1）用微分近似计算 $\\\\sqrt[3]{0.97}$ 的近似值（保留 4 位小数）。（2）估算计算结果的近似误差阶次，说明近似公式的可靠程度。",
+      "gradingRubric": [
+        "(1) 令 $f(x)=x^{1/3}$，$x_0=1$，$\\\\Delta x=-0.03$",
+        "$f'(x)=\\\\dfrac{1}{3}x^{-2/3}$，$f'(1)=\\\\dfrac{1}{3}$",
+        "近似：$f(0.97)\\\\approx f(1)+f'(1)\\\\cdot(-0.03)=1+\\\\dfrac{1}{3}\\\\cdot(-0.03)=1-0.01=0.9900$",
+        "(2) 误差阶次为 $O((\\\\Delta x)^2)=O(0.0009)$，约 $10^{-3}$~$10^{-4}$ 量级；在 $|\\\\Delta x|=0.03$ 较小时，误差可控制在保留 4 位小数的精度内（精确值约 $0.98990$，误差约 $10^{-4}$）"
+      ],
+      "hints": [
+        "(1) 把 $0.97=1+(-0.03)$，令 $x_0=1$，$\\\\Delta x=-0.03$。",
+        "近似公式：$f(x_0+\\\\Delta x)\\\\approx f(x_0)+f'(x_0)\\\\Delta x$。",
+        "(2) 误差的阶次由 $\\\\Delta y-\\\\mathrm{d}y=o(\\\\Delta x)$ 决定，一般约为 $|\\\\Delta x|^2$ 量级。"
+      ],
+      "commonMistakes": [
+        "$f'(x)=x^{1/3}$ 求导错误（如写成 $\\\\frac{1}{3}x^{1/3}$ 而非 $\\\\frac{1}{3}x^{-2/3}$）",
+        "$f'(1)$ 算错",
+        "没有说明误差量级，只给出近似值"
+      ]
+    }
+  ]
+}
