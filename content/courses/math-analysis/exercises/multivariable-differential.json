@@ -1,0 +1,203 @@
+{
+  "chapterId": "ch-multivariable-differential",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "mvd-ex-001",
+      "knowledgePointId": "differentiability",
+      "title": "偏导数计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "求下列函数的偏导数：\n1. $f(x,y)=x^y$（$x>0$）\n2. $g(x,y)=\\\\arctan\\\\dfrac{y}{x}$（$x\\\\neq 0$）\n3. $h(x,y,z)=x^2e^{yz}+z\\\\ln(xy)$",
+      "solution": "**1. $f(x,y)=x^y=e^{y\\\\ln x}$：**\n$$f_x=e^{y\\\\ln x}\\\\cdot\\\\frac{y}{x}=\\\\frac{y}{x}x^y,\\\\quad f_y=e^{y\\\\ln x}\\\\cdot\\\\ln x=x^y\\\\ln x.$$\n\n**2. $g(x,y)=\\\\arctan(y/x)$：**\n$$g_x=\\\\frac{1}{1+(y/x)^2}\\\\cdot\\\\left(-\\\\frac{y}{x^2}\\\\right)=\\\\frac{-y}{x^2+y^2},\\\\quad g_y=\\\\frac{1}{1+(y/x)^2}\\\\cdot\\\\frac{1}{x}=\\\\frac{x}{x^2+y^2}.$$\n\n**3. $h=x^2e^{yz}+z\\\\ln(xy)=x^2e^{yz}+z\\\\ln x+z\\\\ln y$：**\n$$h_x=2xe^{yz}+\\\\frac{z}{x},\\\\quad h_y=x^2ze^{yz}+\\\\frac{z}{y},\\\\quad h_z=x^2ye^{yz}+\\\\ln(xy).$$",
+      "gradingRubric": [
+        { "criterion": "$f_x,f_y$ 均正确（利用 $x^y=e^{y\\\\ln x}$）", "points": 4 },
+        { "criterion": "$g_x,g_y$ 正确（链式法则+复合）", "points": 3 },
+        { "criterion": "$h_x,h_y,h_z$ 均正确", "points": 3 }
+      ],
+      "hints": [
+        "$x^y=e^{y\\\\ln x}$，对 $x$ 求偏导时 $y$ 视为常数",
+        "$\\\\arctan(u)$ 的导数为 $1/(1+u^2)$，再乘以 $u=y/x$ 对 $x$ 或 $y$ 的偏导"
+      ],
+      "commonMistakes": [
+        "$x^y$ 对 $x$ 偏导不是 $yx^{y-1}$（那是 $y$ 为常数的幂函数）——这里 $y$ 是变量，需取对数后求导",
+        "$\\\\arctan(y/x)$ 中 $y/x$ 对 $x$ 的导数有负号：$\\\\partial(y/x)/\\\\partial x = -y/x^2$"
+      ],
+      "tags": ["partial-derivatives", "chain-rule", "logarithm-differentiation"]
+    },
+    {
+      "id": "mvd-ex-002",
+      "knowledgePointId": "differentiability",
+      "title": "验证可微性",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "设 $f(x,y)=\\\\begin{cases}\\\\dfrac{xy}{\\\\sqrt{x^2+y^2}}, & (x,y)\\\\neq(0,0) \\\\\\\\ 0, & (x,y)=(0,0)\\\\end{cases}$。\n1. 计算 $f_x(0,0)$ 和 $f_y(0,0)$。\n2. 判断 $f$ 在 $(0,0)$ 是否可微。",
+      "solution": "**1. 偏导数：**\n$$f_x(0,0)=\\\\lim_{h\\\\to 0}\\\\frac{f(h,0)-f(0,0)}{h}=\\\\lim_{h\\\\to 0}\\\\frac{0-0}{h}=0.$$\n类似地 $f_y(0,0)=0$。\n\n**2. 验证可微性：**\n若可微，则 $\\\\Delta f=f_x\\\\Delta x+f_y\\\\Delta y+o(\\\\rho)=0+o(\\\\rho)$，即 $f(\\\\Delta x,\\\\Delta y)/\\\\rho\\\\to 0$。\n$$\\\\frac{f(\\\\Delta x,\\\\Delta y)}{\\\\rho}=\\\\frac{\\\\Delta x\\\\cdot\\\\Delta y/(\\\\rho)}{\\\\rho}=\\\\frac{\\\\Delta x\\\\Delta y}{\\\\rho^2}\\,（\\\\rho=\\\\sqrt{\\\\Delta x^2+\\\\Delta y^2}）.$$\n令 $\\\\Delta x=\\\\Delta y=t$（$t\\\\to 0$）：$f/\\\\rho=t^2/(2t^2)\\\\cdot 1/\\\\sqrt{2}\\\\cdot\\\\sqrt{2}=1/2\\\\neq 0$。\n故 $f(\\\\Delta x,\\\\Delta y)\\\\neq o(\\\\rho)$，$f$ 在 $(0,0)$ **不可微**。\n（尽管偏导数存在，可微性失败——偏导数存在是可微的必要而非充分条件。）",
+      "gradingRubric": [
+        { "criterion": "用定义计算 $f_x(0,0)=f_y(0,0)=0$", "points": 3 },
+        { "criterion": "写出可微的验证条件 $\\\\Delta f/\\\\rho\\\\to 0$", "points": 3 },
+        { "criterion": "取对角线路径 $\\\\Delta x=\\\\Delta y=t$ 验证不趋零", "points": 3 },
+        { "criterion": "结论：偏导数存在但不可微", "points": 1 }
+      ],
+      "hints": [
+        "可微性检验：$\\\\lim_{\\\\rho\\\\to 0}[f(\\\\Delta x,\\\\Delta y)-(f_x\\\\Delta x+f_y\\\\Delta y)]/\\\\rho=0$",
+        "取 $\\\\Delta x=\\\\Delta y=t$ 是发现非零极限的常见路径"
+      ],
+      "commonMistakes": [
+        "偏导数存在 $\\\\neq$ 可微，需要验证余项 $o(\\\\rho)$ 条件",
+        "$f(\\\\Delta x,\\\\Delta y)/\\\\rho = \\\\Delta x\\\\Delta y/\\\\rho^2$，对角线方向极限为 $1/2\\\\neq 0$"
+      ],
+      "tags": ["differentiability", "partial-derivatives", "counterexample"]
+    },
+    {
+      "id": "mvd-ex-003",
+      "knowledgePointId": "composite-differentiation",
+      "title": "链式法则综合计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "设 $z=f(u,v)$ 具有连续偏导数，$u=x^2-y^2$，$v=2xy$。\n1. 求 $\\\\partial z/\\\\partial x$ 和 $\\\\partial z/\\\\partial y$。\n2. 验证 $\\\\left(\\\\frac{\\\\partial z}{\\\\partial x}\\\\right)^2+\\\\left(\\\\frac{\\\\partial z}{\\\\partial y}\\\\right)^2=(4x^2+4y^2)\\\\left[\\\\left(\\\\frac{\\\\partial f}{\\\\partial u}\\\\right)^2+\\\\left(\\\\frac{\\\\partial f}{\\\\partial v}\\\\right)^2\\\\right].$",
+      "solution": "**1. 链式法则：**\n$$\\\\frac{\\\\partial z}{\\\\partial x}=f_u\\\\cdot 2x+f_v\\\\cdot 2y,\\\\quad\\\\frac{\\\\partial z}{\\\\partial y}=f_u\\\\cdot(-2y)+f_v\\\\cdot 2x.$$\n\n**2. 验证等式：**\n$$\\\\left(\\\\frac{\\\\partial z}{\\\\partial x}\\\\right)^2+\\\\left(\\\\frac{\\\\partial z}{\\\\partial y}\\\\right)^2=(2xf_u+2yf_v)^2+(-2yf_u+2xf_v)^2.$$\n展开第一项：$4x^2f_u^2+8xyf_uf_v+4y^2f_v^2$。\n展开第二项：$4y^2f_u^2-8xyf_uf_v+4x^2f_v^2$。\n相加：$4(x^2+y^2)f_u^2+4(x^2+y^2)f_v^2=4(x^2+y^2)(f_u^2+f_v^2)$。\n即 $(4x^2+4y^2)(f_u^2+f_v^2)$。验证完毕。",
+      "gradingRubric": [
+        { "criterion": "$\\\\partial z/\\\\partial x=2xf_u+2yf_v$", "points": 3 },
+        { "criterion": "$\\\\partial z/\\\\partial y=-2yf_u+2xf_v$", "points": 3 },
+        { "criterion": "展开计算，交叉项消去，得到 $4(x^2+y^2)(f_u^2+f_v^2)$", "points": 4 }
+      ],
+      "hints": [
+        "$\\\\partial u/\\\\partial x=2x$，$\\\\partial u/\\\\partial y=-2y$，$\\\\partial v/\\\\partial x=2y$，$\\\\partial v/\\\\partial y=2x$",
+        "展开后注意 $8xyf_uf_v$ 和 $-8xyf_uf_v$ 相消"
+      ],
+      "commonMistakes": [
+        "链式法则中 $\\\\partial z/\\\\partial y$：$\\\\partial u/\\\\partial y=-2y$（有负号）",
+        "验证等式时展开要仔细，不要丢 $(2x)^2=4x^2$ 等系数"
+      ],
+      "tags": ["chain-rule", "composite-functions", "identity-verification"]
+    },
+    {
+      "id": "mvd-ex-004",
+      "knowledgePointId": "composite-differentiation",
+      "title": "隐函数求导",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "1. 已知 $F(x,y)=0$ 定义隐函数 $y=y(x)$，其中 $F(x,y)=x^3+y^3-3axy$（$a\\\\neq 0$），求 $y'$。\n2. 设曲面 $z=z(x,y)$ 由方程 $z^3-3z=xe^y$ 隐式确定，求 $\\\\partial z/\\\\partial x$ 和 $\\\\partial^2 z/\\\\partial x^2$。",
+      "solution": "**1.** $F_x=3x^2-3ay$，$F_y=3y^2-3ax$，$F_y\\\\neq 0$（假设 $y^2\\\\neq ax$）。\n$$y'=-\\\\frac{F_x}{F_y}=-\\\\frac{3x^2-3ay}{3y^2-3ax}=\\\\frac{ay-x^2}{y^2-ax}.$$\n\n**2.** 令 $F(x,y,z)=z^3-3z-xe^y$，$F_x=-e^y$，$F_z=3z^2-3$（$z^2\\\\neq 1$）。\n$$\\\\frac{\\\\partial z}{\\\\partial x}=-\\\\frac{F_x}{F_z}=\\\\frac{e^y}{3(z^2-1)}.$$\n\n求 $\\\\partial^2 z/\\\\partial x^2$：对 $\\\\partial z/\\\\partial x=e^y/(3(z^2-1))$ 关于 $x$ 再求偏导。\n$$\\\\frac{\\\\partial^2 z}{\\\\partial x^2}=\\\\frac{\\\\partial}{\\\\partial x}\\\\left(\\\\frac{e^y}{3(z^2-1)}\\\\right)=e^y\\\\cdot\\\\frac{-6z\\\\cdot\\\\partial z/\\\\partial x}{9(z^2-1)^2}\\\\cdot(-1)=\\\\frac{e^y\\\\cdot(-6z)\\\\cdot e^y/(3(z^2-1))}{(-9)(z^2-1)^2}\\\\cdot(-1).$$\n化简：$=-\\\\frac{6ze^{2y}}{9(z^2-1)^3}\\\\cdot\\\\frac{1}{1}=\\\\frac{-2ze^{2y}}{3(z^2-1)^3}$（注意符号）。\n\n完整计算：$\\\\frac{\\\\partial^2 z}{\\\\partial x^2}=\\\\frac{\\\\partial}{\\\\partial x}\\\\left[\\\\frac{e^y}{3(z^2-1)}\\\\right]=\\\\frac{e^y\\\\cdot(-6z(\\\\partial z/\\\\partial x))}{3(z^2-1)^2}\\\\cdot\\\\frac{1}{-1}$（链式法则对 $z$）。\n代入 $\\\\partial z/\\\\partial x=e^y/(3(z^2-1))$：\n$$=\\\\frac{e^y\\\\cdot 6z\\\\cdot e^y/(3(z^2-1))}{9(z^2-1)^2}\\\\cdot\\\\frac{1}{-1}=\\\\frac{-2ze^{2y}}{9(z^2-1)^3}.$$",
+      "gradingRubric": [
+        { "criterion": "第1题用 $y'=-F_x/F_y$ 正确", "points": 3 },
+        { "criterion": "第2题 $\\\\partial z/\\\\partial x=e^y/(3(z^2-1))$", "points": 3 },
+        { "criterion": "二阶偏导数：对 $\\\\partial z/\\\\partial x$ 关于 $x$ 再用链式法则", "points": 4 }
+      ],
+      "hints": [
+        "隐函数定理：$\\\\partial z/\\\\partial x=-F_x/F_z$（对三元方程 $F(x,y,z)=0$）",
+        "二阶偏导：$\\\\partial/\\\\partial x[e^y/g(z)]=e^y\\\\cdot(-g'(z)z_x)/g(z)^2$（$y$ 视为常数）"
+      ],
+      "commonMistakes": [
+        "第2题 $F_x=-e^y$（注意 $F=z^3-3z-xe^y$，对 $x$ 偏导是 $-e^y$，有负号）",
+        "二阶偏导对 $z$ 求导后要再乘 $\\\\partial z/\\\\partial x$（链式法则）"
+      ],
+      "tags": ["implicit-differentiation", "second-order-partial-derivatives", "chain-rule"]
+    },
+    {
+      "id": "mvd-ex-005",
+      "knowledgePointId": "directional-derivative-gradient",
+      "title": "方向导数计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "设 $f(x,y,z)=x^2+y^2-z^2$，求：\n1. $f$ 在点 $(1,1,1)$ 处沿方向 $\\\\boldsymbol{l}=(1,1,-1)/\\\\sqrt{3}$ 的方向导数。\n2. $f$ 在 $(1,1,1)$ 处增长最快的方向，以及最大方向导数值。",
+      "solution": "**1. 计算偏导数：** $f_x=2x,f_y=2y,f_z=-2z$。在 $(1,1,1)$：$f_x=2,f_y=2,f_z=-2$。\n方向 $\\\\boldsymbol{l}=(1,1,-1)/\\\\sqrt{3}$（单位向量，$|\\\\boldsymbol{l}|=\\\\sqrt{3}/\\\\sqrt{3}=1$）。\n$$\\\\frac{\\\\partial f}{\\\\partial\\\\boldsymbol{l}}=f_x\\\\cdot\\\\frac{1}{\\\\sqrt{3}}+f_y\\\\cdot\\\\frac{1}{\\\\sqrt{3}}+f_z\\\\cdot\\\\frac{-1}{\\\\sqrt{3}}=\\\\frac{2+2-(-2)\\\\cdot 1}{\\\\sqrt{3}}\\\\cdot(-1\\\\text{ on }z)=\\\\frac{2+2+2}{\\\\sqrt{3}}=\\\\frac{6}{\\\\sqrt{3}}=2\\\\sqrt{3}.$$\n等等，重算：$f_z\\\\cdot(-1/\\\\sqrt{3})=(-2)\\\\cdot(-1/\\\\sqrt{3})=2/\\\\sqrt{3}$。\n$$\\\\frac{\\\\partial f}{\\\\partial\\\\boldsymbol{l}}=\\\\frac{2}{\\\\sqrt{3}}+\\\\frac{2}{\\\\sqrt{3}}+\\\\frac{2}{\\\\sqrt{3}}=\\\\frac{6}{\\\\sqrt{3}}=2\\\\sqrt{3}.$$\n\n**2. 增长最快方向：** 梯度 $\\\\nabla f(1,1,1)=(2,2,-2)$，方向单位向量 $\\\\boldsymbol{e}=(2,2,-2)/|(2,2,-2)|=(2,2,-2)/(2\\\\sqrt{3})=(1,1,-1)/\\\\sqrt{3}$（恰好与第1问方向相同！）。\n最大方向导数 $=|\\\\nabla f|=\\\\sqrt{4+4+4}=2\\\\sqrt{3}$。",
+      "gradingRubric": [
+        { "criterion": "计算偏导数并代入 $(1,1,1)$", "points": 2 },
+        { "criterion": "方向导数公式 $=\\\\nabla f\\\\cdot\\\\boldsymbol{l}$ 计算正确", "points": 3 },
+        { "criterion": "梯度 $\\\\nabla f=(2,2,-2)$，规范化", "points": 3 },
+        { "criterion": "最大方向导数 $=|\\\\nabla f|=2\\\\sqrt{3}$", "points": 2 }
+      ],
+      "hints": [
+        "$\\\\boldsymbol{l}=(1,1,-1)/\\\\sqrt{3}$，第三分量的方向余弦是 $-1/\\\\sqrt{3}$（注意负号）",
+        "最大方向导数 $=|\\\\nabla f|=\\\\sqrt{f_x^2+f_y^2+f_z^2}$"
+      ],
+      "commonMistakes": [
+        "方向向量非单位向量时，必须先除以模长规范化",
+        "$f_z=-2z$，在 $(1,1,1)$ 处 $f_z=-2$（不是 $+2$）"
+      ],
+      "tags": ["directional-derivative", "gradient", "maximum-directional-derivative"]
+    },
+    {
+      "id": "mvd-ex-006",
+      "knowledgePointId": "directional-derivative-gradient",
+      "title": "等值线与梯度的关系",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "设温度场 $T(x,y)=100-2x^2-y^2$（°C）。某质点在 $(3,4)$ 处。\n1. 求 $T$ 在 $(3,4)$ 处的梯度。\n2. 求沿梯度方向前进单位距离后的 $T$ 近似增量。\n3. 从 $(3,4)$ 沿哪个方向 $T$ 不变？（即等温线切线方向。）",
+      "solution": "**1. 梯度：** $T_x=-4x,T_y=-2y$，在 $(3,4)$：$T_x=-12,T_y=-8$。\n$$\\\\nabla T(3,4)=(-12,-8).\\\\quad|\\\\nabla T|=\\\\sqrt{144+64}=\\\\sqrt{208}=4\\\\sqrt{13}.$$\n\n**2. 近似增量：** 沿梯度方向单位向量 $\\\\boldsymbol{e}=(-12,-8)/(4\\\\sqrt{13})=(-3,-2)/\\\\sqrt{13}$ 前进单位距离：\n$$\\\\Delta T\\\\approx\\\\frac{\\\\partial T}{\\\\partial\\\\boldsymbol{e}}\\\\cdot 1=|\\\\nabla T|\\\\cdot 1=4\\\\sqrt{13}.$$\n（方向导数最大值 $= |\\\\nabla T| = 4\\\\sqrt{13}$，单位距离增量约为 $4\\\\sqrt{13}\\\\approx 14.4$ °C。）\n\n**3. 等温线切线方向：** 方向导数为零 $\\\\iff \\\\nabla T\\\\perp\\\\boldsymbol{l}$，即 $\\\\boldsymbol{l}\\\\perp(-12,-8)$，故 $\\\\boldsymbol{l}\\\\parallel(8,-12)$（即 $(2,-3)/\\\\sqrt{13}$ 或其反向）。\n沿 $\\\\boldsymbol{l}=(2,-3)/\\\\sqrt{13}$ 方向，$T$ 不变（等温线切线）。",
+      "gradingRubric": [
+        { "criterion": "$\\\\nabla T=(-12,-8)$，模 $=4\\\\sqrt{13}$", "points": 3 },
+        { "criterion": "近似增量 $\\\\approx |\\\\nabla T|=4\\\\sqrt{13}$", "points": 3 },
+        { "criterion": "等温线方向垂直于梯度 $(8,-12)$（或规范化）", "points": 4 }
+      ],
+      "hints": [
+        "最大方向导数 $=|\\\\nabla T|$，沿梯度单位向量前进 $1$ 单位的增量近似等于此值",
+        "等温线方向 $\\\\boldsymbol{l}$：$\\\\nabla T\\\\cdot\\\\boldsymbol{l}=0$，即 $\\\\boldsymbol{l}$ 是 $(-12,-8)$ 的垂直向量"
+      ],
+      "commonMistakes": [
+        "梯度方向是函数**增大**的方向：$(-12,-8)$（负向，温度从 $(3,4)$ 降低最快）",
+        "等温线切线 $\\\\perp$ 梯度，且需是单位向量：$(8,-12)/|(8,-12)|$"
+      ],
+      "tags": ["gradient", "level-curves", "directional-derivative", "temperature-field"]
+    },
+    {
+      "id": "mvd-ex-007",
+      "knowledgePointId": "multivariable-extrema",
+      "title": "二元函数极值判定",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "求 $f(x,y)=x^3-y^3+3x^2+3y^2-9x$ 的所有极值。",
+      "solution": "**驻点（$\\\\nabla f=\\\\boldsymbol{0}$）：**\n$$f_x=3x^2+6x-9=3(x^2+2x-3)=3(x+3)(x-1)=0\\\\Rightarrow x=-3\\\\text{ 或 }x=1.$$\n$$f_y=-3y^2+6y=3y(-y+2)=3y(2-y)=0\\\\Rightarrow y=0\\\\text{ 或 }y=2.$$\n驻点共 $4$ 个：$(-3,0),(-3,2),(1,0),(1,2)$。\n\n**二阶偏导数（Hessian）：**\n$f_{xx}=6x+6$，$f_{xy}=0$，$f_{yy}=-6y+6$。\n判别式 $\\\\Delta=f_{xy}^2-f_{xx}f_{yy}=-(6x+6)(-6y+6)$。\n\n- **$(-3,0)$**：$A=f_{xx}=-12$，$B=0$，$C=f_{yy}=6$，$\\\\Delta=0-((-12)(6))=72>0$：鞍点。\n- **$(-3,2)$**：$A=-12$，$C=-6$，$\\\\Delta=0-(-12)(-6)=-72<0$；$A<0$：**极大值** $f(-3,2)=(-27)-8+27+12+27=31$。\n- **$(1,0)$**：$A=12$，$C=6$，$\\\\Delta=0-(12)(6)=-72<0$；$A>0$：**极小值** $f(1,0)=1-0+3+0-9=-5$。\n- **$(1,2)$**：$A=12$，$C=-6$，$\\\\Delta=0-(12)(-6)=72>0$：鞍点。\n\n**结论：** 极大值 $f(-3,2)=31$，极小值 $f(1,0)=-5$，另两个驻点为鞍点。",
+      "gradingRubric": [
+        { "criterion": "正确求出 $4$ 个驻点", "points": 3 },
+        { "criterion": "计算 $A=f_{xx},B=f_{xy},C=f_{yy}$ 各点", "points": 2 },
+        { "criterion": "用 $\\\\Delta=B^2-AC$ 正确判断各驻点类型", "points": 4 },
+        { "criterion": "计算极值处的函数值", "points": 1 }
+      ],
+      "hints": [
+        "驻点：$f_x=0$ 给出 $x$，$f_y=0$ 给出 $y$，各独立求解（因为 $f_{xy}=0$）",
+        "$\\\\Delta<0$ 有极值，再看 $A=f_{xx}$ 的符号"
+      ],
+      "commonMistakes": [
+        "判别式 $\\\\Delta=B^2-AC$（不是 $AC-B^2$）：$\\\\Delta<0$ 对应有极值",
+        "计算 $f(-3,2)$：$(-3)^3-2^3+3(-3)^2+3\\\\cdot 4-9(-3)=-27-8+27+12+27=31$"
+      ],
+      "tags": ["extrema", "hessian", "saddle-point", "second-order-test"]
+    },
+    {
+      "id": "mvd-ex-008",
+      "knowledgePointId": "multivariable-extrema",
+      "title": "二阶混合偏导数的对称性与应用",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 17 章",
+      "problem": "设 $u=u(x,y)$ 满足 Laplace 方程 $\\\\frac{\\\\partial^2 u}{\\\\partial x^2}+\\\\frac{\\\\partial^2 u}{\\\\partial y^2}=0$（调和函数）。\n令 $x=r\\\\cos\\\\theta$，$y=r\\\\sin\\\\theta$（$r>0$），将 Laplace 方程转化为极坐标形式。",
+      "solution": "**目标：** 将 $u_{xx}+u_{yy}=0$ 用 $r,\\\\theta$ 表示。\n\n**链式法则：**\n$r=\\\\sqrt{x^2+y^2}$，$\\\\theta=\\\\arctan(y/x)$（$x>0$）。\n$$r_x=\\\\frac{x}{r}=\\\\cos\\\\theta,\\\\quad r_y=\\\\frac{y}{r}=\\\\sin\\\\theta,\\\\quad\\\\theta_x=\\\\frac{-y/r^2}{1}=-\\\\frac{\\\\sin\\\\theta}{r},\\\\quad\\\\theta_y=\\\\frac{\\\\cos\\\\theta}{r}.$$\n\n$u_x=u_r\\\\cos\\\\theta-u_\\\\theta\\\\cdot\\\\frac{\\\\sin\\\\theta}{r}$，$u_y=u_r\\\\sin\\\\theta+u_\\\\theta\\\\cdot\\\\frac{\\\\cos\\\\theta}{r}$。\n\n$u_{xx}$（再对 $x$ 求导，应用链式法则）：\n$$u_{xx}=u_{rr}\\\\cos^2\\\\theta-\\\\frac{2u_{r\\\\theta}\\\\sin\\\\theta\\\\cos\\\\theta}{r}+\\\\frac{2u_\\\\theta\\\\sin\\\\theta\\\\cos\\\\theta}{r^2}+\\\\frac{u_{\\\\theta\\\\theta}\\\\sin^2\\\\theta}{r^2}+\\\\frac{u_r\\\\sin^2\\\\theta}{r}.$$\n\n$u_{yy}$（类似）：\n$$u_{yy}=u_{rr}\\\\sin^2\\\\theta+\\\\frac{2u_{r\\\\theta}\\\\sin\\\\theta\\\\cos\\\\theta}{r}-\\\\frac{2u_\\\\theta\\\\sin\\\\theta\\\\cos\\\\theta}{r^2}+\\\\frac{u_{\\\\theta\\\\theta}\\\\cos^2\\\\theta}{r^2}+\\\\frac{u_r\\\\cos^2\\\\theta}{r}.$$\n\n**相加（$\\\\cos^2\\\\theta+\\\\sin^2\\\\theta=1$，交叉项消去）：**\n$$u_{xx}+u_{yy}=u_{rr}+\\\\frac{u_{\\\\theta\\\\theta}}{r^2}+\\\\frac{u_r}{r}=\\\\frac{1}{r}\\\\frac{\\\\partial}{\\\\partial r}\\\\left(r\\\\frac{\\\\partial u}{\\\\partial r}\\\\right)+\\\\frac{1}{r^2}\\\\frac{\\\\partial^2 u}{\\\\partial\\\\theta^2}=0.$$\n\n**极坐标 Laplace 方程：** $\\\\dfrac{\\\\partial^2 u}{\\\\partial r^2}+\\\\dfrac{1}{r}\\\\dfrac{\\\\partial u}{\\\\partial r}+\\\\dfrac{1}{r^2}\\\\dfrac{\\\\partial^2 u}{\\\\partial\\\\theta^2}=0$。",
+      "gradingRubric": [
+        { "criterion": "正确计算 $r_x,r_y,\\\\theta_x,\\\\theta_y$", "points": 3 },
+        { "criterion": "$u_x,u_y$ 用链式法则表达", "points": 2 },
+        { "criterion": "$u_{xx},u_{yy}$ 展开（过程清晰）", "points": 3 },
+        { "criterion": "相加后三角函数消去，得到极坐标 Laplace 方程", "points": 2 }
+      ],
+      "hints": [
+        "$\\\\theta_x=-\\\\sin\\\\theta/r$（注意推导：$\\\\partial\\\\arctan(y/x)/\\\\partial x=-y/(x^2+y^2)=-\\\\sin\\\\theta/r$）",
+        "所有交叉项（含 $u_{r\\\\theta}$）和含 $u_\\\\theta$ 的项在 $u_{xx}+u_{yy}$ 中均消去"
+      ],
+      "commonMistakes": [
+        "$u_{xx}$ 的计算需要对 $u_x$ 关于 $x$ 再用链式法则（$r$ 和 $\\\\theta$ 均依赖 $x$）",
+        "$1/r(u_r)$ 项来自 $\\\\partial(1/r)/\\\\partial r\\cdot u_\\\\theta\\\\cdot(\\\\ldots)$ 的展开，不要遗漏"
+      ],
+      "tags": ["laplace-equation", "polar-coordinates", "chain-rule", "second-order-pde"]
+    }
+  ]
+}

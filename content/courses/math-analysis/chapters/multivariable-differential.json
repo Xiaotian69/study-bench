@@ -1,0 +1,185 @@
+{
+  "chapterId": "ch-multivariable-differential",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "differentiability",
+      "title": "可微性、偏导数与全微分",
+      "chapterId": "ch-multivariable-differential",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握偏导数的定义和计算",
+        "理解可微（全微分存在）的定义及其与偏导数存在的关系",
+        "掌握高阶偏导数，特别是混合偏导数的相等条件"
+      ],
+      "coreExplanation": "**偏导数**：$f_x(x_0,y_0)=\\\\lim_{\\\\Delta x\\\\to 0}\\\\frac{f(x_0+\\\\Delta x,y_0)-f(x_0,y_0)}{\\\\Delta x}$（固定 $y$，对 $x$ 求导）。记法：$\\\\partial f/\\\\partial x$，$f_x$，$D_1f$。\n**可微性（全微分）**：$f$ 在 $(x_0,y_0)$ 可微 $\\\\iff$ $\\\\Delta f=f_x\\\\Delta x+f_y\\\\Delta y+o(\\\\sqrt{\\\\Delta x^2+\\\\Delta y^2})$（增量可以线性近似）。全微分 $\\\\mathrm{d}f=f_x\\,\\\\mathrm{d}x+f_y\\,\\\\mathrm{d}y$。\n**可微 vs 偏导数存在**：\n- 可微 $\\\\Rightarrow$ 偏导数存在（反之不真）。\n- 偏导数存在**且连续** $\\\\Rightarrow$ 可微（充分条件，较强但常用）。\n- 可微 $\\\\Rightarrow$ 连续；偏导数存在 $\\\\not\\\\Rightarrow$ 连续。\n**高阶偏导数**：$f_{xy}=\\\\frac{\\\\partial^2 f}{\\\\partial y\\\\partial x}$（先对 $x$，再对 $y$）。\n**混合偏导数相等定理**：若 $f_{xy}$ 和 $f_{yx}$ 在 $(x_0,y_0)$ 处都连续，则 $f_{xy}(x_0,y_0)=f_{yx}(x_0,y_0)$。\n**应用：切平面与法线**：可微函数 $z=f(x,y)$ 在 $(x_0,y_0,z_0)$ 处的切平面方程：$z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$；法线方向向量 $(-f_x,-f_y,1)$。",
+      "textbookRefs": ["数学分析（第5版）下册 §17.1"],
+      "keyDefinitions": [
+        {
+          "term": "全微分",
+          "definition": "$\\\\mathrm{d}f=f_x\\,\\\\mathrm{d}x+f_y\\,\\\\mathrm{d}y$，存在当且仅当增量 $\\\\Delta f$ 可线性近似（余项为 $o(\\\\rho)$，$\\\\rho=\\\\sqrt{\\\\Delta x^2+\\\\Delta y^2}$）"
+        },
+        {
+          "term": "偏导数",
+          "definition": "固定其他变量，对某一变量求的极限形式导数：$f_x(x_0,y_0)=\\\\lim_{\\\\Delta x\\\\to 0}[f(x_0+\\\\Delta x,y_0)-f(x_0,y_0)]/\\\\Delta x$"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "混合偏导数相等定理（Schwarz 定理）",
+          "statement": "若 $f_{xy},f_{yx}$ 在某点处均连续，则 $f_{xy}=f_{yx}$",
+          "significance": "绝大多数实际计算中两者相等，允许选择更简便的求导顺序"
+        }
+      ],
+      "proofIdeas": [
+        "**可微 $\\\\Rightarrow$ 偏导数存在**：令 $\\\\Delta y=0$，$\\\\Delta f=f_x\\\\Delta x+o(|\\\\Delta x|)$，除以 $\\\\Delta x$ 令 $\\\\Delta x\\\\to 0$ 即得 $f_x$。\n\n**偏导数存在但不可微（反例）**：$f(x,y)=\\\\sqrt{|xy|}$，$(0,0)$ 处 $f_x=f_y=0$，但 $\\\\Delta f/\\\\rho=\\\\sqrt{|\\\\cos\\\\theta\\\\sin\\\\theta|}\\\\not\\\\to 0$（极坐标下），故不可微。"
+      ],
+      "socraticQuestions": [
+        "偏导数存在是否意味着可微？举出反例。",
+        "若 $f(x,y)=g(x)h(y)$，$f_{xy}$ 和 $f_{yx}$ 分别是什么？",
+        "可微为什么意味着连续？（提示：$\\\\Delta f=f_x\\\\Delta x+f_y\\\\Delta y+o(\\\\rho)\\\\to 0$。）"
+      ],
+      "commonMistakes": [
+        "混淆偏导数存在（弱）和可微（强）：存在但不可微的函数有经典例子",
+        "高阶混合偏导数：$f_{xy}$ 是先对 $x$ 后对 $y$（某些教材顺序相反），注意符号约定"
+      ],
+      "exerciseIds": ["mvd-ex-001", "mvd-ex-002"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能计算多元函数的偏导数和全微分",
+        "能判断函数在某点是否可微（用定义验证余项）"
+      ]
+    },
+    {
+      "id": "composite-differentiation",
+      "title": "复合函数微分法（链式法则）",
+      "chapterId": "ch-multivariable-differential",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握多元复合函数的链式法则",
+        "掌握全导数公式和全微分形式不变性",
+        "能处理含隐函数的微分（直接法和公式法）"
+      ],
+      "coreExplanation": "**链式法则（基本形式）**：若 $z=f(u,v)$，$u=u(x,y)$，$v=v(x,y)$，则\n$$\\\\frac{\\\\partial z}{\\\\partial x}=\\\\frac{\\\\partial f}{\\\\partial u}\\\\frac{\\\\partial u}{\\\\partial x}+\\\\frac{\\\\partial f}{\\\\partial v}\\\\frac{\\\\partial v}{\\\\partial x},\\\\quad\\\\frac{\\\\partial z}{\\\\partial y}=\\\\frac{\\\\partial f}{\\\\partial u}\\\\frac{\\\\partial u}{\\\\partial y}+\\\\frac{\\\\partial f}{\\\\partial v}\\\\frac{\\\\partial v}{\\\\partial y}.$$\n**全导数**：若 $z=f(x,y(x))$，则 $\\\\frac{\\\\mathrm{d}z}{\\\\mathrm{d}x}=f_x+f_y\\\\frac{\\\\mathrm{d}y}{\\\\mathrm{d}x}$。\n**全微分形式不变性**：无论 $x,y$ 是自变量还是中间变量，$\\\\mathrm{d}f=f_x\\,\\\\mathrm{d}x+f_y\\,\\\\mathrm{d}y$ 形式不变（与一元相同）。\n**隐函数微分（直接法）**：$F(x,y)=0$ 两边对 $x$ 求导，$F_x+F_y\\\\frac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=0$，得 $\\\\mathrm{d}y/\\\\mathrm{d}x=-F_x/F_y$（$F_y\\\\neq 0$）。二元 $F(x,y,z)=0$：$\\\\partial z/\\\\partial x=-F_x/F_z$，$\\\\partial z/\\\\partial y=-F_y/F_z$。\n**常用变量变换**：极坐标 $x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta$ 时，利用链式法则得 $\\\\partial/\\\\partial r$ 和 $\\\\partial/\\\\partial\\\\theta$ 的表达式。",
+      "textbookRefs": ["数学分析（第5版）下册 §17.2"],
+      "keyDefinitions": [
+        {
+          "term": "全微分形式不变性",
+          "definition": "$\\\\mathrm{d}f=\\\\partial f/\\\\partial u\\,\\\\mathrm{d}u+\\\\partial f/\\\\partial v\\,\\\\mathrm{d}v$，无论 $(u,v)$ 是自变量还是因变量，形式相同"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "**链式法则推导**：$\\\\Delta z=f_u\\\\Delta u+f_v\\\\Delta v+o(\\\\rho_1)$；$\\\\Delta u=u_x\\\\Delta x+u_y\\\\Delta y+o(\\\\rho)$；代入并令 $\\\\Delta x\\\\to 0$（$\\\\Delta y=0$）得 $\\\\partial z/\\\\partial x=f_u u_x+f_v v_x$。"
+      ],
+      "socraticQuestions": [
+        "若 $f(x,y)=g(x^2+y^2)$，$f_x$ 和 $f_y$ 分别是什么？（链式法则：$u=x^2+y^2$。）",
+        "隐函数 $x^2+y^2+z^2=1$ 定义 $z=z(x,y)$（$z>0$），求 $\\\\partial z/\\\\partial x$ 和 $\\\\partial z/\\\\partial y$。",
+        "全微分形式不变性：$z=f(u)$，$u=g(x,y)$，$\\\\mathrm{d}z=f'(u)\\\\mathrm{d}u=f'(g)g_x\\\\mathrm{d}x+f'(g)g_y\\\\mathrm{d}y$——与链式法则结果一致？"
+      ],
+      "commonMistakes": [
+        "链式法则中遗漏某个中间变量的贡献（尤其是 $z=f(u,v,x)$ 有直接依赖 $x$ 项）",
+        "隐函数公式 $\\\\partial z/\\\\partial x=-F_x/F_z$：注意是 $-F_x/F_z$（有负号），$F_z\\\\neq 0$"
+      ],
+      "exerciseIds": ["mvd-ex-003", "mvd-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能对各种复合结构用链式法则求偏导数",
+        "能对三元隐函数用 $-F_x/F_z$ 公式求偏导数"
+      ]
+    },
+    {
+      "id": "directional-derivative-gradient",
+      "title": "方向导数与梯度",
+      "chapterId": "ch-multivariable-differential",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握方向导数的定义和计算公式",
+        "理解梯度的定义及其与方向导数的关系",
+        "理解梯度方向是函数增长最快的方向"
+      ],
+      "coreExplanation": "**方向导数**：$f$ 在 $(x_0,y_0)$ 沿方向 $\\\\boldsymbol{l}=(\\\\cos\\\\alpha,\\\\cos\\\\beta)$（单位向量）的方向导数：\n$$\\\\frac{\\\\partial f}{\\\\partial\\\\boldsymbol{l}}=\\\\lim_{t\\\\to 0^+}\\\\frac{f(x_0+t\\\\cos\\\\alpha,y_0+t\\\\cos\\\\beta)-f(x_0,y_0)}{t}.$$\n若 $f$ 在 $(x_0,y_0)$ 可微，则 $\\\\frac{\\\\partial f}{\\\\partial\\\\boldsymbol{l}}=f_x\\\\cos\\\\alpha+f_y\\\\cos\\\\beta$（与方向余弦的内积）。\n**梯度**：$\\\\nabla f=\\\\mathrm{grad}\\\\,f=(f_x,f_y)$（向量）。方向导数 $\\\\partial f/\\\\partial\\\\boldsymbol{l}=\\\\nabla f\\\\cdot\\\\boldsymbol{l}=|\\\\nabla f|\\\\cos\\\\varphi$（$\\\\varphi$ 是 $\\\\boldsymbol{l}$ 与梯度的夹角）。\n**梯度的几何意义**：\n- $\\\\varphi=0$（沿梯度方向）时方向导数最大，等于 $|\\\\nabla f|$。\n- $\\\\varphi=\\\\pi$（逆梯度）时方向导数最小（最负）。\n- $\\\\varphi=\\\\pi/2$（垂直梯度）时方向导数为零（沿等值线方向）。\n梯度方向垂直于等值线（曲面 $f=c$ 的切线），指向函数值增大方向。\n**$n$ 元推广**：$\\\\nabla f=(f_{x_1},\\\\ldots,f_{x_n})$，方向余弦 $(\\\\cos\\\\alpha_1,\\\\ldots,\\\\cos\\\\alpha_n)$（$\\\\sum\\\\cos^2\\\\alpha_i=1$）。",
+      "textbookRefs": ["数学分析（第5版）下册 §17.3"],
+      "keyDefinitions": [
+        {
+          "term": "梯度",
+          "definition": "$\\\\nabla f=(f_x,f_y)$，是一个向量，方向为函数增长最快的方向，模为最大方向导数值"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "方向导数计算公式",
+          "statement": "若 $f$ 在 $(x_0,y_0)$ 可微，则 $\\\\partial f/\\\\partial\\\\boldsymbol{l}=f_x\\\\cos\\\\alpha+f_y\\\\cos\\\\beta=\\\\nabla f\\\\cdot\\\\boldsymbol{l}$",
+          "significance": "把方向导数归结为梯度与单位方向向量的内积，统一各方向"
+        }
+      ],
+      "proofIdeas": [
+        "**推导**：$f$ 可微时 $f(x_0+t\\\\cos\\\\alpha,y_0+t\\\\cos\\\\beta)-f(x_0,y_0)=f_x\\\\cdot t\\\\cos\\\\alpha+f_y\\\\cdot t\\\\cos\\\\beta+o(t)$，除以 $t$ 令 $t\\\\to 0^+$ 得结论。"
+      ],
+      "socraticQuestions": [
+        "若 $f(x,y)=x^2+y^2$（圆），梯度是 $(2x,2y)$，它与等值线（圆）的关系是什么？",
+        "方向导数为负意味着什么（沿该方向函数减小）？梯度为零意味着什么？",
+        "等温线上的热传导方向（Fourier 热传导定律）和梯度有何关系？"
+      ],
+      "commonMistakes": [
+        "方向导数公式要求 $\\\\boldsymbol{l}$ 为**单位**向量；若给的方向向量不是单位向量，需先规范化",
+        "方向导数不一定等于偏导数——偏导数是沿坐标轴方向的特殊情形"
+      ],
+      "exerciseIds": ["mvd-ex-005", "mvd-ex-006"],
+      "diagramIds": ["gradient-diagram"],
+      "masteryCriteria": [
+        "能计算给定点处沿任意方向的方向导数",
+        "能求函数的梯度并确定最大增长方向"
+      ]
+    },
+    {
+      "id": "multivariable-extrema",
+      "title": "多元函数的泰勒公式与极值",
+      "chapterId": "ch-multivariable-differential",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "了解二元函数的 Taylor 公式（二阶）",
+        "掌握二元函数极值的必要条件（驻点）和充分条件（Hessian 行列式）",
+        "能求二元函数的极值"
+      ],
+      "coreExplanation": "**二元函数 Taylor 公式（二阶）**：$f(x_0+h,y_0+k)=f(x_0,y_0)+(f_xh+f_yk)+\\\\frac{1}{2}(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2)+O(r^3)$（$r=\\\\sqrt{h^2+k^2}$）。\n**极值的必要条件**：若 $(x_0,y_0)$ 是极值点，则 $f_x(x_0,y_0)=0$，$f_y(x_0,y_0)=0$（驻点）。\n**极值的充分条件**：设 $(x_0,y_0)$ 是驻点，令 $A=f_{xx}$，$B=f_{xy}$，$C=f_{yy}$（均在 $(x_0,y_0)$ 处），$\\\\Delta=B^2-AC$：\n- $\\\\Delta<0$，$A<0$：极大值。\n- $\\\\Delta<0$，$A>0$：极小值。\n- $\\\\Delta>0$：鞍点（非极值）。\n- $\\\\Delta=0$：无法判断，需进一步分析。\n**Hessian 矩阵**：$H=\\\\begin{pmatrix}f_{xx}&f_{xy}\\\\\\\\f_{yx}&f_{yy}\\\\end{pmatrix}$，判别式 $\\\\Delta=f_{xy}^2-f_{xx}f_{yy}=-\\\\det H$。$\\\\det H>0$ 时二次型不定（鞍点）；$\\\\det H<0$ 时正定（极小）或负定（极大）。",
+      "textbookRefs": ["数学分析（第5版）下册 §17.4"],
+      "keyDefinitions": [
+        {
+          "term": "驻点",
+          "definition": "$\\\\nabla f(x_0,y_0)=\\\\boldsymbol{0}$（所有偏导数为零），是极值的必要条件"
+        },
+        {
+          "term": "鞍点",
+          "definition": "驻点处 $\\\\Delta=B^2-AC>0$，即在驻点的某些方向函数增大、某些方向减小，不是极值"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "二元函数极值充分条件",
+          "statement": "驻点 $(x_0,y_0)$ 处，$B^2-AC<0$ 时有极值（$A<0$ 极大，$A>0$ 极小）；$B^2-AC>0$ 时为鞍点",
+          "significance": "给出驻点类型的判别法则，类比一元的二阶导数检验"
+        }
+      ],
+      "proofIdeas": [
+        "**充分条件证明思路**：用 Taylor 展开 $\\\\Delta f=f(P_0+\\\\boldsymbol{h})-f(P_0)\\\\approx\\\\frac{1}{2}(Ah^2+2Bhk+Ck^2)$，判断二次型的符号定性（$AC-B^2>0$ 时同号）。"
+      ],
+      "socraticQuestions": [
+        "$f(x,y)=x^3-3xy^2$（猴鞍面），在 $(0,0)$ 驻点的 $\\\\Delta$ 是多少？属于哪种情形？",
+        "与一元的二阶导数检验类比：$A=f_{xx}$ 类似 $f''$，$\\\\Delta>0$ 对应什么？",
+        "若 $f_x=f_y=0$ 但 $\\\\Delta=0$，怎样进一步判断？（用 Taylor 展开的更高阶项。）"
+      ],
+      "commonMistakes": [
+        "充分条件中 $\\\\Delta=B^2-AC$（不是 $AC-B^2$）；$\\\\Delta<0$ 时有极值",
+        "驻点 $\\\\neq$ 极值点：鞍点也是驻点，需通过 $\\\\Delta$ 进一步判断"
+      ],
+      "exerciseIds": ["mvd-ex-007", "mvd-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能求二元函数的驻点并用判别式确定极值类型",
+        "能区分极值点和鞍点"
+      ]
+    }
+  ]
+}

@@ -146,12 +146,35 @@
       "id": "ch-multivariable-differential",
       "number": 17,
       "title": "多元函数微分学",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/multivariable-differential.json",
+      "exercisesFile": "exercises/multivariable-differential.json",
+      "diagramFile": "diagrams/multivariable-differential.json",
       "sections": [
-        { "id": "sec-differentiability", "title": "可微性", "status": "planned" },
-        { "id": "sec-composite-differentiation", "title": "复合函数微分法", "status": "planned" },
-        { "id": "sec-directional-derivative-gradient", "title": "方向导数与梯度", "status": "planned" },
-        { "id": "sec-taylor-and-extrema", "title": "泰勒公式与极值问题", "status": "planned" }
+        {
+          "id": "sec-differentiability",
+          "title": "可微性",
+          "status": "draft",
+          "knowledgePointIds": ["differentiability"]
+        },
+        {
+          "id": "sec-composite-differentiation",
+          "title": "复合函数微分法",
+          "status": "draft",
+          "knowledgePointIds": ["composite-differentiation"]
+        },
+        {
+          "id": "sec-directional-derivative-gradient",
+          "title": "方向导数与梯度",
+          "status": "draft",
+          "knowledgePointIds": ["directional-derivative-gradient"]
+        },
+        {
+          "id": "sec-taylor-and-extrema",
+          "title": "泰勒公式与极值问题",
+          "status": "draft",
+          "knowledgePointIds": ["multivariable-extrema"]
+        }
       ]
     },
     {

@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-multivariable-differential",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "gradient-diagram",
+      "title": "梯度与等值线的几何关系",
+      "description": "以 $f(x,y)=x^2+y^2$ 为例，展示等值线（同心圆）和梯度向量的关系。多条等值线 $f=1,4,9$ 画出同心圆；在几个典型点（如 $(1,0),(0,2),(1,1)$）处画出梯度向量 $(2x,2y)$，方向均指向圆心外（增大方向），且与等值线垂直。标注说明：梯度指向最速上升方向，垂直于等值线；梯度模表示最大方向导数值（在 $(1,0)$ 处模为 $2$，在 $(0,2)$ 处模为 $4$）。右侧小图：对应的 3D 曲面旋转抛物面 $z=x^2+y^2$，切平面斜率与梯度方向对应。",
+      "mathContext": "梯度 $\\nabla f=(f_x,f_y)$ 与等值线 $f=c$ 的关系：等值线上 $\\mathrm{d}f=0$，即 $\\nabla f\\cdot\\mathrm{d}\\boldsymbol{r}=0$（$\\mathrm{d}\\boldsymbol{r}$ 是等值线切线方向），故 $\\nabla f\\perp$ 等值线。方向导数 $\\partial f/\\partial\\boldsymbol{l}=\\nabla f\\cdot\\boldsymbol{l}=|\\nabla f|\\cos\\varphi$，沿梯度方向 $\\varphi=0$ 时最大。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["directional-derivative-gradient"],
+      "layout": "double",
+      "annotations": [
+        { "panel": "left", "label": "等值线 $f=1,4,9$（同心圆）", "note": "梯度向量垂直于等值线" },
+        { "panel": "left", "label": "梯度 $\\nabla f=(2x,2y)$", "note": "模随离原点距离增大" },
+        { "panel": "right", "label": "旋转抛物面 $z=x^2+y^2$", "note": "斜率由梯度决定" }
+      ]
+    }
+  ]
+}
