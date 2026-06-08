@@ -268,14 +268,29 @@
       "id": "ch-multiple-integrals",
       "number": 21,
       "title": "重积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/multiple-integrals.json",
+      "exercisesFile": "exercises/multiple-integrals.json",
+      "diagramFile": "diagrams/multiple-integrals.json",
       "sections": [
-        { "id": "sec-double-integral-concept", "title": "二重积分的概念", "status": "planned" },
-        { "id": "sec-double-integral-rectangular", "title": "直角坐标系下二重积分的计算", "status": "planned" },
-        { "id": "sec-green-formula", "title": "格林公式·曲线积分与路线的无关性", "status": "planned" },
-        { "id": "sec-double-integral-change-of-variables", "title": "二重积分的变量变换", "status": "planned" },
-        { "id": "sec-triple-integral", "title": "三重积分", "status": "planned" },
-        { "id": "sec-multiple-integral-applications", "title": "重积分的应用", "status": "planned" }
+        {
+          "id": "sec-double-integral-concept",
+          "title": "二重积分的概念与直角坐标计算",
+          "status": "draft",
+          "knowledgePointIds": ["double-integral-concept"]
+        },
+        {
+          "id": "sec-double-integral-change-of-variables",
+          "title": "二重积分的变量变换（极坐标）",
+          "status": "draft",
+          "knowledgePointIds": ["double-integral-polar"]
+        },
+        {
+          "id": "sec-triple-integral",
+          "title": "三重积分与重积分应用",
+          "status": "draft",
+          "knowledgePointIds": ["triple-integral"]
+        }
       ]
     },
     {

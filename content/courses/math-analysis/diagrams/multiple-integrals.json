@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-multiple-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "double-integral-region-diagram",
+      "title": "二重积分的区域类型与极坐标",
+      "description": "左图：$X$-型区域 $D=\\{a\\leq x\\leq b,\\varphi_1(x)\\leq y\\leq\\varphi_2(x)\\}$，水平切片展示内层积分（$y$ 从 $\\varphi_1$ 到 $\\varphi_2$，$x$ 固定），外层积分沿 $x$ 轴。中图：$Y$-型区域 $D=\\{c\\leq y\\leq d,\\psi_1(y)\\leq x\\leq\\psi_2(y)\\}$，垂直切片展示内层积分（$x$ 从 $\\psi_1$ 到 $\\psi_2$，$y$ 固定）。右图：极坐标网格，圆形区域 $r\\leq R$，扇形元素 $\\mathrm{d}A=r\\,\\mathrm{d}r\\,\\mathrm{d}\\theta$（近似矩形，宽 $\\mathrm{d}r$，弧长 $r\\,\\mathrm{d}\\theta$），圆心到原点。箭头颜色：$x$-方向蓝色，$y$-方向红色，极径绿色，弧长橙色。",
+      "mathContext": "二重积分化为累次积分的关键是正确描述积分区域。$X$-型区域：先固定 $x$，$y$ 的范围是 $[\\varphi_1(x),\\varphi_2(x)]$（内层），再 $x$ 从 $a$ 到 $b$（外层）。$Y$-型区域类似但先固定 $y$。极坐标面积元素 $\\mathrm{d}A=r\\,\\mathrm{d}r\\,\\mathrm{d}\\theta$：小扇形的面积近似为弧长 $r\\,\\mathrm{d}\\theta$ 乘以径向宽度 $\\mathrm{d}r$，这就是为什么极坐标变换多出一个因子 $r$（Jacobi 行列式 $=r$）。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["double-integral-concept", "double-integral-polar"],
+      "layout": "triple",
+      "annotations": [
+        { "panel": "left", "label": "$X$-型区域", "note": "先对 $y$（内层），再对 $x$（外层）" },
+        { "panel": "center", "label": "$Y$-型区域", "note": "先对 $x$（内层），再对 $y$（外层）" },
+        { "panel": "right", "label": "极坐标", "note": "$\\mathrm{d}A=r\\,\\mathrm{d}r\\,\\mathrm{d}\\theta$，$r$ 来自 Jacobi" }
+      ]
+    }
+  ]
+}

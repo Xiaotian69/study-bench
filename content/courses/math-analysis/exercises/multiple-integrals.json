@@ -1,0 +1,200 @@
+{
+  "chapterId": "ch-multiple-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "mi-ex-001",
+      "knowledgePointId": "double-integral-concept",
+      "title": "交换积分顺序",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "交换积分顺序，然后计算：\n1. $\\\\displaystyle\\\\int_0^1\\,\\\\mathrm{d}y\\\\int_y^1 e^{x^2}\\,\\\\mathrm{d}x$\n2. $\\\\displaystyle\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^x f(x,y)\\,\\\\mathrm{d}y+\\\\int_1^2\\,\\\\mathrm{d}x\\\\int_0^{2-x}f(x,y)\\,\\\\mathrm{d}y$",
+      "solution": "**1.** 积分区域：$0\\\\leq y\\\\leq 1,y\\\\leq x\\\\leq 1$，即三角形 $\\\\{0\\\\leq y\\\\leq x\\\\leq 1\\\\}$。\n交换后（$X$-型）：$0\\\\leq x\\\\leq 1,0\\\\leq y\\\\leq x$。\n$$\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^x e^{x^2}\\,\\\\mathrm{d}y=\\\\int_0^1 xe^{x^2}\\,\\\\mathrm{d}x=\\\\frac{1}{2}[e^{x^2}]_0^1=\\\\frac{e-1}{2}.$$\n\n**2.** 原积分区域 $D=D_1\\\\cup D_2$：\n$D_1$：$0\\\\leq x\\\\leq 1,0\\\\leq y\\\\leq x$（三角形）。\n$D_2$：$1\\\\leq x\\\\leq 2,0\\\\leq y\\\\leq 2-x$（三角形）。\n合并为 $D=\\\\{(x,y):\\,0\\\\leq y\\\\leq 1,y\\\\leq x\\\\leq 2-y\\\\}$（$Y$-型）。\n交换后：$\\\\int_0^1\\,\\\\mathrm{d}y\\\\int_y^{2-y}f(x,y)\\,\\\\mathrm{d}x$。",
+      "gradingRubric": [
+        { "criterion": "第1题：画出区域，确定交换后积分限", "points": 2 },
+        { "criterion": "第1题：计算 $\\\\int_0^1 xe^{x^2}\\,\\\\mathrm{d}x=(e-1)/2$", "points": 3 },
+        { "criterion": "第2题：合并区域，确定 $Y$-型描述 $y\\\\leq x\\\\leq 2-y$", "points": 5 }
+      ],
+      "hints": [
+        "第1题：原区域由 $y\\\\leq x,x\\\\leq 1,y\\\\geq 0$ 确定，画图看是三角形",
+        "第2题：两个三角形合并后，用 $y$ 为外层时 $x$ 的范围从 $y$ 到 $2-y$"
+      ],
+      "commonMistakes": [
+        "交换积分顺序时，必须重新从区域的图形出发确定新的积分限",
+        "第2题：$D_1$ 和 $D_2$ 合并后的区域需用 $Y$-型描述：$0\\\\leq y\\\\leq 1,y\\\\leq x\\\\leq 2-y$"
+      ],
+      "tags": ["iterated-integral", "change-of-order", "region-type"]
+    },
+    {
+      "id": "mi-ex-002",
+      "knowledgePointId": "double-integral-concept",
+      "title": "二重积分计算与对称性",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "计算：\n1. $\\\\displaystyle\\\\iint_D(x+y)^2\\,\\\\mathrm{d}A$，$D=\\\\{(x,y):\\,0\\\\leq x\\\\leq 1,0\\\\leq y\\\\leq 1\\\\}$。\n2. $\\\\displaystyle\\\\iint_D\\\\sqrt{x^2+y^2}\\,\\\\mathrm{d}A$，$D=\\\\{(x,y):\\,(x-1)^2+y^2\\\\leq 1\\\\}$（圆心 $(1,0)$，半径 $1$）。",
+      "solution": "**1.** $(x+y)^2=x^2+2xy+y^2$，\n$$\\\\iint_D(x+y)^2\\,\\\\mathrm{d}A=\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^1(x^2+2xy+y^2)\\,\\\\mathrm{d}y=\\\\int_0^1\\\\left[x^2+x+\\\\frac{1}{3}\\\\right]\\,\\\\mathrm{d}x=\\\\frac{1}{3}+\\\\frac{1}{2}+\\\\frac{1}{3}=\\\\frac{7}{6}.$$\n\n**2.** 区域 $(x-1)^2+y^2\\\\leq 1$，极坐标 $x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta$：\n$(r\\\\cos\\\\theta-1)^2+r^2\\\\sin^2\\\\theta\\\\leq 1 \\\\Rightarrow r^2-2r\\\\cos\\\\theta\\\\leq 0 \\\\Rightarrow r\\\\leq 2\\\\cos\\\\theta$（$-\\\\pi/2\\\\leq\\\\theta\\\\leq\\\\pi/2$）。\n$$\\\\iint_D\\\\sqrt{x^2+y^2}\\,\\\\mathrm{d}A=\\\\int_{-\\\\pi/2}^{\\\\pi/2}\\,\\\\mathrm{d}\\\\theta\\\\int_0^{2\\\\cos\\\\theta}r\\\\cdot r\\,\\\\mathrm{d}r=\\\\int_{-\\\\pi/2}^{\\\\pi/2}\\\\frac{(2\\\\cos\\\\theta)^3}{3}\\,\\\\mathrm{d}\\\\theta=\\\\frac{8}{3}\\\\int_{-\\\\pi/2}^{\\\\pi/2}\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{8}{3}\\\\cdot\\\\frac{4}{3}=\\\\frac{32}{9}.$$\n（$\\\\int_{-\\\\pi/2}^{\\\\pi/2}\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta=2\\\\int_0^{\\\\pi/2}\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta=2\\\\cdot 2/3=4/3$。）",
+      "gradingRubric": [
+        { "criterion": "第1题：展开后累次积分，结果 $7/6$", "points": 3 },
+        { "criterion": "第2题：极坐标变换，上限 $r=2\\\\cos\\\\theta$", "points": 4 },
+        { "criterion": "第2题：$\\\\int_{-\\\\pi/2}^{\\\\pi/2}(8/3)\\\\cos^3\\\\theta=32/9$", "points": 3 }
+      ],
+      "hints": [
+        "第2题：$(x-1)^2+y^2=1$ 即 $x^2-2x+y^2=0$，极坐标 $r^2-2r\\\\cos\\\\theta=0$，$r=2\\\\cos\\\\theta$",
+        "$\\\\int_0^{\\\\pi/2}\\\\cos^3\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\int_0^{\\\\pi/2}(1-\\\\sin^2\\\\theta)\\\\cos\\\\theta\\,\\\\mathrm{d}\\\\theta=2/3$"
+      ],
+      "commonMistakes": [
+        "第2题极坐标区域：$\\\\theta\\\\in[-\\\\pi/2,\\\\pi/2]$（圆在右半平面），不是 $[0,2\\\\pi]$",
+        "面积元素 $\\\\mathrm{d}A=r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$，被积函数 $\\\\sqrt{x^2+y^2}=r$，积分 $r\\\\cdot r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$"
+      ],
+      "tags": ["double-integral", "polar-coordinates", "circle-domain"]
+    },
+    {
+      "id": "mi-ex-003",
+      "knowledgePointId": "double-integral-polar",
+      "title": "高斯积分（极坐标法）",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "计算 $\\\\displaystyle\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x$。（提示：令 $I^2=\\\\iint_{\\\\mathbb{R}^2}e^{-(x^2+y^2)}\\,\\\\mathrm{d}A$，用极坐标。）",
+      "solution": "设 $I=\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x>0$。\n$$I^2=\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x\\\\cdot\\\\int_0^{+\\\\infty}e^{-y^2}\\,\\\\mathrm{d}y=\\\\iint_{x,y\\\\geq 0}e^{-(x^2+y^2)}\\,\\\\mathrm{d}A.$$\n（实际 $I^2=\\\\frac{1}{4}\\\\iint_{\\\\mathbb{R}^2}e^{-(x^2+y^2)}\\,\\\\mathrm{d}A$，因 $\\\\int_{-\\\\infty}^{+\\\\infty}=2\\\\int_0^{+\\\\infty}$。）\n\n极坐标（全平面）：$\\\\iint_{\\\\mathbb{R}^2}e^{-(x^2+y^2)}\\,\\\\mathrm{d}A=\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\int_0^{+\\\\infty}e^{-r^2}r\\,\\\\mathrm{d}r=2\\\\pi\\\\cdot\\\\frac{1}{2}=\\\\pi$。\n\n故 $4I^2=\\\\pi$，$I^2=\\\\pi/4$，$I=\\\\dfrac{\\\\sqrt{\\\\pi}}{2}$。",
+      "gradingRubric": [
+        { "criterion": "构造 $I^2$ 为二重积分（或第一象限的四倍）", "points": 3 },
+        { "criterion": "极坐标计算 $\\\\int_0^{+\\\\infty}re^{-r^2}\\,\\\\mathrm{d}r=1/2$", "points": 4 },
+        { "criterion": "结论 $I=\\\\sqrt{\\\\pi}/2$", "points": 3 }
+      ],
+      "hints": [
+        "$(\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x)^2=\\\\int_0^{+\\\\infty}\\\\int_0^{+\\\\infty}e^{-(x^2+y^2)}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$（Fubini，两个独立变量）",
+        "$\\\\int_0^{+\\\\infty}re^{-r^2}\\,\\\\mathrm{d}r$：令 $u=r^2$，$=\\\\int_0^{+\\\\infty}e^{-u}\\,\\\\mathrm{d}u/2=1/2$"
+      ],
+      "commonMistakes": [
+        "$I=\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x$（从 $0$ 到 $\\\\infty$），$I^2$ 是第一象限的积分（不是全平面的 $\\\\pi$，是 $\\\\pi/4$）",
+        "极坐标全平面：$\\\\theta\\\\in[0,2\\\\pi]$，$r\\\\in[0,+\\\\infty)$"
+      ],
+      "tags": ["gaussian-integral", "polar-coordinates", "improper-integral"]
+    },
+    {
+      "id": "mi-ex-004",
+      "knowledgePointId": "double-integral-polar",
+      "title": "一般变量变换（仿射变换）",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "计算 $\\\\displaystyle\\\\iint_D\\\\sqrt{\\\\frac{y-x}{y+x}}\\,\\\\mathrm{d}A$，其中 $D$ 为 $x\\\\geq 0,y\\\\geq 0,x+y\\\\leq 1$ 围成的三角形。",
+      "solution": "令 $u=y-x,v=y+x$（仿射变换）：则 $y=(u+v)/2,x=(v-u)/2$。\nJacobi：$\\\\partial(x,y)/\\\\partial(u,v)=\\\\det\\\\begin{pmatrix}-1/2&1/2\\\\\\\\1/2&1/2\\\\end{pmatrix}=-1/2-1/4=-1/2$，故 $|J|=1/2$。\n\n区域变换：$x\\\\geq 0 \\\\Rightarrow v\\\\geq u$，$y\\\\geq 0 \\\\Rightarrow v\\\\geq -u$（即 $v\\\\geq|u|$），$x+y\\\\leq 1 \\\\Rightarrow v\\\\leq 1$。\n新区域 $D'=\\\\{(u,v):\\,|u|\\\\leq v\\\\leq 1\\\\}$（梯形？实为三角形：$-v\\\\leq u\\\\leq v,0\\\\leq v\\\\leq 1$）。\n\n被积函数 $\\\\sqrt{(y-x)/(y+x)}=\\\\sqrt{u/v}$（需 $u\\\\geq 0$，若 $u<0$ 则 $\\\\sqrt{u/v}$ 无意义）。\n\n注意：$x\\\\geq 0,y\\\\geq 0$ 可使 $y\\geq x$ 或 $y<x$，$u=y-x$ 可正可负。$\\\\sqrt{(y-x)/(y+x)}$ 要求 $y\\\\geq x$，即 $u\\\\geq 0$：只取 $D$ 中 $y\\\\geq x$ 的部分，即 $D_+=\\\\{x\\\\geq 0,x\\\\leq y,x+y\\\\leq 1\\\\}$。\n\n（若原题意为整个三角形，则被积函数可能为 $|y-x|/(y+x)$，此处理解为 $y\\\\geq x$ 的部分。）\n\n$$\\\\iint_{D_+}\\\\sqrt{\\\\frac{y-x}{y+x}}\\,\\\\mathrm{d}A=\\\\int_0^1\\,\\\\mathrm{d}v\\\\int_0^v\\\\sqrt{\\\\frac{u}{v}}\\\\cdot\\\\frac{1}{2}\\,\\\\mathrm{d}u=\\\\frac{1}{2}\\\\int_0^1\\\\frac{1}{\\\\sqrt{v}}\\\\cdot\\\\frac{2}{3}v^{3/2}\\,\\\\mathrm{d}v=\\\\frac{1}{3}\\\\int_0^1 v\\,\\\\mathrm{d}v=\\\\frac{1}{6}.$$",
+      "gradingRubric": [
+        { "criterion": "令 $u=y-x,v=y+x$，计算 Jacobi $|J|=1/2$", "points": 3 },
+        { "criterion": "确定新积分区域 $D'$", "points": 3 },
+        { "criterion": "积分 $\\\\sqrt{u/v}\\\\cdot 1/(2\\\\sqrt{v})\\,\\\\mathrm{d}v$，结果 $1/6$", "points": 4 }
+      ],
+      "hints": [
+        "仿射变换：$u=y-x,v=y+x$，Jacobi $|J|=|\\\\det|=1/2$",
+        "新区域：$v=x+y\\\\leq 1$，$v\\\\geq|u|$（$x,y\\\\geq 0$ 的条件）"
+      ],
+      "commonMistakes": [
+        "Jacobi 是 $\\\\partial(x,y)/\\\\partial(u,v)$（或其倒数），取绝对值",
+        "内层积分 $\\\\int_0^v\\\\sqrt{u/v}\\,\\\\mathrm{d}u=v^{-1/2}\\\\int_0^v u^{1/2}\\,\\\\mathrm{d}u=v^{-1/2}\\\\cdot 2v^{3/2}/3=2v/3$"
+      ],
+      "tags": ["variable-change", "jacobian", "affine-transformation"]
+    },
+    {
+      "id": "mi-ex-005",
+      "knowledgePointId": "triple-integral",
+      "title": "球坐标计算三重积分",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "计算 $\\\\displaystyle\\\\iiint_V z\\,\\\\mathrm{d}V$，其中 $V$ 是半球 $x^2+y^2+z^2\\\\leq R^2,z\\\\geq 0$。",
+      "solution": "球坐标：$x=\\\\rho\\\\sin\\\\varphi\\\\cos\\\\theta,y=\\\\rho\\\\sin\\\\varphi\\\\sin\\\\theta,z=\\\\rho\\\\cos\\\\varphi$（$\\\\rho\\\\in[0,R],\\\\varphi\\\\in[0,\\\\pi/2],\\\\theta\\\\in[0,2\\\\pi]$）。\n$\\\\mathrm{d}V=\\\\rho^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\rho\\,\\\\mathrm{d}\\\\varphi\\,\\\\mathrm{d}\\\\theta$，$z=\\\\rho\\\\cos\\\\varphi$。\n$$\\\\iiint_V z\\,\\\\mathrm{d}V=\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\int_0^{\\\\pi/2}\\,\\\\mathrm{d}\\\\varphi\\\\int_0^R\\\\rho\\\\cos\\\\varphi\\\\cdot\\\\rho^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\rho.$$\n$$=2\\\\pi\\\\int_0^{\\\\pi/2}\\\\cos\\\\varphi\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi\\\\cdot\\\\int_0^R\\\\rho^3\\,\\\\mathrm{d}\\\\rho=2\\\\pi\\\\cdot\\\\frac{1}{2}\\\\cdot\\\\frac{R^4}{4}=\\\\frac{\\\\pi R^4}{4}.$$\n（$\\\\int_0^{\\\\pi/2}\\\\cos\\\\varphi\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi=\\\\frac{1}{2}\\\\int_0^{\\\\pi/2}\\\\sin 2\\\\varphi\\,\\\\mathrm{d}\\\\varphi=\\\\frac{1}{2}\\\\cdot 1=\\\\frac{1}{2}$。）",
+      "gradingRubric": [
+        { "criterion": "写出球坐标变换，范围 $\\\\varphi\\\\in[0,\\\\pi/2]$（上半球）", "points": 3 },
+        { "criterion": "$z\\,\\\\mathrm{d}V=\\\\rho\\\\cos\\\\varphi\\\\cdot\\\\rho^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\rho\\,\\\\mathrm{d}\\\\varphi\\,\\\\mathrm{d}\\\\theta$", "points": 3 },
+        { "criterion": "分离后各积分计算，结果 $\\\\pi R^4/4$", "points": 4 }
+      ],
+      "hints": [
+        "上半球 $z\\\\geq 0$ 对应 $\\\\varphi\\\\in[0,\\\\pi/2]$（极角从 $z$ 轴到赤道面）",
+        "三个积分分离：$\\\\theta$（$2\\\\pi$）、$\\\\varphi$（$1/2$）、$\\\\rho$（$R^4/4$）相乘"
+      ],
+      "commonMistakes": [
+        "上半球的 $\\\\varphi\\\\in[0,\\\\pi/2]$（不是 $[0,\\\\pi]$），$z=\\\\rho\\\\cos\\\\varphi\\\\geq 0$ 对应 $\\\\cos\\\\varphi\\\\geq 0$",
+        "Jacobi $=\\\\rho^2\\\\sin\\\\varphi$，不是 $\\\\rho^2$"
+      ],
+      "tags": ["triple-integral", "spherical-coordinates", "hemisphere"]
+    },
+    {
+      "id": "mi-ex-006",
+      "knowledgePointId": "triple-integral",
+      "title": "柱坐标计算三重积分与体积",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "求圆柱 $x^2+y^2\\\\leq R^2$ 被平面 $z=0$ 和 $z=a+bx$（$a>0,b>0$，$b<a/R$）截成的立体的体积。",
+      "solution": "柱坐标：$x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta,z\\\\in[0,a+bx]=[0,a+br\\\\cos\\\\theta]$，$\\\\mathrm{d}V=r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta\\,\\\\mathrm{d}z$。\n\n$$V=\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\int_0^R\\,\\\\mathrm{d}r\\\\int_0^{a+br\\\\cos\\\\theta}r\\,\\\\mathrm{d}z=\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\int_0^R r(a+br\\\\cos\\\\theta)\\,\\\\mathrm{d}r.$$\n\n$$=\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\left[a\\\\frac{R^2}{2}+b\\\\cos\\\\theta\\\\frac{R^3}{3}\\\\right]=a\\\\frac{R^2}{2}\\\\cdot 2\\\\pi+\\\\frac{bR^3}{3}\\\\int_0^{2\\\\pi}\\\\cos\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\pi aR^2+0=\\\\pi aR^2.$$\n\n（$\\\\int_0^{2\\\\pi}\\\\cos\\\\theta\\,\\\\mathrm{d}\\\\theta=0$，倾斜平面不影响体积！）",
+      "gradingRubric": [
+        { "criterion": "柱坐标变换，$z$ 范围 $[0,a+br\\\\cos\\\\theta]$", "points": 3 },
+        { "criterion": "先对 $z$ 积分，得 $r(a+br\\\\cos\\\\theta)$", "points": 3 },
+        { "criterion": "对 $\\\\theta$ 积分时 $\\\\int\\\\cos\\\\theta=0$，结果 $\\\\pi aR^2$", "points": 4 }
+      ],
+      "hints": [
+        "先对 $z$ 积分（$z$ 从 $0$ 到 $a+br\\\\cos\\\\theta$），然后对 $(r,\\\\theta)$ 做二重积分",
+        "$\\\\int_0^{2\\\\pi}\\\\cos\\\\theta\\,\\\\mathrm{d}\\\\theta=0$（消去与 $b$ 有关的项）"
+      ],
+      "commonMistakes": [
+        "圆柱内 $r\\\\in[0,R]$，$\\\\theta\\\\in[0,2\\\\pi]$，$z\\\\in[0,a+br\\\\cos\\\\theta]$（$z$ 上限随 $r,\\\\theta$ 变化）",
+        "倾斜的顶面并不改变体积（与水平截面 $z=a$ 给出相同体积），因为 $\\\\int\\\\cos\\\\theta=0$"
+      ],
+      "tags": ["triple-integral", "cylindrical-coordinates", "volume"]
+    },
+    {
+      "id": "mi-ex-007",
+      "knowledgePointId": "double-integral-concept",
+      "title": "二重积分的物理应用",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "均匀薄片（面密度 $\\\\rho=1$）占据区域 $D=\\\\{(x,y):\\,0\\\\leq x\\\\leq 1,0\\\\leq y\\\\leq x^2\\\\}$，求其质心坐标 $(\\\\bar x,\\\\bar y)$。",
+      "solution": "面积（质量）：$m=\\\\iint_D\\,\\\\mathrm{d}A=\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^{x^2}\\,\\\\mathrm{d}y=\\\\int_0^1 x^2\\,\\\\mathrm{d}x=\\\\frac{1}{3}$。\n\n$\\\\bar x=\\\\frac{1}{m}\\\\iint_D x\\,\\\\mathrm{d}A=3\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^{x^2}x\\,\\\\mathrm{d}y=3\\\\int_0^1 x\\\\cdot x^2\\,\\\\mathrm{d}x=3\\\\int_0^1 x^3\\,\\\\mathrm{d}x=3\\\\cdot\\\\frac{1}{4}=\\\\frac{3}{4}$.\n\n$\\\\bar y=\\\\frac{1}{m}\\\\iint_D y\\,\\\\mathrm{d}A=3\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_0^{x^2}y\\,\\\\mathrm{d}y=3\\\\int_0^1\\\\frac{x^4}{2}\\,\\\\mathrm{d}x=\\\\frac{3}{2}\\\\cdot\\\\frac{1}{5}=\\\\frac{3}{10}$.",
+      "gradingRubric": [
+        { "criterion": "面积 $m=1/3$", "points": 2 },
+        { "criterion": "$\\\\iint x\\,\\\\mathrm{d}A=\\\\int_0^1 x^3\\,\\\\mathrm{d}x=1/4$，$\\\\bar x=3/4$", "points": 4 },
+        { "criterion": "$\\\\iint y\\,\\\\mathrm{d}A=\\\\int_0^1 x^4/2\\,\\\\mathrm{d}x=1/10$，$\\\\bar y=3/10$", "points": 4 }
+      ],
+      "hints": [
+        "质心：$\\\\bar x=\\\\iint x\\,\\\\mathrm{d}A/\\\\iint\\,\\\\mathrm{d}A$，对均匀薄片密度为 $1$",
+        "先对 $y$（从 $0$ 到 $x^2$），再对 $x$"
+      ],
+      "commonMistakes": [
+        "$\\\\int_0^{x^2}y\\,\\\\mathrm{d}y=x^4/2$（内层积分，$x$ 是常数）",
+        "质心公式：$\\\\bar x=\\\\iint x\\,\\\\mathrm{d}A/m$（除以总质量/面积）"
+      ],
+      "tags": ["centroid", "double-integral", "physical-application"]
+    },
+    {
+      "id": "mi-ex-008",
+      "knowledgePointId": "triple-integral",
+      "title": "球坐标求截交体积",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 21 章",
+      "problem": "求上半球 $x^2+y^2+z^2\\\\leq a^2$（$z\\\\geq 0$）被锥面 $z=\\\\sqrt{x^2+y^2}$ 截去的立体（锥面之上的部分）的体积。",
+      "solution": "立体：$z\\\\geq\\\\sqrt{x^2+y^2}$（锥面之上），$x^2+y^2+z^2\\\\leq a^2$（球内），$z\\\\geq 0$。\n\n球坐标：$z=\\\\rho\\\\cos\\\\varphi$，$\\\\sqrt{x^2+y^2}=\\\\rho\\\\sin\\\\varphi$，条件 $z\\\\geq\\\\sqrt{x^2+y^2}$ 等价于 $\\\\cos\\\\varphi\\\\geq\\\\sin\\\\varphi$，即 $\\\\varphi\\\\leq\\\\pi/4$。\n\n立体对应 $\\\\rho\\\\in[0,a],\\\\varphi\\\\in[0,\\\\pi/4],\\\\theta\\\\in[0,2\\\\pi]$。\n\n$$V=\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\int_0^{\\\\pi/4}\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi\\\\int_0^a\\\\rho^2\\,\\\\mathrm{d}\\\\rho=2\\\\pi\\\\int_0^{\\\\pi/4}\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi\\\\cdot\\\\frac{a^3}{3}.$$\n\n$\\\\int_0^{\\\\pi/4}\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi=[-\\\\cos\\\\varphi]_0^{\\\\pi/4}=1-\\\\frac{\\\\sqrt{2}}{2}=1-\\\\frac{1}{\\\\sqrt{2}}$。\n\n$$V=2\\\\pi\\\\left(1-\\\\frac{1}{\\\\sqrt{2}}\\\\right)\\\\cdot\\\\frac{a^3}{3}=\\\\frac{2\\\\pi a^3}{3}\\\\left(1-\\\\frac{\\\\sqrt{2}}{2}\\\\right)=\\\\frac{2\\\\pi a^3(2-\\\\sqrt{2})}{6}=\\\\frac{\\\\pi a^3(2-\\\\sqrt{2})}{3}.$$",
+      "gradingRubric": [
+        { "criterion": "锥面条件 $z\\\\geq\\\\sqrt{x^2+y^2}$ 化为 $\\\\varphi\\\\leq\\\\pi/4$", "points": 3 },
+        { "criterion": "球坐标范围：$\\\\rho\\\\in[0,a],\\\\varphi\\\\in[0,\\\\pi/4],\\\\theta\\\\in[0,2\\\\pi]$", "points": 2 },
+        { "criterion": "$\\\\int_0^{\\\\pi/4}\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi=1-1/\\\\sqrt{2}$", "points": 3 },
+        { "criterion": "结果 $\\\\pi a^3(2-\\\\sqrt{2})/3$", "points": 2 }
+      ],
+      "hints": [
+        "锥面 $z=\\\\sqrt{x^2+y^2}$ 即 $\\\\tan\\\\varphi=1$，故 $\\\\varphi=\\\\pi/4$；锥面之上为 $\\\\varphi\\\\leq\\\\pi/4$",
+        "积分三个变量分离：$\\\\theta$（$2\\\\pi$）、$\\\\varphi$（$1-1/\\\\sqrt{2}$）、$\\\\rho$（$a^3/3$）"
+      ],
+      "commonMistakes": [
+        "\"锥面之上\"：$z\\\\geq\\\\sqrt{x^2+y^2}$ 意味着更靠近 $z$ 轴（$\\\\varphi$ 更小），即 $\\\\varphi\\\\leq\\\\pi/4$",
+        "$\\\\int_0^{\\\\pi/4}\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi=1-\\\\cos(\\\\pi/4)=1-\\\\sqrt{2}/2$"
+      ],
+      "tags": ["triple-integral", "spherical-coordinates", "cone", "sphere"]
+    }
+  ]
+}

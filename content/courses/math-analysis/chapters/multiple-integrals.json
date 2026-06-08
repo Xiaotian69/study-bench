@@ -1,0 +1,123 @@
+{
+  "chapterId": "ch-multiple-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "double-integral-concept",
+      "title": "二重积分的概念与计算（直角坐标）",
+      "chapterId": "ch-multiple-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解二重积分的定义和几何意义（曲顶柱体体积）",
+        "掌握将二重积分化为累次积分的方法（$X$-型和 $Y$-型区域）",
+        "能根据区域形状选择合适的积分顺序"
+      ],
+      "coreExplanation": "**二重积分定义**：$\\\\iint_D f(x,y)\\,\\\\mathrm{d}A=\\\\lim_{\\\\lambda\\\\to 0}\\\\sum_i f(\\\\xi_i,\\\\eta_i)\\\\Delta A_i$（$\\\\Delta A_i$ 为小块面积，$\\\\lambda$ 为最大直径）。几何意义：$f\\\\geq 0$ 时为曲顶柱体的体积。\n**$X$-型区域**：$D=\\\\{(x,y):\\,a\\\\leq x\\\\leq b,\\\\,\\\\varphi_1(x)\\\\leq y\\\\leq\\\\varphi_2(x)\\\\}$，\n$$\\\\iint_D f\\,\\\\mathrm{d}A=\\\\int_a^b\\,\\\\mathrm{d}x\\\\int_{\\\\varphi_1(x)}^{\\\\varphi_2(x)}f(x,y)\\,\\\\mathrm{d}y.$$\n**$Y$-型区域**：$D=\\\\{(x,y):\\,c\\\\leq y\\\\leq d,\\\\,\\\\psi_1(y)\\\\leq x\\\\leq\\\\psi_2(y)\\\\}$，先对 $x$ 积分后对 $y$。\n**对称性简化**：\n- $D$ 关于 $y$ 轴对称，$f(-x,y)=-f(x,y)$（$x$ 的奇函数）：$\\\\iint_D f\\,\\\\mathrm{d}A=0$。\n- $D$ 关于 $y$ 轴对称，$f(-x,y)=f(x,y)$（$x$ 的偶函数）：$\\\\iint_D f=2\\\\iint_{D_+}f$。\n- $D$ 关于直线 $y=x$ 对称：$\\\\iint_D f(x,y)\\,\\\\mathrm{d}A=\\\\iint_D f(y,x)\\,\\\\mathrm{d}A$（换序不变）。",
+      "textbookRefs": ["数学分析（第5版）下册 §21.1—21.2"],
+      "keyDefinitions": [
+        {
+          "term": "二重积分",
+          "definition": "$\\\\iint_D f(x,y)\\,\\\\mathrm{d}A$，是 $f$ 在区域 $D$ 上的积分；$\\\\mathrm{d}A=\\\\mathrm{d}x\\,\\\\mathrm{d}y$ 为面积元素"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "积分区域 $D=\\\\{0\\\\leq x\\\\leq 1,0\\\\leq y\\\\leq x\\\\}$，先对 $y$ 后对 $x$ vs 先对 $x$ 后对 $y$ 的积分限如何写？",
+        "若 $\\\\int_0^1\\,\\\\mathrm{d}x\\\\int_x^1 e^{y^2}\\,\\\\mathrm{d}y$ 先对 $y$ 积分，$e^{y^2}$ 无法用初等函数表示——如何交换积分顺序？",
+        "$\\\\iint_D xy\\,\\\\mathrm{d}A$，$D$ 为圆 $x^2+y^2\\\\leq 1$，利用对称性直接判断结果。"
+      ],
+      "commonMistakes": [
+        "交换积分顺序时，积分限必须重新从区域 $D$ 的几何描述出发确定",
+        "累次积分的内层积分视外层变量为常数，外层变量的范围由区域的外边界确定"
+      ],
+      "exerciseIds": ["mi-ex-001", "mi-ex-002"],
+      "diagramIds": ["double-integral-region-diagram"],
+      "masteryCriteria": [
+        "能将给定区域化为 $X$-型或 $Y$-型并写出累次积分",
+        "能交换积分顺序"
+      ]
+    },
+    {
+      "id": "double-integral-polar",
+      "title": "二重积分的极坐标变换与变量变换",
+      "chapterId": "ch-multiple-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握极坐标下二重积分的计算（$\\\\mathrm{d}A=r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$）",
+        "理解一般变量变换公式（Jacobi 行列式）",
+        "能判断何时使用极坐标或其他特殊坐标"
+      ],
+      "coreExplanation": "**极坐标变换**：$x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta$，Jacobi 行列式 $J=r$，故\n$$\\\\iint_D f(x,y)\\,\\\\mathrm{d}A=\\\\iint_{D'} f(r\\\\cos\\\\theta,r\\\\sin\\\\theta)\\\\cdot r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta.$$\n（不要忘记额外的 $r$！）\n**极坐标适用场景**：被积函数含 $x^2+y^2$，或积分区域为圆、扇形、圆环等。\n**一般变量变换**：$x=x(u,v),y=y(u,v)$，Jacobi 行列式 $J=\\\\partial(x,y)/\\\\partial(u,v)=\\\\det\\\\begin{pmatrix}x_u&x_v\\\\\\\\y_u&y_v\\\\end{pmatrix}$，\n$$\\\\iint_D f(x,y)\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y=\\\\iint_{D'}f(x(u,v),y(u,v))|J|\\,\\\\mathrm{d}u\\,\\\\mathrm{d}v.$$\n**常用变换**：椭圆 $x=ar\\\\cos\\\\theta,y=br\\\\sin\\\\theta$（$J=abr$）；仿射变换（线性变换，$J=$ 常数）。",
+      "textbookRefs": ["数学分析（第5版）下册 §21.4"],
+      "keyDefinitions": [
+        {
+          "term": "极坐标面积元素",
+          "definition": "$\\\\mathrm{d}A=r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$（不是 $\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$），$r$ 来自 Jacobi 行列式"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "变量变换公式",
+          "statement": "$\\\\iint_D f\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y=\\\\iint_{D'}f\\cdot|J|\\,\\\\mathrm{d}u\\,\\\\mathrm{d}v$，$J=\\\\partial(x,y)/\\\\partial(u,v)$",
+          "significance": "统一极坐标和一般坐标变换，Jacobi 行列式衡量面积缩放比"
+        }
+      ],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "椭圆 $x^2/a^2+y^2/b^2\\\\leq 1$ 的面积：令 $x=ar\\\\cos\\\\theta,y=br\\\\sin\\\\theta$，Jacobi 是什么？面积是 $\\\\pi ab$ 吗？",
+        "为什么极坐标变换中有额外的 $r$？（面积元素从 $(r,\\\\theta)$ 空间的矩形 $\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$ 变回 $(x,y)$ 空间的 $r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$。）",
+        "被积函数 $e^{-(x^2+y^2)}$ 在 $\\\\mathbb{R}^2$ 上的积分如何用极坐标算？（结果为 $\\\\pi$，给出高斯积分 $\\\\sqrt{\\\\pi}$。）"
+      ],
+      "commonMistakes": [
+        "极坐标忘记 $r$：面积元素是 $r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$，不是 $\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta$",
+        "极坐标的 $\\\\theta$ 范围和 $r$ 范围要与原区域 $D$ 对应，不一定是 $[0,2\\\\pi]\\\\times[0,R]$"
+      ],
+      "exerciseIds": ["mi-ex-003", "mi-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能将圆形、扇形、圆环区域上的积分转化为极坐标计算",
+        "能用一般变量变换化简复杂区域"
+      ]
+    },
+    {
+      "id": "triple-integral",
+      "title": "三重积分与重积分应用",
+      "chapterId": "ch-multiple-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握三重积分的计算（投影法、截面法、柱坐标、球坐标）",
+        "能用重积分求体积、质心、转动惯量",
+        "掌握球坐标变换"
+      ],
+      "coreExplanation": "**三重积分**：$\\\\iiint_V f(x,y,z)\\,\\\\mathrm{d}V$，$\\\\mathrm{d}V=\\\\mathrm{d}x\\,\\\\mathrm{d}y\\,\\\\mathrm{d}z$。\n**投影法（$Z$-型区域）**：$\\\\iiint_V f\\,\\\\mathrm{d}V=\\\\iint_{D_{xy}}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y\\\\int_{z_1(x,y)}^{z_2(x,y)}f\\,\\\\mathrm{d}z$（先对 $z$ 积分，再对 $xy$ 平面做二重积分）。\n**截面法**：$\\\\iiint_V f\\,\\\\mathrm{d}V=\\\\int_a^b\\,\\\\mathrm{d}z\\\\iint_{D_z}f(x,y,z)\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$（先对截面 $D_z$ 做二重积分，再对 $z$ 积分）。\n**柱坐标**：$x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta,z=z$，$\\\\mathrm{d}V=r\\,\\\\mathrm{d}r\\,\\\\mathrm{d}\\\\theta\\,\\\\mathrm{d}z$（适用于圆柱对称区域）。\n**球坐标**：$x=\\\\rho\\\\sin\\\\varphi\\\\cos\\\\theta,y=\\\\rho\\\\sin\\\\varphi\\\\sin\\\\theta,z=\\\\rho\\\\cos\\\\varphi$（$\\\\rho\\\\geq 0,\\\\varphi\\\\in[0,\\\\pi],\\\\theta\\\\in[0,2\\\\pi]$），$\\\\mathrm{d}V=\\\\rho^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\rho\\,\\\\mathrm{d}\\\\varphi\\,\\\\mathrm{d}\\\\theta$（适用于球、锥等球对称区域）。\n**应用**：\n- 体积：$V=\\\\iiint_D\\,\\\\mathrm{d}V$；质量：$m=\\\\iiint_D\\\\rho(x,y,z)\\,\\\\mathrm{d}V$。\n- 质心：$\\\\bar{x}=\\\\iiint x\\\\rho\\,\\\\mathrm{d}V/m$。\n- 转动惯量（对 $z$ 轴）：$I_z=\\\\iiint(x^2+y^2)\\\\rho\\,\\\\mathrm{d}V$。",
+      "textbookRefs": ["数学分析（第5版）下册 §21.5—21.6"],
+      "keyDefinitions": [
+        {
+          "term": "球坐标体积元素",
+          "definition": "$\\\\mathrm{d}V=\\\\rho^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\rho\\,\\\\mathrm{d}\\\\varphi\\,\\\\mathrm{d}\\\\theta$（$\\\\varphi$ 为极角，$\\\\theta$ 为方位角，Jacobi $=\\\\rho^2\\\\sin\\\\varphi$）"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [
+        "**球坐标 Jacobi $=\\\\rho^2\\\\sin\\\\varphi$**：计算 $\\\\partial(x,y,z)/\\\\partial(\\\\rho,\\\\varphi,\\\\theta)$ 的行列式，展开后利用 $\\\\sin^2+\\\\cos^2=1$ 化简。"
+      ],
+      "socraticQuestions": [
+        "球 $x^2+y^2+z^2\\\\leq R^2$ 的体积用球坐标计算：$\\\\int_0^{2\\\\pi}\\,\\\\mathrm{d}\\\\theta\\\\int_0^\\\\pi\\,\\\\mathrm{d}\\\\varphi\\\\int_0^R\\\\rho^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\rho=4\\\\pi R^3/3$。验证 $\\\\int_0^\\\\pi\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi=2$。",
+        "半球和全球的三重积分，利用 $z$ 方向的奇偶性能化简什么积分？",
+        "圆柱坐标和球坐标的适用判断：什么情形用柱坐标（如有 $x^2+y^2$ 但 $z$ 范围独立），什么情形用球坐标（如 $\\\\rho^2=x^2+y^2+z^2$ 出现）？"
+      ],
+      "commonMistakes": [
+        "球坐标 $\\\\varphi$（极角）从 $z$ 轴算起，范围 $[0,\\\\pi]$（不是 $[0,2\\\\pi]$）",
+        "Jacobi $=\\\\rho^2\\\\sin\\\\varphi$（不是 $\\\\rho^2$），$\\\\sin\\\\varphi$ 在 $\\\\varphi\\\\in[0,\\\\pi]$ 上非负，无需绝对值"
+      ],
+      "exerciseIds": ["mi-ex-005", "mi-ex-006"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用柱坐标或球坐标计算三重积分",
+        "能用重积分求几何体的体积和质心"
+      ]
+    }
+  ]
+}
