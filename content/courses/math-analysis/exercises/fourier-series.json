@@ -1,0 +1,210 @@
+{
+  "chapterId": "ch-fourier-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "fourier-ex-001",
+      "knowledgePointId": "fourier-series-concept",
+      "title": "矩形波的 Fourier 级数",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "设 $f(x)$ 是以 $2\\\\pi$ 为周期的函数，在 $[-\\\\pi,\\\\pi)$ 上定义为\n$$f(x)=\\\\begin{cases}0, & -\\\\pi\\\\leq x<0,\\\\\\\\ h, & 0\\\\leq x<\\\\pi,\\\\end{cases}$$\n其中 $h>0$ 为常数。求 $f(x)$ 的 Fourier 级数，并指出级数在 $x=0$ 和 $x=\\\\pm\\\\pi$ 处的收敛值。",
+      "solution": "**计算 Fourier 系数：**\n$$a_0=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi f(x)\\,\\\\mathrm{d}x=\\\\frac{1}{\\\\pi}\\\\int_0^\\\\pi h\\,\\\\mathrm{d}x=h.$$\n$$a_n=\\\\frac{1}{\\\\pi}\\\\int_0^\\\\pi h\\\\cos nx\\,\\\\mathrm{d}x=\\\\frac{h}{\\\\pi}\\\\left[\\\\frac{\\\\sin nx}{n}\\\\right]_0^\\\\pi=0\\\\quad(n\\\\geq 1).$$\n$$b_n=\\\\frac{1}{\\\\pi}\\\\int_0^\\\\pi h\\\\sin nx\\,\\\\mathrm{d}x=\\\\frac{h}{\\\\pi}\\\\left[-\\\\frac{\\\\cos nx}{n}\\\\right]_0^\\\\pi=\\\\frac{h}{n\\\\pi}(1-\\\\cos n\\\\pi)=\\\\frac{h}{n\\\\pi}[1-(-1)^n].$$\n当 $n$ 为偶数，$b_n=0$；当 $n=2k-1$ 为奇数，$b_n=\\\\frac{2h}{(2k-1)\\\\pi}$。\n\n**Fourier 级数：**\n$$f(x)\\\\sim\\\\frac{h}{2}+\\\\frac{2h}{\\\\pi}\\\\sum_{k=1}^\\\\infty\\\\frac{\\\\sin(2k-1)x}{2k-1}.$$\n\n**收敛值：**\n- $x=0$：跳跃间断点，$f(0^-)=0$，$f(0^+)=h$，级数收敛到 $(0+h)/2=h/2$（正好是 $a_0/2$）。\n- $x=\\\\pm\\\\pi$：周期延拓后 $f(\\\\pi^-)=h$，$f(-\\\\pi^+)=0$，级数收敛到 $(h+0)/2=h/2$。",
+      "gradingRubric": [
+        { "criterion": "正确计算 $a_0=h$", "points": 2 },
+        { "criterion": "正确得出 $a_n=0$", "points": 2 },
+        { "criterion": "正确计算 $b_n$，区分奇偶 $n$", "points": 4 },
+        { "criterion": "写出正确的级数表达式", "points": 2 },
+        { "criterion": "在间断点处用均值公式给出正确收敛值", "points": 2 }
+      ],
+      "hints": [
+        "$b_n$ 计算后利用 $\\\\cos n\\\\pi=(-1)^n$ 化简",
+        "检查 $x=0$ 是否连续：$f(0^-)=0\\\\neq f(0^+)=h$，故为跳跃点，用均值"
+      ],
+      "commonMistakes": [
+        "忘记 $a_0/2$ 而写 $a_0$ 作为常数项",
+        "在间断点 $x=0$ 处直接代入 $f(0)=h$ 而非取均值"
+      ],
+      "tags": ["fourier-coefficients", "step-function", "convergence"]
+    },
+    {
+      "id": "fourier-ex-002",
+      "knowledgePointId": "fourier-series-concept",
+      "title": "用奇偶性简化 Fourier 系数计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "设 $f(x)=x^2$（$x\\\\in[-\\\\pi,\\\\pi]$），以 $2\\\\pi$ 为周期延拓。求其 Fourier 级数。",
+      "solution": "$f(x)=x^2$ 为偶函数，故 $b_n=0$，系数化简为：\n$$a_0=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi x^2\\,\\\\mathrm{d}x=\\\\frac{2}{\\\\pi}\\\\int_0^\\\\pi x^2\\,\\\\mathrm{d}x=\\\\frac{2}{\\\\pi}\\\\cdot\\\\frac{\\\\pi^3}{3}=\\\\frac{2\\\\pi^2}{3}.$$\n$$a_n=\\\\frac{2}{\\\\pi}\\\\int_0^\\\\pi x^2\\\\cos nx\\,\\\\mathrm{d}x.$$\n分部积分两次：$\\\\int_0^\\\\pi x^2\\\\cos nx\\,\\\\mathrm{d}x=\\\\left[\\\\frac{x^2\\\\sin nx}{n}\\\\right]_0^\\\\pi-\\\\frac{2}{n}\\\\int_0^\\\\pi x\\\\sin nx\\,\\\\mathrm{d}x$。\n$\\\\int_0^\\\\pi x\\\\sin nx\\,\\\\mathrm{d}x=\\\\left[-\\\\frac{x\\\\cos nx}{n}\\\\right]_0^\\\\pi+\\\\frac{1}{n}\\\\int_0^\\\\pi\\\\cos nx\\,\\\\mathrm{d}x=-\\\\frac{\\\\pi\\\\cos n\\\\pi}{n}=\\\\frac{(-1)^{n+1}\\\\pi}{n}$。\n\n因此 $a_n=\\\\frac{2}{\\\\pi}\\\\cdot\\\\left(-\\\\frac{2}{n}\\\\right)\\\\cdot\\\\frac{(-1)^{n+1}\\\\pi}{n}=\\\\frac{4(-1)^n}{n^2}$。\n\n**Fourier 级数：**\n$$x^2\\\\sim\\\\frac{\\\\pi^2}{3}+4\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{n^2}\\\\cos nx,\\\\quad x\\\\in[-\\\\pi,\\\\pi].$$\n（$x^2$ 在 $[-\\\\pi,\\\\pi]$ 上连续，级数逐点收敛到 $x^2$。）",
+      "gradingRubric": [
+        { "criterion": "判断奇偶性得 $b_n=0$", "points": 1 },
+        { "criterion": "正确计算 $a_0$", "points": 2 },
+        { "criterion": "分部积分过程正确", "points": 4 },
+        { "criterion": "最终系数 $a_n=4(-1)^n/n^2$ 正确", "points": 2 },
+        { "criterion": "写出最终级数并说明逐点收敛", "points": 1 }
+      ],
+      "hints": [
+        "偶函数意味着 $b_n=0$，且 $a_n$ 积分区间简化为 $[0,\\\\pi]$ 后乘 $2/\\\\pi$（不是 $1/\\\\pi$）",
+        "分部积分 $\\\\int x^2\\\\cos nx$ 需要做两次"
+      ],
+      "commonMistakes": [
+        "$a_n$ 偶函数简化时系数为 $2/\\\\pi$（不是 $1/\\\\pi$）",
+        "分部积分时边界项 $x=0$ 可能算错（均为零）"
+      ],
+      "tags": ["fourier-coefficients", "even-function", "integration-by-parts"]
+    },
+    {
+      "id": "fourier-ex-003",
+      "knowledgePointId": "fourier-convergence",
+      "title": "Dirichlet 定理应用",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "利用上题结果，写出级数 $\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{n^2}$ 和 $\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^2}$ 的和。",
+      "solution": "由 fourier-ex-002 得\n$$x^2=\\\\frac{\\\\pi^2}{3}+4\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{n^2}\\\\cos nx,\\\\quad x\\\\in[-\\\\pi,\\\\pi].$$\n（$x^2$ 连续且逐段光滑，Dirichlet 定理保证等号成立。）\n\n**令 $x=\\\\pi$**（连续点，级数等于 $f(\\\\pi)=\\\\pi^2$）：\n$$\\\\pi^2=\\\\frac{\\\\pi^2}{3}+4\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{n^2}\\\\cos n\\\\pi=\\\\frac{\\\\pi^2}{3}+4\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n\\\\cdot(-1)^n}{n^2}=\\\\frac{\\\\pi^2}{3}+4\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^2}.$$\n$$\\\\Rightarrow\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^2}=\\\\frac{\\\\pi^2-\\\\pi^2/3}{4}=\\\\frac{2\\\\pi^2/3}{4}=\\\\boxed{\\\\frac{\\\\pi^2}{6}}.$$\n\n**令 $x=0$**（连续点，$f(0)=0$）：\n$$0=\\\\frac{\\\\pi^2}{3}+4\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{n^2}.\\\\Rightarrow\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{n^2}=-\\\\frac{\\\\pi^2}{12}.$$",
+      "gradingRubric": [
+        { "criterion": "正确在 $x=\\\\pi$ 代入", "points": 3 },
+        { "criterion": "得出 $\\\\sum 1/n^2=\\\\pi^2/6$", "points": 3 },
+        { "criterion": "正确在 $x=0$ 代入得 $\\\\sum(-1)^n/n^2=-\\\\pi^2/12$", "points": 4 }
+      ],
+      "hints": [
+        "代入端点 $x=\\\\pi$：$\\\\cos n\\\\pi=(-1)^n$，$f(\\\\pi)=\\\\pi^2$",
+        "代入 $x=0$：$\\\\cos 0=1$，$f(0)=0$"
+      ],
+      "commonMistakes": [
+        "端点处忘记判断连续性（$x^2$ 在 $\\\\pm\\\\pi$ 处连续，不需要取均值）",
+        "代入 $x=\\\\pi$ 时 $(-1)^n\\\\cdot(-1)^n=1$，不是 $(-1)^{2n}$ 算错"
+      ],
+      "tags": ["parseval", "series-summation", "dirichlet-theorem"]
+    },
+    {
+      "id": "fourier-ex-004",
+      "knowledgePointId": "fourier-convergence",
+      "title": "Parseval 等式求级数和",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "仍使用 fourier-ex-002 中 $f(x)=x^2$ 的结果，用 Parseval 等式计算 $\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^4}$ 的值。",
+      "solution": "Parseval 等式：\n$$\\\\frac{a_0^2}{2}+\\\\sum_{n=1}^\\\\infty(a_n^2+b_n^2)=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi[f(x)]^2\\,\\\\mathrm{d}x.$$\n代入已知值：$a_0=2\\\\pi^2/3$，$a_n=4(-1)^n/n^2$，$b_n=0$。\n\n**右侧：**\n$$\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi x^4\\,\\\\mathrm{d}x=\\\\frac{2}{\\\\pi}\\\\int_0^\\\\pi x^4\\,\\\\mathrm{d}x=\\\\frac{2}{\\\\pi}\\\\cdot\\\\frac{\\\\pi^5}{5}=\\\\frac{2\\\\pi^4}{5}.$$\n**左侧：**\n$$\\\\frac{1}{2}\\\\left(\\\\frac{2\\\\pi^2}{3}\\\\right)^2+\\\\sum_{n=1}^\\\\infty\\\\frac{16}{n^4}=\\\\frac{2\\\\pi^4}{9}+16\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^4}.$$\n\n令两侧相等：\n$$\\\\frac{2\\\\pi^4}{9}+16\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^4}=\\\\frac{2\\\\pi^4}{5}.$$\n$$16\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^4}=\\\\frac{2\\\\pi^4}{5}-\\\\frac{2\\\\pi^4}{9}=2\\\\pi^4\\\\left(\\\\frac{1}{5}-\\\\frac{1}{9}\\\\right)=\\\\frac{8\\\\pi^4}{45}.$$\n$$\\\\boxed{\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^4}=\\\\frac{\\\\pi^4}{90}}.$$",
+      "gradingRubric": [
+        { "criterion": "写出 Parseval 等式", "points": 2 },
+        { "criterion": "正确计算右侧积分 $2\\\\pi^4/5$", "points": 3 },
+        { "criterion": "正确代入 $a_0^2/2=2\\\\pi^4/9$", "points": 2 },
+        { "criterion": "正确代入 $a_n^2=16/n^4$", "points": 2 },
+        { "criterion": "最终结果 $\\\\pi^4/90$", "points": 1 }
+      ],
+      "hints": [
+        "Parseval 等式右侧是 $f^2=x^4$ 的积分",
+        "$a_0^2/2 = (2\\\\pi^2/3)^2/2 = 2\\\\pi^4/9$"
+      ],
+      "commonMistakes": [
+        "$a_n^2=(4/n^2)^2=16/n^4$（$(-1)^n$ 平方后为 $1$，不能忽略）",
+        "左侧常数项是 $a_0^2/2$ 不是 $a_0^2$"
+      ],
+      "tags": ["parseval-identity", "series-summation", "zeta-function"]
+    },
+    {
+      "id": "fourier-ex-005",
+      "knowledgePointId": "fourier-convergence",
+      "title": "锯齿波的 Fourier 级数与逐点收敛",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "设 $f(x)=x$（$x\\\\in(-\\\\pi,\\\\pi)$），以 $2\\\\pi$ 为周期延拓。\n1. 求 $f$ 的 Fourier 级数。\n2. 利用 Dirichlet 定理确定级数在 $x=\\\\pi/2$，$x=\\\\pi$，$x=0$ 处的收敛值。\n3. 由此推出 Leibniz 公式 $1-\\\\frac{1}{3}+\\\\frac{1}{5}-\\\\frac{1}{7}+\\\\cdots=\\\\frac{\\\\pi}{4}$。",
+      "solution": "**1. Fourier 系数：**\n$f(x)=x$ 为奇函数，$a_n=0$。\n$$b_n=\\\\frac{2}{\\\\pi}\\\\int_0^\\\\pi x\\\\sin nx\\,\\\\mathrm{d}x=\\\\frac{2}{\\\\pi}\\\\left[\\\\left.-\\\\frac{x\\\\cos nx}{n}\\\\right|_0^\\\\pi+\\\\frac{1}{n}\\\\int_0^\\\\pi\\\\cos nx\\,\\\\mathrm{d}x\\\\right]=\\\\frac{2}{\\\\pi}\\\\cdot\\\\frac{(-1)^{n+1}\\\\pi}{n}=\\\\frac{2(-1)^{n+1}}{n}.$$\n\n**Fourier 级数：**\n$$x\\\\sim 2\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n+1}}{n}\\\\sin nx=2\\\\sin x-\\\\sin 2x+\\\\frac{2}{3}\\\\sin 3x-\\\\cdots$$\n\n**2. 逐点收敛：**\n- $x=\\\\pi/2$（连续点）：级数收敛到 $f(\\\\pi/2)=\\\\pi/2$，即 $2(\\\\sin(\\\\pi/2)-\\\\frac{1}{2}\\\\sin\\\\pi+\\\\frac{1}{3}\\\\sin(3\\\\pi/2)-\\\\cdots)=\\\\pi/2$。\n- $x=\\\\pi$（跳跃不连续点）：$f(\\\\pi^-)=\\\\pi$，$f(-\\\\pi^+)=-\\\\pi$（周期延拓后），级数收敛到 $(\\\\pi+(-\\\\pi))/2=0$（正弦级数在 $\\\\pm\\\\pi$ 处恰好为零，与此一致）。\n- $x=0$（连续点）：$f(0)=0$，级数收敛到 $0$（正弦函数均为零，验证正确）。\n\n**3. Leibniz 公式：**\n代入 $x=\\\\pi/2$（级数收敛到 $\\\\pi/2$）：\n$$2\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n+1}}{n}\\\\sin\\\\frac{n\\\\pi}{2}=\\\\frac{\\\\pi}{2}.$$\n$\\\\sin(n\\\\pi/2)$ 当 $n=1,5,9,\\\\ldots$ 为 $+1$，当 $n=3,7,11,\\\\ldots$ 为 $-1$，偶数时为 $0$，故\n$$2\\\\left(1-\\\\frac{1}{3}+\\\\frac{1}{5}-\\\\cdots\\\\right)=\\\\frac{\\\\pi}{2}\\\\Rightarrow\\\\sum_{k=0}^\\\\infty\\\\frac{(-1)^k}{2k+1}=\\\\frac{\\\\pi}{4}.$$",
+      "gradingRubric": [
+        { "criterion": "利用奇函数性质 $a_n=0$", "points": 1 },
+        { "criterion": "$b_n=2(-1)^{n+1}/n$ 计算正确", "points": 3 },
+        { "criterion": "正确分析 $x=\\\\pi$ 处的跳跃收敛值", "points": 2 },
+        { "criterion": "代入 $x=\\\\pi/2$ 推导 Leibniz 公式步骤清晰", "points": 4 }
+      ],
+      "hints": [
+        "$\\\\sin(n\\\\pi/2)$ 的值：$n=1\\\\to 1$，$n=2\\\\to 0$，$n=3\\\\to -1$，$n=4\\\\to 0$，周期为 $4$",
+        "$x=\\\\pi$ 是跳跃点，两侧极限分别为 $\\\\pi$（左）和 $-\\\\pi$（右，因为周期延拓）"
+      ],
+      "commonMistakes": [
+        "$x=\\\\pi$ 是跳跃点（周期延拓后不连续），不能直接代入 $f(\\\\pi)=\\\\pi$",
+        "Leibniz 公式推导时忽略正弦函数取零值的项"
+      ],
+      "tags": ["odd-function", "dirichlet-theorem", "leibniz-formula", "convergence-at-discontinuity"]
+    },
+    {
+      "id": "fourier-ex-006",
+      "knowledgePointId": "fourier-general-period",
+      "title": "$[0,l]$ 上的正弦级数展开",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "将 $f(x)=x(l-x)$（$0\\\\leq x\\\\leq l$，$l>0$）展开为正弦级数，并确定展开式的收敛性。",
+      "solution": "**正弦级数**（奇延拓，基频 $\\\\pi/l$）：\n$$b_n=\\\\frac{2}{l}\\\\int_0^l x(l-x)\\\\sin\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x.$$\n计算：令 $u=\\\\pi x/l$，则 $x=lu/\\\\pi$，$l-x=l(1-u/\\\\pi)$，但直接积分更直接。\n\n分部积分两次：$\\\\int_0^l x(l-x)\\\\sin\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x$\n$=\\\\left[x(l-x)\\\\left(-\\\\frac{l}{n\\\\pi}\\\\cos\\\\frac{n\\\\pi x}{l}\\\\right)\\\\right]_0^l+\\\\frac{l}{n\\\\pi}\\\\int_0^l(l-2x)\\\\cos\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x$\n$=0+\\\\frac{l}{n\\\\pi}\\\\left[\\\\left[(l-2x)\\\\frac{l}{n\\\\pi}\\\\sin\\\\frac{n\\\\pi x}{l}\\\\right]_0^l+\\\\frac{2l}{n\\\\pi}\\\\int_0^l\\\\sin\\\\frac{n\\\\pi x}{l}\\\\,\\\\mathrm{d}x\\\\right]$\n$=\\\\frac{l}{n\\\\pi}\\\\cdot\\\\frac{2l}{n\\\\pi}\\\\cdot\\\\left[-\\\\frac{l}{n\\\\pi}\\\\cos\\\\frac{n\\\\pi x}{l}\\\\right]_0^l=\\\\frac{2l^3}{n^3\\\\pi^3}(1-\\\\cos n\\\\pi)=\\\\frac{2l^3}{n^3\\\\pi^3}[1-(-1)^n].$\n\n故 $b_n=\\\\frac{2}{l}\\\\cdot\\\\frac{2l^3}{n^3\\\\pi^3}[1-(-1)^n]$，当 $n$ 为偶数 $b_n=0$，当 $n=2k-1$ 为奇数 $b_n=\\\\frac{8l^2}{(2k-1)^3\\\\pi^3}$。\n\n**正弦级数：**\n$$f(x)=\\\\frac{8l^2}{\\\\pi^3}\\\\sum_{k=1}^\\\\infty\\\\frac{\\\\sin\\\\frac{(2k-1)\\\\pi x}{l}}{(2k-1)^3},\\\\quad 0\\\\leq x\\\\leq l.$$\n\n**收敛性**：$f(x)=x(l-x)$ 在 $[0,l]$ 上连续，$f(0)=f(l)=0$（端点正弦级数自然满足），故在 $[0,l]$ 内每点均绝对收敛到 $f(x)$。",
+      "gradingRubric": [
+        { "criterion": "写出正弦系数公式（奇延拓，系数 $2/l$）", "points": 2 },
+        { "criterion": "分部积分计算完整正确", "points": 5 },
+        { "criterion": "区分奇偶 $n$ 得最终系数", "points": 2 },
+        { "criterion": "讨论端点收敛性", "points": 1 }
+      ],
+      "hints": [
+        "分部积分两次：第一次消去 $x(l-x)$，第二次消去 $(l-2x)$",
+        "端点 $x=0,l$ 处 $f(0)=f(l)=0$，正弦级数端点值本就为零，无需额外讨论"
+      ],
+      "commonMistakes": [
+        "正弦展开系数公式为 $2/l\\\\int_0^l f\\\\sin(n\\\\pi x/l)$，不是 $1/l$",
+        "自变量为 $n\\\\pi x/l$（含 $l$ 在分母），不是 $nx$"
+      ],
+      "tags": ["half-range-expansion", "sine-series", "odd-extension"]
+    },
+    {
+      "id": "fourier-ex-007",
+      "knowledgePointId": "fourier-general-period",
+      "title": "$[0,l]$ 上的余弦级数展开",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "将 $f(x)=x$（$0\\\\leq x\\\\leq l$）分别展开为：\n1. 余弦级数（偶延拓到 $[-l,l]$）\n2. 正弦级数（奇延拓到 $[-l,l]$）\n并比较两种展开在端点 $x=0$ 和 $x=l$ 处的收敛值。",
+      "solution": "**1. 余弦级数（偶延拓，$b_n=0$）：**\n$$a_0=\\\\frac{2}{l}\\\\int_0^l x\\,\\\\mathrm{d}x=l,\\\\quad a_n=\\\\frac{2}{l}\\\\int_0^l x\\\\cos\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x.$$\n分部积分：$\\\\int_0^l x\\\\cos\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x=\\\\left[\\\\frac{xl\\\\sin(n\\\\pi x/l)}{n\\\\pi}\\\\right]_0^l-\\\\frac{l}{n\\\\pi}\\\\int_0^l\\\\sin\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x=0+\\\\frac{l^2}{n^2\\\\pi^2}[\\\\cos n\\\\pi-1]=\\\\frac{l^2[(-1)^n-1]}{n^2\\\\pi^2}.$\n$$a_n=\\\\frac{2}{l}\\\\cdot\\\\frac{l^2[(-1)^n-1]}{n^2\\\\pi^2}=\\\\frac{2l[(-1)^n-1]}{n^2\\\\pi^2}.$$\n奇数 $n=2k-1$：$a_n=-4l/((2k-1)^2\\\\pi^2)$；偶数 $n$：$a_n=0$。\n$$f(x)\\\\sim\\\\frac{l}{2}-\\\\frac{4l}{\\\\pi^2}\\\\sum_{k=1}^\\\\infty\\\\frac{\\\\cos(\\\\frac{(2k-1)\\\\pi x}{l})}{(2k-1)^2}.$$\n端点：$x=0$，$f(0)=0$，级数值为 $l/2-4l/\\\\pi^2\\\\sum 1/(2k-1)^2=l/2-4l/\\\\pi^2\\\\cdot\\\\pi^2/8=0$（收敛到 $0=f(0)$，连续）。$x=l$：偶延拓后连续（$f(l^-)=l$，$f(-l^+)=l$），级数收敛到 $l=f(l)$。\n\n**2. 正弦级数（奇延拓，$a_n=0$）：**\n$$b_n=\\\\frac{2}{l}\\\\int_0^l x\\\\sin\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x=\\\\frac{2(-1)^{n+1}l}{n\\\\pi}.$$\n（$b_n$ 计算过程与 fourier-ex-005 类似，令 $t=\\\\pi x/l$。）\n$$f(x)\\\\sim\\\\frac{2l}{\\\\pi}\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n+1}}{n}\\\\sin\\\\frac{n\\\\pi x}{l}.$$\n端点：$x=0$，正弦级数 $=0\\\\neq f(0)=0$（此处 $f(0)=0$，一致）。$x=l$：奇延拓后 $f(l^-)=l$，$f(-l^+)=-l$，级数收敛到 $(l+(-l))/2=0\\\\neq f(l)=l$（跳跃不连续，端点级数给出 $0$）。",
+      "gradingRubric": [
+        { "criterion": "余弦级数系数公式和计算（$a_0,a_n$）", "points": 4 },
+        { "criterion": "正弦级数 $b_n=2(-1)^{n+1}l/(n\\\\pi)$", "points": 3 },
+        { "criterion": "余弦级数端点收敛分析正确", "points": 2 },
+        { "criterion": "正弦级数端点收敛到 $0$（不等于 $f(l)=l$）", "points": 1 }
+      ],
+      "hints": [
+        "正弦展开端点 $x=l$ 处一定收敛到零（$\\\\sin(n\\\\pi l/l)=\\\\sin(n\\\\pi)=0$）",
+        "余弦展开端点 $x=l$ 处是否跳跃取决于偶延拓后是否连续：$f$ 为 $x$ 在 $[0,l]$ 上，偶延拓后在 $x=\\\\pm l$ 处 $f(l^-)=l$，$f(l^+)=l$（连续），故收敛到 $l$"
+      ],
+      "commonMistakes": [
+        "正弦级数端点 $x=l$ 处给出 $0$，不是 $f(l)=l$（奇延拓在 $x=l$ 引入跳跃）",
+        "余弦系数的 $a_n$ 中偶延拓导致系数为 $2/l$"
+      ],
+      "tags": ["half-range-expansion", "cosine-series", "even-extension", "endpoint-convergence"]
+    },
+    {
+      "id": "fourier-ex-008",
+      "knowledgePointId": "fourier-general-period",
+      "title": "周期 $2l$ 函数的综合展开",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 15 章",
+      "problem": "设 $f(x)$ 为以 $2$ 为周期的函数，在 $[-1,1)$ 上定义为 $f(x)=e^x$。\n1. 求其 Fourier 级数（$l=1$，基频 $\\\\pi$）。\n2. 写出级数在 $x=1$（即 $x=l$）处的收敛值。\n3. 利用展开结果推出 $\\\\coth\\\\pi=\\\\frac{1}{\\\\pi}+\\\\frac{2}{\\\\pi}\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^2+1}$（双曲余切公式）的起点表达式。",
+      "solution": "**1. Fourier 系数（$l=1$，$T=2$）：**\n$$a_n=\\\\int_{-1}^1 e^x\\\\cos(n\\\\pi x)\\,\\\\mathrm{d}x,\\\\quad b_n=\\\\int_{-1}^1 e^x\\\\sin(n\\\\pi x)\\,\\\\mathrm{d}x.$$\n\n利用 $\\\\int e^x\\\\cos(n\\\\pi x)\\,\\\\mathrm{d}x=\\\\frac{e^x(\\\\cos(n\\\\pi x)+n\\\\pi\\\\sin(n\\\\pi x))}{1+(n\\\\pi)^2}$（分部积分公式）：\n$$a_n=\\\\left[\\\\frac{e^x(\\\\cos(n\\\\pi x)+n\\\\pi\\\\sin(n\\\\pi x))}{1+n^2\\\\pi^2}\\\\right]_{-1}^1=\\\\frac{e(\\\\cos n\\\\pi+0)-e^{-1}(\\\\cos(-n\\\\pi)+0)}{1+n^2\\\\pi^2}=\\\\frac{(e-e^{-1})(-1)^n}{1+n^2\\\\pi^2}=\\\\frac{2\\\\sinh 1\\\\cdot(-1)^n}{1+n^2\\\\pi^2}.$$\n类似地（利用虚部），$b_n=\\\\frac{-2n\\\\pi\\\\sinh 1\\\\cdot(-1)^n}{1+n^2\\\\pi^2}\\\\cdot\\\\frac{(-1)^n}{(-1)^n}$——实际上\n$$b_n=\\\\frac{e^x(\\\\sin(n\\\\pi x)-n\\\\pi\\\\cos(n\\\\pi x))}{1+n^2\\\\pi^2}\\\\Big|_{-1}^1=\\\\frac{(0-n\\\\pi(-1)^n)e-(0-n\\\\pi(-1)^{-n})e^{-1}}{1+n^2\\\\pi^2}=\\\\frac{-n\\\\pi(-1)^n(e-e^{-1})}{1+n^2\\\\pi^2}=\\\\frac{-2n\\\\pi\\\\sinh 1\\\\cdot(-1)^n}{1+n^2\\\\pi^2}.$$\n\n记 $\\\\sinh 1=(e-e^{-1})/2$，$a_0=e-e^{-1}=2\\\\sinh 1$。\n\n**Fourier 级数：**\n$$e^x\\\\sim\\\\sinh 1\\\\left[1+2\\\\sum_{n=1}^\\\\infty(-1)^n\\\\left(\\\\frac{\\\\cos(n\\\\pi x)}{1+n^2\\\\pi^2}-\\\\frac{n\\\\pi\\\\sin(n\\\\pi x)}{1+n^2\\\\pi^2}\\\\right)\\\\right].$$\n\n**2. 收敛值（$x=1=l$）：**\n$e^x$ 在区间 $(-1,1)$ 内连续，但 $x=1$ 处（端点）周期延拓引入跳跃：$f(1^-)=e$，$f(-1^+)=e^{-1}$（下一周期起点）。\n级数收敛到 $(e+e^{-1})/2=\\\\cosh 1$。\n\n**3. 双曲余切公式起点：**\n令 $x=0$（连续点，$f(0)=1$），代入级数：\n$$1=\\\\sinh 1\\\\left[1+2\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^n}{1+n^2\\\\pi^2}\\\\right].$$\n这是 $\\\\coth$ 型等式的基础形式。（完整导出 $\\\\coth\\\\pi$ 需用不同参数 $e^{i\\\\pi z}$ 展开或复变函数方法，此题至此即可。）",
+      "gradingRubric": [
+        { "criterion": "正确写出 $T=2$，$l=1$ 时的系数积分", "points": 2 },
+        { "criterion": "$\\\\int e^x\\\\cos(n\\\\pi x)$ 分部积分公式正确", "points": 3 },
+        { "criterion": "得出 $a_n=2\\\\sinh 1\\\\cdot(-1)^n/(1+n^2\\\\pi^2)$", "points": 2 },
+        { "criterion": "$x=l=1$ 处收敛到 $\\\\cosh 1=(e+e^{-1})/2$", "points": 2 },
+        { "criterion": "$x=0$ 代入得到含 $\\\\sinh 1$ 的等式", "points": 1 }
+      ],
+      "hints": [
+        "$\\\\int e^{\\\\alpha x}\\\\cos(\\\\beta x)\\,\\\\mathrm{d}x=\\\\frac{e^{\\\\alpha x}(\\\\alpha\\\\cos(\\\\beta x)+\\\\beta\\\\sin(\\\\beta x))}{\\\\alpha^2+\\\\beta^2}$（此处 $\\\\alpha=1$，$\\\\beta=n\\\\pi$）",
+        "端点 $x=\\\\pm 1$ 是跳跃间断点（周期函数在 $-1$ 和 $1$ 不同）：$f(-1^+)=e^{-1}$，$f(1^-)=e$"
+      ],
+      "commonMistakes": [
+        "忘记 $a_0=\\\\int_{-1}^1 e^x\\,\\\\mathrm{d}x = e-e^{-1}$，故级数中常数项为 $(e-e^{-1})/2=\\\\sinh 1$",
+        "端点 $x=1$ 处收敛到 $(e+e^{-1})/2=\\\\cosh 1$（取两侧极限均值），不是 $e=f(1)$"
+      ],
+      "tags": ["exponential-function", "complex-period", "convergence-endpoint", "hyperbolic-functions"]
+    }
+  ]
+}

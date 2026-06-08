@@ -88,11 +88,29 @@
       "id": "ch-fourier-series",
       "number": 15,
       "title": "傅里叶级数",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/fourier-series.json",
+      "exercisesFile": "exercises/fourier-series.json",
+      "diagramFile": "diagrams/fourier-series.json",
       "sections": [
-        { "id": "sec-fourier-series", "title": "傅里叶级数", "status": "planned" },
-        { "id": "sec-period-2l-expansion", "title": "以 2l 为周期的函数的展开式", "status": "planned" },
-        { "id": "sec-convergence-theorem-proof", "title": "收敛定理的证明", "status": "planned" }
+        {
+          "id": "sec-fourier-series",
+          "title": "傅里叶级数",
+          "status": "draft",
+          "knowledgePointIds": ["fourier-series-concept", "fourier-convergence"]
+        },
+        {
+          "id": "sec-period-2l-expansion",
+          "title": "以 2l 为周期的函数的展开式",
+          "status": "draft",
+          "knowledgePointIds": ["fourier-general-period"]
+        },
+        {
+          "id": "sec-convergence-theorem-proof",
+          "title": "收敛定理的证明",
+          "status": "draft",
+          "knowledgePointIds": ["fourier-convergence"]
+        }
       ]
     },
     {
