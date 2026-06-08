@@ -1,0 +1,22 @@
+{
+  "chapterId": "ch-real-numbers-functions",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "function-properties-diagram",
+      "title": "函数四大特性示意",
+      "description": "四图组合：左上图——单调性：递增函数 $f(x)=x^2$（$x\\geq 0$，红色），递减函数 $f(x)=1/x$（$x>0$，蓝色），$x_1<x_2$ 时用竖虚线标注 $f(x_1)<f(x_2)$（递增）。右上图——奇偶性：偶函数 $y=x^2$（$y$ 轴对称，橙色），奇函数 $y=x^3$（原点对称，绿色），对称轴/对称点用虚线标注。左下图——有界性：$f(x)=\\sin x$ 加 $y=\\pm 1$ 的上下界（红色虚线），绿色区域表示函数值范围。右下图——周期性：$y=\\sin x$ 和 $y=\\sin(2x)$ 的比较，标注基本周期 $T=2\\pi$（橙色）和 $T=\\pi$（蓝色），周期端点用竖虚线。",
+      "mathContext": "单调性：$x_1<x_2\\Rightarrow f(x_1)<f(x_2)$（严格递增）。奇偶：偶函数图像关于 $y$ 轴对称，奇函数关于原点中心对称。有界：$|f(x)|\\leq M$ 等价于图像在水平带 $-M\\leq y\\leq M$ 内。周期：$f(x+T)=f(x)$，$T$ 为最小正周期（基本周期）。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["function-properties"],
+      "layout": "quad",
+      "annotations": [
+        { "panel": "top-left", "label": "单调性", "note": "$f$ 递增：$x_1<x_2\\Rightarrow f(x_1)<f(x_2)$" },
+        { "panel": "top-right", "label": "奇偶性", "note": "偶函数：$y$ 轴对称；奇函数：原点对称" },
+        { "panel": "bottom-left", "label": "有界性", "note": "$|f(x)|\\leq M$，图像在水平带内" },
+        { "panel": "bottom-right", "label": "周期性", "note": "$f(x+T)=f(x)$，$T$ 为基本周期" }
+      ]
+    }
+  ]
+}

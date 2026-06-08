@@ -1,0 +1,186 @@
+{
+  "chapterId": "ch-real-numbers-functions",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "knowledgePoints": [
+    {
+      "id": "real-number-system",
+      "title": "实数与实数的性质",
+      "chapterId": "ch-real-numbers-functions",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解实数系的构成（有理数与无理数）",
+        "掌握实数的基本性质（有序性、稠密性、完备性）",
+        "能用绝对值不等式进行估计"
+      ],
+      "coreExplanation": "**实数集** $\\\\mathbb{R}$：有理数（$\\\\mathbb{Q}$，形如 $p/q$，$p\\\\in\\\\mathbb{Z},q\\\\in\\\\mathbb{N}^+$）与无理数的并集。有理数与无理数在 $\\\\mathbb{R}$ 上均稠密（任意两实数之间均存在有理数和无理数）。\n**实数的完备性（直觉）**：实数轴上没有"空洞"——每个有理数的 Cauchy 序列都收敛到一个实数（无理数填补有理数轴的空洞）。这是数学分析的基础，不同于有理数的不完备。\n**绝对值**：$|a|=\\\\begin{cases}a,&a\\\\geq 0\\\\\\\\-a,&a<0\\\\end{cases}$。\n**绝对值的性质**：\n- $|a|\\\\geq 0$，$|a|=0\\\\Leftrightarrow a=0$；\n- $|ab|=|a||b|$；\n- **三角不等式**：$|a+b|\\\\leq|a|+|b|$；逆三角不等式：$||a|-|b||\\\\leq|a-b|$；\n- $|a-b|$：数轴上 $a,b$ 两点之间的距离。\n**有界性**：集合 $A\\\\subset\\\\mathbb{R}$ 有上界（$\\\\exists M,\\\\forall x\\\\in A,x\\\\leq M$）；有下界类似。既有上界又有下界称有界（等价于 $\\\\exists M>0,\\\\forall x\\\\in A,|x|\\\\leq M$）。",
+      "textbookRefs": ["数学分析（第5版）上册 §1.1"],
+      "keyDefinitions": [
+        {
+          "term": "无理数",
+          "definition": "不能表示成两整数之比的实数，如 $\\\\sqrt{2},\\\\pi,e$；证明 $\\\\sqrt{2}\\\\notin\\\\mathbb{Q}$：反设 $\\\\sqrt{2}=p/q$（既约），则 $2q^2=p^2$，$p$ 为偶数，令 $p=2k$，$2q^2=4k^2$，$q^2=2k^2$，$q$ 也为偶数，矛盾"
+        },
+        {
+          "term": "绝对值",
+          "definition": "$|a|=\\\\max\\\\{a,-a\\\\}$，几何意义：$a$ 到原点的距离；$|a-b|$ 为 $a,b$ 之间的距离"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "三角不等式",
+          "statement": "$|a+b|\\\\leq|a|+|b|$（等号当 $a,b$ 同号时成立）",
+          "significance": "极限证明中控制误差的基本工具，常用形式：$|a-b|\\\\leq|a-c|+|c-b|$（拆中间项）"
+        }
+      ],
+      "proofIdeas": [
+        "**三角不等式证明**：$(|a|+|b|)^2-(a+b)^2=(|a|^2-a^2)+(|b|^2-b^2)+2(|a||b|-ab)=2(|a||b|-ab)\\\\geq 0$（因 $|a||b|\\\\geq ab$），故 $|a+b|\\\\leq|a|+|b|$。"
+      ],
+      "socraticQuestions": [
+        "$|x-2|<3$ 描述哪个区间？（$|x-2|<3\\\\Leftrightarrow -3<x-2<3\\\\Leftrightarrow -1<x<5$。）",
+        "证明：若 $|a-1|<1/2$，则 $|2a-3|<2$。（$|2a-3|=|2(a-1)-1|\\\\leq 2|a-1|+1<2\\cdot 1/2+1=2$。）",
+        "$\\\\sqrt{2}$ 是无理数——它的小数展开不循环，但如何知道它存在于实数轴上？（完备性：有理数列 $1,1.4,1.41,1.414,\\\\ldots$ 收敛。）"
+      ],
+      "commonMistakes": [
+        "三角不等式方向：$|a+b|\\\\leq|a|+|b|$（上界），$|a+b|\\\\geq||a|-|b||$（下界）",
+        "$|a|^2=a^2$（不是 $|a^2|$，两者相等；但 $|a|=|{-a}|$，$a$ 和 $-a$ 绝对值相同）"
+      ],
+      "exerciseIds": ["rnf-ex-001"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用三角不等式进行绝对值估计",
+        "能将绝对值不等式化为等价的区间表示"
+      ]
+    },
+    {
+      "id": "supremum-infimum",
+      "title": "数集·确界原理",
+      "chapterId": "ch-real-numbers-functions",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解上界、下界、上确界（supremum）、下确界（infimum）的定义",
+        "掌握确界原理（完备性公理）及其应用",
+        "能求简单集合的上下确界"
+      ],
+      "coreExplanation": "**有界集**：$A\\\\subset\\\\mathbb{R}$ 有上界 $\\\\Leftrightarrow\\\\exists M,\\\\forall x\\\\in A,x\\\\leq M$；有下界 $\\\\Leftrightarrow\\\\exists m,\\\\forall x\\\\in A,x\\\\geq m$。\n**上确界**（最小上界 $\\\\sup A$）：$\\\\beta=\\\\sup A\\\\Leftrightarrow$\n1. $\\\\forall x\\\\in A,x\\\\leq\\\\beta$（$\\\\beta$ 是上界）；\n2. $\\\\forall\\\\varepsilon>0,\\\\exists x\\\\in A,x>\\\\beta-\\\\varepsilon$（$\\\\beta$ 是最小上界，任何更小的数都不是上界）。\n**下确界**（最大下界 $\\\\inf A$）类似定义。\n**确界原理**（完备性公理）：非空有上界的实数集必有上确界；非空有下界的实数集必有下确界。（这是实数完备性的一种等价描述，有理数集不满足此性质！）\n**例**：\n- $A=\\\\{x:\\,0<x<1\\\\}$：$\\\\sup A=1\\\\notin A$，$\\\\inf A=0\\\\notin A$（开区间，确界不属于集合）。\n- $A=\\\\{(-1)^n+1/n:\\,n\\\\in\\\\mathbb{N}^+\\\\}=\\\\{0,3/2,2/3,5/4,4/5,\\\\ldots\\\\}$：$\\\\sup A=3/2$（$n=2$ 时取到），$\\\\inf A=0$（通过 $n=2k-1,n\\\\to\\\\infty$ 趋近但不取到）。",
+      "textbookRefs": ["数学分析（第5版）上册 §1.2"],
+      "keyDefinitions": [
+        {
+          "term": "上确界",
+          "definition": "$\\\\sup A$：集合 $A$ 的最小上界；等价刻画：$\\\\beta=\\\\sup A\\\\Leftrightarrow(\\\\forall x\\\\in A,x\\\\leq\\\\beta)$ 且 $(\\\\forall\\\\varepsilon>0,\\\\exists x\\\\in A,x>\\\\beta-\\\\varepsilon)$"
+        },
+        {
+          "term": "确界原理",
+          "definition": "（完备性）非空有界（上/下）数集必有上/下确界——实数系的核心性质，与区间套定理、Bolzano-Weierstrass 定理等价"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "确界原理（完备性公理）",
+          "statement": "设 $A\\\\subset\\\\mathbb{R}$ 非空且有上界，则 $\\\\sup A$ 存在（且唯一）；下确界类似",
+          "significance": "实数完备性的基础；有理数集合 $\\\\{x\\\\in\\\\mathbb{Q}:\\,x^2<2\\\\}$ 没有有理上确界（$\\\\sqrt{2}\\\\notin\\\\mathbb{Q}$），说明 $\\\\mathbb{Q}$ 不完备"
+        }
+      ],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "集合 $A=\\\\{1-1/n:\\,n\\\\in\\\\mathbb{N}^+\\\\}=\\\\{0,1/2,2/3,3/4,\\\\ldots\\\\}$，$\\\\sup A=?$，$\\\\inf A=?$（$\\\\sup A=1\\\\notin A$，$\\\\inf A=0\\\\in A$。）",
+        "$\\\\{x\\\\in\\\\mathbb{Q}:\\,x^2<2\\\\}$ 有上界（如 $x=2$），但其上确界在 $\\\\mathbb{Q}$ 中不存在（$\\\\sqrt{2}\\\\notin\\\\mathbb{Q}$）——这说明什么？（有理数集不完备。）",
+        "确界原理的等价刻画：$\\\\beta-\\\\varepsilon$ 不是 $A$ 的上界（对任意 $\\\\varepsilon>0$），即 $\\\\beta$ 是"最紧"的上界。"
+      ],
+      "commonMistakes": [
+        "上确界不一定属于集合（开区间 $(0,1)$ 的上确界 $1\\\\notin(0,1)$）；若 $\\\\sup A\\\\in A$，则称 $\\\\sup A$ 为 $A$ 的最大值",
+        "确界的第二条件（$\\\\forall\\\\varepsilon>0,\\\\exists x\\\\in A,x>\\\\sup A-\\\\varepsilon$）不可省略，仅有第一条不足以确定最小上界"
+      ],
+      "exerciseIds": ["rnf-ex-002"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能按定义验证集合的上/下确界",
+        "理解确界原理是实数完备性的体现"
+      ]
+    },
+    {
+      "id": "function-concept",
+      "title": "函数的概念与表示",
+      "chapterId": "ch-real-numbers-functions",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解函数的定义（映射观点）、定义域、值域",
+        "掌握函数的四则运算与复合函数",
+        "理解反函数的存在条件与表示"
+      ],
+      "coreExplanation": "**函数定义**：$f:D\\\\to\\\\mathbb{R}$，对每个 $x\\\\in D$ 对应唯一 $y=f(x)\\\\in\\\\mathbb{R}$。$D$ 为**定义域**，$f(D)=\\\\{f(x):\\,x\\\\in D\\\\}$ 为**值域**。\n**自然定义域**：使表达式有意义的最大 $x$ 集合，如 $f(x)=\\\\sqrt{1-x^2}$ 的自然定义域为 $[-1,1]$。\n**四则运算**：$f\\\\pm g,fg,f/g$（后者要求 $g\\\\neq 0$），定义域取交集（商还需去除零点）。\n**复合函数**：$f\\\\circ g(x)=f(g(x))$，要求 $g(x)$ 的值域 $\\\\subset f$ 的定义域（否则复合无意义）。\n**反函数**：若 $f:D\\\\to f(D)$ 为严格单调函数，则 $f$ 可逆，反函数 $f^{-1}:f(D)\\\\to D$，满足 $f^{-1}(f(x))=x$（对 $x\\\\in D$）。$y=f(x)$ 与 $y=f^{-1}(x)$ 的图像关于 $y=x$ 对称。\n**初等函数**：由幂函数、指数函数、对数函数、三角函数、反三角函数经有限次四则运算和复合得到的函数，在其定义域上有定义（不含分段定义的情形）。",
+      "textbookRefs": ["数学分析（第5版）上册 §1.3"],
+      "keyDefinitions": [
+        {
+          "term": "函数",
+          "definition": "定义域 $D$ 上的映射 $f:D\\\\to\\\\mathbb{R}$，$x\\\\mapsto f(x)$；两函数相等当且仅当定义域相同且对所有 $x$ 函数值相同"
+        },
+        {
+          "term": "反函数",
+          "definition": "严格单调函数 $f$ 的反函数 $f^{-1}$，满足 $f^{-1}(y)=x\\\\Leftrightarrow y=f(x)$；图像关于 $y=x$ 对称"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "$f(x)=x^2$ 和 $g(x)=\\\\sqrt{x}\\\\cdot\\\\sqrt{x}$ 是同一函数吗？（不是，$g$ 的定义域为 $[0,+\\\\infty)$，$f$ 的定义域为 $(-\\\\infty,+\\\\infty)$。）",
+        "$f(x)=\\\\ln(x-1)+\\\\sqrt{4-x^2}$ 的定义域：$x-1>0$ 且 $4-x^2\\\\geq 0$，即 $x>1$ 且 $|x|\\\\leq 2$，故 $D=(1,2]$。",
+        "$y=\\\\arcsin x$ 是 $y=\\\\sin x$ 的反函数，但限制在 $[-\\\\pi/2,\\\\pi/2]$ 上——为什么需要限制？（$\\\\sin$ 在整个 $\\\\mathbb{R}$ 上不单调，不可逆。）"
+      ],
+      "commonMistakes": [
+        "复合函数 $f(g(x))$ 的定义域：需要 $x\\\\in\\\\mathrm{Dom}(g)$ 且 $g(x)\\\\in\\\\mathrm{Dom}(f)$（两个条件同时满足）",
+        "反函数存在的条件：$f$ 必须在定义域上严格单调（一一对应），否则反函数不是函数（一个 $y$ 对应多个 $x$）"
+      ],
+      "exerciseIds": ["rnf-ex-003", "rnf-ex-004"],
+      "diagramIds": ["function-properties-diagram"],
+      "masteryCriteria": [
+        "能求函数的自然定义域",
+        "能判断两函数是否相同（定义域和对应法则均相同）",
+        "能写出简单初等函数的反函数"
+      ]
+    },
+    {
+      "id": "function-properties",
+      "title": "函数的特性：单调、奇偶、有界、周期",
+      "chapterId": "ch-real-numbers-functions",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握函数的四种特性的定义与判断",
+        "能利用特性简化计算（奇偶函数的积分对称性等）",
+        "了解各特性之间的关系"
+      ],
+      "coreExplanation": "**单调性**：$f$ 在 $I$ 上单调递增 $\\\\Leftrightarrow\\\\forall x_1,x_2\\\\in I,x_1<x_2\\\\Rightarrow f(x_1)<f(x_2)$（严格；非严格则为 $\\\\leq$）。\n**有界性**：$f$ 在 $D$ 上有界 $\\\\Leftrightarrow\\\\exists M>0,\\\\forall x\\\\in D,|f(x)|\\\\leq M$。有上界（$f(x)\\\\leq M$）、有下界（$f(x)\\\\geq m$）类似。\n**奇偶性**：定义域关于原点对称（$D=-D$，即 $x\\\\in D\\\\Rightarrow-x\\\\in D$）。\n- 偶函数：$f(-x)=f(x)$，图像关于 $y$ 轴对称。\n- 奇函数：$f(-x)=-f(x)$，图像关于原点对称；若 $0\\\\in D$，则 $f(0)=0$。\n**运算**：奇$\\\\times$奇$=$偶，偶$\\\\times$偶$=$偶，奇$\\\\times$偶$=$奇，奇$+$奇$=$奇，偶$+$偶$=$偶（奇$+$偶一般不是奇或偶）。\n**周期性**：$f(x+T)=f(x)$（$\\\\forall x\\\\in D$，$T>0$）；最小正周期（若存在）称为**基本周期**。注意：常数函数有任意正周期，但通常不称有基本周期。\n**例**：$\\\\sin x$ 基本周期 $2\\\\pi$；$|\\\\sin x|$ 基本周期 $\\\\pi$（注意减半）；Dirichlet 函数 $D(x)=\\\\mathbf{1}_{\\\\mathbb{Q}}(x)$ 以任意有理数为周期（无最小正周期）。",
+      "textbookRefs": ["数学分析（第5版）上册 §1.4"],
+      "keyDefinitions": [
+        {
+          "term": "奇函数",
+          "definition": "定义域关于原点对称且 $f(-x)=-f(x)$；奇函数若在 $x=0$ 有定义则 $f(0)=0$"
+        },
+        {
+          "term": "偶函数",
+          "definition": "定义域关于原点对称且 $f(-x)=f(x)$；图像关于 $y$ 轴对称"
+        },
+        {
+          "term": "周期函数",
+          "definition": "$\\\\exists T>0,\\\\forall x\\\\in D,f(x+T)=f(x)$；最小正周期（若存在）称基本周期"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "$f(x)=\\\\ln(x+\\\\sqrt{1+x^2})$：验证其为奇函数。（$f(-x)=\\\\ln(-x+\\\\sqrt{1+x^2})$，$f(x)+f(-x)=\\\\ln(\\\\sqrt{1+x^2}+x)+\\\\ln(\\\\sqrt{1+x^2}-x)=\\\\ln(1+x^2-x^2)=0$，故奇。）",
+        "$f(x)=x\\\\sin x$ 是奇还是偶？（$f(-x)=(-x)\\\\sin(-x)=(-x)(-\\\\sin x)=x\\\\sin x=f(x)$，偶函数。）",
+        "若 $f$ 既是奇函数又是偶函数，$f=?$（$f(-x)=-f(x)$ 且 $f(-x)=f(x)$，故 $f(x)=0$ 对所有 $x$ 成立。）"
+      ],
+      "commonMistakes": [
+        "奇偶性需先检查定义域是否关于原点对称（$D=-D$），否则无奇偶性可言",
+        "周期函数不一定有最小正周期（Dirichlet 函数无最小正周期）；$|\\\\sin x|$ 的周期是 $\\\\pi$ 而非 $2\\\\pi$"
+      ],
+      "exerciseIds": ["rnf-ex-005", "rnf-ex-006"],
+      "diagramIds": ["function-properties-diagram"],
+      "masteryCriteria": [
+        "能判断函数的单调性、奇偶性、有界性、周期性",
+        "能利用奇偶性化简问题（如对称区间上的积分）"
+      ]
+    }
+  ]
+}

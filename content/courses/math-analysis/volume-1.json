@@ -12,12 +12,35 @@
       "id": "ch-real-numbers-functions",
       "number": 1,
       "title": "实数集与函数",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/real-numbers-functions.json",
+      "exercisesFile": "exercises/real-numbers-functions.json",
+      "diagramFile": "diagrams/real-numbers-functions.json",
       "sections": [
-        { "id": "sec-real-numbers", "title": "实数", "status": "planned" },
-        { "id": "sec-number-sets-confined-functions", "title": "数集·确界原理", "status": "planned" },
-        { "id": "sec-functions-concept", "title": "函数概念", "status": "planned" },
-        { "id": "sec-special-functions", "title": "具有某些特性的函数", "status": "planned" }
+        {
+          "id": "sec-real-numbers",
+          "title": "实数与绝对值",
+          "status": "draft",
+          "knowledgePointIds": ["real-number-system"]
+        },
+        {
+          "id": "sec-number-sets-confined-functions",
+          "title": "数集·确界原理",
+          "status": "draft",
+          "knowledgePointIds": ["supremum-infimum"]
+        },
+        {
+          "id": "sec-functions-concept",
+          "title": "函数概念",
+          "status": "draft",
+          "knowledgePointIds": ["function-concept"]
+        },
+        {
+          "id": "sec-special-functions",
+          "title": "具有某些特性的函数",
+          "status": "draft",
+          "knowledgePointIds": ["function-properties"]
+        }
       ]
     },
     {
