@@ -25,8 +25,10 @@
 | rnf-ex-004 | basic | 反函数（双曲正弦 $\sinh$）+ 函数方程 | function-concept |
 | rnf-ex-005 | basic | 奇偶性判断（含 $\ln(\sqrt{1+x^2}-x)$ 是奇函数） | function-properties |
 | rnf-ex-006 | medium | 有界性（AM-GM）+ 周期函数之和的反例 | function-properties |
+| rnf-ex-007 | medium | 确界原理：上极限 $\limsup$ 的构造与单调性证明 | supremum-infimum |
+| rnf-ex-008 | basic | 分段函数复合：$f\circ g \neq g\circ f$ 的反例 | function-concept |
 
-难度分布：basic ×5，medium ×1（共 6 题，基础章节适当减量）。
+难度分布：basic ×6，medium ×2（共 8 题）。
 
 ## 图示清单
 

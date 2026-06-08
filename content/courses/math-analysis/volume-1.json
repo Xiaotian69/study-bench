@@ -50,6 +50,7 @@
       "status": "sample-ready",
       "chapterFile": "chapters/sequence-limit.json",
       "exercisesFile": "exercises/sequence-limit.json",
+      "diagramFile": "diagrams/sequence-limit.json",
       "sections": [
         {
           "id": "sec-sequence-limit-concept",
