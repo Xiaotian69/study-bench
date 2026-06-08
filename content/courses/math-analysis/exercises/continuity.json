@@ -1,0 +1,265 @@
+{
+  "chapterId": "ch-continuity",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "sourceTypeLegend": {
+    "textbook-example": "教材例题",
+    "textbook-exercise": "教材课后习题",
+    "adapted": "由教材题改编",
+    "bridging": "自编过渡题，仅用于衔接，不作为正式题"
+  },
+  "intakeNote": "本章题面为自编或充分改写，未直接照搬教材原题；sourceRef 记录对应章节，题号标注"待核对题源"，待对照本地教材核对后再回填具体题号。",
+  "exercises": [
+    {
+      "id": "continuity-ex-001",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1 连续函数的概念",
+      "knowledgePointIds": ["continuity-at-point"],
+      "difficulty": "basic",
+      "type": "definition-understanding",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\begin{cases}x^2+1, & x\\\\ne 0\\\\\\\\2, & x=0\\\\end{cases}$。请判断 $f$ 在 $x=0$ 处是否连续，并说明理由。",
+      "gradingRubric": [
+        "计算 $\\\\lim_{x\\\\to 0}f(x)=\\\\lim_{x\\\\to 0}(x^2+1)=1$",
+        "指出 $f(0)=2\\\\ne 1=\\\\lim_{x\\\\to 0}f(x)$",
+        "结论：$f$ 在 $x=0$ 处不连续（极限存在但不等于函数值）"
+      ],
+      "hints": [
+        "先求 $\\\\lim_{x\\\\to 0}f(x)$，注意 $x\\\\to 0$ 时 $x\\\\ne 0$，应用哪段表达式？",
+        "再看 $f(0)$ 的值是多少。",
+        "连续要求极限等于函数值，二者相等吗？"
+      ],
+      "commonMistakes": [
+        "直接代入 $x=0$ 得 $f(0)=2$ 就说连续，忘记与极限比较",
+        "把 $x=0$ 代入 $x^2+1$ 得 $1$，忽略分段定义在该点的取值"
+      ]
+    },
+    {
+      "id": "continuity-ex-002",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1",
+      "knowledgePointIds": ["continuity-at-point"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "确定常数 $a$ 的值，使函数 $f(x)=\\\\begin{cases}\\\\dfrac{\\\\sin 2x}{x}, & x\\\\ne 0\\\\\\\\a, & x=0\\\\end{cases}$ 在 $x=0$ 处连续。",
+      "gradingRubric": [
+        "计算 $\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\sin 2x}{x}=\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\sin 2x}{2x}\\\\cdot 2=1\\\\cdot 2=2$",
+        "连续要求 $f(0)=\\\\lim_{x\\\\to 0}f(x)$，故 $a=2$",
+        "验证：取 $a=2$ 后 $f(0)=2=\\\\lim_{x\\\\to 0}f(x)$，连续成立"
+      ],
+      "hints": [
+        "连续条件是 $\\\\lim_{x\\\\to 0}f(x)=f(0)=a$。",
+        "先求极限 $\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\sin 2x}{x}$，可利用第一重要极限。",
+        "等式两边令 $a$ 等于该极限值即得答案。"
+      ],
+      "commonMistakes": [
+        "忘记乘系数 2，得到 $a=1$",
+        "把极限求反：代入 $x=0$ 直接令分母为零而报告极限不存在"
+      ]
+    },
+    {
+      "id": "continuity-ex-003",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1（单侧连续）",
+      "knowledgePointIds": ["one-sided-continuity"],
+      "difficulty": "basic",
+      "type": "judgment",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\begin{cases}x^2, & x<1\\\\\\\\2x-1, & x\\\\ge 1\\\\end{cases}$。判断 $f$ 在 $x=1$ 处是否连续；若不连续，指出它是左连续还是右连续。",
+      "gradingRubric": [
+        "计算左极限：$f(1^-)=\\\\lim_{x\\\\to 1^-}x^2=1$",
+        "计算右极限：$f(1^+)=\\\\lim_{x\\\\to 1^+}(2x-1)=1$",
+        "计算函数值：$f(1)=2(1)-1=1$",
+        "三者均为 $1$，故 $f$ 在 $x=1$ 处连续（无需进一步判断单侧）"
+      ],
+      "hints": [
+        "在 $x=1$ 处，分段函数各段的极限都需要计算。",
+        "左极限用 $x<1$ 那段，右极限和函数值用 $x\\\\ge 1$ 那段。",
+        "最终比较 $f(1^-)$、$f(1^+)$、$f(1)$ 三个值。"
+      ],
+      "commonMistakes": [
+        "只算一侧极限就下结论",
+        "分界点处函数值用了错误的段（如用 $x<1$ 段代入 $x=1$）"
+      ]
+    },
+    {
+      "id": "continuity-ex-004",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1（间断点分类）",
+      "knowledgePointIds": ["discontinuity-types"],
+      "difficulty": "basic",
+      "type": "classification",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求函数 $f(x)=\\\\dfrac{x^2-1}{x^2-3x+2}$ 的间断点，并判断各间断点的类型。",
+      "gradingRubric": [
+        "将分母因式分解：$x^2-3x+2=(x-1)(x-2)$，间断点为 $x=1$ 和 $x=2$",
+        "在 $x=1$ 处：$f(x)=\\\\dfrac{(x-1)(x+1)}{(x-1)(x-2)}=\\\\dfrac{x+1}{x-2}$（$x\\\\ne 1$），故 $\\\\lim_{x\\\\to 1}f(x)=\\\\dfrac{2}{-1}=-2$；极限存在但 $f(1)$ 无定义，$x=1$ 是可去间断点",
+        "在 $x=2$ 处：$\\\\lim_{x\\\\to 2}f(x)=\\\\lim_{x\\\\to 2}\\\\dfrac{x+1}{x-2}$，分母趋于 $0$，分子趋于 $3$，极限为 $\\\\infty$；$x=2$ 是无穷间断点（第二类）"
+      ],
+      "hints": [
+        "先找使分母为零的 $x$ 值。",
+        "对每个间断点，分别计算左右极限（或双侧极限）。",
+        "极限有限存在→可去或跳跃；极限无穷或振荡→第二类。"
+      ],
+      "commonMistakes": [
+        "只找到一个间断点，遗漏另一个",
+        "把 $x=1$ 的可去间断点误判为无穷间断点",
+        "化简时忘记说明约分条件 $x\\\\ne 1$"
+      ]
+    },
+    {
+      "id": "continuity-ex-005",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1（间断点）",
+      "knowledgePointIds": ["discontinuity-types"],
+      "difficulty": "medium",
+      "type": "classification",
+      "recommendedTiming": "after-lecture",
+      "prompt": "讨论函数 $f(x)=\\\\dfrac{\\\\mathrm{e}^{1/x}-1}{\\\\mathrm{e}^{1/x}+1}$ 在 $x=0$ 处的间断点类型。",
+      "gradingRubric": [
+        "当 $x\\\\to 0^+$ 时，$1/x\\\\to+\\\\infty$，故 $\\\\mathrm{e}^{1/x}\\\\to+\\\\infty$，$f(x)\\\\to\\\\dfrac{+\\\\infty}{+\\\\infty}=1$（分子分母均趋于 $+\\\\infty$，比值 $\\\\to 1$）；更准确地写：$f(x)=1-\\\\dfrac{2}{\\\\mathrm{e}^{1/x}+1}\\\\to 1$",
+        "当 $x\\\\to 0^-$ 时，$1/x\\\\to-\\\\infty$，$\\\\mathrm{e}^{1/x}\\\\to 0$，$f(x)\\\\to\\\\dfrac{0-1}{0+1}=-1$",
+        "左极限 $=-1$，右极限 $=1$，两者不等，故 $x=0$ 是跳跃间断点（第一类）"
+      ],
+      "hints": [
+        "分开讨论 $x\\\\to 0^+$ 和 $x\\\\to 0^-$ 两种情形。",
+        "注意 $x\\\\to 0^+$ 时 $1/x\\\\to+\\\\infty$，$x\\\\to 0^-$ 时 $1/x\\\\to-\\\\infty$。",
+        "把 $f(x)$ 改写为 $1-\\\\dfrac{2}{\\\\mathrm{e}^{1/x}+1}$ 更易算 $x\\\\to 0^+$ 的情形。"
+      ],
+      "commonMistakes": [
+        "认为 $x\\\\to 0^+$ 时极限不存在（实际趋于 $1$）",
+        "两侧极限均有限但不相等，误判为第二类间断点"
+      ]
+    },
+    {
+      "id": "continuity-ex-006",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §2 连续函数的性质",
+      "knowledgePointIds": ["continuity-operations"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "指出函数 $f(x)=\\\\dfrac{\\\\sqrt{x+2}}{x^2-x-6}$ 的连续区间，并求 $\\\\lim_{x\\\\to 1}f(x)$。",
+      "gradingRubric": [
+        "定义域要求：$x+2\\\\ge 0$ 且 $x^2-x-6\\\\ne 0$，即 $x\\\\ge -2$ 且 $x\\\\ne 3$（注意 $x^2-x-6=(x-3)(x+2)$，$x=-2$ 使分子为零但分母也为零，检查：$f(-2)$ 分母为 $(-2)^2-(-2)-6=4+2-6=0$，分母为零，$x=-2$ 不在定义域）",
+        "更准确：$x^2-x-6=(x-3)(x+2)=0$ 给出 $x=3$ 或 $x=-2$；结合 $x\\\\ge-2$，定义域为 $[-2,3)\\\\cup(3,+\\\\infty)$（在 $x=-2$ 处分母为零，故不在定义域）。实际定义域：$x>-2$ 且 $x\\\\ne 3$，即 $(-2,3)\\\\cup(3,+\\\\infty)$",
+        "连续区间：$(-2,3)$ 与 $(3,+\\\\infty)$（有理函数与根式函数在定义域内连续）",
+        "$x=1$ 在 $(-2,3)$ 内，直接代入：$f(1)=\\\\dfrac{\\\\sqrt{1+2}}{1-1-6}=\\\\dfrac{\\\\sqrt{3}}{-6}=-\\\\dfrac{\\\\sqrt{3}}{6}$"
+      ],
+      "hints": [
+        "定义域需同时满足：根号下非负、分母不为零。",
+        "$x^2-x-6$ 能因式分解。",
+        "$x=1$ 在定义域内，初等函数在定义域内连续，可直接代入求极限。"
+      ],
+      "commonMistakes": [
+        "只排除分母零点，忘记检查根号下非负",
+        "代入 $x=1$ 时把分母 $1-1-6$ 算错",
+        "把 $x=-2$ 加入定义域（实际那里分母也为零）"
+      ]
+    },
+    {
+      "id": "continuity-ex-007",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §2（复合函数连续性）",
+      "knowledgePointIds": ["composite-continuity"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\displaystyle\\\\lim_{x\\\\to 0}\\\\ln\\\\left(1+\\\\frac{\\\\sin x}{x}\\\\right)$，并说明所用方法的依据。",
+      "gradingRubric": [
+        "由第一重要极限：$\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\sin x}{x}=1$，故内层极限为 $1$",
+        "$f(u)=\\\\ln(1+u)$ 在 $u=1$ 处连续（$1+1=2>0$）",
+        "由连续函数穿极限定理：$\\\\lim_{x\\\\to 0}\\\\ln\\\\left(1+\\\\dfrac{\\\\sin x}{x}\\\\right)=\\\\ln\\\\left(\\\\lim_{x\\\\to 0}\\\\left(1+\\\\dfrac{\\\\sin x}{x}\\\\right)\\\\right)=\\\\ln 2$",
+        "结论：极限为 $\\\\ln 2$"
+      ],
+      "hints": [
+        "把式子看成复合函数：外层 $\\\\ln(1+\\\\cdot)$，内层 $\\\\dfrac{\\\\sin x}{x}$。",
+        "先求内层极限，再判断外层函数是否在该极限值处连续。",
+        "连续函数可以"穿过"极限号。"
+      ],
+      "commonMistakes": [
+        "直接代入 $x=0$ 得 $\\\\dfrac{\\\\sin 0}{0}=\\\\dfrac{0}{0}$，报告无法计算",
+        "忘记外层 $\\\\ln$ 在内层极限值处连续才能交换顺序",
+        "把 $\\\\ln(1+1)$ 算成 $\\\\ln 1=0$"
+      ]
+    },
+    {
+      "id": "continuity-ex-008",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §3 初等函数的连续性",
+      "knowledgePointIds": ["elementary-function-continuity"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求下列极限，并对每个结果注明所用依据：$(1)\\;\\lim_{x\\\\to\\\\pi/2}\\dfrac{\\\\cos x}{x-\\\\pi/2}$；$(2)\\;\\lim_{x\\\\to 0^+}x^x$。",
+      "gradingRubric": [
+        "(1) 令 $t=x-\\\\pi/2$，则 $x=t+\\\\pi/2$，$\\\\cos x=\\\\cos(t+\\\\pi/2)=-\\\\sin t$；$\\\\lim_{t\\\\to 0}\\\\dfrac{-\\\\sin t}{t}=-1$；依据：换元后用第一重要极限",
+        "(2) $x^x=\\\\mathrm{e}^{x\\\\ln x}$；$\\\\lim_{x\\\\to 0^+}x\\\\ln x=0$（$x\\\\to 0^+$ 时 $x\\\\ln x\\\\to 0$，可用 $t=-\\\\ln x\\\\to+\\\\infty$ 换元得 $\\\\mathrm{e}^{-t}\\\\cdot(-t)\\\\to 0$）；由 $\\\\mathrm{e}^u$ 在 $u=0$ 处连续，$\\\\lim_{x\\\\to 0^+}\\\\mathrm{e}^{x\\\\ln x}=\\\\mathrm{e}^0=1$；依据：极限与连续函数交换"
+      ],
+      "hints": [
+        "(1) 令 $t=x-\\\\pi/2$，把 $\\\\cos x$ 用 $t$ 表示。",
+        "(2) 先写 $x^x=\\\\mathrm{e}^{x\\\\ln x}$，再单独分析指数 $x\\\\ln x$ 在 $x\\\\to 0^+$ 时的极限。",
+        "最后一步：$\\\\mathrm{e}^u$ 连续，可把极限代入指数。"
+      ],
+      "commonMistakes": [
+        "(1) 直接代入 $x=\\\\pi/2$ 得 $0/0$，报告不存在而不换元",
+        "(2) 把 $0^0$ 直接赋值为 $0$ 或 $1$ 而不求极限",
+        "(2) 忘记 $x\\\\ln x\\\\to 0$（而非 $-\\\\infty$）"
+      ]
+    },
+    {
+      "id": "continuity-ex-009",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §4 闭区间连续函数性质",
+      "knowledgePointIds": ["closed-interval-properties-preview"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "证明方程 $x^3-3x+1=0$ 在区间 $(0,1)$ 内至少有一个实根。",
+      "gradingRubric": [
+        "令 $f(x)=x^3-3x+1$，$f$ 是多项式，在 $[0,1]$ 上连续",
+        "计算 $f(0)=0-0+1=1>0$ 和 $f(1)=1-3+1=-1<0$",
+        "由零点定理，$f(0)\\\\cdot f(1)=1\\\\cdot(-1)<0$，故 $\\\\exists\\,\\\\xi\\\\in(0,1)$ 使 $f(\\\\xi)=0$",
+        "即方程 $x^3-3x+1=0$ 在 $(0,1)$ 内至少有一个实根"
+      ],
+      "hints": [
+        "构造 $f(x)=x^3-3x+1$ 并检验其连续性。",
+        "分别计算 $f(0)$ 和 $f(1)$，观察符号。",
+        "异号 + 连续 → 零点定理可用。"
+      ],
+      "commonMistakes": [
+        "忘记说明 $f$ 连续",
+        "只计算一个端点值",
+        "异号条件写成 $f(0)\\\\cdot f(1)>0$（符号写反）"
+      ]
+    },
+    {
+      "id": "continuity-ex-010",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §4",
+      "knowledgePointIds": ["closed-interval-properties-preview"],
+      "difficulty": "hard",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f$ 在 $[0,1]$ 上连续，且 $f(0)=f(1)$。证明：存在 $c\\\\in[0,\\\\frac{1}{2}]$，使 $f(c)=f\\\\left(c+\\\\dfrac{1}{2}\\\\right)$。",
+      "gradingRubric": [
+        "构造辅助函数 $g(x)=f(x+\\\\frac{1}{2})-f(x)$，$x\\\\in[0,\\\\frac{1}{2}]$",
+        "$g$ 在 $[0,\\\\frac{1}{2}]$ 上连续（$f$ 连续，故 $g$ 连续）",
+        "计算 $g(0)=f(\\\\frac{1}{2})-f(0)$ 和 $g(\\\\frac{1}{2})=f(1)-f(\\\\frac{1}{2})$",
+        "$g(0)+g(\\\\frac{1}{2})=f(1)-f(0)=0$（由 $f(0)=f(1)$），故 $g(0)$ 与 $g(\\\\frac{1}{2})$ 异号或均为零",
+        "若 $g(0)=0$ 或 $g(\\\\frac{1}{2})=0$，取 $c=0$ 或 $c=\\\\frac{1}{2}$ 即可；否则 $g(0)\\\\cdot g(\\\\frac{1}{2})<0$，由零点定理，$\\\\exists\\,c\\\\in(0,\\\\frac{1}{2})$ 使 $g(c)=0$，即 $f(c)=f(c+\\\\frac{1}{2})$"
+      ],
+      "hints": [
+        "构造辅助函数 $g(x)=f(x+\\\\frac{1}{2})-f(x)$，并考虑在 $x=0$ 和 $x=\\\\frac{1}{2}$ 处 $g$ 的值之和。",
+        "利用 $f(0)=f(1)$ 分析 $g(0)+g(\\\\frac{1}{2})$ 的值。",
+        "分两种情况：$g(0)$ 和 $g(\\\\frac{1}{2})$ 是否有为零的情形。"
+      ],
+      "commonMistakes": [
+        "不构造辅助函数，直接尝试对 $f$ 用零点定理（条件不满足）",
+        "计算 $g(0)+g(1/2)$ 时忘记代入 $f(0)=f(1)$",
+        "忽略 $g(0)=0$ 或 $g(1/2)=0$ 的边界情况"
+      ]
+    }
+  ]
+}

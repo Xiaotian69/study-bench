@@ -1,0 +1,63 @@
+{
+  "chapterId": "ch-continuity",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "continuity-at-point-three-cases",
+      "title": "连续、可去间断、跳跃间断三种情形对比",
+      "description": "并列三张函数图像：(a) 在 $x_0$ 处连续：极限等于函数值，曲线无断裂；(b) 可去间断点：极限存在但函数值（或无定义）与极限不等，曲线在该点有一个"挖去的点"；(c) 跳跃间断点：左右极限存在但不相等，曲线发生跳跃，用实心/空心圆圈标注双侧取值。",
+      "mathContext": "三种情形均可结合分段函数直观展示：(a) $f(x)=x$ 在 $x_0=1$；(b) $f(x)=\\frac{x^2-1}{x-1}$（$x\\ne 1$ 处极限为 2，$x=1$ 无定义）；(c) $f(x)=\\mathrm{sgn}(x)$ 在 $x_0=0$（左极限 $-1$，右极限 $1$）。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["continuity-at-point", "one-sided-continuity"],
+      "layout": "three-panel-horizontal",
+      "annotations": [
+        {
+          "panel": "a",
+          "label": "连续",
+          "note": "极限 = 函数值，曲线穿过该点"
+        },
+        {
+          "panel": "b",
+          "label": "可去间断点",
+          "note": "极限存在，函数值缺失或不等；空心圆圈标记"
+        },
+        {
+          "panel": "c",
+          "label": "跳跃间断点",
+          "note": "左右极限不等；实心圆标函数值，空心圆标未取到的一侧"
+        }
+      ]
+    },
+    {
+      "id": "discontinuity-types-gallery",
+      "title": "四类间断点图示：可去 / 跳跃 / 无穷 / 振荡",
+      "description": "四张图像展示不同类型间断点的典型形态：(a) 可去间断点：$f(x)=\\frac{\\sin x}{x}$ 在 $x=0$，极限为 1，曲线在 0 处有空心点；(b) 跳跃间断点：$f(x)=\\mathrm{sgn}(x)$ 在 $x=0$，左极限 $-1$，右极限 $1$；(c) 无穷间断点：$f(x)=1/x$ 在 $x=0$，两侧趋无穷，渐近线；(d) 振荡间断点：$f(x)=\\sin(1/x)$ 在 $x=0$，剧烈振荡，无极限。",
+      "mathContext": "第一类（可去、跳跃）：左右极限均存在有限。第二类（无穷、振荡）：至少一侧极限不存在或为无穷。判断依据 $\\lim_{x\\to x_0^-}f(x)$ 与 $\\lim_{x\\to x_0^+}f(x)$ 是否存在、有限、相等。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["discontinuity-types"],
+      "layout": "two-by-two-grid",
+      "annotations": [
+        { "panel": "a", "label": "可去间断（第一类）", "note": "$\\lim$ 存在，$f(0)$ 缺或不等" },
+        { "panel": "b", "label": "跳跃间断（第一类）", "note": "左右极限不等" },
+        { "panel": "c", "label": "无穷间断（第二类）", "note": "某侧极限为 $\\pm\\infty$" },
+        { "panel": "d", "label": "振荡间断（第二类）", "note": "极限振荡，不存在" }
+      ]
+    },
+    {
+      "id": "intermediate-value-theorem-illustration",
+      "title": "介值定理示意图",
+      "description": "在 $[a,b]$ 上连续函数 $f$ 的图像，水平虚线 $y=c$ 夹在 $\\min f$ 与 $\\max f$ 之间，与曲线的交点 $\\xi$ 处满足 $f(\\xi)=c$。同时展示零点定理的特例：$f(a)<0$、$f(b)>0$，曲线必须穿过 $x$ 轴。",
+      "mathContext": "介值定理：$f\\in C[a,b]$，$c\\in[\\min f, \\max f]$ $\\Rightarrow$ $\\exists\\,\\xi\\in[a,b]$ 使 $f(\\xi)=c$。零点定理是 $c=0$ 的特例，条件 $f(a)f(b)<0$ 保证 $0$ 在函数值范围内。",
+      "diagramType": "function-graph",
+      "knowledgePointIds": ["closed-interval-properties-preview"],
+      "layout": "single",
+      "annotations": [
+        { "position": "left", "label": "$f(a)$", "note": "左端点函数值" },
+        { "position": "right", "label": "$f(b)$", "note": "右端点函数值" },
+        { "position": "middle", "label": "$c$（水平虚线）", "note": "介值定理保证存在 $\\xi$ 使 $f(\\xi)=c$" },
+        { "position": "x-axis", "label": "$\\xi$", "note": "介值点" }
+      ]
+    }
+  ]
+}
