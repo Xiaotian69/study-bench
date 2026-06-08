@@ -1,0 +1,20 @@
+{
+  "chapterId": "ch-improper-integral",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "improper-integral-concept-diagram",
+      "title": "反常积分的两种类型",
+      "description": "两幅并排图对比两类反常积分。左图（无穷限积分）：曲线 $y=1/x^2$（$x\\geq 1$），$x$ 轴向右无限延伸，阴影区域逐渐变薄趋于零，标注 $\\int_1^{+\\infty}x^{-2}\\,\\mathrm{d}x=1$（有限面积）；旁边对比曲线 $y=1/x$，阴影无限扩展，标注 $\\int_1^{+\\infty}x^{-1}\\,\\mathrm{d}x=+\\infty$（无限面积）。右图（瑕积分）：曲线 $y=1/\\sqrt{x}$ 在 $x=0$ 附近趋于无穷，阴影区域在 $[0,1]$ 上，但面积有限（$=2$）；旁边对比 $y=1/x$ 在 $x=0$ 处发散，面积无限。",
+      "mathContext": "反常积分收敛的直觉：(1) 无穷限积分：曲线下面积能否在 $x\\to+\\infty$ 时保持有限；(2) 瑕积分：曲线在端点虽趋于无穷，但\"尖刺\"的宽度收缩速度是否足够快，使面积保持有限。$p$ 积分是两类的分水岭：$p=1$（$\\ln x$ 增长/衰减太慢）是临界情形。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["improper-integral-concept"],
+      "layout": "two-panel-horizontal",
+      "annotations": [
+        { "panel": "left", "label": "$p>1$：面积有限，$p\\leq 1$：面积无限", "note": "无穷限积分的 $p$ 判别" },
+        { "panel": "right", "label": "$p<1$：面积有限，$p\\geq 1$：面积无限", "note": "瑕积分的 $p$ 判别（方向相反）" }
+      ]
+    }
+  ]
+}

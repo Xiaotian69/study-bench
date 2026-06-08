@@ -1,0 +1,165 @@
+{
+  "chapterId": "ch-improper-integral",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "knowledgePoints": [
+    {
+      "id": "improper-integral-concept",
+      "title": "反常积分的概念",
+      "chapterId": "ch-improper-integral",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解无穷限反常积分的定义（以极限定义代替上/下限）",
+        "理解瑕积分（无界函数的积分）的定义",
+        "掌握判断反常积分收敛/发散的基本方法",
+        "能用 Newton-Leibniz 公式的推广计算反常积分"
+      ],
+      "coreExplanation": "**无穷限反常积分**：\n$$\\\\int_a^{+\\\\infty}f(x)\\,\\\\mathrm{d}x=\\\\lim_{b\\\\to+\\\\infty}\\\\int_a^b f(x)\\,\\\\mathrm{d}x,$$\n当极限存在（有限）时称收敛，否则称发散。类似定义 $\\\\int_{-\\\\infty}^b f$ 和 $\\\\int_{-\\\\infty}^{+\\\\infty}f$（后者须分拆为两段各自收敛）。\n**瑕积分（无界函数）**：若 $f$ 在 $[a,b)$ 上连续，$x\\\\to b^-$ 时 $|f(x)|\\\\to+\\\\infty$（$b$ 为**瑕点**），则\n$$\\\\int_a^b f(x)\\,\\\\mathrm{d}x=\\\\lim_{\\\\varepsilon\\\\to 0^+}\\\\int_a^{b-\\\\varepsilon}f(x)\\,\\\\mathrm{d}x.$$\n若瑕点在区间内部（如 $c\\\\in(a,b)$），须分拆：$\\\\int_a^b=\\\\int_a^c+\\\\int_c^b$，且两段均收敛时原积分才收敛。\n**计算方法**：若 $F$ 是 $f$ 的原函数且连续延拓到端点，则用广义 Newton-Leibniz：\n$$\\\\int_a^{+\\\\infty}f\\,\\\\mathrm{d}x=[F(x)]_a^{+\\\\infty}=\\\\lim_{x\\\\to+\\\\infty}F(x)-F(a).$$\n**典型例子**：\n- $\\\\int_1^{+\\\\infty}\\\\frac{1}{x^p}\\\\,\\\\mathrm{d}x$：$p>1$ 时收敛，值为 $\\\\frac{1}{p-1}$；$p\\\\leq 1$ 时发散（含调和级数对应 $p=1$）。\n- $\\\\int_0^1\\\\frac{1}{x^p}\\,\\\\mathrm{d}x$：$p<1$ 时收敛，值为 $\\\\frac{1}{1-p}$；$p\\\\geq 1$ 时发散。\n- $\\\\int_0^{+\\\\infty}e^{-x}\\,\\\\mathrm{d}x=1$（标准指数积分）。",
+      "textbookRefs": ["数学分析（第5版）上册 §11.1", "数学分析（第5版）上册 §11.2"],
+      "keyDefinitions": [
+        {
+          "term": "收敛（反常积分）",
+          "definition": "对应极限存在且有限时称反常积分收敛，极限为 $+\\\\infty$、$-\\\\infty$ 或不存在时称发散"
+        },
+        {
+          "term": "瑕点",
+          "definition": "使被积函数趋于无穷的点（积分区间的端点或内部点），是瑕积分需特别处理的位置"
+        },
+        {
+          "term": "绝对收敛",
+          "definition": "$\\\\int_a^{+\\\\infty}|f|\\,\\\\mathrm{d}x$ 收敛时称 $\\\\int_a^{+\\\\infty}f$ 绝对收敛；绝对收敛 $\\\\Rightarrow$ 收敛"
+        },
+        {
+          "term": "条件收敛",
+          "definition": "$\\\\int f$ 收敛但 $\\\\int|f|$ 发散时称条件收敛，如 $\\\\int_1^{+\\\\infty}\\\\frac{\\\\sin x}{x}\\\\,\\\\mathrm{d}x$"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "$p$ 积分判别",
+          "statement": "$\\\\int_1^{+\\\\infty}x^{-p}\\\\,\\\\mathrm{d}x$ 收敛 $\\\\Leftrightarrow$ $p>1$；$\\\\int_0^1 x^{-p}\\\\,\\\\mathrm{d}x$ 收敛 $\\\\Leftrightarrow$ $p<1$",
+          "significance": "是比较判别法的基准参考积分，与 $p$ 级数判别平行"
+        }
+      ],
+      "proofIdeas": [
+        "**$p$ 积分**：$p\\\\neq 1$ 时，$\\\\int_1^b x^{-p}\\,\\\\mathrm{d}x=\\\\frac{b^{1-p}-1}{1-p}$。$p>1$：$b\\\\to+\\\\infty$ 时 $b^{1-p}\\\\to 0$，极限为 $\\\\frac{1}{p-1}$；$p<1$：$b^{1-p}\\\\to+\\\\infty$，发散。$p=1$：$\\\\int_1^b x^{-1}\\,\\\\mathrm{d}x=\\\\ln b\\\\to+\\\\infty$，发散。"
+      ],
+      "socraticQuestions": [
+        "$\\\\int_1^{+\\\\infty}\\\\frac{1}{x}\\,\\\\mathrm{d}x$ 发散，而 $\\\\int_1^{+\\\\infty}\\\\frac{1}{x^2}\\,\\\\mathrm{d}x$ 收敛，这在几何上意味着什么？",
+        "若 $\\\\int_0^1 f$ 是瑕积分（$f(0)=+\\\\infty$），且 $\\\\int_0^1 f$ 收敛，能否说 $|f|$ 有界？",
+        "$\\\\int_{-\\\\infty}^{+\\\\infty}\\\\frac{x}{1+x^2}\\\\,\\\\mathrm{d}x$ 收敛吗？能否取 $\\\\lim_{b\\\\to+\\\\infty}\\\\int_{-b}^b$？（柯西主值 vs. 收敛的区别）"
+      ],
+      "commonMistakes": [
+        "将 $\\\\int_{-\\\\infty}^{+\\\\infty}f$ 定义为 $\\\\lim_{b\\\\to+\\\\infty}\\\\int_{-b}^b f$（Cauchy 主值），正确定义须两端独立取极限",
+        "瑕点在区间内部时忘记分拆，直接用 Newton-Leibniz 可能漏掉发散",
+        "误认为 $\\\\int_a^{+\\\\infty}f\\,\\\\mathrm{d}x$ 收敛则 $f(x)\\\\to 0$（必要但不充分——见 $f(x)=\\\\sin(x^2)$ 的振幅不趋零但积分收敛）"
+      ],
+      "exerciseIds": ["imp-ex-001", "imp-ex-002"],
+      "diagramIds": ["improper-integral-concept-diagram"],
+      "masteryCriteria": [
+        "能用极限定义判断 $\\\\int_1^\\\\infty x^{-p}$、$\\\\int_0^1 x^{-p}$ 的收敛性",
+        "能识别并分拆含内部瑕点的积分"
+      ]
+    },
+    {
+      "id": "improper-convergence-criteria",
+      "title": "反常积分的收敛判别法",
+      "chapterId": "ch-improper-integral",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握比较判别法（直接比较和极限比较）",
+        "了解 Dirichlet 判别法和 Abel 判别法（条件收敛型）",
+        "理解绝对收敛与条件收敛的关系",
+        "能综合运用各判别法判断反常积分的收敛性"
+      ],
+      "coreExplanation": "**正值函数的比较判别法**：设 $0\\\\leq f(x)\\\\leq g(x)$，$x\\\\geq a$。\n- 若 $\\\\int_a^{+\\\\infty}g$ 收敛，则 $\\\\int_a^{+\\\\infty}f$ 收敛。\n- 若 $\\\\int_a^{+\\\\infty}f$ 发散，则 $\\\\int_a^{+\\\\infty}g$ 发散。\n**极限比较判别法**：设 $f,g\\\\geq 0$，$\\\\lim_{x\\\\to+\\\\infty}\\\\frac{f(x)}{g(x)}=L$。\n- $0<L<+\\\\infty$：$\\\\int f$ 与 $\\\\int g$ 同敛散。\n- $L=0$：$\\\\int g$ 收敛 $\\\\Rightarrow$ $\\\\int f$ 收敛。\n- $L=+\\\\infty$：$\\\\int g$ 发散 $\\\\Rightarrow$ $\\\\int f$ 发散。\n常用参考：$\\\\int_1^{+\\\\infty}x^{-p}$ 及 $\\\\int_0^1 x^{-p}$（$p$ 积分）。\n**Dirichlet 判别法**：$\\\\int_a^{+\\\\infty}f(x)g(x)\\,\\\\mathrm{d}x$ 收敛，若：$F(x)=\\\\int_a^x f(t)\\,\\\\mathrm{d}t$ 有界，且 $g(x)$ 单调趋于零。\n**Abel 判别法**：$\\\\int_a^{+\\\\infty}f(x)g(x)\\,\\\\mathrm{d}x$ 收敛，若：$\\\\int_a^{+\\\\infty}f$ 收敛，且 $g(x)$ 单调有界。\n典型：$\\\\int_1^{+\\\\infty}\\\\frac{\\\\sin x}{x}\\,\\\\mathrm{d}x$ 收敛（Dirichlet：$|\\\\int\\\\sin|\\\\leq 2$，$1/x\\\\downarrow 0$），但 $\\\\int_1^{+\\\\infty}\\\\left|\\\\frac{\\\\sin x}{x}\\\\right|\\,\\\\mathrm{d}x$ 发散（条件收敛）。",
+      "textbookRefs": ["数学分析（第5版）上册 §11.3"],
+      "keyDefinitions": [
+        {
+          "term": "绝对收敛",
+          "definition": "$\\\\int|f|$ 收敛，此时 $\\\\int f$ 必收敛"
+        },
+        {
+          "term": "条件收敛",
+          "definition": "$\\\\int f$ 收敛但 $\\\\int|f|$ 发散"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "比较判别法",
+          "statement": "对非负函数 $f\\\\leq g$：$\\\\int g$ 收敛 $\\\\Rightarrow$ $\\\\int f$ 收敛；$\\\\int f$ 发散 $\\\\Rightarrow$ $\\\\int g$ 发散",
+          "significance": "将未知积分与已知（$p$ 积分、指数积分）比较"
+        },
+        {
+          "name": "Dirichlet 判别法",
+          "statement": "$F(x)=\\\\int_a^x f$ 有界，$g\\\\downarrow 0$，则 $\\\\int_a^{+\\\\infty}fg$ 收敛",
+          "significance": "处理振荡型反常积分（如 $\\\\int\\\\sin x/x$）的主要工具"
+        }
+      ],
+      "proofIdeas": [
+        "**比较判别法**：用 Cauchy 准则：$|\\\\int_A^B f|\\\\leq\\\\int_A^B f\\\\leq\\\\int_A^B g$，若 $\\\\int g$ 的 Cauchy 条件成立则 $\\\\int f$ 也成立。",
+        "**Dirichlet 判别法**：分部积分：$\\\\int_A^B f(x)g(x)\\,\\\\mathrm{d}x=[F(x)g(x)]_A^B-\\\\int_A^B F(x)g'(x)\\,\\\\mathrm{d}x$。$F$ 有界、$g\\\\to 0$、$|g'|$ 可积，可证 Cauchy 条件成立。"
+      ],
+      "socraticQuestions": [
+        "证明 $\\\\int_1^{+\\\\infty}\\\\frac{1}{x^2+\\\\sin^2 x}\\\\,\\\\mathrm{d}x$ 收敛时，选哪个参考函数比较合适？",
+        "$\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x$ 收敛吗？与 $\\\\int_0^{+\\\\infty}e^{-x}$ 比较会怎样？",
+        "为什么 $\\\\int_1^\\\\infty\\\\frac{\\\\sin x}{\\\\sqrt{x}}\\,\\\\mathrm{d}x$ 条件收敛而不绝对收敛？"
+      ],
+      "commonMistakes": [
+        "比较判别法要求 $f,g\\\\geq 0$，对符号变化的函数不能直接用",
+        "极限比较中 $L=0$ 时只能用\"$\\\\int g$ 收敛推 $\\\\int f$ 收敛\"，反向不成立",
+        "误认为被积函数趋零就能推出反常积分收敛（$1/x$ 趋零但 $\\\\int 1/x$ 发散）"
+      ],
+      "exerciseIds": ["imp-ex-003", "imp-ex-004", "imp-ex-005"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用比较判别法或极限比较法判断正值反常积分的收敛性",
+        "能识别条件收敛并说明原因"
+      ]
+    },
+    {
+      "id": "gamma-function",
+      "title": "Gamma 函数与重要反常积分",
+      "chapterId": "ch-improper-integral",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "了解 Gamma 函数 $\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$ 的定义和收敛性",
+        "掌握 $\\\\Gamma(n+1)=n!$ 和递推关系 $\\\\Gamma(s+1)=s\\\\Gamma(s)$",
+        "了解 Gaussian 积分 $\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x=\\\\frac{\\\\sqrt{\\\\pi}}{2}$（结论，证明不要求）"
+      ],
+      "coreExplanation": "**Gamma 函数**：$\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$（$s>0$）。\n该积分在 $x=0$ 处可能为瑕积分（$s<1$ 时），在 $x\\\\to+\\\\infty$ 时为无穷限积分，需验证两端均收敛（$s>0$）。\n**递推公式**：$\\\\Gamma(s+1)=s\\\\Gamma(s)$（用分部积分：$\\\\int_0^\\\\infty x^s e^{-x}\\,\\\\mathrm{d}x$，令 $u=x^s$，$\\\\mathrm{d}v=e^{-x}\\,\\\\mathrm{d}x$）。\n**特殊值**：\n- $\\\\Gamma(1)=\\\\int_0^\\\\infty e^{-x}\\,\\\\mathrm{d}x=1$\n- 由递推：$\\\\Gamma(n+1)=n!$（$n\\\\in\\\\mathbb{N}$），故 Gamma 函数是阶乘的连续推广\n- $\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$（需用 Gaussian 积分），从而 $\\\\Gamma(3/2)=\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$\n**Gaussian 积分**（结论）：$\\\\int_0^{+\\\\infty}e^{-x^2}\\\\,\\\\mathrm{d}x=\\\\frac{\\\\sqrt{\\\\pi}}{2}$（令 $x^2=t$ 化为 $\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$）。完整证明需要重积分，在二重积分章节再给出。",
+      "textbookRefs": ["数学分析（第5版）上册 §11.4"],
+      "keyDefinitions": [
+        {
+          "term": "Gamma 函数",
+          "definition": "$\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$，$s>0$，是阶乘在正实数上的推广"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Gamma 函数递推公式",
+          "statement": "$\\\\Gamma(s+1)=s\\\\Gamma(s)$（$s>0$），从而 $\\\\Gamma(n+1)=n!$ 对正整数 $n$",
+          "significance": "使 Gamma 函数与组合数学、概率论（如 $\\\\chi^2$ 分布）直接相连"
+        }
+      ],
+      "proofIdeas": [
+        "**$\\\\Gamma(s+1)=s\\\\Gamma(s)$**：$\\\\Gamma(s+1)=\\\\int_0^\\\\infty x^s e^{-x}\\,\\\\mathrm{d}x$。分部：$u=x^s$，$v=-e^{-x}$，$[uv]_0^\\\\infty=0$，$-\\\\int_0^\\\\infty(-e^{-x})sx^{s-1}\\,\\\\mathrm{d}x=s\\\\int_0^\\\\infty x^{s-1}e^{-x}\\,\\\\mathrm{d}x=s\\\\Gamma(s)$。"
+      ],
+      "socraticQuestions": [
+        "为何 $\\\\Gamma(s)$ 在 $s=0$ 处没有定义？从积分的角度解释。",
+        "利用 $\\\\Gamma(n+1)=n!$ 和 $\\\\Gamma(3/2)=\\\\sqrt{\\\\pi}/2$，计算 $\\\\int_0^\\\\infty x^2 e^{-x}\\,\\\\mathrm{d}x$。",
+        "正态分布密度 $f(x)=\\\\frac{1}{\\\\sqrt{2\\\\pi}}e^{-x^2/2}$ 的归一化条件与 Gaussian 积分有何关联？"
+      ],
+      "commonMistakes": [
+        "将 $\\\\Gamma(n)$ 与 $n!$ 混淆：$\\\\Gamma(n+1)=n!$（差一个）",
+        "直接计算 $\\\\int_0^\\\\infty e^{-x^2}\\,\\\\mathrm{d}x$ 时，不能用初等方法求原函数——需要用 Gamma 函数或重积分"
+      ],
+      "exerciseIds": ["imp-ex-006", "imp-ex-007", "imp-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能利用递推公式计算 $\\\\Gamma(n+1/2)$ 等特殊值",
+        "能将 $\\\\int_0^\\\\infty x^n e^{-x}\\,\\\\mathrm{d}x$ 等积分化为 $\\\\Gamma$ 函数并计算"
+      ]
+    }
+  ]
+}

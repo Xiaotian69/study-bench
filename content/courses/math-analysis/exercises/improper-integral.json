@@ -1,0 +1,150 @@
+{
+  "chapterId": "ch-improper-integral",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "exercises": [
+    {
+      "id": "imp-ex-001",
+      "title": "无穷限反常积分计算",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["improper-integral-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "判断下列反常积分的收敛性，收敛时求其值：\n(1) $\\\\int_1^{+\\\\infty}\\\\dfrac{1}{x^3}\\,\\\\mathrm{d}x$；\n(2) $\\\\int_0^{+\\\\infty}e^{-2x}\\,\\\\mathrm{d}x$；\n(3) $\\\\int_1^{+\\\\infty}\\\\dfrac{1}{\\\\sqrt{x}}\\,\\\\mathrm{d}x$（$p=1/2$）。",
+      "solution": "(1) $p=3>1$，收敛。$\\\\int_1^{+\\\\infty}x^{-3}\\,\\\\mathrm{d}x=\\\\left[-\\\\frac{1}{2x^2}\\\\right]_1^{+\\\\infty}=0-(-\\\\frac{1}{2})=\\\\frac{1}{2}$。\n(2) $\\\\int_0^{+\\\\infty}e^{-2x}\\,\\\\mathrm{d}x=\\\\left[-\\\\frac{1}{2}e^{-2x}\\\\right]_0^{+\\\\infty}=0-(-\\\\frac{1}{2})=\\\\frac{1}{2}$（收敛）。\n(3) $p=1/2<1$，发散。验证：$\\\\int_1^b x^{-1/2}\\,\\\\mathrm{d}x=[2\\\\sqrt{x}]_1^b=2\\\\sqrt{b}-2\\\\to+\\\\infty$（$b\\\\to+\\\\infty$）。",
+      "gradingRubric": [
+        "(1) 正确识别 $p>1$ 收敛，计算值 $1/2$（2分）",
+        "(2) 正确计算，值 $1/2$（2分）",
+        "(3) 发散，给出验证（1分）"
+      ],
+      "hints": ["(1) $p$ 积分：$p>1$ 时 $\\\\int_1^\\\\infty x^{-p}=\\\\frac{1}{p-1}$", "(3) $\\\\sqrt{b}\\\\to+\\\\infty$"],
+      "commonMistakes": ["(3) 误以为 $x^{-1/2}\\\\to 0$ 就收敛——趋零是必要但不充分条件"]
+    },
+    {
+      "id": "imp-ex-002",
+      "title": "瑕积分计算",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["improper-integral-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "判断下列瑕积分的收敛性，收敛时求其值：\n(1) $\\\\int_0^1\\\\dfrac{1}{\\\\sqrt{x}}\\,\\\\mathrm{d}x$（$x=0$ 为瑕点）；\n(2) $\\\\int_0^2\\\\dfrac{1}{(x-1)^2}\\,\\\\mathrm{d}x$（$x=1$ 为瑕点）；\n(3) $\\\\int_0^1\\\\dfrac{1}{x}\\,\\\\mathrm{d}x$。",
+      "solution": "(1) $p=1/2<1$，收敛。$\\\\lim_{\\\\varepsilon\\\\to 0^+}\\\\int_\\\\varepsilon^1 x^{-1/2}\\,\\\\mathrm{d}x=\\\\lim_{\\\\varepsilon\\\\to 0^+}[2\\\\sqrt{x}]_\\\\varepsilon^1=2-0=2$。\n(2) $x=1$ 是内部瑕点，须分拆：$\\\\int_0^2\\\\frac{1}{(x-1)^2}\\,\\\\mathrm{d}x=\\\\int_0^1\\\\frac{1}{(x-1)^2}\\,\\\\mathrm{d}x+\\\\int_1^2\\\\frac{1}{(x-1)^2}\\,\\\\mathrm{d}x$。\n对第一段：$\\\\lim_{\\\\varepsilon\\\\to 0^+}\\\\left[-\\\\frac{1}{x-1}\\\\right]_0^{1-\\\\varepsilon}=\\\\lim_{\\\\varepsilon\\\\to 0^+}\\\\left(-\\\\frac{1}{-\\\\varepsilon}+1\\\\right)\\\\to+\\\\infty$（发散）。\n故原积分**发散**（不能直接代入 Newton-Leibniz）。\n(3) $p=1$，$\\\\int_0^1 x^{-1}\\,\\\\mathrm{d}x=\\\\lim_{\\\\varepsilon\\\\to 0^+}[\\\\ln x]_\\\\varepsilon^1=0-(-\\\\infty)$，**发散**。",
+      "gradingRubric": [
+        "(1) 正确计算，值 $2$（2分）",
+        "(2) 正确识别内部瑕点并分拆，判断其中一段发散，故整体发散（3分）",
+        "(3) $p=1$ 发散（1分）"
+      ],
+      "hints": ["(2) 瑕点在区间**内部**时必须分拆", "(2) 即使两段的奇异性相同，也不能用对称性\"抵消\""],
+      "commonMistakes": ["(2) 直接用 Newton-Leibniz 代入得 $-2$——这是错误的，必须分拆后各自求极限"]
+    },
+    {
+      "id": "imp-ex-003",
+      "title": "用比较判别法判断收敛性",
+      "difficulty": "basic",
+      "type": "proof",
+      "knowledgePointIds": ["improper-convergence-criteria"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "判断下列反常积分的收敛性（不必求值）：\n(1) $\\\\int_1^{+\\\\infty}\\\\dfrac{1}{x^2+x+1}\\,\\\\mathrm{d}x$；\n(2) $\\\\int_1^{+\\\\infty}\\\\dfrac{\\\\sin^2 x}{x^2}\\,\\\\mathrm{d}x$；\n(3) $\\\\int_1^{+\\\\infty}\\\\dfrac{\\\\ln x}{x}\\,\\\\mathrm{d}x$。",
+      "solution": "(1) **收敛**。$x\\\\geq 1$ 时，$x^2+x+1>x^2$，故 $\\\\frac{1}{x^2+x+1}<\\\\frac{1}{x^2}$。由 $\\\\int_1^{+\\\\infty}x^{-2}\\,\\\\mathrm{d}x$ 收敛及比较判别法，原积分收敛。\n（也可用极限比较：$\\\\frac{1/(x^2+x+1)}{1/x^2}=\\\\frac{x^2}{x^2+x+1}\\\\to 1$，同敛散，收敛。）\n(2) **收敛**。$0\\\\leq\\\\sin^2 x\\\\leq 1$，故 $0\\\\leq\\\\frac{\\\\sin^2 x}{x^2}\\\\leq\\\\frac{1}{x^2}$。由 $\\\\int_1^\\\\infty x^{-2}$ 收敛，比较判别法知原积分收敛。\n(3) **发散**。$x\\\\geq 1$ 时，$\\\\ln x\\\\geq 0$，$\\\\frac{\\\\ln x}{x}\\\\geq\\\\frac{1}{x}$（因 $\\\\ln x\\\\geq 1$ 当 $x\\\\geq e$）。\n更严格：$\\\\int_e^{+\\\\infty}\\\\frac{\\\\ln x}{x}\\,\\\\mathrm{d}x=\\\\left[\\\\frac{(\\\\ln x)^2}{2}\\\\right]_e^{+\\\\infty}\\\\to+\\\\infty$（可直接计算），故发散。",
+      "gradingRubric": [
+        "(1) 正确找到 $1/x^2$ 上界，引用比较判别法（2分）",
+        "(2) 用 $\\\\sin^2 x\\\\leq 1$ 建立上界（1分）",
+        "(3) 正确判断发散，给出论证（2分）"
+      ],
+      "hints": ["(1) 分母增大则分式减小，选 $1/x^2$ 作上界", "(3) 试试直接计算 $\\\\int\\\\frac{\\\\ln x}{x}\\,\\\\mathrm{d}x$"],
+      "commonMistakes": ["(3) 误用极限比较：$\\\\frac{\\\\ln x/x}{1/x}=\\\\ln x\\\\to\\\\infty$（$L=\\\\infty$，只能说 $\\\\int 1/x$ 发散 $\\\\Rightarrow$ $\\\\int\\\\ln x/x$ 发散，方向正确）"]
+    },
+    {
+      "id": "imp-ex-004",
+      "title": "极限比较判别法",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["improper-convergence-criteria"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "用极限比较判别法判断下列积分的收敛性：\n(1) $\\\\int_0^1\\\\dfrac{\\\\sin x}{x^{3/2}}\\,\\\\mathrm{d}x$；\n(2) $\\\\int_2^{+\\\\infty}\\\\dfrac{\\\\sqrt{x+1}}{x^2-1}\\,\\\\mathrm{d}x$。",
+      "solution": "(1) $x\\\\to 0^+$ 时，$\\\\sin x\\\\sim x$，故 $\\\\frac{\\\\sin x}{x^{3/2}}\\\\sim\\\\frac{x}{x^{3/2}}=x^{-1/2}$。\n极限比较：$\\\\lim_{x\\\\to 0^+}\\\\frac{\\\\sin x/x^{3/2}}{x^{-1/2}}=\\\\lim_{x\\\\to 0^+}\\\\frac{\\\\sin x}{x}=1\\\\in(0,+\\\\infty)$。\n由 $\\\\int_0^1 x^{-1/2}\\,\\\\mathrm{d}x$ 收敛（$p=1/2<1$），故原积分收敛。\n(2) $x\\\\to+\\\\infty$ 时，$\\\\frac{\\\\sqrt{x+1}}{x^2-1}\\\\sim\\\\frac{\\\\sqrt{x}}{x^2}=x^{-3/2}$。\n极限比较：$\\\\lim_{x\\\\to+\\\\infty}\\\\frac{\\\\sqrt{x+1}/(x^2-1)}{x^{-3/2}}=\\\\lim_{x\\\\to+\\\\infty}\\\\frac{x^{3/2}\\\\sqrt{x+1}}{x^2-1}=\\\\lim_{x\\\\to+\\\\infty}\\\\sqrt{\\\\frac{x^3(x+1)}{(x^2-1)^2}}=1$。\n由 $\\\\int_2^{+\\\\infty}x^{-3/2}\\,\\\\mathrm{d}x$ 收敛（$p=3/2>1$），故原积分收敛。",
+      "gradingRubric": [
+        "(1) 正确利用 $\\\\sin x\\\\sim x$，选 $x^{-1/2}$ 为参考（2分），$L=1$，引用定理（1分）",
+        "(2) 正确估计主项 $x^{-3/2}$，极限计算（3分）"
+      ],
+      "hints": ["(1) $x\\\\to 0$ 时 $\\\\sin x/x\\\\to 1$，先找主项阶次", "(2) 分子 $\\\\sim\\\\sqrt{x}$，分母 $\\\\sim x^2$，整体 $\\\\sim x^{-3/2}$"],
+      "commonMistakes": ["(1) 忘记这是瑕积分（$x=0$ 附近无界），参考对象是 $\\\\int_0^1 x^{-p}$"]
+    },
+    {
+      "id": "imp-ex-005",
+      "title": "Dirichlet 判别法与条件收敛",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["improper-convergence-criteria"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "(1) 用 Dirichlet 判别法证明 $\\\\int_1^{+\\\\infty}\\\\dfrac{\\\\cos x}{x}\\,\\\\mathrm{d}x$ 收敛；\n(2) 证明 $\\\\int_1^{+\\\\infty}\\\\dfrac{|\\\\cos x|}{x}\\,\\\\mathrm{d}x$ 发散，从而说明 (1) 的积分为条件收敛。",
+      "solution": "(1) 令 $f(x)=\\\\cos x$，$g(x)=1/x$。\n$F(b)=\\\\int_1^b\\\\cos x\\,\\\\mathrm{d}x=[\\\\sin x]_1^b=\\\\sin b-\\\\sin 1$，故 $|F(b)|\\\\leq|\\\\sin b|+|\\\\sin 1|\\\\leq 2$，$F$ 有界。\n$g(x)=1/x$ 单调递减趋于 $0$。由 Dirichlet 判别法，$\\\\int_1^\\\\infty\\\\frac{\\\\cos x}{x}\\,\\\\mathrm{d}x$ 收敛。\n(2) 在每个区间 $[(2k-1)\\\\pi/2,(2k+1)\\\\pi/2]$（$k=1,2,\\\\ldots$）上 $|\\\\cos x|\\\\geq \\\\cos^2 x$ 或用更粗的下界。\n更直接：$|\\\\cos x|\\\\geq\\\\cos^2 x=\\\\frac{1+\\\\cos 2x}{2}$，故 $\\\\frac{|\\\\cos x|}{x}\\\\geq\\\\frac{1+\\\\cos 2x}{2x}$。\n$\\\\int_1^b\\\\frac{1}{2x}\\,\\\\mathrm{d}x=\\\\frac{1}{2}\\\\ln b\\\\to+\\\\infty$，而 $\\\\int_1^b\\\\frac{\\\\cos 2x}{2x}\\,\\\\mathrm{d}x$ 由 Dirichlet 收敛，故 $\\\\int_1^b\\\\frac{|\\\\cos x|}{x}\\,\\\\mathrm{d}x\\\\to+\\\\infty$，发散。",
+      "gradingRubric": [
+        "(1) 验证 $|F(b)|\\\\leq 2$ 有界（2分），$g=1/x$ 单调趋零（1分），引用 Dirichlet（1分）",
+        "(2) 用 $\\\\cos^2 x$ 下界，分拆后 $\\\\int 1/(2x)$ 发散，故整体发散（3分）"
+      ],
+      "hints": ["(1) $|\\\\int_1^b\\\\cos x\\,\\\\mathrm{d}x|\\\\leq 2$（$\\\\sin$ 有界）", "(2) $|\\\\cos x|\\\\geq\\\\cos^2 x=(1+\\\\cos 2x)/2$"],
+      "commonMistakes": ["(1) 忘记验证 $F$ 有界，仅说$\\\\cos$有界不够（$\\\\int\\\\cos$有界才是条件）"]
+    },
+    {
+      "id": "imp-ex-006",
+      "title": "Gamma 函数递推计算",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["gamma-function"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "(1) 利用 $\\\\Gamma(n+1)=n!$ 计算 $\\\\Gamma(5)$ 和 $\\\\Gamma(7)$；\n(2) 利用 $\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$ 计算 $\\\\Gamma(5/2)$；\n(3) 将 $\\\\int_0^{+\\\\infty}x^3 e^{-x}\\,\\\\mathrm{d}x$ 用 Gamma 函数表示并求值。",
+      "solution": "(1) $\\\\Gamma(5)=\\\\Gamma(4+1)=4!=24$；$\\\\Gamma(7)=6!=720$。\n(2) 递推：$\\\\Gamma(5/2)=\\\\frac{3}{2}\\\\Gamma(3/2)=\\\\frac{3}{2}\\\\cdot\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{3}{4}\\\\sqrt{\\\\pi}$。\n（$\\\\Gamma(3/2)=\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$，$\\\\Gamma(5/2)=\\\\frac{3}{2}\\\\cdot\\\\frac{\\\\sqrt{\\\\pi}}{2}=\\\\frac{3\\\\sqrt{\\\\pi}}{4}$。）\n(3) $\\\\int_0^{+\\\\infty}x^3 e^{-x}\\,\\\\mathrm{d}x=\\\\Gamma(4)=3!=6$。",
+      "gradingRubric": [
+        "(1) $\\\\Gamma(5)=24$，$\\\\Gamma(7)=720$（1分）",
+        "(2) 递推两步，得 $3\\\\sqrt{\\\\pi}/4$（2分）",
+        "(3) 识别为 $\\\\Gamma(4)=3!=6$（1分）"
+      ],
+      "hints": ["$\\\\Gamma(s)=\\\\int_0^\\\\infty x^{s-1}e^{-x}\\,\\\\mathrm{d}x$，指数为 $s-1$，故 $\\\\int x^3 e^{-x}=\\\\Gamma(4)$"],
+      "commonMistakes": ["$\\\\Gamma(n)=（n-1）!$ 而非 $n!$，容易差一位"]
+    },
+    {
+      "id": "imp-ex-007",
+      "title": "换元化为 Gamma 函数",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["gamma-function"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "用换元法将下列积分化为 Gamma 函数并求值：\n(1) $\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x$（令 $t=x^2$）；\n(2) $\\\\int_0^{+\\\\infty}x^4 e^{-x^2}\\,\\\\mathrm{d}x$；\n(3) $\\\\int_0^1(-\\\\ln x)^3\\,\\\\mathrm{d}x$（令 $t=-\\\\ln x$）。",
+      "solution": "(1) 令 $t=x^2$，$x=\\\\sqrt{t}$，$\\\\mathrm{d}x=\\\\frac{1}{2\\\\sqrt{t}}\\,\\\\mathrm{d}t$：\n$\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x=\\\\int_0^{+\\\\infty}e^{-t}\\\\cdot\\\\frac{1}{2\\\\sqrt{t}}\\,\\\\mathrm{d}t=\\\\frac{1}{2}\\\\int_0^{+\\\\infty}t^{-1/2}e^{-t}\\,\\\\mathrm{d}t=\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$。\n(2) 令 $t=x^2$：$\\\\int_0^{+\\\\infty}x^4 e^{-x^2}\\,\\\\mathrm{d}x=\\\\int_0^{+\\\\infty}t^2 e^{-t}\\\\cdot\\\\frac{\\,\\\\mathrm{d}t}{2\\\\sqrt{t}}=\\\\frac{1}{2}\\\\Gamma(5/2)=\\\\frac{1}{2}\\\\cdot\\\\frac{3\\\\sqrt{\\\\pi}}{4}=\\\\frac{3\\\\sqrt{\\\\pi}}{8}$。\n（$\\\\Gamma(5/2)=\\\\frac{3}{2}\\\\cdot\\\\frac{1}{2}\\\\cdot\\\\Gamma(1/2)=\\\\frac{3\\\\sqrt{\\\\pi}}{4}$。）\n(3) 令 $t=-\\\\ln x$（$x=e^{-t}$，$\\\\mathrm{d}x=-e^{-t}\\,\\\\mathrm{d}t$；$x=0\\Rightarrow t=+\\\\infty$，$x=1\\Rightarrow t=0$）：\n$\\\\int_0^1(-\\\\ln x)^3\\,\\\\mathrm{d}x=\\\\int_{+\\\\infty}^0 t^3\\cdot(-e^{-t})\\,\\\\mathrm{d}t=\\\\int_0^{+\\\\infty}t^3 e^{-t}\\,\\\\mathrm{d}t=\\\\Gamma(4)=3!=6$。",
+      "gradingRubric": [
+        "(1) 换元正确，化为 $\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}/2$（2分）",
+        "(2) 换元后化为 $\\\\frac{1}{2}\\\\Gamma(5/2)$，递推计算正确（2分）",
+        "(3) 换元方向（注意积分限互换），化为 $\\\\Gamma(4)=6$（2分）"
+      ],
+      "hints": ["(1)(2) 令 $t=x^2$ 后 $x^4\\,\\\\mathrm{d}x=t^2\\cdot\\\\frac{\\,\\\\mathrm{d}t}{2\\\\sqrt{t}}$", "(3) $x\\to 0^+$ 时 $-\\\\ln x\\to+\\\\infty$，注意积分限方向"],
+      "commonMistakes": ["(3) 换元后积分限方向：原来 $x$ 从 $0$ 到 $1$，$t=-\\\\ln x$ 从 $+\\\\infty$ 到 $0$，换向要加负号"]
+    },
+    {
+      "id": "imp-ex-008",
+      "title": "综合判别与计算",
+      "difficulty": "hard",
+      "type": "proof",
+      "knowledgePointIds": ["improper-convergence-criteria", "improper-integral-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第11章",
+      "problemStatement": "设 $\\\\alpha>0$，讨论 $\\\\int_0^{+\\\\infty}\\\\dfrac{x^{\\\\alpha-1}}{1+x}\\,\\\\mathrm{d}x$ 的收敛性（分析在 $x=0$ 和 $x\\\\to+\\\\infty$ 两端的行为，给出收敛的充要条件）。",
+      "solution": "将积分分拆为两段：$\\\\int_0^{+\\\\infty}=\\\\int_0^1+\\\\int_1^{+\\\\infty}$。\n**$x=0$ 附近（$\\\\int_0^1$）**：当 $x\\\\to 0^+$，$\\\\frac{x^{\\\\alpha-1}}{1+x}\\\\sim x^{\\\\alpha-1}$。\n极限比较：$\\\\lim_{x\\\\to 0^+}\\\\frac{x^{\\\\alpha-1}/(1+x)}{x^{\\\\alpha-1}}=\\\\frac{1}{1+0}=1$，故与 $\\\\int_0^1 x^{\\\\alpha-1}\\,\\\\mathrm{d}x$ 同敛散。\n$\\\\int_0^1 x^{\\\\alpha-1}\\,\\\\mathrm{d}x$ 收敛 $\\\\Leftrightarrow$ $\\\\alpha-1<1$（瑕积分 $\\\\int_0^1 x^{-p}$ 收敛条件 $p<1$，此处 $p=1-\\\\alpha$）$\\\\Leftrightarrow$ $\\\\alpha>0$。\n（$\\\\alpha>0$ 时指数 $\\\\alpha-1>-1$，即 $p=1-\\\\alpha<1$，收敛；$\\\\alpha\\\\leq 0$ 则发散。题设 $\\\\alpha>0$ 故 $x=0$ 端收敛。）\n**$x\\\\to+\\\\infty$ 端（$\\\\int_1^{+\\\\infty}$）**：$\\\\frac{x^{\\\\alpha-1}}{1+x}\\\\sim x^{\\\\alpha-2}$。\n极限比较（与 $x^{\\\\alpha-2}$）：$\\\\lim_{x\\\\to+\\\\infty}\\\\frac{x^{\\\\alpha-1}/(1+x)}{x^{\\\\alpha-2}}=\\\\lim\\\\frac{x}{1+x}=1$。\n$\\\\int_1^\\\\infty x^{\\\\alpha-2}\\,\\\\mathrm{d}x$ 收敛 $\\\\Leftrightarrow$ $\\\\alpha-2<-1$ $\\\\Leftrightarrow$ $\\\\alpha<1$。\n**结论**：$\\\\int_0^{+\\\\infty}\\\\frac{x^{\\\\alpha-1}}{1+x}\\,\\\\mathrm{d}x$ 收敛 $\\\\Leftrightarrow$ $\\\\alpha>0$ 且 $\\\\alpha<1$ $\\\\Leftrightarrow$ $0<\\\\alpha<1$。\n（此积分即 Beta 函数 $B(\\\\alpha,1-\\\\alpha)=\\\\Gamma(\\\\alpha)\\\\Gamma(1-\\\\alpha)/\\\\Gamma(1)=\\\\pi/\\\\sin(\\\\pi\\\\alpha)$，但计算不作要求。）",
+      "gradingRubric": [
+        "正确将积分分为两段（1分）",
+        "分析 $x=0$ 端：极限比较化为 $p$ 积分，得 $\\\\alpha>0$ 收敛（3分）",
+        "分析 $x\\\\to+\\\\infty$ 端：主项 $x^{\\\\alpha-2}$，得 $\\\\alpha<1$ 收敛（3分）",
+        "结论 $0<\\\\alpha<1$（1分）"
+      ],
+      "hints": ["分两段：$[0,1]$ 分析 $x\\\\to 0$；$[1,+\\\\infty)$ 分析 $x\\\\to+\\\\infty$", "每段单独用极限比较判别法"],
+      "commonMistakes": ["只分析一端而忽略另一端", "分析无穷端时用 $p$ 积分 $\\\\int_1^\\\\infty x^{-p}$，收敛条件是 $p>1$，即 $-(\\\\alpha-2)>1$，即 $\\\\alpha<1$"]
+    }
+  ]
+}

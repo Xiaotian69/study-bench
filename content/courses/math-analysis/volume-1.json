@@ -359,11 +359,29 @@
       "id": "ch-improper-integral",
       "number": 11,
       "title": "反常积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/improper-integral.json",
+      "exercisesFile": "exercises/improper-integral.json",
+      "diagramFile": "diagrams/improper-integral.json",
       "sections": [
-        { "id": "sec-improper-concept", "title": "反常积分概念", "status": "planned" },
-        { "id": "sec-improper-convergence", "title": "无穷限反常积分的性质与收敛判别", "status": "planned" },
-        { "id": "sec-unbounded-improper", "title": "瑕积分的性质与收敛判别", "status": "planned" }
+        {
+          "id": "sec-improper-concept",
+          "title": "反常积分概念",
+          "status": "draft",
+          "knowledgePointIds": ["improper-integral-concept"]
+        },
+        {
+          "id": "sec-improper-convergence",
+          "title": "无穷限反常积分的性质与收敛判别",
+          "status": "draft",
+          "knowledgePointIds": ["improper-convergence-criteria"]
+        },
+        {
+          "id": "sec-unbounded-improper",
+          "title": "Gamma 函数与重要反常积分",
+          "status": "draft",
+          "knowledgePointIds": ["gamma-function"]
+        }
       ]
     }
   ]
