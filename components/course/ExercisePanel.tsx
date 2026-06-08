@@ -189,7 +189,7 @@ export function ExercisePanel({
               }}
               type="button"
             >
-              {exercise.difficulty}
+              {exercise.difficulty === "basic" ? "基础" : exercise.difficulty === "medium" ? "中档" : "提升"}
             </button>
           ))}
         </div>
