@@ -295,13 +295,35 @@
       "id": "ch-definite-integral",
       "number": 9,
       "title": "定积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/definite-integral.json",
+      "exercisesFile": "exercises/definite-integral.json",
+      "diagramFile": "diagrams/definite-integral.json",
       "sections": [
-        { "id": "sec-definite-concept", "title": "定积分概念", "status": "planned" },
-        { "id": "sec-newton-leibniz", "title": "牛顿—莱布尼茨公式", "status": "planned" },
-        { "id": "sec-integrability-conditions", "title": "可积条件", "status": "planned" },
-        { "id": "sec-definite-properties", "title": "定积分的性质", "status": "planned" },
-        { "id": "sec-fundamental-theorem", "title": "微积分学基本定理·定积分计算", "status": "planned" }
+        {
+          "id": "sec-definite-concept",
+          "title": "定积分概念",
+          "status": "draft",
+          "knowledgePointIds": ["definite-integral-concept"]
+        },
+        {
+          "id": "sec-integrability-conditions",
+          "title": "可积条件",
+          "status": "draft",
+          "knowledgePointIds": ["integrability-conditions"]
+        },
+        {
+          "id": "sec-definite-properties",
+          "title": "定积分的性质",
+          "status": "draft",
+          "knowledgePointIds": ["definite-integral-properties"]
+        },
+        {
+          "id": "sec-fundamental-theorem",
+          "title": "微积分学基本定理·定积分计算",
+          "status": "draft",
+          "knowledgePointIds": ["fundamental-theorem"]
+        }
       ]
     },
     {
