@@ -1,0 +1,113 @@
+{
+  "chapterId": "ch-function-sequences-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "uniform-convergence-concept",
+      "title": "一致收敛的概念",
+      "chapterId": "ch-function-sequences-series",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "理解函数列逐点收敛与一致收敛的区别",
+        "掌握 $M_n = \\\\sup_{x\\\\in I}|f_n(x)-f(x)|\\\\to 0$ 的等价刻画",
+        "能用定义证明或否定一致收敛",
+        "了解函数项级数的一致收敛（Weierstrass M-判别法）"
+      ],
+      "coreExplanation": "**逐点收敛**：函数列 $\\\\{f_n\\\\}$ 在集合 $I$ 上**逐点收敛**于 $f$，若对每个 $x\\\\in I$，$\\\\lim_{n\\\\to\\\\infty}f_n(x)=f(x)$。这里 $N$ 可以依赖于 $x$，写作 $N=N(\\\\varepsilon,x)$。\n**一致收敛**：$\\\\{f_n\\\\}$ 在 $I$ 上**一致收敛**于 $f$（记 $f_n\\\\rightrightarrows f$），若：\n$$\\\\forall\\\\varepsilon>0,\\\\;\\\\exists N\\\\in\\\\mathbb{N},\\\\;\\\\forall n>N,\\\\;\\\\forall x\\\\in I:\\\\;|f_n(x)-f(x)|<\\\\varepsilon.$$\n关键：$N$ 只依赖于 $\\\\varepsilon$，不依赖于 $x$。\n**等价刻画**：$f_n\\\\rightrightarrows f$ $\\\\Leftrightarrow$ $M_n:=\\\\sup_{x\\\\in I}|f_n(x)-f(x)|\\\\to 0$（$n\\\\to\\\\infty$）。\n**否定一致收敛**：若 $\\\\exists\\\\varepsilon_0>0$，对任意 $N$，$\\\\exists n>N$，$\\\\exists x_n\\\\in I$ 使 $|f_n(x_n)-f(x)|\\\\geq\\\\varepsilon_0$，则 $f_n\\\\not\\\\rightrightarrows f$。\n**典型例子**：$f_n(x)=x^n$ 在 $[0,1)$ 上逐点收敛于 $f\\\\equiv 0$，但不一致收敛（$M_n=\\\\sup_{x\\\\in[0,1)}x^n=1\\\\not\\\\to 0$）。在 $[0,r]$（$0<r<1$）上一致收敛（$M_n=r^n\\\\to 0$）。\n**Cauchy 准则（一致收敛）**：$\\\\{f_n\\\\}$ 在 $I$ 上一致收敛 $\\\\Leftrightarrow$ $\\\\forall\\\\varepsilon>0$，$\\\\exists N$，$m,n>N\\\\Rightarrow\\\\sup_{x\\\\in I}|f_m(x)-f_n(x)|<\\\\varepsilon$。\n**函数项级数**：$\\\\sum_{n=1}^\\\\infty u_n(x)$ 一致收敛 $\\\\Leftrightarrow$ 部分和函数列 $\\\\{S_N(x)\\\\}$ 一致收敛。\n**Weierstrass M-判别法**：若 $|u_n(x)|\\\\leq M_n$（$\\\\forall x\\\\in I$），$\\\\sum M_n$ 收敛，则 $\\\\sum u_n(x)$ 在 $I$ 上一致（绝对）收敛。",
+      "textbookRefs": ["数学分析（第5版）下册 §13.1"],
+      "keyDefinitions": [
+        {
+          "term": "逐点收敛",
+          "definition": "对每个固定 $x$，$|f_n(x)-f(x)|\\\\to 0$（$N$ 可依赖 $x$）"
+        },
+        {
+          "term": "一致收敛",
+          "definition": "$\\\\sup_{x\\\\in I}|f_n(x)-f(x)|\\\\to 0$（$N$ 与 $x$ 无关，对 $I$ 上所有 $x$ 同一速度收敛）"
+        },
+        {
+          "term": "Weierstrass M-判别法",
+          "definition": "$|u_n(x)|\\\\leq M_n$，$\\\\sum M_n<\\\\infty$ $\\\\Rightarrow$ $\\\\sum u_n(x)$ 在 $I$ 上一致收敛"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "一致收敛的等价刻画",
+          "statement": "$f_n\\\\rightrightarrows f$ on $I$ $\\\\Leftrightarrow$ $M_n=\\\\sup_{x\\\\in I}|f_n(x)-f(x)|\\\\to 0$",
+          "significance": "将抽象的一致收敛定义转化为上确界极限，便于计算和验证"
+        }
+      ],
+      "proofIdeas": [
+        "**$x^n$ 在 $[0,1)$ 上非一致**：取 $x_n=(1-1/n)\\\\in[0,1)$，$f_n(x_n)=(1-1/n)^n\\\\to 1/e\\\\neq 0=f(x_n)$，故 $M_n\\\\not\\\\to 0$。（或直接：$M_n=\\\\sup_{x\\\\in[0,1)}x^n=\\\\sup_{x\\\\in[0,1)}x^n$，以 $x\\\\to 1^-$ 知上确界 $=1$，不趋零。）"
+      ],
+      "socraticQuestions": [
+        "$f_n(x)=x^n$ 在 $[0,1)$ 逐点收敛但非一致收敛，几何上是什么意思？",
+        "若 $\\\\{f_n\\\\}$ 在 $I$ 的每个有界闭子区间上一致收敛，是否在整个 $I$ 上一致收敛？",
+        "Weierstrass M-判别法给出**充分**条件，有没有一致收敛但不满足 M-判别法的例子？"
+      ],
+      "commonMistakes": [
+        "将逐点收敛中 $N$ 依赖 $x$ 这一点忽略，误认为就是一致收敛",
+        "M-判别法中 $M_n$ 必须是常数（与 $x$ 无关的上界），不能含 $x$",
+        "混淆 $f_n$ 一致收敛与 $\\\\sum u_n$ 一致收敛（后者是部分和一致收敛）"
+      ],
+      "exerciseIds": ["funseq-ex-001", "funseq-ex-002", "funseq-ex-003"],
+      "diagramIds": ["uniform-convergence-diagram"],
+      "masteryCriteria": [
+        "能用 $M_n$ 方法判断函数列是否一致收敛",
+        "能用 Weierstrass M-判别法判断函数项级数一致收敛"
+      ]
+    },
+    {
+      "id": "uniform-convergence-properties",
+      "title": "一致收敛的性质",
+      "chapterId": "ch-function-sequences-series",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握一致收敛保持连续性的定理",
+        "掌握一致收敛函数列的逐项积分定理",
+        "理解逐项微分定理（需额外条件）",
+        "能判断极限与积分/微分的交换是否合法"
+      ],
+      "coreExplanation": "**连续性**：若 $f_n\\\\in C(I)$，$f_n\\\\rightrightarrows f$ 在 $I$ 上，则 $f\\\\in C(I)$。即：连续函数序列的一致极限仍连续。（逐点收敛不保证连续性：$x^n$ 的极限在 $[0,1]$ 上不连续。）\n**逐项积分**：若 $f_n\\\\in C[a,b]$，$f_n\\\\rightrightarrows f$ 在 $[a,b]$ 上，则\n$$\\\\lim_{n\\\\to\\\\infty}\\\\int_a^b f_n(x)\\,\\\\mathrm{d}x=\\\\int_a^b f(x)\\,\\\\mathrm{d}x\\\\quad\\\\text{（极限与积分可交换）}$$\n即 $\\\\int_a^b\\\\lim_{n\\\\to\\\\infty}f_n\\,\\\\mathrm{d}x=\\\\lim_{n\\\\to\\\\infty}\\\\int_a^b f_n\\,\\\\mathrm{d}x$。\n推论：一致收敛的函数项级数可逐项积分：$\\\\int_a^b\\\\sum u_n=\\\\sum\\\\int_a^b u_n$。\n**逐项微分**（条件更强）：若 $f_n$ 在 $[a,b]$ 上可微，$f_n'$ 在 $[a,b]$ 上一致收敛，且 $\\\\{f_n(x_0)\\\\}$ 对某个 $x_0$ 收敛，则 $f_n\\\\rightrightarrows f$（某 $f$），且 $f'=\\\\lim f_n'$。即：$\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\lim f_n=\\\\lim\\\\frac{\\\\mathrm{d}f_n}{\\\\mathrm{d}x}$ 需要导函数列一致收敛。\n**典型应用**：幂级数 $\\\\sum_{n=0}^\\\\infty a_n x^n$ 在收敛半径内的任意闭子区间上一致收敛，故可逐项积分和微分（幂级数章节的基础）。",
+      "textbookRefs": ["数学分析（第5版）下册 §13.2"],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "一致收敛保连续性",
+          "statement": "连续函数列一致收敛 $\\\\Rightarrow$ 极限函数连续",
+          "significance": "连续性的稳定性：一致收敛是保持连续的充分条件（逐点不够）"
+        },
+        {
+          "name": "逐项积分定理",
+          "statement": "连续函数列在 $[a,b]$ 上一致收敛，则极限与积分可交换",
+          "significance": "将无穷和的积分化为积分的无穷和，是幂级数、Fourier 级数理论的基础"
+        },
+        {
+          "name": "逐项微分定理",
+          "statement": "导函数列一致收敛（且函数列在一点收敛）$\\\\Rightarrow$ 极限函数可微，导数等于导函数极限",
+          "significance": "条件比积分强：需导函数而不只是函数列一致收敛"
+        }
+      ],
+      "proofIdeas": [
+        "**一致收敛保连续性**：$|f(x)-f(x_0)|\\\\leq|f(x)-f_n(x)|+|f_n(x)-f_n(x_0)|+|f_n(x_0)-f(x_0)|$。前后两项由一致收敛控制 $<\\\\varepsilon/3$；中间项由 $f_n$ 的连续性控制 $<\\\\varepsilon/3$。",
+        "**逐项积分**：$|\\\\int_a^b f_n-\\\\int_a^b f|\\\\leq\\\\int_a^b|f_n-f|\\\\leq(b-a)\\\\sup|f_n-f|=(b-a)M_n\\\\to 0$。"
+      ],
+      "socraticQuestions": [
+        "若 $f_n\\\\to f$ 逐点（非一致），极限与积分能交换吗？举出一个不能交换的例子。",
+        "逐项微分比逐项积分条件更强，原因是什么？微分是\"局部\"运算，为什么反而更难？",
+        "幂级数在收敛域端点处是否一致收敛？这与端点处收敛性有何关联？"
+      ],
+      "commonMistakes": [
+        "仅凭逐点收敛就交换极限与积分，需要一致收敛保证",
+        "逐项微分条件中只要求函数列一致收敛而忘记检验导函数列一致收敛",
+        "在无界区间上对有界函数用逐项积分：需要额外条件（一致收敛不足以处理无界域）"
+      ],
+      "exerciseIds": ["funseq-ex-004", "funseq-ex-005", "funseq-ex-006", "funseq-ex-007", "funseq-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能判断何时极限与积分可交换，给出正确理由",
+        "能举出逐点收敛时极限与积分不可交换的反例"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "chapterId": "ch-function-sequences-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "uniform-convergence-diagram",
+      "title": "逐点收敛与一致收敛的对比",
+      "description": "两幅对比图，以 $f_n(x)=x^n$ 在 $[0,1]$ 上为例。左图（逐点，非一致）：展示 $f_1,f_3,f_5,f_{10}$ 的曲线图，每条曲线在 $x<1$ 处随 $n$ 增大趋近于 $0$，但在 $x=1$ 附近下降\"延迟\"越来越晚——每个固定 $x<1$ 的收敛速度不同（接近 $1$ 的点需要更大的 $n$）。极限函数 $f=0$（$x\\in[0,1)$）,$f(1)=1$，不连续。右图（一致，在 $[0,r]$，$r=0.8$）：同样的曲线族限制在 $[0,0.8]$ 上，展示 $f_n$ 整体落入极限函数 $f=0$ 的 $\\varepsilon$-带状区域内（宽 $2\\varepsilon$ 的水平带），对所有 $x\\in[0,r]$ 同时成立，对应 $M_n=r^n\\to 0$。",
+      "mathContext": "一致收敛的几何意义：$f_n$ 的曲线整体（所有 $x$ 同时）落入极限函数 $f$ 的 $\\varepsilon$-管道 $\\{(x,y):|y-f(x)|<\\varepsilon\\}$ 内（当 $n>N$）。逐点收敛只保证每个固定 $x$ 处能落入，不同 $x$ 需要不同的 $N$。$M_n=\\sup|f_n-f|$ 是\"最坏点\"的误差，$M_n\\to 0$等价于一致收敛。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["uniform-convergence-concept"],
+      "layout": "two-panel-horizontal",
+      "annotations": [
+        { "panel": "left", "label": "$[0,1]$ 上逐点但非一致", "note": "极限函数在 $x=1$ 处跳跃，不连续" },
+        { "panel": "right", "label": "$[0,r]$（$r<1$）上一致", "note": "$M_n=r^n\\to 0$，整体落入 $\\varepsilon$-带" }
+      ]
+    }
+  ]
+}

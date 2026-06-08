@@ -1,0 +1,149 @@
+{
+  "chapterId": "ch-function-sequences-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "funseq-ex-001",
+      "title": "判断函数列是否一致收敛",
+      "difficulty": "basic",
+      "type": "proof",
+      "knowledgePointIds": ["uniform-convergence-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "讨论下列函数列在给定区间上的一致收敛性：\n(1) $f_n(x)=\\\\dfrac{x}{n}$，$x\\\\in[0,1]$；\n(2) $f_n(x)=\\\\dfrac{x}{n}$，$x\\\\in[0,+\\\\infty)$；\n(3) $f_n(x)=x^n(1-x)$，$x\\\\in[0,1]$。",
+      "solution": "(1) $f(x)=0$（极限函数）。$M_n=\\\\sup_{x\\\\in[0,1]}|x/n-0|=1/n\\\\to 0$，**一致收敛**。\n(2) $f(x)=0$。$M_n=\\\\sup_{x\\\\geq 0}|x/n|=+\\\\infty$（$x$ 无界），**不一致收敛**。\n（逐点收敛，但对任意 $n$，取 $x=n^2$ 则 $|f_n(n^2)|=n\\\\to\\\\infty$。）\n(3) 极限：$f_n(x)\\\\to 0$（$x\\\\in[0,1)$ 时 $x^n\\\\to 0$；$x=1$ 时 $f_n(1)=0$），故 $f=0$。\n$M_n=\\\\sup_{x\\\\in[0,1]}x^n(1-x)$。令 $g(x)=x^n(1-x)$，$g'=nx^{n-1}(1-x)-x^n=x^{n-1}(n-(n+1)x)=0$ 在 $x_n=n/(n+1)$ 取极大值。\n$M_n=\\\\left(\\\\frac{n}{n+1}\\\\right)^n\\\\cdot\\\\frac{1}{n+1}\\\\sim\\\\frac{1}{e(n+1)}\\\\to 0$，**一致收敛**。",
+      "gradingRubric": [
+        "(1) $M_n=1/n\\\\to 0$，一致收敛（2分）",
+        "(2) $\\\\sup=+\\\\infty$，非一致（2分）",
+        "(3) 正确求极大值点，$M_n\\\\to 0$，一致收敛（3分）"
+      ],
+      "hints": ["$M_n=\\\\sup|f_n-f|$ 是判断一致收敛的关键量", "(3) 先求 $x^n(1-x)$ 的最大值点"],
+      "commonMistakes": ["(2) 仅说逐点收敛就认为满足，忽略无界区间上 sup 无界"]
+    },
+    {
+      "id": "funseq-ex-002",
+      "title": "Weierstrass M-判别法",
+      "difficulty": "basic",
+      "type": "proof",
+      "knowledgePointIds": ["uniform-convergence-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "用 Weierstrass M-判别法证明下列函数项级数在给定区间上一致收敛：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{\\\\sin(nx)}{n^2}$，$x\\\\in(-\\\\infty,+\\\\infty)$；\n(2) $\\\\sum_{n=0}^{\\\\infty}x^n$，$x\\\\in[-r,r]$（$0<r<1$）；\n(3) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^n}{n+x^2}$，$x\\\\in\\\\mathbb{R}$。",
+      "solution": "(1) $|\\\\sin(nx)/n^2|\\\\leq 1/n^2=:M_n$，$\\\\sum M_n=\\\\sum 1/n^2<\\\\infty$（$p=2>1$），M-判别法：**一致（绝对）收敛**。\n(2) $|x^n|\\\\leq r^n=:M_n$（$x\\\\in[-r,r]$），$\\\\sum r^n=r/(1-r)<\\\\infty$（$0<r<1$），M-判别法：**一致收敛**。\n(3) $M_n$ 方法不直接适用（符号交替）。但 $\\\\left|\\\\frac{1}{n+x^2}\\\\right|\\\\leq\\\\frac{1}{n}$，$\\\\sum 1/n$ 发散，不能用 M 判别。\n须改用 Dirichlet/Abel 或 Leibniz：对每个 $x$，$a_n=1/(n+x^2)$ 单调递减趋零，Leibniz 得逐点收敛。一致收敛需单独验证（余项估计 $|r_N(x)|\\\\leq 1/(N+1+x^2)\\\\leq 1/(N+1)$，与 $x$ 无关趋零），故**一致收敛**。",
+      "gradingRubric": [
+        "(1) $M_n=1/n^2$，$\\\\sum M_n$ 收敛，M-判别法（2分）",
+        "(2) $M_n=r^n$，等比级数，M-判别法（2分）",
+        "(3) M 判别法失效，改用 Leibniz 余项估计，余项 $\\\\leq 1/(N+1)$ 与 $x$ 无关（3分）"
+      ],
+      "hints": ["(3) $M_n$ 方法要求 $\\\\sum M_n$ 收敛，$\\\\sum 1/n$ 发散，故不适用", "(3) 用交错级数余项 $|r_N|\\\\leq a_{N+1}=1/(N+1+x^2)\\\\leq 1/(N+1)$"],
+      "commonMistakes": ["M 判别法只是充分条件，失效不代表不一致收敛，需换方法"]
+    },
+    {
+      "id": "funseq-ex-003",
+      "title": "证明非一致收敛",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["uniform-convergence-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "证明 $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{x^2}{(1+x^2)^n}$ 在 $(-\\\\infty,+\\\\infty)$ 上逐点收敛，但不一致收敛。",
+      "solution": "**逐点收敛**：\n$x=0$ 时：每项为 $0$，和为 $0$。\n$x\\\\neq 0$ 时：令 $q=1/(1+x^2)\\\\in(0,1)$，则 $\\\\sum\\\\frac{x^2}{(1+x^2)^n}=x^2\\\\sum q^n=x^2\\\\cdot\\\\frac{q}{1-q}=x^2\\\\cdot\\\\frac{1/(1+x^2)}{1-1/(1+x^2)}=x^2\\\\cdot\\\\frac{1}{x^2}=1$。\n故极限函数 $f(x)=\\\\begin{cases}0 & x=0\\\\\\\\1 & x\\\\neq 0\\\\end{cases}$，在 $x=0$ 处不连续。\n**非一致收敛**：各项 $u_n(x)=x^2/(1+x^2)^n$ 均连续，若级数一致收敛，由连续性定理 $f$ 应连续，矛盾。故**不一致收敛**。",
+      "gradingRubric": [
+        "正确分 $x=0$ 和 $x\\\\neq 0$ 计算极限函数（2分）",
+        "识别极限函数在 $x=0$ 不连续（1分）",
+        "用连续性定理的逆否（各项连续+一致收敛$\\\\Rightarrow$极限连续）推出矛盾（2分）"
+      ],
+      "hints": ["先算极限函数 $f(x)$，若 $f$ 不连续但各 $u_n$ 连续，则不一致收敛"],
+      "commonMistakes": ["忘记单独处理 $x=0$ 的情形，等比级数公式要求 $q<1$ 即 $x\\\\neq 0$"]
+    },
+    {
+      "id": "funseq-ex-004",
+      "title": "极限与积分交换",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["uniform-convergence-properties"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "证明 $\\\\lim_{n\\\\to\\\\infty}\\\\int_0^1 f_n(x)\\,\\\\mathrm{d}x=\\\\int_0^1 f(x)\\,\\\\mathrm{d}x$ 对下列函数列成立：\n(1) $f_n(x)=\\\\dfrac{x}{1+nx^2}$，求极限值；\n(2) $f_n(x)=\\\\dfrac{nx}{1+n^2x^2}$，说明极限与积分能否交换（分析逐点/一致收敛）。",
+      "solution": "(1) 极限函数 $f(x)=\\\\lim_{n\\\\to\\\\infty}\\\\frac{x}{1+nx^2}$：$x=0$ 时 $f(0)=0$；$x\\\\neq 0$ 时 $\\\\frac{x}{1+nx^2}\\\\sim\\\\frac{1}{nx}\\\\to 0$，故 $f=0$。\n$M_n=\\\\sup_{x\\\\in[0,1]}\\\\frac{x}{1+nx^2}$。令 $g'=0$：$(1+nx^2)\\\\cdot 1-x\\\\cdot 2nx=1-nx^2=0$，$x_n=1/\\\\sqrt{n}$，$M_n=\\\\frac{1/\\\\sqrt{n}}{2}=\\\\frac{1}{2\\\\sqrt{n}}\\\\to 0$。一致收敛，故\n$\\\\lim\\\\int_0^1 f_n=\\\\int_0^1 0\\,\\\\mathrm{d}x=0$。（直接算：$\\\\int_0^1\\\\frac{x}{1+nx^2}\\\\,\\\\mathrm{d}x=\\\\frac{\\\\ln(1+n)}{2n}\\\\to 0$，验证。）\n(2) 极限：$x=0$ 时 $f(0)=0$；$x\\\\in(0,1]$ 时 $\\\\frac{nx}{1+n^2x^2}=\\\\frac{1/nx}{1/(nx)^2+1}\\\\to 0$（令 $t=nx\\\\to\\\\infty$）。故 $f=0$。\n但 $M_n=\\\\sup_{x\\\\in[0,1]}\\\\frac{nx}{1+n^2x^2}$，在 $x=1/n$ 取最大值 $\\\\frac{n\\cdot 1/n}{1+1}=\\\\frac{1}{2}\\\\not\\\\to 0$，**非一致收敛**。\n$\\\\int_0^1\\\\frac{nx}{1+n^2x^2}\\,\\\\mathrm{d}x=\\\\frac{1}{2}\\\\ln(1+n^2)\\\\cdot\\\\frac{1}{n}\\\\sim\\\\frac{\\\\ln n}{n}\\\\to 0$，但也趋零（数值上交换成立但不能用一致收敛定理保证，需直接验证）。",
+      "gradingRubric": [
+        "(1) 正确找到 $M_n=1/(2\\\\sqrt{n})$，一致收敛，积分趋零（3分）",
+        "(2) 正确识别 $M_n=1/2\\\\not\\\\to 0$（非一致收敛），指出定理不可直接应用（3分）"
+      ],
+      "hints": ["$M_n=\\\\sup f_n$，求导令 $f_n'=0$ 找最大值点", "(2) 最大值在 $x=1/n$ 处取到"],
+      "commonMistakes": ["(2) 因极限结果相同就认为交换\"没问题\"——需用一致收敛理论保证"]
+    },
+    {
+      "id": "funseq-ex-005",
+      "title": "逐项积分",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["uniform-convergence-properties"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "利用逐项积分计算：\n(1) $\\\\sum_{n=0}^{\\\\infty}\\\\int_0^1 x^n\\,\\\\mathrm{d}x$，并验证 $=\\\\int_0^1\\\\frac{1}{1-x}\\,\\\\mathrm{d}x$（发散！解释矛盾）；\n(2) 利用 $\\\\frac{1}{1+x}=\\\\sum_{n=0}^\\\\infty(-x)^n$（$x\\\\in[0,r]$，$0<r<1$），计算 $\\\\int_0^r\\\\frac{1}{1+x}\\,\\\\mathrm{d}x$ 并求 $\\\\ln(1+r)$ 的幂级数展开。",
+      "solution": "(1) $\\\\int_0^1 x^n\\,\\\\mathrm{d}x=\\\\frac{1}{n+1}$，故 $\\\\sum_{n=0}^\\\\infty\\\\frac{1}{n+1}=\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n}$ 发散。\n而 $\\\\int_0^1\\\\frac{1}{1-x}\\,\\\\mathrm{d}x=[-\\\\ln(1-x)]_0^1\\\\to+\\\\infty$，也发散。\n矛盾在于：$\\\\sum x^n$ 在 $[0,1]$ 上**非一致收敛**（$M_N=\\\\sup_{x\\\\in[0,1]}|\\\\sum_{n=N}^\\\\infty x^n|\\\\geq 1$ 当 $x\\\\to 1^-$），不满足逐项积分定理条件，故不能交换。\n(2) $\\\\sum_{n=0}^\\\\infty(-x)^n=\\\\sum_{n=0}^\\\\infty(-1)^n x^n$ 在 $[0,r]$（$r<1$）上一致收敛（M-判别：$M_n=r^n$，$\\\\sum r^n<\\\\infty$），逐项积分合法：\n$\\\\int_0^r\\\\frac{\\,\\\\mathrm{d}x}{1+x}=\\\\sum_{n=0}^\\\\infty(-1)^n\\\\int_0^r x^n\\,\\\\mathrm{d}x=\\\\sum_{n=0}^\\\\infty\\\\frac{(-1)^n r^{n+1}}{n+1}$。\n又 $\\\\int_0^r\\\\frac{\\,\\\\mathrm{d}x}{1+x}=\\\\ln(1+r)$，故\n$\\\\ln(1+r)=r-\\\\frac{r^2}{2}+\\\\frac{r^3}{3}-\\\\frac{r^4}{4}+\\\\cdots=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}r^n}{n}$（$r\\\\in(-1,1]$）。",
+      "gradingRubric": [
+        "(1) 正确说明两边都发散，指出非一致收敛是矛盾原因（3分）",
+        "(2) 验证 $[0,r]$ 上一致收敛，逐项积分，得 $\\\\ln(1+r)$ 展开式（3分）"
+      ],
+      "hints": ["(1) 在 $[0,1]$ 端点 $x=1$ 处等比级数发散，故非一致收敛", "(2) $[0,r]$（$r<1$）上 M-判别法成立"],
+      "commonMistakes": ["(1) 认为因为 $\\\\sum\\\\int=\\\\int\\\\sum$ 在数值上\"相符\"就合法，忽略两边均发散的事实"]
+    },
+    {
+      "id": "funseq-ex-006",
+      "title": "逐项微分",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["uniform-convergence-properties"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "设 $f_n(x)=\\\\dfrac{\\\\sin(nx)}{n}$，$x\\\\in\\\\mathbb{R}$。\n(1) 证明 $f_n\\\\rightrightarrows 0$ 在 $\\\\mathbb{R}$ 上；\n(2) 计算 $f_n'(x)=\\\\cos(nx)$，说明 $f_n'$ 在 $\\\\mathbb{R}$ 上**不**一致收敛；\n(3) 结合逐项微分定理，解释为什么 $\\\\lim f_n'\\\\neq (\\\\lim f_n)'$ 在此处成立。",
+      "solution": "(1) $M_n=\\\\sup_{x\\\\in\\\\mathbb{R}}|\\\\sin(nx)/n|\\\\leq 1/n\\\\to 0$，$f_n\\\\rightrightarrows 0$，满足一致收敛。\n(2) $f_n'(x)=\\\\cos(nx)$，$\\\\lim_{n\\\\to\\\\infty}\\\\cos(nx)$ 逐点处除 $x=0$ 外不收敛（振荡），故 $f_n'$ 甚至不逐点收敛于任何确定极限（除特殊 $x$），当然非一致收敛。\n(3) 逐项微分定理要求**导函数列一致收敛**。此处 $f_n'=\\\\cos(nx)$ 不一致收敛（甚至不逐点收敛于函数），定理条件不满足，故 $\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\lim f_n=\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}0=0$，但 $\\\\lim f_n'(x)=\\\\lim\\\\cos(nx)$ 不存在（大多数 $x$），两者不相等且交换不合法。",
+      "gradingRubric": [
+        "(1) $M_n\\\\leq 1/n\\\\to 0$，一致收敛（2分）",
+        "(2) $\\\\cos(nx)$ 对 $x\\\\neq 0$ 振荡不收敛（2分）",
+        "(3) 指出条件不满足（导函数列不收敛），解释不能逐项微分（2分）"
+      ],
+      "hints": ["(2) 取 $x=\\\\pi/2$：$\\\\cos(n\\\\pi/2)=0,-1,0,1,0,-1,\\\\ldots$ 振荡", "逐项微分需要的是导函数列一致收敛，而非函数列本身"],
+      "commonMistakes": ["把函数列一致收敛误以为足以交换微分——需要导函数列一致收敛"]
+    },
+    {
+      "id": "funseq-ex-007",
+      "title": "利用一致收敛证明连续性",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["uniform-convergence-properties"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "证明 $f(x)=\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^{n-1}}{n(1+nx^2)}$ 在 $\\\\mathbb{R}$ 上连续。",
+      "solution": "设 $u_n(x)=\\\\frac{(-1)^{n-1}}{n(1+nx^2)}$，每个 $u_n$ 在 $\\\\mathbb{R}$ 上连续。\n$|u_n(x)|=\\\\frac{1}{n(1+nx^2)}\\\\leq\\\\frac{1}{n\\\\cdot 1}=\\\\frac{1}{n}=:M_n$（因 $1+nx^2\\\\geq 1$）。\n$\\\\sum M_n=\\\\sum\\\\frac{1}{n}$ 发散，M-判别法不能直接用。\n改用更精细的估计：$|u_n(x)|\\\\leq\\\\frac{1}{n(1+nx^2)}\\\\leq\\\\frac{1}{n\\\\cdot nx^2}=\\\\frac{1}{n^2x^2}$（$x\\\\neq 0$），但不均匀。\n更好的方法：$|u_n(x)|\\\\leq\\\\frac{1}{n}$，且 $\\\\sum(-1)^{n-1}/n=\\\\ln 2$ 绝对不收敛，Weierstrass 失效。\n用 Abel 判别法：$a_n=(-1)^{n-1}$，$b_n(x)=\\\\frac{1}{n(1+nx^2)}$。$\\\\sum a_n$ 条件收敛，$b_n(x)$ 对固定 $x$ 单调递减趋零。但一致性需要 $b_n(x)$ 的单调性和趋零**一致**（对 $x$ 一致），$b_n(x)\\\\leq 1/n\\\\to 0$（与 $x$ 无关），且 $b_n$ 关于 $n$ 单调递减，故 Abel 判别法给出一致收敛。\n（或更直接：余项 $|\\\\sum_{k=n}^\\\\infty u_k(x)|\\\\leq b_n(x)\\\\leq 1/n\\\\to 0$，一致趋零。）\n由一致收敛保连续性定理，$f$ 在 $\\\\mathbb{R}$ 上连续。",
+      "gradingRubric": [
+        "识别各项 $u_n$ 连续（1分）",
+        "正确处理一致收敛（Weierstrass 失效，改用余项估计或 Abel 判别）（3分）",
+        "引用一致收敛保连续性定理得出结论（1分）"
+      ],
+      "hints": ["M 判别法失效时，尝试余项估计：$|R_N(x)|\\\\leq|u_{N+1}(x)|\\\\leq 1/(N+1)$（交错级数余项）"],
+      "commonMistakes": ["M 判别法失效就放弃，实际上交错级数有更优的余项估计可用"]
+    },
+    {
+      "id": "funseq-ex-008",
+      "title": "综合难题：极限交换的正确性判断",
+      "difficulty": "hard",
+      "type": "proof",
+      "knowledgePointIds": ["uniform-convergence-concept", "uniform-convergence-properties"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第13章",
+      "problemStatement": "设 $f_n(x)=n^2 x e^{-nx}$，$x\\\\in[0,1]$。\n(1) 求逐点极限 $f(x)=\\\\lim_{n\\\\to\\\\infty}f_n(x)$；\n(2) 求 $\\\\int_0^1 f_n(x)\\,\\\\mathrm{d}x$ 并取 $n\\\\to\\\\infty$ 的极限；\n(3) 说明极限与积分不可交换，并解释原因（讨论 $M_n$）。",
+      "solution": "(1) $x=0$：$f_n(0)=0$。$x\\\\in(0,1]$：$n^2 x e^{-nx}=n^2 x/e^{nx}\\\\to 0$（指数增长远快于多项式）。故 $f(x)=0$。\n(2) $\\\\int_0^1 n^2 x e^{-nx}\\,\\\\mathrm{d}x$。用分部积分（$u=n^2 x$，$v=-e^{-nx}/n$）：\n$=[−n^2 x\\\\cdot e^{-nx}/n]_0^1+\\\\int_0^1 n e^{-nx}\\,\\\\mathrm{d}x=−ne^{-n}+[-e^{-nx}]_0^1=−ne^{-n}+(1-e^{-n})$。\n$\\\\to 0+1=1$ 当 $n\\\\to\\\\infty$（因 $ne^{-n}\\\\to 0$）。\n(3) $\\\\lim\\\\int_0^1 f_n=1$，但 $\\\\int_0^1 f=\\\\int_0^1 0\\,\\\\mathrm{d}x=0$，**极限与积分不可交换**。\n原因：$M_n=\\\\sup_{x\\\\in[0,1]}n^2 xe^{-nx}$。令 $(n^2 xe^{-nx})'=n^2 e^{-nx}(1-nx)=0$，得 $x=1/n$，$M_n=n^2\\\\cdot\\\\frac{1}{n}\\\\cdot e^{-1}=ne^{-1}\\\\to+\\\\infty$，非一致收敛，故逐项积分定理不适用。",
+      "gradingRubric": [
+        "(1) 极限函数 $f=0$（2分）",
+        "(2) 分部积分，极限 $=1$（3分）",
+        "(3) 指出不可交换，计算 $M_n=n/e\\\\to\\\\infty$，非一致收敛（3分）"
+      ],
+      "hints": ["(2) 分部积分时注意 $n$ 是参数", "(3) 最大值在 $x=1/n$ 处，$M_n=ne^{-1}\\\\to\\\\infty$"],
+      "commonMistakes": ["(1) 只算 $x=0$，忘记对 $x>0$ 也需验证", "(3) 未计算 $M_n$，仅说\"不一致\"而无论证"]
+    }
+  ]
+}

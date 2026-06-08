@@ -42,10 +42,23 @@
       "id": "ch-function-sequences-series",
       "number": 13,
       "title": "函数列与函数项级数",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/function-sequences-series.json",
+      "exercisesFile": "exercises/function-sequences-series.json",
+      "diagramFile": "diagrams/function-sequences-series.json",
       "sections": [
-        { "id": "sec-uniform-convergence", "title": "一致收敛性", "status": "planned" },
-        { "id": "sec-uniform-convergence-properties", "title": "一致收敛函数列与函数项级数的性质", "status": "planned" }
+        {
+          "id": "sec-uniform-convergence",
+          "title": "一致收敛性",
+          "status": "draft",
+          "knowledgePointIds": ["uniform-convergence-concept"]
+        },
+        {
+          "id": "sec-uniform-convergence-properties",
+          "title": "一致收敛函数列与函数项级数的性质",
+          "status": "draft",
+          "knowledgePointIds": ["uniform-convergence-properties"]
+        }
       ]
     },
     {
