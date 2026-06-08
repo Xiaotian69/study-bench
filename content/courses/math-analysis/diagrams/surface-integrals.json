@@ -1,0 +1,34 @@
+{
+  "chapterId": "ch-surface-integrals-vector-fields",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "surface-integral-diagram",
+      "title": "曲面积分的两型与法向量方向",
+      "description": "左图：第一型曲面积分——显式曲面 $z=z(x,y)$，面积元素 $\\mathrm{d}S=\\sqrt{1+z_x^2+z_y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$，投影区域 $D_{xy}$ 在 $xy$ 平面，投影箭头示意（竖直虚线）。中图：第二型曲面积分——封闭曲面的外法向量 $\\boldsymbol{n}$ 朝外（多个箭头），流量 $\\Phi=\\oiint\\boldsymbol{F}\\cdot\\boldsymbol{n}\\,\\mathrm{d}S$；向量场 $\\boldsymbol{F}$ 用流线表示，法向量与流线夹角标注。右图：高斯公式示意——封闭曲面 $\\partial\\Omega$（外侧），内部 $\\Omega$ 的散度 $\\mathrm{div}\\,\\boldsymbol{F}$，正散度（源）用红色"+"，负散度（汇）用蓝色"−"。箭头颜色：法向量绿色，向量场橙色，投影蓝色。",
+      "mathContext": "第一型曲面积分 $\\iint_S f\\,\\mathrm{d}S$ 与曲面方向无关（面积元素 $\\mathrm{d}S>0$ 恒成立）；第二型曲面积分 $\\iint_S\\boldsymbol{F}\\cdot\\mathrm{d}\\boldsymbol{S}$ 与法向量方向有关（反向变号）。高斯公式 $\\oiint_{\\partial\\Omega}\\boldsymbol{F}\\cdot\\mathrm{d}\\boldsymbol{S}=\\iiint_\\Omega\\mathrm{div}\\,\\boldsymbol{F}\\,\\mathrm{d}V$ 将面积分化为体积分：封闭面上流量 = 内部散度之和（散度为正 = 源，净流出；散度为负 = 汇，净流入）。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["first-type-surface-integral", "second-type-surface-integral", "gauss-stokes-formula"],
+      "layout": "triple",
+      "annotations": [
+        { "panel": "left", "label": "第一型：$\\mathrm{d}S=\\sqrt{1+z_x^2+z_y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$", "note": "与方向无关，化为 $D_{xy}$ 上的二重积分" },
+        { "panel": "center", "label": "第二型：法向量方向决定正负", "note": "外法向取外侧，反向积分变号" },
+        { "panel": "right", "label": "高斯：$\\oiint=\\iiint\\mathrm{div}$", "note": "源（$\\mathrm{div}>0$）净流出，汇（$\\mathrm{div}<0$）净流入" }
+      ]
+    },
+    {
+      "id": "gauss-stokes-diagram",
+      "title": "高斯公式与斯托克斯公式几何直觉",
+      "description": "左图：高斯公式——立体 $\\Omega$ 的封闭边界 $\\partial\\Omega$，外法向量朝外（蓝色箭头），内部散度为正（红色+）；补面法示意：非封闭曲面 $S$（灰色）加补面 $S_0$（虚线）构成封闭面。右图：斯托克斯公式——有向曲面 $S$（绿色），边界曲线 $\\partial S$（橙色箭头，逆时针），法向量 $\\boldsymbol{n}$（蓝色，朝上），右手定则示意：右手拇指沿 $\\boldsymbol{n}$，四指为 $\\partial S$ 的正方向；旋度 $\\nabla\\times\\boldsymbol{F}$ 在曲面上，积分化为边界线积分。",
+      "mathContext": "高斯公式的补面法：当曲面不封闭时，补一块简单曲面（如平面盘）构成封闭面后再用高斯公式，减去补面的贡献。斯托克斯公式的方向约定：右手定则——拇指沿法向量 $\\boldsymbol{n}$，四指为边界 $\\partial S$ 的正方向（从 $z$ 轴正向看为逆时针时，取法向量朝上）。Green 公式是斯托克斯的二维退化（$S$ 为平面区域，$\\boldsymbol{n}=(0,0,1)$ 朝上）。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["gauss-stokes-formula"],
+      "layout": "dual",
+      "annotations": [
+        { "panel": "left", "label": "高斯公式补面法", "note": "$\\oiint_{S+S_0}=\\iiint\\mathrm{div}$，故 $\\iint_S=\\iiint\\mathrm{div}-\\iint_{S_0}$" },
+        { "panel": "right", "label": "斯托克斯右手定则", "note": "拇指 $\\boldsymbol{n}$，四指为 $\\partial S$ 正方向" }
+      ]
+    }
+  ]
+}

@@ -297,12 +297,35 @@
       "id": "ch-surface-integrals-vector-fields",
       "number": 22,
       "title": "曲面积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/surface-integrals.json",
+      "exercisesFile": "exercises/surface-integrals.json",
+      "diagramFile": "diagrams/surface-integrals.json",
       "sections": [
-        { "id": "sec-first-type-surface-integral", "title": "第一型曲面积分", "status": "planned" },
-        { "id": "sec-second-type-surface-integral", "title": "第二型曲面积分", "status": "planned" },
-        { "id": "sec-gauss-stokes", "title": "高斯公式与斯托克斯公式", "status": "planned" },
-        { "id": "sec-field-theory-intro", "title": "场论初步", "status": "planned" }
+        {
+          "id": "sec-first-type-surface-integral",
+          "title": "第一型曲面积分",
+          "status": "draft",
+          "knowledgePointIds": ["first-type-surface-integral"]
+        },
+        {
+          "id": "sec-second-type-surface-integral",
+          "title": "第二型曲面积分",
+          "status": "draft",
+          "knowledgePointIds": ["second-type-surface-integral"]
+        },
+        {
+          "id": "sec-gauss-stokes",
+          "title": "高斯公式与斯托克斯公式",
+          "status": "draft",
+          "knowledgePointIds": ["gauss-stokes-formula"]
+        },
+        {
+          "id": "sec-field-theory-intro",
+          "title": "场论初步",
+          "status": "draft",
+          "knowledgePointIds": ["field-theory-intro"]
+        }
       ]
     }
   ]
