@@ -1,0 +1,167 @@
+{
+  "chapterId": "ch-numerical-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "series-ex-001",
+      "title": "裂项法求级数的和",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["series-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "用裂项法求下列级数的和：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{1}{n(n+1)}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{1}{(2n-1)(2n+1)}$。",
+      "solution": "(1) 裂项：$\\\\frac{1}{n(n+1)}=\\\\frac{1}{n}-\\\\frac{1}{n+1}$。\n部分和 $S_n=\\\\left(1-\\\\frac{1}{2}\\\\right)+\\\\left(\\\\frac{1}{2}-\\\\frac{1}{3}\\\\right)+\\\\cdots+\\\\left(\\\\frac{1}{n}-\\\\frac{1}{n+1}\\\\right)=1-\\\\frac{1}{n+1}\\\\to 1$。\n故 $\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n(n+1)}=1$。\n(2) 裂项：$\\\\frac{1}{(2n-1)(2n+1)}=\\\\frac{1}{2}\\\\left(\\\\frac{1}{2n-1}-\\\\frac{1}{2n+1}\\\\right)$。\n$S_n=\\\\frac{1}{2}\\\\left(1-\\\\frac{1}{2n+1}\\\\right)\\\\to\\\\frac{1}{2}$。\n故级数和为 $\\\\dfrac{1}{2}$。",
+      "gradingRubric": [
+        "(1) 正确裂项，部分和telescoping，得 $1$（2分）",
+        "(2) 正确裂项，系数 $1/2$，得 $1/2$（2分）"
+      ],
+      "hints": ["裂项：$\\\\frac{1}{n(n+1)}=\\\\frac{1}{n}-\\\\frac{1}{n+1}$；验证通分后吻合", "(2) $\\\\frac{1}{(2n-1)(2n+1)}=\\\\frac{1}{2}\\\\left(\\\\frac{1}{2n-1}-\\\\frac{1}{2n+1}\\\\right)$"],
+      "commonMistakes": ["裂项系数忘记，尤其是 (2) 中的 $1/2$"]
+    },
+    {
+      "id": "series-ex-002",
+      "title": "用必要条件判断发散",
+      "difficulty": "basic",
+      "type": "proof",
+      "knowledgePointIds": ["series-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "判断下列级数的收敛性，说明理由：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{n}{n+1}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^n n}{2n+1}$；\n(3) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{1}{\\\\sqrt{n}}$。",
+      "solution": "(1) **发散**。$a_n=\\\\frac{n}{n+1}\\\\to 1\\\\neq 0$，不满足收敛必要条件，故级数发散。\n(2) **发散**。$|a_n|=\\\\frac{n}{2n+1}\\\\to\\\\frac{1}{2}\\\\neq 0$，故 $a_n\\\\not\\\\to 0$，级数发散。\n(3) **发散**。$a_n=1/\\\\sqrt{n}\\\\to 0$，必要条件满足，但不足以判断收敛。\n用积分判别法：$\\\\int_1^{+\\\\infty}x^{-1/2}\\,\\\\mathrm{d}x$ 发散（$p=1/2\\\\leq 1$），故 $\\\\sum 1/\\\\sqrt{n}$ 发散。\n（或比较：$1/\\\\sqrt{n}\\\\geq 1/n$，调和级数发散，故 $\\\\sum 1/\\\\sqrt{n}$ 发散。）",
+      "gradingRubric": [
+        "(1) 必要条件，通项趋 $1$，发散（1分）",
+        "(2) 必要条件，$|a_n|\\\\to 1/2\\\\neq 0$，发散（1分）",
+        "(3) 正确指出必要条件满足但不足够，引用 $p$ 判别或比较，发散（3分）"
+      ],
+      "hints": ["(3) 通项趋零只是必要条件！还需进一步判断", "可用 $1/\\\\sqrt{n}\\\\geq 1/n$ 比较调和级数"],
+      "commonMistakes": ["(3) 因 $a_n\\\\to 0$ 就认为收敛——调和级数和 $\\\\sum 1/\\\\sqrt{n}$ 都是反例"]
+    },
+    {
+      "id": "series-ex-003",
+      "title": "比较判别法",
+      "difficulty": "basic",
+      "type": "proof",
+      "knowledgePointIds": ["positive-term-series-tests"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "用比较判别法（直接或极限形式）判断下列正项级数的收敛性：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{1}{n^2+n+1}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{\\\\sqrt{n}}{n^2+1}$；\n(3) $\\\\sum_{n=1}^{\\\\infty}\\\\sin\\\\dfrac{\\\\pi}{2^n}$。",
+      "solution": "(1) **收敛**。$\\\\frac{1}{n^2+n+1}<\\\\frac{1}{n^2}$，$\\\\sum 1/n^2$ 收敛（$p=2>1$），比较判别法得收敛。\n（极限形式：$\\\\frac{1/(n^2+n+1)}{1/n^2}=\\\\frac{n^2}{n^2+n+1}\\\\to 1>0$，同敛散。）\n(2) **收敛**。$\\\\frac{\\\\sqrt{n}}{n^2+1}\\\\sim\\\\frac{\\\\sqrt{n}}{n^2}=n^{-3/2}$（$n\\\\to\\\\infty$），极限比较 $\\\\to 1$，$\\\\sum n^{-3/2}$ 收敛（$p=3/2>1$），故收敛。\n(3) **收敛**。$x\\\\in(0,\\\\pi/2)$ 时 $\\\\sin x<x$，故 $\\\\sin\\\\frac{\\\\pi}{2^n}<\\\\frac{\\\\pi}{2^n}$。等比级数 $\\\\sum\\\\frac{\\\\pi}{2^n}=\\\\pi$ 收敛（$q=1/2<1$），比较判别法得收敛。",
+      "gradingRubric": [
+        "(1) 正确建立上界 $1/n^2$，引用收敛性（2分）",
+        "(2) 正确识别主项 $n^{-3/2}$，极限比较（2分）",
+        "(3) 用 $\\\\sin x<x$ 建立上界，等比级数收敛（2分）"
+      ],
+      "hints": ["(2) 分子 $\\\\sqrt{n}=n^{1/2}$，分母 $\\\\sim n^2$，整体 $\\\\sim n^{-3/2}$", "(3) $\\\\sin\\\\theta<\\\\theta$（$\\\\theta>0$），上界是等比级数"],
+      "commonMistakes": ["(2) 不知道如何找参考级数：先确定 $a_n$ 的渐近量级（主项）再比较"]
+    },
+    {
+      "id": "series-ex-004",
+      "title": "比值判别法",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["positive-term-series-tests"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "用比值判别法判断下列级数的收敛性：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{n!}{2^n}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{3^n}{n\\\\cdot 2^n}$；\n(3) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{n^n}{n!}$。",
+      "solution": "(1) $\\\\frac{a_{n+1}}{a_n}=\\\\frac{(n+1)!/2^{n+1}}{n!/2^n}=\\\\frac{n+1}{2}\\\\to+\\\\infty>1$，**发散**。\n(2) $\\\\frac{a_{n+1}}{a_n}=\\\\frac{3^{n+1}}{(n+1)\\\\cdot 2^{n+1}}\\\\cdot\\\\frac{n\\\\cdot 2^n}{3^n}=\\\\frac{3n}{2(n+1)}\\\\to\\\\frac{3}{2}>1$，**发散**。\n(3) $\\\\frac{a_{n+1}}{a_n}=\\\\frac{(n+1)^{n+1}}{(n+1)!}\\\\cdot\\\\frac{n!}{n^n}=\\\\frac{(n+1)^n}{n^n}=\\\\left(1+\\\\frac{1}{n}\\\\right)^n\\\\to e>1$，**发散**。",
+      "gradingRubric": [
+        "(1) 比值 $\\\\to\\\\infty$，发散（2分）",
+        "(2) 比值 $\\\\to 3/2>1$，发散（2分）",
+        "(3) 识别极限为 $e$，发散（2分）"
+      ],
+      "hints": ["(3) $(1+1/n)^n\\\\to e$（重要极限）", "比值 $>1$ 时，通项不趋零，必发散"],
+      "commonMistakes": ["(3) 不认识 $(1+1/n)^n\\\\to e$，误认为比值趋 $1$"]
+    },
+    {
+      "id": "series-ex-005",
+      "title": "根值判别法",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["positive-term-series-tests"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "用根值判别法判断下列级数的收敛性：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\left(\\\\dfrac{n}{2n+1}\\\\right)^n$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{1}{(\\\\ln n)^n}$（$n\\\\geq 2$）；\n(3) 说明对 $\\\\sum 1/n^2$，根值判别法为何给出 $r=1$（无结论）。",
+      "solution": "(1) $\\\\sqrt[n]{a_n}=\\\\frac{n}{2n+1}\\\\to\\\\frac{1}{2}<1$，**收敛**。\n(2) $\\\\sqrt[n]{a_n}=\\\\frac{1}{\\\\ln n}\\\\to 0<1$（$n\\\\to\\\\infty$ 时 $\\\\ln n\\\\to\\\\infty$），**收敛**。\n(3) $\\\\sqrt[n]{1/n^2}=n^{-2/n}=e^{-2\\\\ln n/n}\\\\to e^0=1$（因 $\\\\ln n/n\\\\to 0$）。$r=1$ 无结论，需用其他方法判断（$p=2>1$ 收敛）。",
+      "gradingRubric": [
+        "(1) 正确提取 $n$ 次根，极限 $1/2$，收敛（2分）",
+        "(2) 根号下 $1/(\\\\ln n)$，极限 $0$，收敛（2分）",
+        "(3) 计算 $\\\\sqrt[n]{n^{-2}}\\\\to 1$，解释失效原因（2分）"
+      ],
+      "hints": ["(1) $((n/(2n+1))^n)^{1/n}=n/(2n+1)$", "(3) $n^{1/n}\\\\to 1$（重要极限）"],
+      "commonMistakes": ["(3) $n^{1/n}\\\\to 1$ 是重要极限，需记住"]
+    },
+    {
+      "id": "series-ex-006",
+      "title": "Leibniz 判别法与条件收敛",
+      "difficulty": "basic",
+      "type": "proof",
+      "knowledgePointIds": ["general-term-series-tests"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "判断下列级数的收敛性，并区分绝对收敛与条件收敛：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^{n-1}}{\\\\sqrt{n}}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^{n-1}}{n^2}$；\n(3) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^n n}{n+1}$。",
+      "solution": "(1) $a_n=1/\\\\sqrt{n}$ 单调递减趋零，Leibniz 判别法：**收敛**。\n$\\\\sum|a_n|=\\\\sum 1/\\\\sqrt{n}$ 发散（$p=1/2\\\\leq 1$），故为**条件收敛**。\n(2) $a_n=1/n^2$ 单调递减趋零，**收敛**。\n$\\\\sum|a_n|=\\\\sum 1/n^2$ 收敛（$p=2>1$），故为**绝对收敛**。\n(3) $|a_n|=n/(n+1)\\\\to 1\\\\neq 0$，通项不趋零，**发散**。",
+      "gradingRubric": [
+        "(1) Leibniz 收敛，指出 $\\\\sum 1/\\\\sqrt{n}$ 发散，条件收敛（2分）",
+        "(2) Leibniz 收敛，$\\\\sum 1/n^2$ 收敛，绝对收敛（2分）",
+        "(3) 必要条件不满足，发散（1分）"
+      ],
+      "hints": ["绝对收敛：$\\\\sum|a_n|$收敛；条件收敛：$\\\\sum a_n$收敛但 $\\\\sum|a_n|$发散"],
+      "commonMistakes": ["(1) 验证 Leibniz 条件后只说\"收敛\"，忘记区分绝对/条件"]
+    },
+    {
+      "id": "series-ex-007",
+      "title": "Dirichlet 判别法（级数版）",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["general-term-series-tests"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "用 Dirichlet 判别法证明下列级数收敛：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{\\\\sin n}{n}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^n}{n+\\\\ln n}$。",
+      "solution": "(1) 令 $a_n=\\\\sin n$，$b_n=1/n$。\n$A_n=\\\\sum_{k=1}^n\\\\sin k=\\\\frac{\\\\sin\\\\frac{n+1}{2}\\\\cdot\\\\sin\\\\frac{n}{2}}{\\\\sin\\\\frac{1}{2}}$（等差角公式），$|A_n|\\\\leq\\\\frac{1}{|\\\\sin(1/2)|}\\\\approx 2.09$，有界。\n$b_n=1/n$ 单调递减趋零。由 Dirichlet 判别法，$\\\\sum\\\\frac{\\\\sin n}{n}$ 收敛。\n（注意：$\\\\sum|\\\\sin n|/n$ 发散，故此为条件收敛。）\n(2) 令 $a_n=(-1)^n$，$b_n=1/(n+\\\\ln n)$。\n$A_n=\\\\sum_{k=1}^n(-1)^k$，$|A_n|\\\\leq 1$，有界。$b_n$ 单调递减（$n+\\\\ln n$ 递增）且 $\\\\to 0$。Dirichlet 判别法得收敛。",
+      "gradingRubric": [
+        "(1) 说明 $A_n$ 有界（需用正弦和公式或简单上界估计），$1/n\\\\searrow 0$（2分）",
+        "(2) $|A_n|\\\\leq 1$（交错部分和有界），$b_n\\\\searrow 0$（2分）"
+      ],
+      "hints": ["(1) $|\\\\sum_{k=1}^n\\\\sin k|\\\\leq 1/|\\\\sin(1/2)|$（有界），无需精确值", "(2) 交错 $(-1)^k$ 的部分和在 $-1,0$ 之间振荡，有界"],
+      "commonMistakes": ["(1) 不知如何证明 $\\\\sin k$ 部分和有界，可用公式或直接估计 $|A_n|\\\\leq 2/|\\\\sin(1/2)|$"]
+    },
+    {
+      "id": "series-ex-008",
+      "title": "综合判别：选择合适方法",
+      "difficulty": "medium",
+      "type": "proof",
+      "knowledgePointIds": ["positive-term-series-tests", "general-term-series-tests"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "判断下列级数的收敛性，并指明使用的判别法：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{n!}{n^n}$；\n(2) $\\\\sum_{n=2}^{\\\\infty}\\\\dfrac{1}{n(\\\\ln n)^2}$；\n(3) $\\\\sum_{n=1}^{\\\\infty}(-1)^n\\\\dfrac{\\\\sqrt{n}}{n+1}$。",
+      "solution": "(1) 比值判别法：$\\\\frac{a_{n+1}}{a_n}=\\\\frac{(n+1)!}{(n+1)^{n+1}}\\\\cdot\\\\frac{n^n}{n!}=\\\\frac{n^n}{(n+1)^n}=\\\\left(\\\\frac{n}{n+1}\\\\right)^n=\\\\frac{1}{(1+1/n)^n}\\\\to\\\\frac{1}{e}<1$，**收敛**。\n(2) 积分判别法：$f(x)=\\\\frac{1}{x(\\\\ln x)^2}$，$\\\\int_2^{+\\\\infty}\\\\frac{\\\\mathrm{d}x}{x(\\\\ln x)^2}=\\\\left[-\\\\frac{1}{\\\\ln x}\\\\right]_2^{+\\\\infty}=\\\\frac{1}{\\\\ln 2}$（收敛），故 $\\\\sum_{n=2}^\\\\infty\\\\frac{1}{n(\\\\ln n)^2}$ **收敛**。\n(3) $a_n=\\\\sqrt{n}/(n+1)=n^{1/2}/(n+1)\\\\to 0$，且 $a_n$ 单调递减（验证 $a_{n+1}<a_n$：$\\\\frac{\\\\sqrt{n+1}}{n+2}<\\\\frac{\\\\sqrt{n}}{n+1}$ 当 $n$ 充分大）。Leibniz 判别法：**收敛**。\n$\\\\sum|a_n|=\\\\sum\\\\frac{\\\\sqrt{n}}{n+1}\\\\sim\\\\sum n^{-1/2}$ 发散，故**条件收敛**。",
+      "gradingRubric": [
+        "(1) 比值极限 $1/e<1$，收敛（2分）",
+        "(2) 积分判别，反常积分收敛，级数收敛（2分）",
+        "(3) Leibniz 收敛，判断为条件收敛（2分）"
+      ],
+      "hints": ["(1) $(1+1/n)^n\\\\to e$", "(2) $\\\\int\\\\frac{\\\\mathrm{d}x}{x(\\\\ln x)^2}$ 令 $u=\\\\ln x$"],
+      "commonMistakes": ["(2) 直接用比较判别而不知道如何处理 $(\\\\ln n)^2$，积分判别更自然"]
+    },
+    {
+      "id": "series-ex-009",
+      "title": "综合难题：级数收敛性分析",
+      "difficulty": "hard",
+      "type": "proof",
+      "knowledgePointIds": ["positive-term-series-tests", "general-term-series-tests", "series-concept"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第12章",
+      "problemStatement": "设 $\\\\{a_n\\\\}$ 是正项数列，$\\\\sum a_n$ 收敛。\n(1) 证明 $\\\\sum\\\\sqrt{a_n}/n$ 收敛；\n(2) 若还知道 $\\\\{a_n\\\\}$ 单调递减，证明 $na_n\\\\to 0$；\n(3) 举例说明：即使 $\\\\sum a_n$ 收敛，也不一定有 $na_n\\\\to 0$（去掉单调性条件）。",
+      "solution": "(1) 由均值不等式 $\\\\sqrt{a_n}/n\\\\leq\\\\frac{1}{2}(a_n+1/n^2)$（AM-GM：$\\\\sqrt{ab}\\\\leq(a+b)/2$，$a=a_n$，$b=1/n^2$）。\n$\\\\sum a_n$ 收敛，$\\\\sum 1/n^2$ 收敛，故 $\\\\sum(a_n+1/n^2)$ 收敛，比较得 $\\\\sum\\\\sqrt{a_n}/n$ 收敛。\n(2) 设 $S=\\\\sum_{n=1}^\\\\infty a_n$，$r_n=\\\\sum_{k=n+1}^\\\\infty a_k$（余项，$r_n\\\\to 0$）。\n$\\\\{a_n\\\\}$ 单调递减，故 $a_{n+1}\\\\leq a_{n+2}\\\\leq\\\\cdots\\\\leq a_n$，\n$r_n=\\\\sum_{k=n+1}^{2n}a_k+\\\\sum_{k=2n+1}^\\\\infty a_k\\\\geq\\\\sum_{k=n+1}^{2n}a_{2n}=na_{2n}$（每项 $\\\\geq a_{2n}$）。\n故 $na_{2n}\\\\leq r_n\\\\to 0$，即 $na_{2n}\\\\to 0$。类似得 $na_{2n+1}\\\\to 0$，故 $na_n\\\\to 0$。\n（更简洁：$na_n\\\\leq 2\\\\sum_{k=n/2}^n a_k\\\\to 0$，余项趋零。）\n(3) 令 $a_n=\\\\begin{cases}1/n & n\\\\text{ 是完全平方数}\\\\\\\\1/n^2 & \\\\text{否则}\\\\end{cases}$。\n$\\\\sum a_n\\\\leq\\\\sum 1/n^2+\\\\sum_{k=1}^\\\\infty 1/k^2$（完全平方数 $n=k^2$），收敛。\n但 $n=k^2$ 时，$na_n=k^2\\\\cdot\\\\frac{1}{k^2}=1\\\\not\\\\to 0$。",
+      "gradingRubric": [
+        "(1) AM-GM 给出上界，两个收敛级数之和收敛（3分）",
+        "(2) 用余项 $r_n\\\\geq na_{2n}$ 推出 $na_{2n}\\\\to 0$（3分）",
+        "(3) 构造合法反例（2分）"
+      ],
+      "hints": ["(1) $\\\\sqrt{a_n}/n=\\\\sqrt{a_n\\\\cdot 1/n^2}\\\\leq(a_n+1/n^2)/2$ (AM-GM)", "(2) 单调性：$a_{k}\\\\geq a_{2n}$ 对 $k\\\\in[n+1,2n]$，和 $\\\\geq na_{2n}$", "(3) 在某个稀疏子列上让 $na_n$ 不趋零，其余位置让级数收敛"],
+      "commonMistakes": ["(2) 忘记对奇偶分开讨论，或直接取 $k\\\\in[1,n]$ 范围不对"]
+    }
+  ]
+}

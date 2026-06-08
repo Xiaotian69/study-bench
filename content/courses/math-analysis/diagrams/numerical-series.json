@@ -1,0 +1,20 @@
+{
+  "chapterId": "ch-numerical-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "series-partial-sum-diagram",
+      "title": "级数收敛：部分和数列",
+      "description": "两幅对比图。左图（收敛级数）：$\\sum 1/n^2$ 的部分和 $S_n$ 随 $n$ 增大的折线图，$S_n$ 单调递增但被 $\\pi^2/6\\approx 1.645$ 水平渐近线束缚，最终趋近于此值；在图上标注 $S_5\\approx 1.46$，$S_{10}\\approx 1.55$，$S\\to\\pi^2/6$。右图（发散级数）：调和级数 $\\sum 1/n$ 的部分和图，$S_n$ 增长极为缓慢（$S_{1000}\\approx 7.5$）但无界，标注 $S_n\\geq \\ln n$ 增长趋势。两图并排直观展示收敛与发散的本质区别：部分和是否有上界。",
+      "mathContext": "$\\sum a_n$ 收敛 $\\Leftrightarrow$ $\\{S_n\\}$ 有极限 $\\Leftrightarrow$ $\\{S_n\\}$ 是 Cauchy 数列。调和级数发散的直觉：每加入一个新的 $1/n$，虽然很小，但积累足够多后仍能超过任意给定值（分组论证：$1/2+(1/3+1/4)+(1/5+\\cdots+1/8)+\\cdots$，每组 $>1/2$）。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["series-concept"],
+      "layout": "two-panel-horizontal",
+      "annotations": [
+        { "panel": "left", "label": "$S_n\\nearrow \\pi^2/6$（收敛）", "note": "部分和单调有界，趋向极限" },
+        { "panel": "right", "label": "$S_n\\sim\\ln n\\to+\\infty$（发散）", "note": "缓慢但无界增长" }
+      ]
+    }
+  ]
+}

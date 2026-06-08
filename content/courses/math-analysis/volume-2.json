@@ -13,11 +13,29 @@
       "id": "ch-numerical-series",
       "number": 12,
       "title": "数项级数",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/numerical-series.json",
+      "exercisesFile": "exercises/numerical-series.json",
+      "diagramFile": "diagrams/numerical-series.json",
       "sections": [
-        { "id": "sec-series-convergence", "title": "级数的收敛性", "status": "planned" },
-        { "id": "sec-positive-term-series", "title": "正项级数", "status": "planned" },
-        { "id": "sec-general-term-series", "title": "一般项级数", "status": "planned" }
+        {
+          "id": "sec-series-convergence",
+          "title": "级数的收敛性",
+          "status": "draft",
+          "knowledgePointIds": ["series-concept"]
+        },
+        {
+          "id": "sec-positive-term-series",
+          "title": "正项级数",
+          "status": "draft",
+          "knowledgePointIds": ["positive-term-series-tests"]
+        },
+        {
+          "id": "sec-general-term-series",
+          "title": "一般项级数",
+          "status": "draft",
+          "knowledgePointIds": ["general-term-series-tests"]
+        }
       ]
     },
     {
