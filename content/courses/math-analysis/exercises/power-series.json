@@ -1,0 +1,148 @@
+{
+  "chapterId": "ch-power-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "power-ex-001",
+      "title": "求幂级数的收敛半径和收敛域",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["power-series-convergence"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "求下列幂级数的收敛半径和收敛域：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{x^n}{n\\\\cdot 3^n}$；\n(2) $\\\\sum_{n=0}^{\\\\infty}\\\\dfrac{(2n)!}{(n!)^2}x^n$；\n(3) $\\\\sum_{n=1}^{\\\\infty}(-1)^n\\\\dfrac{x^{2n}}{n}$（含 $x$ 的偶次幂）。",
+      "solution": "(1) 比值法：$\\\\left|\\\\frac{a_{n+1}}{a_n}\\\\right|=\\\\frac{1}{(n+1)\\\\cdot 3^{n+1}}\\\\cdot n\\\\cdot 3^n=\\\\frac{n}{3(n+1)}\\\\to\\\\frac{1}{3}$，故 $R=1/(1/3)=3$。\n端点 $x=3$：$\\\\sum 1/n$ 发散；$x=-3$：$\\\\sum(-1)^n/n$ 收敛（Leibniz）。\n收敛域：$[-3,3)$。\n(2) Stirling 近似：$(2n)!/(n!)^2=\\\\binom{2n}{n}\\\\sim 4^n/\\\\sqrt{\\\\pi n}$，故 $\\\\limsup\\\\sqrt[n]{|a_n|}=4$，$R=1/4$。\n（或比值：$a_{n+1}/a_n=\\\\frac{(2n+2)!}{((n+1)!)^2}\\\\cdot\\\\frac{(n!)^2}{(2n)!}=\\\\frac{(2n+1)(2n+2)}{(n+1)^2}=\\\\frac{4n+2}{n+1}\\\\to 4$，$R=1/4$。）\n端点 $x=\\\\pm 1/4$：$|a_n(\\\\pm 1/4)^n|\\\\sim 1/\\\\sqrt{\\\\pi n}\\\\to 0$ 但 $\\\\sum 1/\\\\sqrt{n}$ 发散，故均发散。收敛域：$(-1/4,1/4)$。\n(3) 令 $t=x^2$，$\\\\sum(-1)^n t^n/n$ 收敛半径（关于 $t$）$=1$，收敛域 $t\\\\in(-1,1]$（$t=-1$ Leibniz 收敛，$t=1$ 调和发散）。\n回代 $t=x^2\\\\in(-1,1]$：$x^2<1\\\\Rightarrow x\\\\in(-1,1)$；$x^2=1\\\\Rightarrow x=\\\\pm 1$，$(-1)^n/n$ 收敛（Leibniz）。\n收敛域：$[-1,1]$（关于 $x$）。",
+      "gradingRubric": [
+        "(1) $R=3$，端点 $x=-3$ 收敛，$x=3$ 发散，域 $[-3,3)$（3分）",
+        "(2) 比值或 Stirling 得 $R=1/4$，端点均发散，域 $(-1/4,1/4)$（3分）",
+        "(3) 换元 $t=x^2$，回代确定域 $[-1,1]$（3分）"
+      ],
+      "hints": ["(2) 比值 $a_{n+1}/a_n=(2n+1)(2n+2)/(n+1)^2$", "(3) 先以 $t=x^2$ 为变量求收敛域，再回代"],
+      "commonMistakes": ["(3) 忘记端点 $x=\\\\pm 1$ 需单独代入验证"]
+    },
+    {
+      "id": "power-ex-002",
+      "title": "关于 $x-x_0$ 的幂级数",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["power-series-convergence"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "求幂级数 $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(x-2)^n}{n\\\\cdot 2^n}$ 的收敛域，并求其和函数 $f(x)$。",
+      "solution": "令 $t=x-2$，级数化为 $\\\\sum t^n/(n\\\\cdot 2^n)=\\\\sum(t/2)^n/n$。令 $u=t/2=（x-2)/2$，$\\\\sum u^n/n$ 收敛域为 $u\\\\in[-1,1)$，即 $(x-2)/2\\\\in[-1,1)$，即 $x\\\\in[0,4)$。\n**和函数**：由 $\\\\sum u^n/n=-\\\\ln(1-u)$（$u\\\\in[-1,1)$，从 $\\\\sum u^{n-1}=1/(1-u)$ 积分）：\n$f(x)=\\\\sum_{n=1}^\\\\infty\\\\frac{(x-2)^n}{n\\\\cdot 2^n}=-\\\\ln\\\\left(1-\\\\frac{x-2}{2}\\\\right)=-\\\\ln\\\\frac{4-x}{2}=\\\\ln\\\\frac{2}{4-x}$，$x\\\\in[0,4)$。",
+      "gradingRubric": [
+        "换元化简，收敛域 $[0,4)$（3分）",
+        "用 $\\\\ln(1-u)=-\\\\sum u^n/n$ 求和函数，最终 $\\\\ln(2/(4-x))$（3分）"
+      ],
+      "hints": ["令 $u=(x-2)/2$，化为标准形式 $\\\\sum u^n/n$", "$\\\\sum u^n/n=-\\\\ln(1-u)$（由 $1/(1-u)$ 积分）"],
+      "commonMistakes": ["直接换元时忘记更新收敛域（需用 $|u|<1$ 还原为 $x$）"]
+    },
+    {
+      "id": "power-ex-003",
+      "title": "逐项微分/积分求和函数",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["power-series-operations"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "求下列幂级数的和函数：\n(1) $\\\\sum_{n=1}^{\\\\infty}n x^{n-1}$，$|x|<1$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{x^n}{n(n+1)}$，$x\\\\in[-1,1]$；\n(3) $\\\\sum_{n=0}^{\\\\infty}\\\\dfrac{(-1)^n}{2n+1}$（令 $x=1$ 后用 Abel 连续性）。",
+      "solution": "(1) 注意到 $\\\\sum_{n=1}^\\\\infty nx^{n-1}=\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\sum_{n=1}^\\\\infty x^n=\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\frac{x}{1-x}=\\\\frac{1}{(1-x)^2}$，$|x|<1$。\n(2) 部分分式：$\\\\frac{1}{n(n+1)}=\\\\frac{1}{n}-\\\\frac{1}{n+1}$，故 $\\\\sum\\\\frac{x^n}{n(n+1)}=\\\\sum\\\\frac{x^n}{n}-\\\\sum\\\\frac{x^n}{n+1}$。\n$\\\\sum\\\\frac{x^n}{n}=-\\\\ln(1-x)$（$x\\\\in[-1,1)$）。$\\\\sum\\\\frac{x^n}{n+1}=\\\\frac{1}{x}\\\\sum\\\\frac{x^{n+1}}{n+1}=-\\\\frac{\\\\ln(1-x)}{x}$（$x\\\\neq 0$）。\n故 $f(x)=-\\\\ln(1-x)+\\\\frac{\\\\ln(1-x)}{x}=\\\\ln(1-x)\\\\cdot\\\\left(\\\\frac{1}{x}-1\\\\right)=\\\\frac{(1-x)\\\\ln(1-x)}{x}$（$x\\\\in[-1,0)\\\\cup(0,1)$）。\n$x=0$：$f(0)=\\\\sum\\\\frac{0}{n(n+1)}=0$（$0\\\\cdot\\\\text{级数}$）；$x=1$：$f(1)=\\\\sum\\\\frac{1}{n(n+1)}=1$（裂项）。\n（也可逐项两次积分：$f''(x)=\\\\sum x^{n-1}=1/(1-x)$，$f'$，$f$ 依次积分。）\n(3) $\\\\arctan x=\\\\sum_{n=0}^\\\\infty\\\\frac{(-1)^n x^{2n+1}}{2n+1}$，$x\\\\in[-1,1]$。\n令 $x=1$：$\\\\arctan 1=\\\\pi/4=\\\\sum_{n=0}^\\\\infty\\\\frac{(-1)^n}{2n+1}=1-\\\\frac{1}{3}+\\\\frac{1}{5}-\\\\cdots$（Leibniz 公式）。\n由 Abel 连续性（$\\\\arctan x$ 在 $x=1$ 处连续）可交换极限，成立。",
+      "gradingRubric": [
+        "(1) 识别为 $\\\\mathrm{d}/\\\\mathrm{d}x$ 求和，得 $1/(1-x)^2$（2分）",
+        "(2) 部分分式或两次积分，结果 $f(x)=(1-x)\\\\ln(1-x)/x$（3分）",
+        "(3) $\\\\arctan 1=\\\\pi/4$，引用 Abel 连续性（2分）"
+      ],
+      "hints": ["(1) $\\\\sum nx^{n-1}=(\\\\sum x^n)'$", "(3) $\\\\arctan x$ 展开来自对 $1/(1+x^2)=\\\\sum(-x^2)^n$ 积分"],
+      "commonMistakes": ["(2) $x=0$ 和 $x=1$ 时需特别处理，不能直接代入含 $1/x$ 的表达式"]
+    },
+    {
+      "id": "power-ex-004",
+      "title": "数项级数求和（幂级数方法）",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["power-series-operations"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "用幂级数方法求下列数项级数的和：\n(1) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{n}{2^n}$；\n(2) $\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{n^2}{3^n}$。",
+      "solution": "(1) 令 $f(x)=\\\\sum_{n=1}^\\\\infty nx^n=x\\\\sum_{n=1}^\\\\infty nx^{n-1}=x\\\\cdot\\\\frac{1}{(1-x)^2}=\\\\frac{x}{(1-x)^2}$（$|x|<1$）。\n代入 $x=1/2$：$\\\\sum_{n=1}^\\\\infty\\\\frac{n}{2^n}=\\\\frac{1/2}{(1/2)^2}=\\\\frac{1/2}{1/4}=2$。\n(2) 令 $g(x)=\\\\sum_{n=1}^\\\\infty n^2 x^n$。利用 $n^2=n(n-1)+n$：\n$g(x)=\\\\sum n(n-1)x^n+\\\\sum nx^n=x^2\\\\sum n(n-1)x^{n-2}+f(x)=x^2\\\\left(\\\\frac{1}{1-x}\\\\right)''+f(x)$。\n$\\\\left(\\\\frac{1}{1-x}\\\\right)''=\\\\frac{2}{(1-x)^3}$，故 $g(x)=\\\\frac{2x^2}{(1-x)^3}+\\\\frac{x}{(1-x)^2}=\\\\frac{x(x+1)}{(1-x)^3}$。\n代入 $x=1/3$：$g(1/3)=\\\\frac{(1/3)(4/3)}{(2/3)^3}=\\\\frac{4/9}{8/27}=\\\\frac{4}{9}\\\\cdot\\\\frac{27}{8}=\\\\frac{3}{2}$。",
+      "gradingRubric": [
+        "(1) 幂级数 $\\\\sum nx^n=x/(1-x)^2$，代 $x=1/2$，得 $2$（3分）",
+        "(2) 用 $n^2=n(n-1)+n$ 分解，得 $g(x)=x(x+1)/(1-x)^3$，代 $x=1/3$，得 $3/2$（4分）"
+      ],
+      "hints": ["构造幂级数 $\\\\sum n x^n$，求和后代入特殊值", "(2) $n(n-1)x^n=x^2(x^n)''$，利用 $\\\\sum x^n$ 的二阶导"],
+      "commonMistakes": ["代值前必须验证在收敛域内：$x=1/3\\in(-1,1)$，$x=1/2\\in(-1,1)$"]
+    },
+    {
+      "id": "power-ex-005",
+      "title": "基本 Maclaurin 展开",
+      "difficulty": "basic",
+      "type": "calculation",
+      "knowledgePointIds": ["taylor-expansion"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "写出下列函数在 $x=0$ 处的 Maclaurin 展开（给出收敛域）：\n(1) $f(x)=e^{-x^2}$；\n(2) $f(x)=\\\\sin^2 x$；\n(3) $f(x)=\\\\dfrac{1}{1-x^2}$；\n(4) $f(x)=\\\\ln\\\\dfrac{1+x}{1-x}$。",
+      "solution": "(1) 将 $e^t=\\\\sum t^n/n!$ 中 $t\\\\to -x^2$：$e^{-x^2}=\\\\sum_{n=0}^\\\\infty\\\\frac{(-1)^n x^{2n}}{n!}$，$x\\\\in(-\\\\infty,+\\\\infty)$。\n(2) $\\\\sin^2 x=\\\\frac{1-\\\\cos 2x}{2}$，将 $\\\\cos 2x=\\\\sum\\\\frac{(-1)^n(2x)^{2n}}{(2n)!}$ 代入：\n$\\\\sin^2 x=\\\\frac{1}{2}\\\\left(1-\\\\sum_{n=0}^\\\\infty\\\\frac{(-1)^n(2x)^{2n}}{(2n)!}\\\\right)=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}2^{2n-1}x^{2n}}{(2n)!}$，$x\\\\in(-\\\\infty,+\\\\infty)$。\n(3) $\\\\frac{1}{1-x^2}=\\\\frac{1}{1-t}\\\\big|_{t=x^2}=\\\\sum_{n=0}^\\\\infty x^{2n}$，$|x^2|<1$，即 $x\\\\in(-1,1)$。\n(4) $\\\\ln\\\\frac{1+x}{1-x}=\\\\ln(1+x)-\\\\ln(1-x)$。\n$\\\\ln(1+x)=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}x^n}{n}$（$x\\\\in(-1,1]$），$\\\\ln(1-x)=-\\\\sum_{n=1}^\\\\infty\\\\frac{x^n}{n}$（$x\\\\in[-1,1)$）。\n$\\\\ln\\\\frac{1+x}{1-x}=2\\\\sum_{n=0}^\\\\infty\\\\frac{x^{2n+1}}{2n+1}=2\\\\left(x+\\\\frac{x^3}{3}+\\\\frac{x^5}{5}+\\\\cdots\\\\right)$，$x\\\\in(-1,1)$。",
+      "gradingRubric": [
+        "(1) 代换，写出 $\\\\sum(-1)^n x^{2n}/n!$（1分）",
+        "(2) 用倍角公式+代换，正确展开（2分）",
+        "(3) 等比级数代换（1分）",
+        "(4) 差的展开，奇次项合并（2分）"
+      ],
+      "hints": ["所有题都用间接法（代换/差）", "(4) 奇次幂来自两个级数相减"],
+      "commonMistakes": ["(2) 忘记 $\\\\sin^2 x=(1-\\\\cos 2x)/2$，直接逐项平方是错的"]
+    },
+    {
+      "id": "power-ex-006",
+      "title": "间接展开法",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["taylor-expansion"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "用间接法展开：\n(1) $f(x)=\\\\arcsin x$（提示：从 $(\\\\arcsin x)'=1/\\\\sqrt{1-x^2}$ 出发）；\n(2) $f(x)=\\\\dfrac{x}{(1+x)^2}$（用 $1/(1+x)$ 的展开求导）。",
+      "solution": "(1) $(\\\\arcsin x)'=\\\\frac{1}{\\\\sqrt{1-x^2}}=(1-x^2)^{-1/2}$。用二项展开 $(1+t)^{-1/2}=\\\\sum_{n=0}^\\\\infty\\\\binom{-1/2}{n}t^n$，$t=-x^2$：\n$\\\\frac{1}{\\\\sqrt{1-x^2}}=\\\\sum_{n=0}^\\\\infty\\\\binom{-1/2}{n}(-1)^n x^{2n}=\\\\sum_{n=0}^\\\\infty\\\\frac{(2n)!}{4^n(n!)^2}x^{2n}=\\\\sum_{n=0}^\\\\infty\\\\frac{(2n-1)!!}{(2n)!!}x^{2n}$（$|x|<1$）。\n逐项积分（$\\\\arcsin 0=0$）：$\\\\arcsin x=\\\\sum_{n=0}^\\\\infty\\\\frac{(2n-1)!!}{(2n)!!}\\\\cdot\\\\frac{x^{2n+1}}{2n+1}=x+\\\\frac{x^3}{6}+\\\\frac{3x^5}{40}+\\\\cdots$（$|x|\\\\leq 1$）。\n(2) 由 $\\\\frac{1}{1+x}=\\\\sum_{n=0}^\\\\infty(-1)^n x^n$，微分得 $-\\\\frac{1}{(1+x)^2}=\\\\sum_{n=1}^\\\\infty(-1)^n n x^{n-1}$，\n故 $\\\\frac{1}{(1+x)^2}=\\\\sum_{n=1}^\\\\infty(-1)^{n-1}n x^{n-1}=\\\\sum_{n=0}^\\\\infty(-1)^n(n+1)x^n$，\n$\\\\frac{x}{(1+x)^2}=\\\\sum_{n=0}^\\\\infty(-1)^n(n+1)x^{n+1}=\\\\sum_{n=1}^\\\\infty(-1)^{n-1}n x^n$，$|x|<1$。",
+      "gradingRubric": [
+        "(1) 对 $(1-x^2)^{-1/2}$ 展开，积分，收敛域 $|x|\\\\leq 1$（3分）",
+        "(2) 对 $1/(1+x)$ 微分，再乘 $x$，正确化简（3分）"
+      ],
+      "hints": ["(1) $\\\\binom{-1/2}{n}(-1)^n=\\\\frac{(2n-1)!!}{(2n)!!}$（可验证）", "(2) 先微分 $1/(1+x)$ 得 $-1/(1+x)^2$"],
+      "commonMistakes": ["(1) 积分时忘记初始条件 $\\\\arcsin 0=0$"]
+    },
+    {
+      "id": "power-ex-007",
+      "title": "Taylor 展开用于极限计算",
+      "difficulty": "medium",
+      "type": "calculation",
+      "knowledgePointIds": ["taylor-expansion"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "用 Taylor 展开计算下列极限：\n(1) $\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\cos x-e^{-x^2/2}}{x^4}$；\n(2) $\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\arcsin x-\\\\sin x}{x^3}$。",
+      "solution": "(1) $\\\\cos x=1-\\\\frac{x^2}{2}+\\\\frac{x^4}{24}+O(x^6)$，$e^{-x^2/2}=1-\\\\frac{x^2}{2}+\\\\frac{x^4}{8}+O(x^6)$（代入 $t=-x^2/2$ 到 $e^t=1+t+t^2/2+\\\\cdots$）。\n$\\\\cos x-e^{-x^2/2}=\\\\frac{x^4}{24}-\\\\frac{x^4}{8}+O(x^6)=x^4\\\\left(\\\\frac{1}{24}-\\\\frac{1}{8}\\\\right)+O(x^6)=-\\\\frac{x^4}{12}+O(x^6)$。\n故极限 $=-\\\\dfrac{1}{12}$。\n(2) $\\\\arcsin x=x+\\\\frac{x^3}{6}+O(x^5)$，$\\\\sin x=x-\\\\frac{x^3}{6}+O(x^5)$。\n$\\\\arcsin x-\\\\sin x=\\\\frac{x^3}{6}+\\\\frac{x^3}{6}+O(x^5)=\\\\frac{x^3}{3}+O(x^5)$。\n故极限 $=\\\\dfrac{1}{3}$。",
+      "gradingRubric": [
+        "(1) 展开到 $x^4$ 项，正确相减得 $-x^4/12$，极限 $-1/12$（3分）",
+        "(2) 展开到 $x^3$ 项，相减得 $x^3/3$，极限 $1/3$（3分）"
+      ],
+      "hints": ["展开到与分母同阶的项，更高次项用 $O$ 记号", "(2) $\\\\arcsin x$ 首项 $x$，三阶项 $x^3/6$"],
+      "commonMistakes": ["展开阶数不够高，导致分子为零再去约分（需展开到非零的最低次幂）"]
+    },
+    {
+      "id": "power-ex-008",
+      "title": "综合难题：幂级数与反常积分",
+      "difficulty": "hard",
+      "type": "proof",
+      "knowledgePointIds": ["taylor-expansion", "power-series-operations"],
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第14章",
+      "problemStatement": "(1) 证明 $\\\\int_0^1\\\\dfrac{\\\\ln(1+x)}{x}\\,\\\\mathrm{d}x=\\\\sum_{n=1}^{\\\\infty}\\\\dfrac{(-1)^{n-1}}{n^2}$（用逐项积分）；\n(2) 利用 (1) 的结论，求 $\\\\sum_{n=1}^\\\\infty\\\\dfrac{(-1)^{n-1}}{n^2}$ 的值（提示：此为 $\\\\eta(2)=\\\\pi^2/12$，Dirichlet eta 函数）；\n(3) 由此推出 $\\\\sum_{n=1}^\\\\infty\\\\dfrac{1}{n^2}=\\\\dfrac{\\\\pi^2}{6}$（Basel 问题）。",
+      "solution": "(1) $\\\\ln(1+x)=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}x^n}{n}$（$x\\\\in(-1,1]$），故 $\\\\frac{\\\\ln(1+x)}{x}=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}x^{n-1}}{n}$（$x\\\\in(0,1]$，$x=0$ 极限为 $1$）。\n$x\\\\in[0,1]$ 上一致收敛（Weierstrass M 或 Abel），逐项积分：\n$\\\\int_0^1\\\\frac{\\\\ln(1+x)}{x}\\,\\\\mathrm{d}x=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}}{n}\\\\int_0^1 x^{n-1}\\,\\\\mathrm{d}x=\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}}{n^2}$。\n(2) $\\\\int_0^1\\\\frac{\\\\ln(1+x)}{x}\\,\\\\mathrm{d}x$（分部或直接查 Clausen 积分）$=\\\\frac{\\\\pi^2}{12}$（利用 $\\\\sum(-1)^{n-1}/n^2=\\\\pi^2/12$ 是已知结论，可验证：$\\\\sum(-1)^{n-1}/n^2=\\\\sum 1/(2k-1)^2-\\\\sum 1/(2k)^2=\\\\frac{\\\\pi^2}{8}-\\\\frac{1}{4}\\\\cdot\\\\frac{\\\\pi^2}{6}=\\\\frac{\\\\pi^2}{12}$）。\n因此 $\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}}{n^2}=\\\\dfrac{\\\\pi^2}{12}$。\n(3) 令 $S=\\\\sum_{n=1}^\\\\infty\\\\frac{1}{n^2}$，$A=\\\\sum\\\\frac{(-1)^{n-1}}{n^2}=\\\\frac{1}{1^2}-\\\\frac{1}{2^2}+\\\\frac{1}{3^2}-\\\\cdots$。\n$S-A=2\\\\sum_{k=1}^\\\\infty\\\\frac{1}{(2k)^2}=\\\\frac{2}{4}S=\\\\frac{S}{2}$，故 $\\\\frac{S}{2}=A=\\\\frac{\\\\pi^2}{12}$，即 $S=\\\\dfrac{\\\\pi^2}{6}$。",
+      "gradingRubric": [
+        "(1) 展开 $\\\\ln(1+x)/x$，验证 $[0,1]$ 上一致收敛（或引用已知结论），逐项积分（3分）",
+        "(2) 积分值 $\\\\pi^2/12$（1分，可接受引用或不证）",
+        "(3) 利用 $S-A=S/2$，推出 $S=\\\\pi^2/6$（3分）"
+      ],
+      "hints": ["(3) 注意 $\\\\sum 1/n^2$ 与 $\\\\sum(-1)^{n-1}/n^2$ 的关系：后者等于偶数项取反后的差", "$(S-A)/2=\\\\sum 1/(2k)^2=S/4$，故 $S-A=S/2$"],
+      "commonMistakes": ["(3) 关系式：$A=\\\\sum(-1)^{n-1}/n^2=S-2\\\\sum 1/(2k)^2=S-S/2=S/2$，故 $A=S/2$，$S=2A=\\\\pi^2/6$"]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "chapterId": "ch-power-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "power-series-convergence",
+      "title": "幂级数的收敛性",
+      "chapterId": "ch-power-series",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握 Abel 定理：收敛点附近的一致收敛性",
+        "掌握收敛半径的 Cauchy-Hadamard 公式及比值法",
+        "能确定幂级数的收敛域（含端点的逐点讨论）"
+      ],
+      "coreExplanation": "**幂级数**：$\\\\sum_{n=0}^{\\\\infty}a_n x^n$（或更一般地 $\\\\sum a_n(x-x_0)^n$）。\n**Abel 定理**：若 $\\\\sum a_n x^n$ 在 $x=x_1\\\\neq 0$ 处收敛，则对任意 $|x|<|x_1|$，级数绝对收敛；对任意 $|x|\\\\leq r<|x_1|$，级数一致（绝对）收敛。\n**收敛半径**：$\\\\exists R\\\\in[0,+\\\\infty]$ 使级数在 $(-R,R)$ 内绝对收敛，在 $|x|>R$ 发散。$R$ 由 **Cauchy-Hadamard 公式**给出：\n$$R=\\\\frac{1}{\\\\limsup_{n\\\\to\\\\infty}\\\\sqrt[n]{|a_n|}}.$$\n若 $\\\\lim_{n\\\\to\\\\infty}|a_{n+1}/a_n|=\\\\rho$（比值法），则 $R=1/\\\\rho$（$\\\\rho=0$ 时 $R=+\\\\infty$，$\\\\rho=+\\\\infty$ 时 $R=0$）。\n**收敛域**：开区间 $(-R,R)$ 加上端点 $\\\\pm R$ 的单独讨论（用级数判别法逐一检验）。四种情况：$(-R,R)$，$[-R,R)$，$(-R,R]$，$[-R,R]$。\n**典型例子**：\n- $\\\\sum x^n/n!$：$R=+\\\\infty$，收敛域 $(-\\\\infty,+\\\\infty)$\n- $\\\\sum x^n$：$R=1$，端点 $\\\\pm 1$ 均发散，收敛域 $(-1,1)$\n- $\\\\sum x^n/n$：$R=1$，$x=1$ 发散（调和），$x=-1$ 收敛（交错），收敛域 $[-1,1)$\n- $\\\\sum x^n/n^2$：$R=1$，端点均收敛（$p=2>1$），收敛域 $[-1,1]$",
+      "textbookRefs": ["数学分析（第5版）下册 §14.1"],
+      "keyDefinitions": [
+        {
+          "term": "收敛半径",
+          "definition": "$R=1/\\\\limsup\\\\sqrt[n]{|a_n|}$，幂级数在 $(-R,R)$ 内绝对收敛，$|x|>R$ 时发散"
+        },
+        {
+          "term": "收敛域",
+          "definition": "$(-R,R)$ 加上端点 $\\\\pm R$ 的单独讨论结果（可以是开/半开/闭区间）"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Abel 定理",
+          "statement": "幂级数在收敛点 $x_1$ 处收敛 $\\\\Rightarrow$ 对 $|x|\\\\leq r<|x_1|$ 一致绝对收敛",
+          "significance": "保证幂级数在收敛开区间内的任意闭子区间上一致收敛，从而可逐项积分微分"
+        },
+        {
+          "name": "Cauchy-Hadamard 公式",
+          "statement": "$R=1/\\\\limsup_{n\\\\to\\\\infty}\\\\sqrt[n]{|a_n|}$",
+          "significance": "收敛半径的精确计算公式，适用于所有系数序列"
+        }
+      ],
+      "proofIdeas": [
+        "**Abel 定理**：设 $\\\\sum a_n x_1^n$ 收敛，则 $|a_n x_1^n|$ 有界（$\\\\leq M$）。$|a_n x^n|=|a_n x_1^n|\\\\cdot|x/x_1|^n\\\\leq M|x/x_1|^n$，$|x/x_1|<1$ 时为等比级数的 $M$ 倍，由 Weierstrass M-判别法得一致绝对收敛。"
+      ],
+      "socraticQuestions": [
+        "幂级数在端点 $x=R$ 处可能收敛也可能发散，举一例各类情形。",
+        "知道 $\\\\sum a_n x^n$ 在 $x=2$ 处收敛，在 $x=-3$ 处发散，能确定收敛半径的范围吗？",
+        "若 $a_n=0$ 对所有偶数 $n$，Cauchy-Hadamard 公式如何处理？（$\\\\limsup$ 的计算）"
+      ],
+      "commonMistakes": [
+        "用比值法时要求 $\\\\lim|a_{n+1}/a_n|$ 存在，若极限不存在需用 Cauchy-Hadamard",
+        "收敛域是**闭**区间还是**开**区间，必须单独检验端点，不能忽略",
+        "幂级数在 $x=R$ 处可能只条件收敛而非绝对收敛"
+      ],
+      "exerciseIds": ["power-ex-001", "power-ex-002"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用比值法或 Cauchy-Hadamard 公式求收敛半径",
+        "能确定幂级数的完整收敛域（含端点讨论）"
+      ]
+    },
+    {
+      "id": "power-series-operations",
+      "title": "幂级数的运算与性质",
+      "chapterId": "ch-power-series",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握幂级数在收敛域内的连续性",
+        "掌握幂级数的逐项积分和逐项微分（不改变收敛半径）",
+        "了解幂级数的代数运算（加减、Cauchy 乘积）"
+      ],
+      "coreExplanation": "**连续性**：$f(x)=\\\\sum_{n=0}^\\\\infty a_n x^n$ 在收敛域内连续（由 Abel 定理，任意闭子区间上一致收敛）。\n**逐项微分**：$f'(x)=\\\\sum_{n=1}^\\\\infty n a_n x^{n-1}$，收敛半径不变（端点可能有变化）。\n$\\\\left(\\\\sum a_n x^n\\\\right)'=\\\\sum n a_n x^{n-1}$（对 $|x|<R$）。\n**逐项积分**：$\\\\int_0^x f(t)\\,\\\\mathrm{d}t=\\\\sum_{n=0}^\\\\infty\\\\frac{a_n}{n+1}x^{n+1}$，收敛半径不变。\n**关键推论**：幂级数在收敛域内有无穷阶导数，且各阶导数仍是幂级数（可多次微分）。\n**Abel 连续性定理**：若 $\\\\sum a_n R^n$ 收敛（$R$ 为收敛半径），则 $f(x)\\\\to f(R)$ 当 $x\\\\to R^-$（Abel 求和，可用于计算某些级数的和）。\n例：$\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}}{n}=\\\\ln 2$（由 $f(x)=\\\\ln(1+x)=\\\\sum(-1)^{n-1}x^n/n$，令 $x=1$，Abel 连续性保证 $f(1^-)=f(1)$）。",
+      "textbookRefs": ["数学分析（第5版）下册 §14.1"],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "幂级数逐项微分定理",
+          "statement": "$\\\\sum a_n x^n$ 在 $|x|<R$ 内可逐项微分，导级数收敛半径仍为 $R$",
+          "significance": "幂级数是\"最光滑\"的函数类，任意次可微，各次微分均可交换"
+        },
+        {
+          "name": "Abel 连续性定理",
+          "statement": "若 $\\\\sum a_n R^n$ 收敛，则 $\\\\lim_{x\\\\to R^-}\\\\sum a_n x^n=\\\\sum a_n R^n$",
+          "significance": "利用已知幂级数求某些数项级数的和"
+        }
+      ],
+      "proofIdeas": [
+        "**逐项微分收敛半径不变**：$na_n x^{n-1}$ 的 Cauchy-Hadamard：$\\\\limsup\\\\sqrt[n]{n|a_n|}=\\\\limsup\\\\sqrt[n]{|a_n|}$（因 $n^{1/n}\\\\to 1$），故收敛半径相同。"
+      ],
+      "socraticQuestions": [
+        "$f(x)=\\\\sum x^n/n$，逐项微分得 $f'(x)=\\\\sum x^{n-1}=1/(1-x)$（$|x|<1$）。反向积分能还原 $f$？",
+        "幂级数无穷次可微，但一个无穷次可微函数不一定等于其 Taylor 级数（如 $e^{-1/x^2}$）。差别在哪？",
+        "Abel 连续性定理说 $\\\\sum(-1)^{n-1}/n=\\\\ln 2$，但该级数只条件收敛，为何仍等于 $\\\\ln 2$？"
+      ],
+      "commonMistakes": [
+        "微分后收敛半径虽不变，但端点收敛性可能改变（如 $\\\\sum x^n/n$ 端点 $x=-1$ 微分后 $\\\\sum x^{n-1}$ 在 $x=-1$ 发散）",
+        "逐项积分/微分只在 $|x|<R$ 内，不能在发散点使用"
+      ],
+      "exerciseIds": ["power-ex-003", "power-ex-004"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能对幂级数逐项微分/积分求和函数",
+        "能用 Abel 连续性定理计算端点处的级数值"
+      ]
+    },
+    {
+      "id": "taylor-expansion",
+      "title": "函数的幂级数展开",
+      "chapterId": "ch-power-series",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握 Taylor 级数的定义与展开公式",
+        "熟记五个基本函数的 Maclaurin 展开",
+        "能用直接展开法（含余项估计）和间接法（代换、积分、微分）展开函数"
+      ],
+      "coreExplanation": "**Taylor 级数**：若 $f$ 在 $x_0$ 附近有各阶导数，则\n$$f(x)=\\\\sum_{n=0}^{\\\\infty}\\\\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$$\n成立的充要条件是余项 $R_n(x)=\\\\frac{f^{(n+1)}(\\\\xi)}{(n+1)!}(x-x_0)^{n+1}\\\\to 0$（$n\\\\to\\\\infty$）。\n**五个基本 Maclaurin 展开**（$x_0=0$）：\n$$e^x=\\\\sum_{n=0}^{\\\\infty}\\\\frac{x^n}{n!}=1+x+\\\\frac{x^2}{2!}+\\\\cdots \\\\quad x\\\\in(-\\\\infty,+\\\\infty)$$\n$$\\\\sin x=\\\\sum_{n=0}^{\\\\infty}\\\\frac{(-1)^n x^{2n+1}}{(2n+1)!}=x-\\\\frac{x^3}{3!}+\\\\frac{x^5}{5!}-\\\\cdots \\\\quad x\\\\in(-\\\\infty,+\\\\infty)$$\n$$\\\\cos x=\\\\sum_{n=0}^{\\\\infty}\\\\frac{(-1)^n x^{2n}}{(2n)!}=1-\\\\frac{x^2}{2!}+\\\\frac{x^4}{4!}-\\\\cdots \\\\quad x\\\\in(-\\\\infty,+\\\\infty)$$\n$$\\\\ln(1+x)=\\\\sum_{n=1}^{\\\\infty}\\\\frac{(-1)^{n-1}x^n}{n}=x-\\\\frac{x^2}{2}+\\\\frac{x^3}{3}-\\\\cdots \\\\quad x\\\\in(-1,1]$$\n$$(1+x)^\\\\alpha=\\\\sum_{n=0}^{\\\\infty}\\\\binom{\\\\alpha}{n}x^n \\\\quad x\\\\in(-1,1)\\\\text{（$\\\\alpha$ 为实数，}\\\\binom{\\\\alpha}{n}=\\\\frac{\\\\alpha(\\\\alpha-1)\\\\cdots(\\\\alpha-n+1)}{n!}\\\\text{）}$$\n**间接展开法**：通过对已知展开式作代换（$x\\\\to -x^2$等）、积分、微分，避免重新算余项。\n例：$\\\\frac{1}{1+x^2}=\\\\sum(-1)^n x^{2n}$，积分得 $\\\\arctan x=\\\\sum\\\\frac{(-1)^n x^{2n+1}}{2n+1}$（$x\\\\in[-1,1]$）。",
+      "textbookRefs": ["数学分析（第5版）下册 §14.2"],
+      "keyDefinitions": [
+        {
+          "term": "Maclaurin 级数",
+          "definition": "$x_0=0$ 时的 Taylor 级数：$\\\\sum_{n=0}^\\\\infty\\\\frac{f^{(n)}(0)}{n!}x^n$"
+        },
+        {
+          "term": "广义二项式系数",
+          "definition": "$\\\\binom{\\\\alpha}{n}=\\\\frac{\\\\alpha(\\\\alpha-1)\\\\cdots(\\\\alpha-n+1)}{n!}$，$\\\\alpha$ 为实数，$\\\\alpha=m$（正整数）时退化为普通二项式"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Taylor 展开充要条件",
+          "statement": "$f(x)=\\\\sum\\\\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n$ $\\\\Leftrightarrow$ 余项 $R_n(x)\\\\to 0$（$n\\\\to\\\\infty$）",
+          "significance": "区分 Taylor 级数存在（有各阶导数）与等于函数（余项趋零）"
+        }
+      ],
+      "proofIdeas": [
+        "**$e^x$ 余项趋零**：$|R_n(x)|=\\\\left|\\\\frac{e^\\\\xi}{(n+1)!}x^{n+1}\\\\right|\\\\leq\\\\frac{e^{|x|}|x|^{n+1}}{(n+1)!}\\\\to 0$（因 $\\\\sum x^n/n!$ 收敛，通项趋零）。"
+      ],
+      "socraticQuestions": [
+        "函数有各阶导数（无穷次可微）是 Taylor 展开成立的充分条件吗？$f(x)=e^{-1/x^2}$（$x\\\\neq 0$），$f(0)=0$ 反例说明什么？",
+        "如何用 $e^x$ 的展开推出 $e=\\\\sum_{n=0}^\\\\infty 1/n!$（令 $x=1$）？为何成立？",
+        "$(1+x)^{1/2}$ 的 Maclaurin 展开前三项是什么？可用于近似 $\\\\sqrt{1.1}$，误差多大？"
+      ],
+      "commonMistakes": [
+        "直接写出 Taylor 级数（系数存在）后不验证余项趋零——两者不等价",
+        "$(1+x)^\\\\alpha$ 展开的端点收敛性复杂（与 $\\\\alpha$ 有关），避免在端点随意使用",
+        "间接法代换时忘记同步更新收敛域"
+      ],
+      "exerciseIds": ["power-ex-005", "power-ex-006", "power-ex-007", "power-ex-008"],
+      "diagramIds": ["taylor-convergence-diagram"],
+      "masteryCriteria": [
+        "能熟练写出五个基本函数的 Maclaurin 展开",
+        "能用间接法（代换/积分/微分）展开 $\\\\arctan x$，$\\\\ln(1-x)$ 等函数"
+      ]
+    }
+  ]
+}

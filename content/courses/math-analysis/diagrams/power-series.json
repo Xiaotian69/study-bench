@@ -1,0 +1,20 @@
+{
+  "chapterId": "ch-power-series",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "taylor-convergence-diagram",
+      "title": "Taylor 多项式逼近 $\\sin x$",
+      "description": "展示 $\\sin x$ 被 Taylor 多项式 $P_1,P_3,P_5,P_7$ 逐步逼近的过程。四条曲线叠加在 $\\sin x$（粗线）上：$P_1(x)=x$（在 $[-1,1]$ 内粗略逼近）；$P_3=x-x^3/6$（逼近范围扩大到 $[-2,2]$）；$P_5$（到 $[-3,3]$）；$P_7$（到 $[-4,4]$）。图示范围 $x\\in[-2\\pi,2\\pi]$，高亮显示每个多项式\"有效逼近\"区间（误差 $<0.1$）。右侧注明收敛半径 $R=+\\infty$，说明逼近区间随阶数增大无限扩展。",
+      "mathContext": "Taylor 多项式 $P_n(x)=\\sum_{k=0}^n\\frac{f^{(k)}(0)}{k!}x^k$ 是 $f$ 在 $x=0$ 附近的最优多项式逼近（同次多项式中误差最小）。$\\sin x$ 的收敛半径 $R=+\\infty$ 意味着在整个实轴上，随着阶数增加，逼近区间无限扩大。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["taylor-expansion"],
+      "layout": "single",
+      "annotations": [
+        { "panel": "main", "label": "$P_1=x$（一阶逼近）", "note": "仅在原点附近有效" },
+        { "panel": "main", "label": "$P_7=x-x^3/6+x^5/120-x^7/5040$", "note": "七阶已在 $[-4,4]$ 内高精度近似" }
+      ]
+    }
+  ]
+}

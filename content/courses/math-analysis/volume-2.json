@@ -65,10 +65,23 @@
       "id": "ch-power-series",
       "number": 14,
       "title": "幂级数",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/power-series.json",
+      "exercisesFile": "exercises/power-series.json",
+      "diagramFile": "diagrams/power-series.json",
       "sections": [
-        { "id": "sec-power-series", "title": "幂级数", "status": "planned" },
-        { "id": "sec-taylor-expansion", "title": "函数的幂级数展开", "status": "planned" }
+        {
+          "id": "sec-power-series",
+          "title": "幂级数",
+          "status": "draft",
+          "knowledgePointIds": ["power-series-convergence", "power-series-operations"]
+        },
+        {
+          "id": "sec-taylor-expansion",
+          "title": "函数的幂级数展开",
+          "status": "draft",
+          "knowledgePointIds": ["taylor-expansion"]
+        }
       ]
     },
     {
