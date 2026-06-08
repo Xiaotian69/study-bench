@@ -1,0 +1,92 @@
+{
+  "chapterId": "ch-line-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "knowledgePoints": [
+    {
+      "id": "first-type-line-integral",
+      "title": "第一型曲线积分（对弧长的积分）",
+      "chapterId": "ch-line-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握第一型曲线积分的定义和物理意义（线密度质量）",
+        "能将第一型曲线积分化为普通定积分计算",
+        "理解第一型曲线积分与路径方向无关"
+      ],
+      "coreExplanation": "**定义**：$\\\\int_L f(x,y)\\,\\\\mathrm{d}s=\\\\lim_{\\\\lambda\\\\to 0}\\\\sum_i f(\\\\xi_i,\\\\eta_i)\\\\Delta s_i$（$\\\\Delta s_i$ 为弧长元素，$\\\\lambda$ 为最大弧长）。物理意义：密度为 $f(x,y)$ 的曲线的总质量。\n**计算方法（参数化）**：设曲线 $L$ 的参数方程 $x=x(t),y=y(t)$（$t\\\\in[\\\\alpha,\\\\beta]$），弧长元素 $\\\\mathrm{d}s=\\\\sqrt{x'^2(t)+y'^2(t)}\\,\\\\mathrm{d}t$，故\n$$\\\\int_L f(x,y)\\,\\\\mathrm{d}s=\\\\int_\\\\alpha^\\\\beta f(x(t),y(t))\\\\sqrt{x'^2(t)+y'^2(t)}\\,\\\\mathrm{d}t.$$\n**各种曲线形式**：\n- 直角坐标 $y=g(x)$（$x\\\\in[a,b]$）：$\\\\mathrm{d}s=\\\\sqrt{1+g'^2(x)}\\,\\\\mathrm{d}x$。\n- 极坐标 $r=r(\\\\theta)$（$\\\\theta\\\\in[\\\\alpha,\\\\beta]$）：$\\\\mathrm{d}s=\\\\sqrt{r^2+r'^2}\\,\\\\mathrm{d}\\\\theta$。\n- 空间曲线 $\\\\boldsymbol{r}(t)=(x,y,z)$：$\\\\mathrm{d}s=\\\\sqrt{x'^2+y'^2+z'^2}\\,\\\\mathrm{d}t$。\n**性质**：与路径方向无关（$\\\\int_L=\\\\int_{-L}$，其中 $-L$ 为反向）；线性性；可加性。",
+      "textbookRefs": ["数学分析（第5版）下册 §20.1"],
+      "keyDefinitions": [
+        {
+          "term": "第一型曲线积分",
+          "definition": "$\\\\int_L f\\,\\\\mathrm{d}s$，被积函数为标量，积分变量为弧长；与曲线方向无关"
+        }
+      ],
+      "keyTheorems": [],
+      "proofIdeas": [],
+      "socraticQuestions": [
+        "第一型曲线积分 $\\\\int_L 1\\,\\\\mathrm{d}s$ 等于什么？（曲线 $L$ 的弧长。）",
+        "若曲线 $L$ 有对称性（如关于 $x$ 轴对称），且 $f$ 是关于 $y$ 的奇函数，$\\\\int_L f\\,\\\\mathrm{d}s=?$（等于零。）",
+        "第一型和第二型曲线积分的本质区别是什么？"
+      ],
+      "commonMistakes": [
+        "参数化后 $\\\\mathrm{d}s$ 始终为正（弧长元素），不受方向影响",
+        "曲线分段时各段的参数方向不必统一（只要覆盖整条曲线）"
+      ],
+      "exerciseIds": ["li-ex-001", "li-ex-002"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能将第一型曲线积分参数化后化为定积分",
+        "能利用对称性简化计算"
+      ]
+    },
+    {
+      "id": "second-type-line-integral",
+      "title": "第二型曲线积分（对坐标的积分）与 Green 公式",
+      "chapterId": "ch-line-integrals",
+      "courseId": "math-analysis",
+      "learningGoals": [
+        "掌握第二型曲线积分的定义（向量场做功）和计算方法",
+        "掌握 Green 公式及其应用",
+        "理解曲线积分与路径无关的条件（保守场，恰当微分）"
+      ],
+      "coreExplanation": "**第二型曲线积分**：$\\\\int_L P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\int_\\\\alpha^\\\\beta[P(x(t),y(t))x'(t)+Q(x(t),y(t))y'(t)]\\,\\\\mathrm{d}t$。\n物理意义：力场 $(P,Q)$ 沿曲线 $L$ 所做的功。**与方向有关**：$\\\\int_{-L}=-\\\\int_L$。\n**Green 公式**：设 $D$ 为有界闭区域，其边界 $\\\\partial D$ 的方向为正向（逆时针，使 $D$ 在左侧）。若 $P,Q$ 在 $D$ 上有连续偏导数，则\n$$\\\\oint_{\\\\partial D}P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\iint_D\\\\left(\\\\frac{\\\\partial Q}{\\\\partial x}-\\\\frac{\\\\partial P}{\\\\partial y}\\\\right)\\,\\\\mathrm{d}A.$$\n**应用**：(1) 用二重积分计算曲线积分（化简）；(2) 面积公式 $A=\\\\frac{1}{2}\\\\oint(x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x)$；(3) 补线法（添加辅助线使曲线封闭）。\n**路径无关条件**：在单连通区域 $D$ 内，以下等价：\n1. 曲线积分 $\\\\int_L P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y$ 与路径无关（只与端点有关）。\n2. 对 $D$ 内任意闭曲线 $C$：$\\\\oint_C P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=0$。\n3. $D$ 内 $P_y=Q_x$（混合偏导数相等）。\n4. 存在 $u$ 使 $\\\\mathrm{d}u=P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y$（恰当微分，$u$ 为势函数）。\n**势函数求法**：$u(x,y)=\\\\int_{x_0}^x P(t,y_0)\\,\\\\mathrm{d}t+\\\\int_{y_0}^y Q(x,t)\\,\\\\mathrm{d}t$（折线路径积分）。",
+      "textbookRefs": ["数学分析（第5版）下册 §20.2"],
+      "keyDefinitions": [
+        {
+          "term": "第二型曲线积分",
+          "definition": "$\\\\int_L P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y$，被积分是向量场与切向量的内积；与曲线方向有关"
+        },
+        {
+          "term": "恰当微分（全微分）",
+          "definition": "$P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\mathrm{d}u$，等价于 $P_y=Q_x$（在单连通域上）；此时曲线积分等于势函数的差 $u(B)-u(A)$"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "Green 公式",
+          "statement": "$\\\\oint_{\\\\partial D}P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\iint_D(Q_x-P_y)\\,\\\\mathrm{d}A$（$\\\\partial D$ 取正向）",
+          "significance": "连接曲线积分和二重积分，是 Stokes 定理在平面的特例"
+        }
+      ],
+      "proofIdeas": [
+        "**Green 公式（正则区域）**：对 $X$-型区域 $D=\\\\{(x,y):\\,a\\\\leq x\\\\leq b,y_1(x)\\\\leq y\\\\leq y_2(x)\\\\}$，$\\\\iint_D P_y\\,\\\\mathrm{d}A=-\\\\oint_{\\\\partial D}P\\,\\\\mathrm{d}x$（分别计算底、顶、侧各段贡献）；类似对 $Q_x$，相加得 Green 公式。"
+      ],
+      "socraticQuestions": [
+        "$\\\\oint_C(y\\,\\\\mathrm{d}x-x\\,\\\\mathrm{d}y)/(x^2+y^2)$ 在 $C$ 为单位圆时等于什么？（答：$-2\\\\pi$，因为被积分在圆上等于 $-2\\\\mathrm{d}\\\\theta$。）",
+        "Green 公式为什么需要\"正向\"（逆时针）？逆时针时 $D$ 在左侧的意义是什么？",
+        "若 $P_y=Q_x$ 在区域中某一点不成立，曲线积分还是路径无关吗？（不，条件需对整个单连通区域成立。）"
+      ],
+      "commonMistakes": [
+        "Green 公式的 $Q_x-P_y$（不是 $P_x-Q_y$）：$\\\\partial Q/\\\\partial x$ 减 $\\\\partial P/\\\\partial y$",
+        "路径无关条件 $P_y=Q_x$ 需要在**单连通**区域成立；若区域有\"洞\"（如原点被挖掉），条件要修改"
+      ],
+      "exerciseIds": ["li-ex-003", "li-ex-004", "li-ex-005", "li-ex-006"],
+      "diagramIds": ["green-formula-diagram"],
+      "masteryCriteria": [
+        "能计算第二型曲线积分（直接参数化法）",
+        "能应用 Green 公式化曲线积分为二重积分",
+        "能判断曲线积分是否与路径无关并求势函数"
+      ]
+    }
+  ]
+}

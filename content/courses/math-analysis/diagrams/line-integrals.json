@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-line-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "diagrams": [
+    {
+      "id": "green-formula-diagram",
+      "title": "Green 公式与正向边界",
+      "description": "展示 Green 公式的几何直觉：左图为单连通区域 $D$，其边界 $\\partial D$ 用箭头标注为逆时针（正向），区域在曲线行进方向的左侧。中图为二连通区域（有洞），外边界逆时针、内边界顺时针（使区域始终在左侧）。右图展示挖洞法：大曲线 $L$ 包含原点，小圆 $C_\\varepsilon$ 顺时针，两者与 $D$（不含原点）的关系标注。箭头颜色：外边界蓝色（逆时针），内边界红色（顺时针），区域 $D$ 浅绿色填充。",
+      "mathContext": "Green 公式 $\\oint_{\\partial D}P\\mathrm{d}x+Q\\mathrm{d}y=\\iint_D(Q_x-P_y)\\mathrm{d}A$ 中，正向（逆时针）使区域 $D$ 在行进方向的左侧。单连通区域只有一条正向边界；二连通区域的外边界逆时针、内边界顺时针（如圆环的内圆需顺时针使圆环区域在左侧）。挖洞法正是利用二连通区域，将奇点隔离在内边界之内。",
+      "diagramType": "graph",
+      "knowledgePointIds": ["second-type-line-integral"],
+      "layout": "triple",
+      "annotations": [
+        { "panel": "left", "label": "单连通区域 $D$", "note": "边界逆时针（正向）" },
+        { "panel": "center", "label": "二连通区域（有洞）", "note": "外边界逆时针，内边界顺时针" },
+        { "panel": "right", "label": "挖洞法", "note": "$C_\\varepsilon$ 顺时针，$\\oint_L=\\oint_{C_\\varepsilon}^{\\text{逆时针}}$" }
+      ]
+    }
+  ]
+}

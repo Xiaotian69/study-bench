@@ -1,0 +1,201 @@
+{
+  "chapterId": "ch-line-integrals",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-2",
+  "exercises": [
+    {
+      "id": "li-ex-001",
+      "knowledgePointId": "first-type-line-integral",
+      "title": "第一型曲线积分计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "计算 $\\\\displaystyle\\\\int_L(x^2+y^2)\\,\\\\mathrm{d}s$，其中 $L$ 为圆 $x^2+y^2=a^2$（$a>0$）。",
+      "solution": "参数化：$x=a\\\\cos t,y=a\\\\sin t$（$t\\\\in[0,2\\\\pi]$），$\\\\mathrm{d}s=\\\\sqrt{x'^2+y'^2}\\,\\\\mathrm{d}t=\\\\sqrt{a^2\\\\sin^2 t+a^2\\\\cos^2 t}\\,\\\\mathrm{d}t=a\\,\\\\mathrm{d}t$。\n被积函数：$x^2+y^2=a^2$（在圆上为常数）。\n$$\\\\int_L(x^2+y^2)\\,\\\\mathrm{d}s=\\\\int_0^{2\\\\pi}a^2\\\\cdot a\\,\\\\mathrm{d}t=a^3\\\\cdot 2\\\\pi=2\\\\pi a^3.$$",
+      "gradingRubric": [
+        { "criterion": "参数化圆并计算 $\\\\mathrm{d}s=a\\,\\\\mathrm{d}t$", "points": 4 },
+        { "criterion": "在圆上 $x^2+y^2=a^2$（代入化简）", "points": 3 },
+        { "criterion": "结果 $2\\\\pi a^3$", "points": 3 }
+      ],
+      "hints": [
+        "圆 $x^2+y^2=a^2$ 上的点满足 $x^2+y^2=a^2$（常数），代入被积函数",
+        "$\\\\mathrm{d}s=a\\,\\\\mathrm{d}t$（圆的弧长微元，$a$ 为半径）"
+      ],
+      "commonMistakes": [
+        "忘记 $\\\\mathrm{d}s=a\\,\\\\mathrm{d}t$ 中的 $a$（半径）",
+        "第一型曲线积分与方向无关，不需要指定圆的方向"
+      ],
+      "tags": ["first-type-line-integral", "circle", "arc-length"]
+    },
+    {
+      "id": "li-ex-002",
+      "knowledgePointId": "first-type-line-integral",
+      "title": "对称性化简第一型曲线积分",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "计算 $\\\\displaystyle\\\\int_L(x^2+y^2+z^2)\\,\\\\mathrm{d}s$，其中 $L$ 为螺旋线 $x=a\\\\cos t,y=a\\\\sin t,z=bt$（$t\\\\in[0,2\\\\pi]$，$a,b>0$）。",
+      "solution": "$\\\\mathrm{d}s=\\\\sqrt{x'^2+y'^2+z'^2}\\,\\\\mathrm{d}t=\\\\sqrt{a^2\\\\sin^2 t+a^2\\\\cos^2 t+b^2}\\,\\\\mathrm{d}t=\\\\sqrt{a^2+b^2}\\,\\\\mathrm{d}t$。\n被积函数：$x^2+y^2+z^2=a^2\\\\cos^2 t+a^2\\\\sin^2 t+b^2t^2=a^2+b^2t^2$。\n$$\\\\int_L(x^2+y^2+z^2)\\,\\\\mathrm{d}s=\\\\sqrt{a^2+b^2}\\\\int_0^{2\\\\pi}(a^2+b^2t^2)\\,\\\\mathrm{d}t.$$\n$$=\\\\sqrt{a^2+b^2}\\\\left[a^2t+\\\\frac{b^2t^3}{3}\\\\right]_0^{2\\\\pi}=\\\\sqrt{a^2+b^2}\\\\left(2\\\\pi a^2+\\\\frac{8\\\\pi^3 b^2}{3}\\\\right).$$",
+      "gradingRubric": [
+        { "criterion": "$\\\\mathrm{d}s=\\\\sqrt{a^2+b^2}\\,\\\\mathrm{d}t$", "points": 3 },
+        { "criterion": "$x^2+y^2+z^2=a^2+b^2t^2$", "points": 3 },
+        { "criterion": "积分结果 $\\\\sqrt{a^2+b^2}(2\\\\pi a^2+8\\\\pi^3 b^2/3)$", "points": 4 }
+      ],
+      "hints": [
+        "螺旋线 $z=bt$：$z^2=b^2t^2$，$x^2+y^2=a^2$（与 $t$ 无关）",
+        "$\\\\int_0^{2\\\\pi}t^2\\,\\\\mathrm{d}t=(2\\\\pi)^3/3=8\\\\pi^3/3$"
+      ],
+      "commonMistakes": [
+        "$\\\\mathrm{d}s=\\\\sqrt{a^2+b^2}\\,\\\\mathrm{d}t$（是常数，不含 $t$）",
+        "$z'^2=b^2$（不是 $b^2t^2$，因为 $z=bt$，$z'=b$）"
+      ],
+      "tags": ["first-type-line-integral", "helix", "space-curve"]
+    },
+    {
+      "id": "li-ex-003",
+      "knowledgePointId": "second-type-line-integral",
+      "title": "第二型曲线积分计算",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "计算 $\\\\displaystyle\\\\int_L y^2\\,\\\\mathrm{d}x-x\\,\\\\mathrm{d}y$，其中 $L$ 为从 $A(0,0)$ 到 $B(1,1)$ 的抛物线 $y=x^2$。",
+      "solution": "参数化（取 $x=t$，$y=t^2$，$t:0\\\\to 1$）：$\\\\mathrm{d}x=\\\\mathrm{d}t$，$\\\\mathrm{d}y=2t\\,\\\\mathrm{d}t$。\n$$\\\\int_L y^2\\,\\\\mathrm{d}x-x\\,\\\\mathrm{d}y=\\\\int_0^1[(t^2)^2\\\\cdot 1-t\\\\cdot 2t]\\,\\\\mathrm{d}t=\\\\int_0^1(t^4-2t^2)\\,\\\\mathrm{d}t$$\n$$=\\\\left[\\\\frac{t^5}{5}-\\\\frac{2t^3}{3}\\\\right]_0^1=\\\\frac{1}{5}-\\\\frac{2}{3}=-\\\\frac{7}{15}.$$",
+      "gradingRubric": [
+        { "criterion": "参数化 $x=t,y=t^2$，写出 $\\\\mathrm{d}x,\\\\mathrm{d}y$", "points": 3 },
+        { "criterion": "代入被积分表达式 $t^4-2t^2$", "points": 4 },
+        { "criterion": "积分结果 $-7/15$", "points": 3 }
+      ],
+      "hints": [
+        "取 $x$ 为参数，$y=x^2$，$\\\\mathrm{d}y=2x\\,\\\\mathrm{d}x=2t\\,\\\\mathrm{d}t$",
+        "代入后 $y^2\\,\\\\mathrm{d}x-x\\,\\\\mathrm{d}y=(t^2)^2\\,\\\\mathrm{d}t-t\\cdot 2t\\,\\\\mathrm{d}t=(t^4-2t^2)\\,\\\\mathrm{d}t$"
+      ],
+      "commonMistakes": [
+        "第二型曲线积分与方向有关：$A\\\\to B$ 方向是 $t:0\\\\to 1$（而非 $1\\\\to 0$）",
+        "$y^2$ 代入 $t^4$（$y=t^2$，所以 $y^2=t^4$）"
+      ],
+      "tags": ["second-type-line-integral", "parabola", "parametrization"]
+    },
+    {
+      "id": "li-ex-004",
+      "knowledgePointId": "second-type-line-integral",
+      "title": "Green 公式的应用",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "计算 $\\\\displaystyle\\\\oint_L(x^2y-y^3/3)\\,\\\\mathrm{d}x+(x^3/3-xy^2)\\,\\\\mathrm{d}y$，其中 $L$ 为椭圆 $x^2/a^2+y^2/b^2=1$ 的正向（逆时针）。",
+      "solution": "令 $P=x^2y-y^3/3$，$Q=x^3/3-xy^2$。\n$P_y=x^2-y^2$，$Q_x=x^2-y^2$。\n故 $Q_x-P_y=0$。\n\n由 Green 公式：$\\\\oint_L P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\iint_D(Q_x-P_y)\\,\\\\mathrm{d}A=\\\\iint_D 0\\,\\\\mathrm{d}A=0$。\n\n结果为 $0$（实际上 $P_y=Q_x$ 说明曲线积分与路径无关，而正向闭曲线的积分为零）。",
+      "gradingRubric": [
+        { "criterion": "计算 $Q_x-P_y$", "points": 4 },
+        { "criterion": "说明 $Q_x-P_y=0$，应用 Green 公式", "points": 4 },
+        { "criterion": "结果为 $0$", "points": 2 }
+      ],
+      "hints": [
+        "$P_y=\\\\partial(x^2y-y^3/3)/\\\\partial y=x^2-y^2$，$Q_x=\\\\partial(x^3/3-xy^2)/\\\\partial x=x^2-y^2$",
+        "Green 公式：$\\\\oint=\\\\iint(Q_x-P_y)$，被积分为零"
+      ],
+      "commonMistakes": [
+        "Green 公式公式中是 $Q_x-P_y$（不是 $P_x-Q_y$）",
+        "即使 $P_y=Q_x$，也需要通过 Green 公式（或路径无关性）来说明闭合积分为零，不能直接断言"
+      ],
+      "tags": ["green-formula", "closed-curve", "conservative-field"]
+    },
+    {
+      "id": "li-ex-005",
+      "knowledgePointId": "second-type-line-integral",
+      "title": "补线法应用 Green 公式",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "计算 $\\\\displaystyle\\\\int_L(e^x\\\\sin y-y)\\,\\\\mathrm{d}x+(e^x\\\\cos y+1)\\,\\\\mathrm{d}y$，其中 $L$ 为从 $(0,0)$ 到 $(\\\\pi,0)$ 的上半圆弧 $y=\\\\sqrt{\\\\pi x-x^2}$（$x\\\\in[0,\\\\pi]$）。",
+      "solution": "令 $P=e^x\\\\sin y-y$，$Q=e^x\\\\cos y+1$。\n$P_y=e^x\\\\cos y-1$，$Q_x=e^x\\\\cos y$。$Q_x-P_y=1\\\\neq 0$，曲线积分不与路径无关。\n\n**补线法**：添加从 $(\\\\pi,0)$ 到 $(0,0)$ 的线段 $L_0$（$y=0$，$x:\\\\pi\\\\to 0$），与 $L$ 构成封闭曲线 $C=L+L_0$（正向，逆时针）。\n\n由 Green 公式：\n$$\\\\oint_C P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\iint_D(Q_x-P_y)\\,\\\\mathrm{d}A=\\\\iint_D 1\\,\\\\mathrm{d}A=\\\\text{Area}(D)=\\\\frac{\\\\pi^2}{8}.$$\n（$D$ 是上半圆区域，直径为 $\\\\pi$，面积 $\\\\pi(\\\\pi/2)^2/2=\\\\pi^3/8$？不对。$y=\\\\sqrt{\\\\pi x-x^2}$ 即 $(x-\\\\pi/2)^2+y^2=(\\\\pi/2)^2$（$y\\\\geq 0$），半径 $R=\\\\pi/2$，面积 $=(\\\\pi/2)^2\\\\pi/2=\\\\pi^3/8$。）\n\n**计算 $L_0$ 上的积分**（$y=0,x:\\\\pi\\\\to 0$）：$\\\\mathrm{d}y=0$，$\\\\sin 0=0$，$\\\\cos 0=1$。\n$$\\\\int_{L_0}P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\int_\\\\pi^0(e^x\\\\cdot 0-0)\\,\\\\mathrm{d}x+(e^x\\\\cdot 1+1)\\\\cdot 0=0.$$\n（$\\\\mathrm{d}y=0$，$P=e^x\\\\sin 0-0=0$，故 $\\\\int_{L_0}=0$。）\n\n$$\\\\int_L P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=\\\\oint_C-\\\\int_{L_0}=\\\\frac{\\\\pi^3}{8}-0=\\\\frac{\\\\pi^3}{8}.$$",
+      "gradingRubric": [
+        { "criterion": "计算 $Q_x-P_y=1$，说明补线法必要性", "points": 2 },
+        { "criterion": "补线 $L_0$ 的选取和积分计算（$=0$）", "points": 3 },
+        { "criterion": "Green 公式给出 $\\\\iint_D 1=\\\\pi^3/8$（半圆面积）", "points": 4 },
+        { "criterion": "最终答案 $\\\\pi^3/8$", "points": 1 }
+      ],
+      "hints": [
+        "补线：选从终点到起点的最简单路径（$x$ 轴线段）使曲线封闭",
+        "$y=\\\\sqrt{\\\\pi x-x^2}\\\\Rightarrow(x-\\\\pi/2)^2+y^2=(\\\\pi/2)^2$，上半圆，面积 $=\\\\pi(\\\\pi/2)^2/2=\\\\pi^3/8$"
+      ],
+      "commonMistakes": [
+        "补线方向：$L_0$ 从 $(\\\\pi,0)$ 到 $(0,0)$（与 $L$ 构成正向闭合回路逆时针方向）",
+        "$\\\\int_{L_0}P\\,\\\\mathrm{d}x+Q\\,\\\\mathrm{d}y=0$ 需要验证（不能省略）"
+      ],
+      "tags": ["green-formula", "supplementary-path", "area-formula"]
+    },
+    {
+      "id": "li-ex-006",
+      "knowledgePointId": "second-type-line-integral",
+      "title": "路径无关性与势函数",
+      "difficulty": "medium",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "验证 $\\\\omega=(2xy+y^3)\\,\\\\mathrm{d}x+(x^2+3xy^2)\\,\\\\mathrm{d}y$ 是恰当微分，求势函数 $u(x,y)$ 使 $\\\\mathrm{d}u=\\\\omega$，并计算 $\\\\int_{(0,0)}^{(1,2)}\\\\omega$。",
+      "solution": "**验证恰当微分：**\n$P=2xy+y^3$，$Q=x^2+3xy^2$。\n$P_y=2x+3y^2$，$Q_x=2x+3y^2$。$P_y=Q_x$，是恰当微分。\n\n**求势函数：**\n$u_x=P=2xy+y^3$，$u_y=Q=x^2+3xy^2$。\n从 $u_x$：$u=\\\\int(2xy+y^3)\\,\\\\mathrm{d}x=x^2y+xy^3+\\\\varphi(y)$（$\\\\varphi$ 是 $y$ 的函数）。\n由 $u_y=x^2+3xy^2+\\\\varphi'(y)=x^2+3xy^2$，故 $\\\\varphi'(y)=0$，$\\\\varphi=C$（常数）。\n势函数：$u(x,y)=x^2y+xy^3+C$。\n\n**计算积分：**\n$$\\\\int_{(0,0)}^{(1,2)}\\\\omega=u(1,2)-u(0,0)=(1\\\\cdot 2+1\\\\cdot 8)-0=10.$$",
+      "gradingRubric": [
+        { "criterion": "验证 $P_y=Q_x=2x+3y^2$", "points": 3 },
+        { "criterion": "从 $u_x=P$ 积分得 $u=x^2y+xy^3+\\\\varphi(y)$", "points": 3 },
+        { "criterion": "由 $u_y=Q$ 确定 $\\\\varphi'=0$", "points": 2 },
+        { "criterion": "积分值 $u(1,2)-u(0,0)=10$", "points": 2 }
+      ],
+      "hints": [
+        "势函数求法：先对 $x$ 积分（固定 $y$），得到含 $\\\\varphi(y)$ 的表达式，再对 $y$ 微分确定 $\\\\varphi$",
+        "路径无关：$\\\\int_A^B\\\\omega=u(B)-u(A)$（只与端点有关）"
+      ],
+      "commonMistakes": [
+        "积分 $\\\\int P\\,\\\\mathrm{d}x$ 时，$y$ 视为常数，结果含 $\\\\varphi(y)$（$y$ 的任意函数）",
+        "验证完恰当微分后，积分值为 $u(B)-u(A)$，不需要指定路径"
+      ],
+      "tags": ["exact-differential", "potential-function", "path-independence"]
+    },
+    {
+      "id": "li-ex-007",
+      "knowledgePointId": "second-type-line-integral",
+      "title": "含奇点的曲线积分（挖洞法）",
+      "difficulty": "hard",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "计算 $\\\\displaystyle\\\\oint_L\\\\frac{x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x}{x^2+y^2}$，其中 $L$ 是包含原点的任意正向简单闭曲线。",
+      "solution": "令 $P=-y/(x^2+y^2)$，$Q=x/(x^2+y^2)$。\n$P_y=(y^2-x^2)/(x^2+y^2)^2$，$Q_x=(y^2-x^2)/(x^2+y^2)^2$。\n$Q_x=P_y$ 在 $(x,y)\\\\neq(0,0)$ 时成立，但原点是奇点，$P,Q$ 在原点无定义。\n\n**挖洞法**：取充分小的圆 $C_\\\\varepsilon:\\,x^2+y^2=\\\\varepsilon^2$（负向，顺时针），则 $L$ 与 $C_\\\\varepsilon$（顺时针）围成不含原点的二连通区域 $D$，在 $D$ 上 $Q_x=P_y$，Green 公式给出\n$$\\\\oint_L+\\\\oint_{-C_\\\\varepsilon}=0\\\\Rightarrow\\\\oint_L=\\\\oint_{C_\\\\varepsilon}（正向）.$$\n\n**计算 $C_\\\\varepsilon$ 上的积分**（$x=\\\\varepsilon\\\\cos t,y=\\\\varepsilon\\\\sin t$，$t:0\\\\to 2\\\\pi$）：\n$$\\\\frac{x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x}{x^2+y^2}=\\\\frac{\\\\varepsilon\\\\cos t\\\\cdot\\\\varepsilon\\\\cos t\\,\\\\mathrm{d}t-\\\\varepsilon\\\\sin t\\\\cdot(-\\\\varepsilon\\\\sin t)\\,\\\\mathrm{d}t}{\\\\varepsilon^2}=\\\\frac{\\\\varepsilon^2(\\\\cos^2 t+\\\\sin^2 t)}{\\\\varepsilon^2}\\,\\\\mathrm{d}t=\\\\mathrm{d}t.$$\n$$\\\\oint_{C_\\\\varepsilon}=\\\\int_0^{2\\\\pi}\\\\mathrm{d}t=2\\\\pi.$$\n\n故 $\\\\oint_L=2\\\\pi$（与 $L$ 的具体形状无关，只需包含原点）。",
+      "gradingRubric": [
+        { "criterion": "说明 $Q_x=P_y$ 在原点外成立，但原点是奇点", "points": 2 },
+        { "criterion": "挖洞法：构造小圆 $C_\\\\varepsilon$，Green 公式得 $\\\\oint_L=\\\\oint_{C_\\\\varepsilon}$", "points": 4 },
+        { "criterion": "参数化 $C_\\\\varepsilon$ 计算积分 $=2\\\\pi$", "points": 4 }
+      ],
+      "hints": [
+        "挖洞法：区域 $D$ 不含奇点（原点被 $C_\\\\varepsilon$ 挖走）；$L$ 正向，$C_\\\\varepsilon$ 在 $D$ 中取负向（顺时针，使边界逆时针方向绕 $D$）",
+        "$\\\\oint_L+\\\\oint_{C_\\\\varepsilon}^{\\\\text{顺时针}}=0$，即 $\\\\oint_L=\\\\oint_{C_\\\\varepsilon}^{\\\\text{逆时针}}$"
+      ],
+      "commonMistakes": [
+        "挖洞法中 $C_\\\\varepsilon$ 在二连通区域内的方向：$C_\\\\varepsilon$ 是内边界，应取顺时针（Green 公式规定内边界为顺时针以使区域在左侧）",
+        "结果与 $\\\\varepsilon$ 无关（分子分母 $\\\\varepsilon^2$ 消去），说明任意小圆都给出 $2\\\\pi$"
+      ],
+      "tags": ["singularity", "winding-number", "green-formula", "doubly-connected"]
+    },
+    {
+      "id": "li-ex-008",
+      "knowledgePointId": "second-type-line-integral",
+      "title": "Green 公式求面积",
+      "difficulty": "basic",
+      "sourceType": "self-authored",
+      "sourceRef": "待核对题源：数学分析（第5版）下册，第 20 章",
+      "problem": "用 Green 公式的面积公式 $A=\\\\frac{1}{2}\\\\oint(x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x)$ 计算：\n1. 椭圆 $x=a\\\\cos t,y=b\\\\sin t$（$t\\\\in[0,2\\\\pi]$）围成的面积。\n2. 星形线 $x=a\\\\cos^3 t,y=a\\\\sin^3 t$（$t\\\\in[0,2\\\\pi]$）围成的面积。",
+      "solution": "**1. 椭圆（正向：$t$ 增大为逆时针）：**\n$x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x=(a\\\\cos t)(b\\\\cos t\\,\\\\mathrm{d}t)-(b\\\\sin t)(-a\\\\sin t\\,\\\\mathrm{d}t)=ab(\\\\cos^2 t+\\\\sin^2 t)\\,\\\\mathrm{d}t=ab\\,\\\\mathrm{d}t$。\n$$A=\\\\frac{1}{2}\\\\int_0^{2\\\\pi}ab\\,\\\\mathrm{d}t=\\\\pi ab.$$\n\n**2. 星形线（同样 $t:\\,0\\\\to 2\\\\pi$ 为正向）：**\n$x'=-3a\\\\cos^2 t\\\\sin t$，$y'=3a\\\\sin^2 t\\\\cos t$。\n$x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x=a\\\\cos^3 t\\\\cdot 3a\\\\sin^2 t\\\\cos t\\,\\\\mathrm{d}t-a\\\\sin^3 t\\\\cdot(-3a\\\\cos^2 t\\\\sin t)\\,\\\\mathrm{d}t=3a^2\\\\cos^2 t\\\\sin^2 t(\\\\cos^2 t+\\\\sin^2 t)\\,\\\\mathrm{d}t=3a^2\\\\cos^2 t\\\\sin^2 t\\,\\\\mathrm{d}t$。\n$$A=\\\\frac{1}{2}\\\\int_0^{2\\\\pi}3a^2\\\\cos^2 t\\\\sin^2 t\\,\\\\mathrm{d}t=\\\\frac{3a^2}{2}\\\\int_0^{2\\\\pi}\\\\frac{\\\\sin^2 2t}{4}\\,\\\\mathrm{d}t=\\\\frac{3a^2}{8}\\\\cdot\\\\pi=\\\\frac{3\\\\pi a^2}{8}.$$",
+      "gradingRubric": [
+        { "criterion": "椭圆：$x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x=ab\\,\\\\mathrm{d}t$，面积 $\\\\pi ab$", "points": 4 },
+        { "criterion": "星形线：展开 $x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x$ 化简", "points": 4 },
+        { "criterion": "星形线面积 $3\\\\pi a^2/8$", "points": 2 }
+      ],
+      "hints": [
+        "面积公式：$A=\\\\frac{1}{2}\\\\oint(x\\,\\\\mathrm{d}y-y\\,\\\\mathrm{d}x)$，直接代入参数方程",
+        "$\\\\sin^2 2t=(\\\\sin 2t)^2/1=(2\\\\sin t\\\\cos t)^2=4\\\\sin^2 t\\\\cos^2 t$，$\\\\int_0^{2\\\\pi}\\\\sin^2 2t\\,\\\\mathrm{d}t=\\\\pi$"
+      ],
+      "commonMistakes": [
+        "面积公式中正向（逆时针）保证结果为正；若顺时针积分为负值，需取绝对值",
+        "$\\\\int_0^{2\\\\pi}\\\\cos^2 t\\\\sin^2 t\\,\\\\mathrm{d}t=\\\\frac{1}{4}\\\\int_0^{2\\\\pi}\\\\sin^2 2t\\,\\\\mathrm{d}t=\\\\pi/4$"
+      ],
+      "tags": ["area-formula", "green-formula", "ellipse", "astroid"]
+    }
+  ]
+}

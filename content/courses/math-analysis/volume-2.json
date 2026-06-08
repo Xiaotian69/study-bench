@@ -245,10 +245,23 @@
       "id": "ch-line-integrals",
       "number": 20,
       "title": "曲线积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/line-integrals.json",
+      "exercisesFile": "exercises/line-integrals.json",
+      "diagramFile": "diagrams/line-integrals.json",
       "sections": [
-        { "id": "sec-first-type-line-integral", "title": "第一型曲线积分", "status": "planned" },
-        { "id": "sec-second-type-line-integral", "title": "第二型曲线积分", "status": "planned" }
+        {
+          "id": "sec-first-type-line-integral",
+          "title": "第一型曲线积分",
+          "status": "draft",
+          "knowledgePointIds": ["first-type-line-integral"]
+        },
+        {
+          "id": "sec-second-type-line-integral",
+          "title": "第二型曲线积分",
+          "status": "draft",
+          "knowledgePointIds": ["second-type-line-integral"]
+        }
       ]
     },
     {
