@@ -1,0 +1,21 @@
+{
+  "chapterId": "ch-indefinite-integral",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "diagrams": [
+    {
+      "id": "trig-substitution-triangle",
+      "title": "三角换元辅助直角三角形",
+      "description": "三幅直角三角形示意，对应三种标准三角换元。(a) $x=a\\sin\\theta$（$\\sqrt{a^2-x^2}$）：斜边 $a$，对边 $x$，邻边 $\\sqrt{a^2-x^2}$；(b) $x=a\\tan\\theta$（$\\sqrt{a^2+x^2}$）：邻边 $a$，对边 $x$，斜边 $\\sqrt{a^2+x^2}$；(c) $x=a\\sec\\theta$（$\\sqrt{x^2-a^2}$）：邻边 $a$，斜边 $x$，对边 $\\sqrt{x^2-a^2}$。每图旁标出换回时常用的三角比关系。",
+      "mathContext": "三角换元消根号：$\\sin^2\\theta+\\cos^2\\theta=1$ 消去 $\\sqrt{a^2-x^2}$；$1+\\tan^2\\theta=\\sec^2\\theta$ 消去 $\\sqrt{a^2+x^2}$；$\\sec^2\\theta-1=\\tan^2\\theta$ 消去 $\\sqrt{x^2-a^2}$。直角三角形辅图帮助快速换回原变量，不需要记忆反三角函数公式。",
+      "diagramType": "geometry",
+      "knowledgePointIds": ["substitution-method"],
+      "layout": "three-panel-horizontal",
+      "annotations": [
+        { "panel": "a", "label": "$x=a\\sin\\theta$", "note": "适用于 $\\sqrt{a^2-x^2}$" },
+        { "panel": "b", "label": "$x=a\\tan\\theta$", "note": "适用于 $\\sqrt{a^2+x^2}$" },
+        { "panel": "c", "label": "$x=a\\sec\\theta$", "note": "适用于 $\\sqrt{x^2-a^2}$" }
+      ]
+    }
+  ]
+}

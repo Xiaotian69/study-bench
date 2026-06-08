@@ -1,0 +1,187 @@
+{
+  "id": "ch-indefinite-integral",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "number": 8,
+  "title": "不定积分",
+  "status": "draft",
+  "overview": "不定积分是导数的逆运算，也是下一章定积分计算的算法工具箱。本章先建立原函数（不定积分）的概念和基本性质，给出一张基本积分公式表；再系统讲授两种核心积分技法：换元积分法（用拼凑或正弦/有理式换元化简被积函数）和分部积分法（$\\\\int u\\\\,\\\\mathrm{d}v=uv-\\\\int v\\\\,\\\\mathrm{d}u$，适合乘积形式的被积函数）；最后讨论有理函数的部分分式分解，以及三角函数有理式和无理函数积分的有理化技巧。讲义、例子与题面均为自编或充分改写，公式用 LaTeX（四反斜线约定）。",
+  "knowledgePoints": [
+    {
+      "id": "antiderivative-concept",
+      "title": "原函数与不定积分",
+      "learningGoals": [
+        "理解原函数（不定积分）的定义：$F'(x)=f(x)$ 称 $F$ 是 $f$ 的原函数。",
+        "掌握不定积分的性质：同一函数的两个原函数相差常数；$\\\\left(\\\\int f\\\\,\\\\mathrm{d}x\\\\right)'=f(x)$；$\\\\int F'(x)\\\\,\\\\mathrm{d}x=F(x)+C$。",
+        "熟记基本积分公式表（至少 15 个）。"
+      ],
+      "coreExplanation": "若 $F'(x)=f(x)$，则称 $F$ 是 $f$ 在某区间上的**原函数**（antiderivative）。原函数若存在则有无穷多个，任意两个相差一个常数：若 $F$ 和 $G$ 都是 $f$ 的原函数，则 $(F-G)'=f-f=0$，故 $F-G=C$（常数）。$f$ 的全部原函数写成 $F(x)+C$（$C$ 为任意常数），称为 $f$ 的**不定积分**，记 $\\\\int f(x)\\\\,\\\\mathrm{d}x=F(x)+C$。基本性质：$\\\\dfrac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\int f\\\\,\\\\mathrm{d}x=f(x)$（求导与积分互逆）；$\\\\int f'(x)\\\\,\\\\mathrm{d}x=f(x)+C$（先积后导）；$\\\\int[af+bg]\\\\,\\\\mathrm{d}x=a\\\\int f\\\\,\\\\mathrm{d}x+b\\\\int g\\\\,\\\\mathrm{d}x$（线性性）。常用基本公式：$\\\\int x^n\\\\,\\\\mathrm{d}x=\\\\dfrac{x^{n+1}}{n+1}+C$（$n\\\\ne -1$）；$\\\\int\\\\dfrac{1}{x}\\\\,\\\\mathrm{d}x=\\\\ln|x|+C$；$\\\\int e^x\\\\,\\\\mathrm{d}x=e^x+C$；$\\\\int\\\\sin x\\\\,\\\\mathrm{d}x=-\\\\cos x+C$；$\\\\int\\\\cos x\\\\,\\\\mathrm{d}x=\\\\sin x+C$；$\\\\int\\\\dfrac{1}{1+x^2}\\\\,\\\\mathrm{d}x=\\\\arctan x+C$；$\\\\int\\\\dfrac{1}{\\\\sqrt{1-x^2}}\\\\,\\\\mathrm{d}x=\\\\arcsin x+C$。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 8 章 不定积分，§1 不定积分概念与基本积分公式；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "原函数 / 不定积分",
+          "statement": "若 $F'(x)=f(x)$，称 $F$ 为 $f$ 的原函数；$f$ 的全体原函数 $F(x)+C$ 称为不定积分，记 $\\\\int f(x)\\\\,\\\\mathrm{d}x$。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "原函数差为常数",
+          "statement": "同一函数在同一区间上的任意两个原函数之差为常数。"
+        }
+      ],
+      "proofIdeas": [
+        "若 $F,G$ 均为 $f$ 的原函数，$(F-G)'=0$，由 Lagrange 定理推出 $F-G=\\text{const}$。"
+      ],
+      "socraticQuestions": [
+        "为什么原函数不是唯一的，而要写 $+C$？",
+        "$\\\\int f'(x)\\\\,\\\\mathrm{d}x$ 和 $\\\\dfrac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\int f(x)\\\\,\\\\mathrm{d}x$ 的区别是什么？",
+        "初等函数是否一定有（初等形式的）原函数？（如 $e^{x^2}$）"
+      ],
+      "commonMistakes": [
+        "忘记写 $+C$（原函数差常数）。",
+        "$\\\\int\\\\dfrac{1}{x}\\\\,\\\\mathrm{d}x$ 只写 $\\\\ln x$，遗漏绝对值 $\\\\ln|x|$。",
+        "把 $\\\\int x^n\\\\,\\\\mathrm{d}x$ 用于 $n=-1$ 而用幂次公式。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["indef-ex-001"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能陈述原函数的定义和"差为常数"的定理。",
+        "能默写 10 个以上基本积分公式。"
+      ]
+    },
+    {
+      "id": "substitution-method",
+      "title": "换元积分法",
+      "learningGoals": [
+        "掌握第一类换元法（凑微分法）：识别形如 $\\\\int f(g(x))g'(x)\\\\,\\\\mathrm{d}x$ 的积分，令 $u=g(x)$。",
+        "掌握第二类换元法：通过令 $x=\\\\varphi(t)$ 换入参数 $t$，化简被积函数，积完后换回。",
+        "能对常见类型（含根号、三角换元、倒代换）选择合适的换元方式。"
+      ],
+      "coreExplanation": "**第一类换元法**（凑微分）：利用复合函数微分 $\\\\mathrm{d}[g(x)]=g'(x)\\\\,\\\\mathrm{d}x$，把 $\\\\int f(g(x))g'(x)\\\\,\\\\mathrm{d}x$ 改写为 $\\\\int f(u)\\\\,\\\\mathrm{d}u$（令 $u=g(x)$），积完后把 $u$ 换回 $g(x)$。这是链式法则的逆运用。例如 $\\\\int 2xe^{x^2}\\\\,\\\\mathrm{d}x=\\\\int e^{x^2}\\\\,\\\\mathrm{d}(x^2)=e^{x^2}+C$。关键：认识被积式中哪一个因子是另一个函数的导数，"凑"出对应的微分。**第二类换元法**：当被积函数含 $\\\\sqrt{a^2-x^2}$ 时令 $x=a\\\\sin t$；含 $\\\\sqrt{a^2+x^2}$ 时令 $x=a\\\\tan t$；含 $\\\\sqrt{x^2-a^2}$ 时令 $x=a\\\\sec t$——这类三角换元利用勾股恒等式消去根号。倒代换 $x=1/t$ 适合含 $1/x^n$ 的被积函数。换元后需把结果中的 $t$ 换回原变量 $x$（利用反三角函数或直角三角形辅图）。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 8 章 不定积分，§2 换元积分法；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "第一类换元（凑微分）",
+          "statement": "若 $\\\\int f(u)\\\\,\\\\mathrm{d}u=F(u)+C$，则 $\\\\int f(g(x))g'(x)\\\\,\\\\mathrm{d}x=F(g(x))+C$。"
+        },
+        {
+          "name": "第二类换元",
+          "statement": "令 $x=\\\\varphi(t)$（$\\\\varphi$ 可导且单调），则 $\\\\int f(x)\\\\,\\\\mathrm{d}x=\\\\int f(\\\\varphi(t))\\\\varphi'(t)\\\\,\\\\mathrm{d}t$，积出后以 $\\\\varphi^{-1}(x)$ 代回 $t$。"
+        }
+      ],
+      "proofIdeas": [
+        "第一类：链式法则的直接逆用，$\\\\dfrac{\\\\mathrm{d}}{\\\\mathrm{d}x}F(g(x))=F'(g(x))g'(x)=f(g(x))g'(x)$。",
+        "第二类：对 $\\\\int f(\\\\varphi(t))\\\\varphi'(t)\\\\,\\\\mathrm{d}t$ 的结果 $H(t)$，验证 $\\\\dfrac{\\\\mathrm{d}}{\\\\mathrm{d}x}H(\\\\varphi^{-1}(x))=f(x)$（用链式法则）。"
+      ],
+      "socraticQuestions": [
+        "凑微分法的"凑"体现在哪里？怎样识别哪个因子可以被"凑"？",
+        "三角换元 $x=a\\\\sin t$ 用于 $\\\\sqrt{a^2-x^2}$ 时，如何把结果中的 $\\\\sin t$、$\\\\cos t$ 换回含 $x$ 的形式？",
+        "第二类换元要求 $\\\\varphi$ 单调，为什么？"
+      ],
+      "commonMistakes": [
+        "第一类换元后忘记把 $u$ 换回 $x$ 的表达式。",
+        "三角换元后忘记换回，留下含 $t$ 的结果。",
+        "凑微分时系数处理错误（如 $\\\\int e^{2x}\\\\,\\\\mathrm{d}x$，把 $\\\\mathrm{d}(2x)$ 当成 $\\\\mathrm{d}x$）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["indef-ex-002", "indef-ex-003"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能用凑微分法处理常见形式的不定积分。",
+        "能对含根号的积分选择合适的三角换元并正确换回。"
+      ]
+    },
+    {
+      "id": "integration-by-parts",
+      "title": "分部积分法",
+      "learningGoals": [
+        "掌握分部积分公式：$\\\\int u\\\\,\\\\mathrm{d}v=uv-\\\\int v\\\\,\\\\mathrm{d}u$。",
+        "能识别适合分部积分的被积函数形式（乘积：多项式×超越函数）并合理选取 $u$ 和 $\\\\mathrm{d}v$。",
+        "能处理需要多次分部或循环出现原积分的情形。"
+      ],
+      "coreExplanation": "分部积分来自乘积的导数：$(uv)'=u'v+uv'$，即 $u\\\\,\\\\mathrm{d}v=(uv)'-v\\\\,\\\\mathrm{d}u/\\\\mathrm{d}x$……积分后得 $\\\\int u\\\\,\\\\mathrm{d}v=uv-\\\\int v\\\\,\\\\mathrm{d}u$。关键是合理选 $u$ 和 $\\\\mathrm{d}v$：好的选法让 $\\\\int v\\\\,\\\\mathrm{d}u$ 比原积分更容易。选 $u$ 的经验法则（"LIATE"顺序）：对数函数 > 反三角函数 > 代数（多项式）> 三角函数 > 指数函数——排在前面的更适合作 $u$。例如 $\\\\int x e^x\\\\,\\\\mathrm{d}x$：取 $u=x$，$\\\\mathrm{d}v=e^x\\\\,\\\\mathrm{d}x$，则 $v=e^x$，得 $xe^x-\\\\int e^x\\\\,\\\\mathrm{d}x=xe^x-e^x+C$。**循环积分**：$\\\\int e^x\\\\sin x\\\\,\\\\mathrm{d}x$ 两次分部后出现原积分，把它移到左边解方程。**递推公式**：$\\\\int x^n e^x\\\\,\\\\mathrm{d}x=x^n e^x-n\\\\int x^{n-1}e^x\\\\,\\\\mathrm{d}x$ 给出降次递推。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 8 章 不定积分，§2 分部积分法；具体题号待核对"
+      ],
+      "keyDefinitions": [],
+      "keyTheorems": [
+        {
+          "name": "分部积分公式",
+          "statement": "$\\\\int u\\\\,\\\\mathrm{d}v=uv-\\\\int v\\\\,\\\\mathrm{d}u$（$u,v$ 可微）。"
+        }
+      ],
+      "proofIdeas": [
+        "由 $(uv)'=u'v+uv'$，对两边积分：$uv=\\\\int u'v\\\\,\\\\mathrm{d}x+\\\\int uv'\\\\,\\\\mathrm{d}x$，整理即得。"
+      ],
+      "socraticQuestions": [
+        "$\\\\int x\\\\ln x\\\\,\\\\mathrm{d}x$ 中应选 $u=\\\\ln x$ 还是 $u=x$？为什么？",
+        "循环积分时，把原积分移到左边后，为什么解出的结果仍要加 $+C$？",
+        "LIATE 法则的依据是什么？为什么对数函数优先作 $u$？"
+      ],
+      "commonMistakes": [
+        "$u$ 和 $\\\\mathrm{d}v$ 选反，导致 $\\\\int v\\\\,\\\\mathrm{d}u$ 比原积分更难。",
+        "循环积分时两次分部选法不一致，导致循环消去（结果变 $0=0$）。",
+        "计算 $v$ 时忘记积分（$\\\\mathrm{d}v=e^x\\\\,\\\\mathrm{d}x$ 时 $v=e^x$，不是 $v=1$）。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["indef-ex-004", "indef-ex-005"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能正确运用分部积分公式，合理选取 $u$ 和 $\\\\mathrm{d}v$。",
+        "能处理需要循环的分部积分并正确解出结果。"
+      ]
+    },
+    {
+      "id": "rational-function-integration",
+      "title": "有理函数的积分",
+      "learningGoals": [
+        "掌握有理函数 $P(x)/Q(x)$（$\\\\deg P<\\\\deg Q$）的部分分式分解法。",
+        "能对各类部分分式（一次因子、重因子、不可约二次因子）分别积分。",
+        "了解三角函数有理式和简单无理函数的有理化积分思路。"
+      ],
+      "coreExplanation": "**部分分式分解**：任何有理真分式 $P(x)/Q(x)$（$\\\\deg P<\\\\deg Q$，$Q$ 在 $\\\\mathbb{R}$ 上因式分解为一次因子和不可约二次因子之积）都可以分解为部分分式之和：一次因子 $(x-a)^k$ 对应 $\\\\dfrac{A_1}{x-a}+\\\\dfrac{A_2}{(x-a)^2}+\\\\cdots+\\\\dfrac{A_k}{(x-a)^k}$；不可约二次因子 $(x^2+px+q)^m$ 对应 $\\\\dfrac{B_1 x+C_1}{x^2+px+q}+\\\\cdots+\\\\dfrac{B_m x+C_m}{(x^2+px+q)^m}$。确定系数用"比较系数法"或"代特殊值法"（Heaviside 掩盖法）。各类部分分式的积分：$\\\\int\\\\dfrac{1}{x-a}\\\\,\\\\mathrm{d}x=\\\\ln|x-a|+C$；$\\\\int\\\\dfrac{1}{(x-a)^k}\\\\,\\\\mathrm{d}x=\\\\dfrac{-1}{(k-1)(x-a)^{k-1}}+C$（$k\\\\ge 2$）；$\\\\int\\\\dfrac{1}{x^2+a^2}\\\\,\\\\mathrm{d}x=\\\\dfrac{1}{a}\\\\arctan\\\\dfrac{x}{a}+C$。**三角有理式**：$\\\\int R(\\\\sin x,\\\\cos x)\\\\,\\\\mathrm{d}x$ 用万能换元 $t=\\\\tan(x/2)$，则 $\\\\sin x=2t/(1+t^2)$，$\\\\cos x=(1-t^2)/(1+t^2)$，$\\\\mathrm{d}x=2/(1+t^2)\\\\mathrm{d}t$，化为有理函数积分。",
+      "textbookRefs": [
+        "数学分析（第5版）上册，第 8 章 不定积分，§3 有理函数和可化为有理函数的不定积分；具体题号待核对"
+      ],
+      "keyDefinitions": [
+        {
+          "name": "有理函数",
+          "statement": "两个多项式之商 $P(x)/Q(x)$（$Q\\\\ne 0$）。分子次数小于分母次数时称真分式，否则先做多项式除法化为真分式。"
+        }
+      ],
+      "keyTheorems": [
+        {
+          "name": "部分分式分解定理",
+          "statement": "任意有理真分式均可唯一分解为若干简单分式之和（对应 $Q(x)$ 的各因子）。"
+        }
+      ],
+      "proofIdeas": [
+        "存在性由代数基本定理保证（$Q$ 在 $\\\\mathbb{C}$ 上分解为一次因子；在 $\\\\mathbb{R}$ 上为一次和不可约二次因子）；唯一性由比较系数。",
+        "Heaviside 掩盖法：对简单一次因子 $(x-a)$，令 $x=a$，两边相乘 $(x-a)$ 后消去分母直接读出系数。"
+      ],
+      "socraticQuestions": [
+        "分母有重因子 $(x-1)^2$ 时，部分分式写成什么形式？",
+        "不可约二次因子 $x^2+1$ 对应的部分分式为什么是 $(Ax+B)/(x^2+1)$ 而不是 $A/(x^2+1)$？",
+        "万能换元 $t=\\\\tan(x/2)$ 后，$\\\\mathrm{d}x$ 如何用 $\\\\mathrm{d}t$ 表示？"
+      ],
+      "commonMistakes": [
+        "假设分式分解时漏掉重因子 $(x-1)^2$ 的低次项（如只写 $A/(x-1)^2$，漏 $B/(x-1)$）。",
+        "确定系数时计算错误（代值后算术失误）。",
+        "对假分式不先做多项式除法，直接套部分分式公式。"
+      ],
+      "exampleIds": [],
+      "exerciseIds": ["indef-ex-006", "indef-ex-007", "indef-ex-008"],
+      "diagramIds": [],
+      "masteryCriteria": [
+        "能对给定有理真分式正确写出部分分式形式并确定系数。",
+        "能对各类简单部分分式直接积分。"
+      ]
+    }
+  ]
+}

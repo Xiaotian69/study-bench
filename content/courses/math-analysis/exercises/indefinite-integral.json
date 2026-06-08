@@ -1,0 +1,221 @@
+{
+  "chapterId": "ch-indefinite-integral",
+  "courseId": "math-analysis",
+  "volumeId": "math-analysis-volume-1",
+  "sourceTypeLegend": {
+    "textbook-example": "教材例题",
+    "textbook-exercise": "教材课后习题",
+    "adapted": "由教材题改编",
+    "bridging": "自编过渡题，仅用于衔接，不作为正式题"
+  },
+  "intakeNote": "本章题面为自编或充分改写，未直接照搬教材原题；sourceRef 记录对应章节，题号标注"待核对题源"，待对照本地教材核对后再回填具体题号。",
+  "exercises": [
+    {
+      "id": "indef-ex-001",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §1 基本积分公式",
+      "knowledgePointIds": ["antiderivative-concept"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求下列不定积分：$(1)\\;\\int(3x^2-\\dfrac{2}{x}+e^x)\\,\\mathrm{d}x$；$(2)\\;\\int\\dfrac{1+x^2}{1+x^2}\\,\\mathrm{d}x$（注意化简）。",
+      "gradingRubric": [
+        "(1) 逐项积分：$\\\\int 3x^2\\\\,\\\\mathrm{d}x-\\\\int\\\\dfrac{2}{x}\\\\,\\\\mathrm{d}x+\\\\int e^x\\\\,\\\\mathrm{d}x=x^3-2\\\\ln|x|+e^x+C$",
+        "(2) 注意 $(1+x^2)/(1+x^2)=1$（恒等式，被积函数化简为 1），故 $\\\\int 1\\\\,\\\\mathrm{d}x=x+C$"
+      ],
+      "hints": [
+        "(1) 线性性：$\\\\int(f+g)=\\\\int f+\\\\int g$，逐项套基本公式。",
+        "(2) 先化简被积函数，不要直接积分复杂形式。",
+        "注意 $\\\\int(1/x)\\\\,\\\\mathrm{d}x=\\\\ln|x|+C$（要加绝对值）。"
+      ],
+      "commonMistakes": [
+        "(1) $\\\\int(1/x)\\\\,\\\\mathrm{d}x$ 写成 $\\\\ln x$，遗漏绝对值",
+        "(2) 没有化简直接写 $\\\\int(1+x^2)/(1+x^2)\\\\,\\\\mathrm{d}x=\\\\arctan x+\\\\cdots$（分子分母都未化简）",
+        "最后忘记 $+C$"
+      ]
+    },
+    {
+      "id": "indef-ex-002",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §2 换元积分法（第一类）",
+      "knowledgePointIds": ["substitution-method"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用换元积分法求：$(1)\\;\\int\\dfrac{\\cos(\\ln x)}{x}\\,\\mathrm{d}x$；$(2)\\;\\int x\\sqrt{1-x^2}\\,\\mathrm{d}x$。",
+      "gradingRubric": [
+        "(1) 令 $u=\\\\ln x$，$\\\\mathrm{d}u=\\\\dfrac{1}{x}\\\\mathrm{d}x$；$\\\\int\\\\cos u\\\\,\\\\mathrm{d}u=\\\\sin u+C=\\\\sin(\\\\ln x)+C$",
+        "(2) 令 $u=1-x^2$，$\\\\mathrm{d}u=-2x\\\\,\\\\mathrm{d}x$，故 $x\\\\,\\\\mathrm{d}x=-\\\\dfrac{1}{2}\\\\mathrm{d}u$；$-\\\\dfrac{1}{2}\\\\int\\\\sqrt{u}\\\\,\\\\mathrm{d}u=-\\\\dfrac{1}{2}\\\\cdot\\\\dfrac{2u^{3/2}}{3}+C=-\\\\dfrac{1}{3}(1-x^2)^{3/2}+C$"
+      ],
+      "hints": [
+        "(1) 被积式中 $1/x$ 正好是 $\\\\ln x$ 的导数，凑微分 $\\\\mathrm{d}(\\\\ln x)=\\\\mathrm{d}x/x$。",
+        "(2) 令 $u=1-x^2$，则 $\\\\mathrm{d}u=-2x\\\\,\\\\mathrm{d}x$，即 $x\\\\,\\\\mathrm{d}x=-\\\\mathrm{d}u/2$。",
+        "换元后记得把 $u$ 换回含 $x$ 的表达式。"
+      ],
+      "commonMistakes": [
+        "(1) 凑微分后忘记换回，结果留 $\\\\sin u$",
+        "(2) $\\\\mathrm{d}u=-2x\\\\mathrm{d}x$ 符号忘记，写成正的",
+        "(2) $\\\\sqrt{u}$ 的积分用 $u^{1/2}$ 公式时指数 $1/2+1=3/2$ 算错"
+      ]
+    },
+    {
+      "id": "indef-ex-003",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §2 换元积分法（第二类）",
+      "knowledgePointIds": ["substitution-method"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用三角换元求 $\\int\\dfrac{\\mathrm{d}x}{x^2\\sqrt{x^2-1}}$（$x>1$）。",
+      "gradingRubric": [
+        "令 $x=\\\\sec t$（$t\\\\in(0,\\\\pi/2)$），则 $\\\\sqrt{x^2-1}=\\\\tan t$，$\\\\mathrm{d}x=\\\\sec t\\\\tan t\\,\\\\mathrm{d}t$",
+        "$\\\\int\\\\dfrac{\\\\sec t\\\\tan t}{\\\\sec^2 t\\\\cdot\\\\tan t}\\\\,\\\\mathrm{d}t=\\\\int\\\\dfrac{1}{\\\\sec t}\\\\,\\\\mathrm{d}t=\\\\int\\\\cos t\\\\,\\\\mathrm{d}t=\\\\sin t+C$",
+        "换回：$\\\\sin t=\\\\dfrac{\\\\sqrt{x^2-1}}{x}$（在 $x>1$，$t\\\\in(0,\\\\pi/2)$：$\\\\sin t=\\\\tan t/\\\\sec t=\\\\sqrt{x^2-1}/x$）",
+        "结果：$\\\\dfrac{\\\\sqrt{x^2-1}}{x}+C$"
+      ],
+      "hints": [
+        "含 $\\\\sqrt{x^2-1}$，令 $x=\\\\sec t$，消去根号（$\\\\sec^2 t-1=\\\\tan^2 t$）。",
+        "化简积分后直接得到 $\\\\cos t$ 的积分。",
+        "换回时画一个直角三角形：斜边 $x$，邻边 $1$，对边 $\\\\sqrt{x^2-1}$，读出 $\\\\sin t$。"
+      ],
+      "commonMistakes": [
+        "换元后化简出错，没有消去分子分母中的 $\\\\tan t$",
+        "换回时 $\\\\sin t=1/x$（混淆斜边和邻边）",
+        "忘记 $x>1$ 条件导致换元不合法"
+      ]
+    },
+    {
+      "id": "indef-ex-004",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §2 分部积分法",
+      "knowledgePointIds": ["integration-by-parts"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\int x^2\\ln x\\,\\mathrm{d}x$。",
+      "gradingRubric": [
+        "取 $u=\\\\ln x$，$\\\\mathrm{d}v=x^2\\\\,\\\\mathrm{d}x$，则 $\\\\mathrm{d}u=\\\\dfrac{1}{x}\\\\mathrm{d}x$，$v=\\\\dfrac{x^3}{3}$",
+        "分部：$\\\\dfrac{x^3}{3}\\\\ln x-\\\\int\\\\dfrac{x^3}{3}\\\\cdot\\\\dfrac{1}{x}\\\\,\\\\mathrm{d}x=\\\\dfrac{x^3}{3}\\\\ln x-\\\\dfrac{1}{3}\\\\int x^2\\\\,\\\\mathrm{d}x$",
+        "$=\\\\dfrac{x^3}{3}\\\\ln x-\\\\dfrac{x^3}{9}+C$"
+      ],
+      "hints": [
+        "含 $\\\\ln x$ 时，选 $u=\\\\ln x$（LIATE 中对数优先）。",
+        "则 $\\\\mathrm{d}v=x^2\\\\mathrm{d}x$，积分得 $v=x^3/3$。",
+        "代入分部积分公式，化简剩余积分。"
+      ],
+      "commonMistakes": [
+        "选 $u=x^2$，$\\\\mathrm{d}v=\\\\ln x\\\\,\\\\mathrm{d}x$（$\\\\ln x$ 的原函数计算较难）",
+        "$v=x^3/3$ 计算正确但代入时忘记 $1/3$ 系数",
+        "最终没有把 $\\\\int x^2\\,\\\\mathrm{d}x$ 算到底"
+      ]
+    },
+    {
+      "id": "indef-ex-005",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §2（循环分部积分）",
+      "knowledgePointIds": ["integration-by-parts"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\int e^x\\sin x\\,\\mathrm{d}x$（循环分部积分）。",
+      "gradingRubric": [
+        "第一次：取 $u=\\\\sin x$，$\\\\mathrm{d}v=e^x\\,\\\\mathrm{d}x$；$I=e^x\\\\sin x-\\\\int e^x\\\\cos x\\,\\\\mathrm{d}x$",
+        "第二次：对 $\\\\int e^x\\\\cos x$ 再分部，取 $u=\\\\cos x$，$\\\\mathrm{d}v=e^x\\,\\\\mathrm{d}x$；$\\\\int e^x\\\\cos x=e^x\\\\cos x+\\\\int e^x\\\\sin x=e^x\\\\cos x+I$",
+        "代回：$I=e^x\\\\sin x-(e^x\\\\cos x+I)=e^x(\\\\sin x-\\\\cos x)-I$",
+        "解方程：$2I=e^x(\\\\sin x-\\\\cos x)$，$I=\\\\dfrac{e^x(\\\\sin x-\\\\cos x)}{2}+C$"
+      ],
+      "hints": [
+        "两次分部后原积分 $I$ 再次出现，把它记作 $I$，然后解方程。",
+        "每次分部时对 $e^x$ 那一类选 $\\\\mathrm{d}v$（保持一致）。",
+        "最后解 $2I=\\cdots$ 时别忘记除以 2 后还要加 $+C$。"
+      ],
+      "commonMistakes": [
+        "两次分部时 $u$ 和 $\\\\mathrm{d}v$ 选法不一致（第一次选 $u=e^x$，第二次又选 $u=e^x$），导致循环消去（$0=0$）",
+        "循环解方程后忘记 $+C$",
+        "代回时符号出错"
+      ]
+    },
+    {
+      "id": "indef-ex-006",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §3 有理函数积分",
+      "knowledgePointIds": ["rational-function-integration"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用部分分式法求 $\\int\\dfrac{3x+1}{x^2-1}\\,\\mathrm{d}x$。",
+      "gradingRubric": [
+        "分解：$x^2-1=(x-1)(x+1)$；设 $\\\\dfrac{3x+1}{(x-1)(x+1)}=\\\\dfrac{A}{x-1}+\\\\dfrac{B}{x+1}$",
+        "确定系数：$3x+1=A(x+1)+B(x-1)$；令 $x=1$：$4=2A$，$A=2$；令 $x=-1$：$-2=-2B$，$B=1$",
+        "积分：$\\\\int\\\\left(\\\\dfrac{2}{x-1}+\\\\dfrac{1}{x+1}\\\\right)\\\\mathrm{d}x=2\\\\ln|x-1|+\\\\ln|x+1|+C=\\\\ln|(x-1)^2(x+1)|+C$"
+      ],
+      "hints": [
+        "先对分母因式分解，再设部分分式形式。",
+        "确定系数用"代特殊值法"（Heaviside 掩盖法）：令 $x=1$ 或 $x=-1$。",
+        "每个 $1/(x-a)$ 的积分是 $\\\\ln|x-a|$。"
+      ],
+      "commonMistakes": [
+        "分式分解忘记分母中的两个因子，只用一个",
+        "代值时算术错误",
+        "$\\\\ln|x-1|$ 系数处理错误（$2A=4$ 得 $A=2$，不是 $A=4$）"
+      ]
+    },
+    {
+      "id": "indef-ex-007",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §3（重因子分式）",
+      "knowledgePointIds": ["rational-function-integration"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\int\\dfrac{x+2}{(x-1)^2(x+1)}\\,\\mathrm{d}x$。",
+      "gradingRubric": [
+        "设 $\\\\dfrac{x+2}{(x-1)^2(x+1)}=\\\\dfrac{A}{x-1}+\\\\dfrac{B}{(x-1)^2}+\\\\dfrac{C}{x+1}$",
+        "通分得 $x+2=A(x-1)(x+1)+B(x+1)+C(x-1)^2$",
+        "令 $x=1$：$3=2B$，$B=3/2$；令 $x=-1$：$1=C\\\\cdot 4$，$C=1/4$",
+        "比较 $x^2$ 系数：$0=A+C$，$A=-C=-1/4$",
+        "积分：$-\\\\dfrac{1}{4}\\\\ln|x-1|-\\\\dfrac{3}{2(x-1)}+\\\\dfrac{1}{4}\\\\ln|x+1|+C=\\\\dfrac{1}{4}\\\\ln\\\\dfrac{|x+1|}{|x-1|}-\\\\dfrac{3}{2(x-1)}+C$"
+      ],
+      "hints": [
+        "重因子 $(x-1)^2$ 对应两个部分分式：$A/(x-1)$ 和 $B/(x-1)^2$。",
+        "先用代特殊值法确定 $B$ 和 $C$，再比较系数确定 $A$。",
+        "$\\\\int 1/(x-1)^2\\,\\\\mathrm{d}x=-1/(x-1)+C$。"
+      ],
+      "commonMistakes": [
+        "重因子只写 $A/(x-1)^2$，漏掉低次项 $B/(x-1)$",
+        "$\\\\int 1/(x-1)^2$ 用 $\\\\ln|x-1|$ 公式（混淆一次与二次分母）",
+        "系数比较时算术错误"
+      ]
+    },
+    {
+      "id": "indef-ex-008",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 8 章 §3（不可约二次因子）",
+      "knowledgePointIds": ["rational-function-integration"],
+      "difficulty": "hard",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\int\\dfrac{x^2+2}{(x-1)(x^2+1)}\\,\\mathrm{d}x$。",
+      "gradingRubric": [
+        "设 $\\\\dfrac{x^2+2}{(x-1)(x^2+1)}=\\\\dfrac{A}{x-1}+\\\\dfrac{Bx+C}{x^2+1}$",
+        "令 $x=1$：$3=A\\\\cdot 2$，$A=3/2$",
+        "通分展开：$x^2+2=A(x^2+1)+(Bx+C)(x-1)=(A+B)x^2+(-B+C)x+(A-C)$",
+        "比较系数：$A+B=1$，$-B+C=0$，$A-C=2$",
+        "由 $A=3/2$：$B=1-3/2=-1/2$，$C=B=-1/2$（验证：$A-C=3/2-(-1/2)=2$ ✓）",
+        "积分：$\\\\dfrac{3}{2}\\\\ln|x-1|+\\\\int\\\\dfrac{-x/2-1/2}{x^2+1}\\\\,\\\\mathrm{d}x$",
+        "$=-\\\\dfrac{1}{4}\\\\int\\\\dfrac{2x}{x^2+1}\\\\,\\\\mathrm{d}x-\\\\dfrac{1}{2}\\\\arctan x+\\\\dfrac{3}{2}\\\\ln|x-1|$",
+        "$=\\\\dfrac{3}{2}\\\\ln|x-1|-\\\\dfrac{1}{4}\\\\ln(x^2+1)-\\\\dfrac{1}{2}\\\\arctan x+C$"
+      ],
+      "hints": [
+        "不可约二次因子 $x^2+1$ 对应 $(Bx+C)/(x^2+1)$（分子须是一次的，不能只写常数）。",
+        "先代 $x=1$ 求 $A$，再展开比较 $x^2$、$x^1$、$x^0$ 的系数。",
+        "不可约二次分式的积分：$\\\\int x/(x^2+1)=\\\\frac{1}{2}\\\\ln(x^2+1)$，$\\\\int 1/(x^2+1)=\\\\arctan x$。"
+      ],
+      "commonMistakes": [
+        "不可约二次分式写成 $C/(x^2+1)$（分子只写常数），导致待定系数不够",
+        "$\\\\int x/(x^2+1)$ 写成 $\\\\arctan x$（与 $\\\\int 1/(x^2+1)$ 混淆）",
+        "展开比较系数时算术错误"
+      ]
+    }
+  ]
+}

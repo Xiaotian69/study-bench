@@ -266,11 +266,29 @@
       "id": "ch-indefinite-integral",
       "number": 8,
       "title": "不定积分",
-      "status": "planned",
+      "status": "draft",
+      "chapterFile": "chapters/indefinite-integral.json",
+      "exercisesFile": "exercises/indefinite-integral.json",
+      "diagramFile": "diagrams/indefinite-integral.json",
       "sections": [
-        { "id": "sec-indefinite-concept", "title": "不定积分概念与基本积分公式", "status": "planned" },
-        { "id": "sec-substitution-parts", "title": "换元积分法与分部积分法", "status": "planned" },
-        { "id": "sec-rational-functions", "title": "有理函数和可化为有理函数的不定积分", "status": "planned" }
+        {
+          "id": "sec-indefinite-concept",
+          "title": "不定积分概念与基本积分公式",
+          "status": "draft",
+          "knowledgePointIds": ["antiderivative-concept"]
+        },
+        {
+          "id": "sec-substitution-parts",
+          "title": "换元积分法与分部积分法",
+          "status": "draft",
+          "knowledgePointIds": ["substitution-method", "integration-by-parts"]
+        },
+        {
+          "id": "sec-rational-functions",
+          "title": "有理函数和可化为有理函数的不定积分",
+          "status": "draft",
+          "knowledgePointIds": ["rational-function-integration"]
+        }
       ]
     },
     {
