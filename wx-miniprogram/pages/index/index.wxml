@@ -18,6 +18,16 @@
   </view>
 
   <view wx:else>
+    <!-- Continue learning card -->
+    <view wx:if="{{recentKp}}" class="continue-card" bindtap="continueStudy">
+      <view class="continue-body">
+        <text class="continue-eyebrow">继续学习</text>
+        <text class="continue-kp-title">{{recentKp.kpTitle}}</text>
+        <text class="continue-ch-title">第 {{recentKp.chapterNum}} 章 · {{recentKp.chapterTitle}}</text>
+      </view>
+      <text class="continue-arrow">›</text>
+    </view>
+
     <view wx:for="{{volumes}}" wx:key="id" class="volume-section">
       <text class="volume-title">{{item.title}}</text>
 

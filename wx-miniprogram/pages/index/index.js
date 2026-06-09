@@ -1,5 +1,5 @@
 const app = getApp();
-const { loadChapterProgress } = require('../../utils/progress');
+const { loadChapterProgress, loadKpProgress } = require('../../utils/progress');
 
 const STATUS_LABEL = {
   'sample-ready': '完整',
@@ -10,17 +10,41 @@ const STATUS_LABEL = {
 Page({
   data: {
     volumes: [],
+    recentKp: null,   // { chapterId, kpId, chapterTitle, kpTitle, chapterNum }
     loading: true,
   },
   onLoad() {
     this._buildData();
   },
   onShow() {
-    // Refresh progress every time the page is shown
     this._buildData();
   },
   _buildData() {
     const { volumes, chapters } = app.globalData;
+
+    // Find most recently studied KP
+    let recentKp = null;
+    let latestTs = 0;
+    for (const vol of volumes) {
+      for (const ch of vol.chapters) {
+        const chData = chapters[ch.id];
+        if (!chData) continue;
+        for (const kp of chData.knowledgePoints) {
+          const prog = loadKpProgress(ch.id, kp.id);
+          if (prog.studied && (prog.lastStudied || 0) > latestTs) {
+            latestTs = prog.lastStudied || 0;
+            recentKp = {
+              chapterId: ch.id,
+              kpId: kp.id,
+              chapterNum: ch.number,
+              chapterTitle: ch.title,
+              kpTitle: kp.title,
+            };
+          }
+        }
+      }
+    }
+
     const enriched = volumes.map(vol => ({
       ...vol,
       chapters: vol.chapters.map(ch => {
@@ -36,10 +60,18 @@ Page({
         };
       }),
     }));
-    this.setData({ volumes: enriched, loading: false });
+
+    this.setData({ volumes: enriched, recentKp, loading: false });
   },
   goToChapter(e) {
     wx.navigateTo({ url: '/pages/chapter/chapter?chapterId=' + e.currentTarget.dataset.id });
+  },
+  continueStudy() {
+    const { recentKp } = this.data;
+    if (!recentKp) return;
+    wx.navigateTo({
+      url: '/pages/study/study?chapterId=' + recentKp.chapterId + '&kpId=' + recentKp.kpId,
+    });
   },
   goToSettings() {
     wx.navigateTo({ url: '/pages/settings/settings' });

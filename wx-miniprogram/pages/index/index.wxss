@@ -41,6 +41,45 @@
 }
 .settings-icon { font-size: 32rpx; }
 
+/* Continue learning card */
+.continue-card {
+  display: flex;
+  align-items: center;
+  margin: 28rpx 36rpx 0;
+  padding: 28rpx 32rpx;
+  background: var(--paper-page);
+  border: 1rpx solid var(--rule);
+  border-left: 4rpx solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  gap: 16rpx;
+}
+.continue-body { flex: 1; min-width: 0; }
+.continue-eyebrow {
+  display: block;
+  font-size: 20rpx;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6rpx;
+}
+.continue-kp-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.continue-ch-title {
+  display: block;
+  font-size: 22rpx;
+  color: var(--ink-faint);
+}
+.continue-arrow { font-size: 40rpx; color: var(--ink-faint); flex-shrink: 0; }
+
 /* Volume */
 .volume-section { padding: 32rpx 40rpx 0; }
 .volume-title {
