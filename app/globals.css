@@ -502,6 +502,16 @@ a {
   font-style: italic;
 }
 
+.diagram-card--concept {
+  background: var(--paper-page);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.diagram-card--concept .diagram-prompt {
+  margin-top: 14px;
+}
+
 /* ----------------------------------------------------------------
    练习区
 ----------------------------------------------------------------- */
