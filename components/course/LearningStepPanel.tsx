@@ -81,6 +81,18 @@ export function LearningStepPanel({
           </ol>
         </CollapsibleSection>
       )}
+
+      {knowledgePoint.commonMistakes.length > 0 && (
+        <CollapsibleSection title="易错提醒">
+          <ul className="mistake-list">
+            {knowledgePoint.commonMistakes.map((mistake) => (
+              <li key={mistake}>
+                <MathText text={mistake} />
+              </li>
+            ))}
+          </ul>
+        </CollapsibleSection>
+      )}
     </article>
   );
 }

@@ -771,6 +771,28 @@ select:focus {
   color: var(--gold);
 }
 
+.mistake-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mistake-list li {
+  position: relative;
+  margin: 8px 0;
+  padding-left: 20px;
+  line-height: 1.65;
+}
+
+.mistake-list li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 11px;
+  top: 4px;
+}
+
 details {
   margin-top: 14px;
   border-top: 1px solid var(--rule);
