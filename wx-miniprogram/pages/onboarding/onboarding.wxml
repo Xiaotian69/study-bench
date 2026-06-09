@@ -1,0 +1,49 @@
+<view class="page">
+  <!-- Skip button -->
+  <view class="skip-btn" bindtap="skip">
+    <text class="skip-text">跳过</text>
+  </view>
+
+  <!-- Slides -->
+  <swiper
+    class="swiper"
+    indicator-dots="{{false}}"
+    autoplay="{{false}}"
+    duration="300"
+    current="{{current}}"
+    bindchange="onChange"
+  >
+    <swiper-item wx:for="{{slides}}" wx:key="title">
+      <view class="slide">
+        <view class="slide-icon-wrap">
+          <text class="slide-icon">{{item.icon}}</text>
+        </view>
+        <text class="slide-title">{{item.title}}</text>
+        <text class="slide-subtitle">{{item.subtitle}}</text>
+        <text class="slide-body">{{item.body}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- Dots -->
+  <view class="dots">
+    <view
+      wx:for="{{slides}}"
+      wx:key="index"
+      class="dot {{index === current ? 'dot-active' : ''}}"
+    />
+  </view>
+
+  <!-- CTA -->
+  <view class="cta-area">
+    <view wx:if="{{current < slides.length - 1}}" class="cta-btn cta-next" bindtap="next">
+      <text>下一步 ›</text>
+    </view>
+    <view wx:else class="cta-btn cta-start" bindtap="start">
+      <text>开始学习</text>
+    </view>
+  </view>
+
+  <!-- Decoration rule -->
+  <view class="bottom-rule" />
+</view>

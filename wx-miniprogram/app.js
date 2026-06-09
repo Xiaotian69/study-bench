@@ -12,6 +12,12 @@ App({
     currentKp: null,   // { chapterId, kpId } — set when entering study page
   },
   onLaunch() {
-    console.log('App launched. Chapters loaded:', Object.keys(allChapters.chapters).length);
+    const onboarded = wx.getStorageSync('ma_onboarded');
+    if (!onboarded) {
+      // Delay so the app frame finishes mounting before redirect
+      setTimeout(() => {
+        wx.redirectTo({ url: '/pages/onboarding/onboarding' });
+      }, 100);
+    }
   }
 });
