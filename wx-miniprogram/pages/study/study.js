@@ -95,6 +95,7 @@ Page({
   goPrevKp() {
     const { chapter, kpIndex } = this.data;
     if (kpIndex <= 0) return;
+    wx.vibrateShort({ type: 'light' });
     const prev = chapter.knowledgePoints[kpIndex - 1];
     this._load(chapter.id, prev.id);
     wx.pageScrollTo({ scrollTop: 0, duration: 150 });
@@ -102,6 +103,7 @@ Page({
   goNextKp() {
     const { chapter, kpIndex, totalKps } = this.data;
     if (kpIndex >= totalKps - 1) return;
+    wx.vibrateShort({ type: 'light' });
     const next = chapter.knowledgePoints[kpIndex + 1];
     this._load(chapter.id, next.id);
     wx.pageScrollTo({ scrollTop: 0, duration: 150 });
@@ -134,6 +136,7 @@ Page({
   getHint() {
     const { selectedEx, hintLevel } = this.data;
     if (!selectedEx || hintLevel >= selectedEx.hints.length) return;
+    wx.vibrateShort({ type: 'light' });
     this.setData({ hintLevel: hintLevel + 1 });
   },
   toggleRubric() {
@@ -157,8 +160,16 @@ Page({
           bestScore: getBestScore(ex.id),
           diffLabel: ex.difficulty === 'basic' ? '基础' : ex.difficulty === 'medium' ? '中档' : '提升',
         }));
+        const VERDICT_TITLES = {
+          excellent: '非常棒！',
+          good: '做得不错',
+          partial: '部分正确',
+          incorrect: '还需改进',
+        };
+        const enriched = { ...result, verdictTitle: VERDICT_TITLES[result.verdict] || '批改完成' };
+        wx.vibrateShort({ type: 'medium' });
         this.setData({
-          gradeResult: result,
+          gradeResult: enriched,
           gradingStatus: 'success',
           exercisesWithScore,
         });

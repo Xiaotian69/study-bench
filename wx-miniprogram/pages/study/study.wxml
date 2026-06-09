@@ -180,7 +180,10 @@
       <!-- Grade result -->
       <view wx:if="{{gradeResult}}" id="grade-result" class="grade-result {{gradeResult.verdict}}">
         <view class="grade-result-head">
-          <text class="grade-result-title">AI 批改结果</text>
+          <view>
+            <text class="grade-result-label">AI 批改结果</text>
+            <text class="grade-verdict-title">{{gradeResult.verdictTitle}}</text>
+          </view>
           <view class="grade-score-wrap">
             <text class="grade-score">{{gradeResult.score}}</text>
             <text class="grade-score-unit">分</text>

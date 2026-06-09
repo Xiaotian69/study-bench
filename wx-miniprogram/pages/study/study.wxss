@@ -158,6 +158,18 @@
 .ex-card-arrow { font-size: 40rpx; color: var(--ink-faint); flex-shrink: 0; }
 .ex-card-tags { display: flex; align-items: center; gap: 12rpx; margin-top: 8rpx; flex-wrap: wrap; }
 
+/* Difficulty pills */
+.difficulty-pill {
+  display: inline-block;
+  font-size: 20rpx;
+  font-weight: 600;
+  padding: 2rpx 12rpx;
+  border-radius: 20rpx;
+}
+.difficulty-pill.basic   { background: #e8f5e9; color: #2e7d32; }
+.difficulty-pill.medium  { background: #fff9c4; color: #c17900; }
+.difficulty-pill.advanced { background: #fce4ec; color: #880e4f; }
+
 /* Score badge */
 .score-badge {
   display: inline-block;
@@ -282,7 +294,8 @@
   align-items: center;
   margin-bottom: 16rpx;
 }
-.grade-result-title { font-size: 28rpx; font-weight: 700; color: var(--ink); }
+.grade-result-label { display: block; font-size: 20rpx; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 4rpx; }
+.grade-verdict-title { display: block; font-size: 30rpx; font-weight: 800; color: var(--ink); }
 .grade-score { font-size: 40rpx; font-weight: 800; color: var(--accent); }
 .missing-points { margin-top: 16rpx; }
 .missing-label { display: block; font-size: 24rpx; font-weight: 700; color: var(--ink); margin-bottom: 10rpx; }
