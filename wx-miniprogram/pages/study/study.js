@@ -106,7 +106,20 @@ Page({
   },
   goNextKp() {
     const { chapter, kpIndex, totalKps } = this.data;
-    if (kpIndex >= totalKps - 1) return;
+    if (kpIndex >= totalKps - 1) {
+      // Reached end of chapter — show completion message
+      wx.vibrateShort({ type: 'medium' });
+      wx.showModal({
+        title: '🎉 本章学完了！',
+        content: '你已学完「' + chapter.title + '」的全部 ' + totalKps + ' 个知识点。继续下一章？',
+        confirmText: '返回目录',
+        cancelText: '继续复习',
+        success: (res) => {
+          if (res.confirm) wx.navigateBack();
+        },
+      });
+      return;
+    }
     wx.vibrateShort({ type: 'light' });
     const next = chapter.knowledgePoints[kpIndex + 1];
     this._load(chapter.id, next.id);
