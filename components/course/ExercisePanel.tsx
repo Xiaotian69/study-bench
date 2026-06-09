@@ -67,6 +67,7 @@ export function ExercisePanel({
   const [gradeResult, setGradeResult] = useState<TutorGradeResponse | null>(null);
   const [masteryState, setMasteryState] = useState<MasteryState>("not_started");
   const attachmentsRef = useRef<AnswerImage[]>([]);
+  const rubricRef = useRef<HTMLDetailsElement>(null);
   const activeExercise = selectedIndex != null ? exercises[selectedIndex] : undefined;
 
   const visibleHints = useMemo(() => {
@@ -273,13 +274,17 @@ export function ExercisePanel({
             </div>
           )}
           <div className="exercise-actions">
-            <button onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))} type="button">
-              获取提示
+            <button
+              disabled={hintLevel >= activeExercise.hints.length}
+              onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))}
+              type="button"
+            >
+              {hintLevel === 0 ? "获取提示" : hintLevel < activeExercise.hints.length ? `再来一个提示 (${hintLevel}/${activeExercise.hints.length})` : `已显示全部提示`}
             </button>
             <button className="is-primary" disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
               {gradingStatus === "submitting" ? "批改中…" : "提交给 AI 批改"}
             </button>
-            <button type="button">对照评分要点</button>
+            <button onClick={() => { if (rubricRef.current) { rubricRef.current.open = true; rubricRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" }); } }} type="button">对照评分要点</button>
           </div>
           {gradingError && <p className="grading-error">{gradingError}</p>}
           {gradeResult && (
@@ -314,7 +319,7 @@ export function ExercisePanel({
               ))}
             </ul>
           )}
-          <details>
+          <details ref={rubricRef}>
             <summary>评分要点</summary>
             <ul>
               {activeExercise.gradingRubric.map((item) => (
