@@ -11,6 +11,35 @@
   margin-bottom: 16rpx;
 }
 
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+.stat-cell {
+  background: var(--paper-page);
+  border: 1rpx solid var(--rule);
+  border-radius: var(--radius);
+  padding: 28rpx 24rpx;
+  text-align: center;
+}
+.stat-val {
+  display: block;
+  font-size: 52rpx;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 8rpx;
+  font-family: var(--serif);
+}
+.stat-lbl {
+  display: block;
+  font-size: 22rpx;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
 .card {
   background: var(--paper-page);
   border: 1rpx solid var(--rule);

@@ -1,4 +1,4 @@
-const { loadApiKeyOverride, saveApiKeyOverride } = require('../../utils/progress');
+const { loadApiKeyOverride, saveApiKeyOverride, loadChapterProgress, loadExerciseAttempts } = require('../../utils/progress');
 const defaultConfig = require('../../config');
 
 Page({
@@ -6,12 +6,43 @@ Page({
     apiKey: '',
     hasOverride: false,
     saved: false,
+    stats: null,  // { kpStudied, kpTotal, exAttempted, avgScore }
   },
   onLoad() {
     const override = loadApiKeyOverride();
     this.setData({
       apiKey: override || '',
       hasOverride: !!override,
+    });
+    this._computeStats();
+  },
+  _computeStats() {
+    const app = getApp();
+    const { volumes, chapters } = app.globalData;
+    if (!volumes || !volumes.length) return;
+    let kpStudied = 0, kpTotal = 0, exAttempted = 0, scoreSum = 0, scoreCount = 0;
+    for (const vol of volumes) {
+      for (const ch of vol.chapters) {
+        const chData = chapters[ch.id];
+        if (!chData) continue;
+        const prog = loadChapterProgress(chData);
+        kpStudied += prog.studiedCount;
+        kpTotal += prog.totalCount;
+        if (prog.avgScore != null) { scoreSum += prog.avgScore; scoreCount++; }
+        for (const kp of chData.knowledgePoints) {
+          for (const ex of kp.exercises) {
+            if (loadExerciseAttempts(ex.id).length > 0) exAttempted++;
+          }
+        }
+      }
+    }
+    this.setData({
+      stats: {
+        kpStudied,
+        kpTotal,
+        exAttempted,
+        avgScore: scoreCount > 0 ? Math.round(scoreSum / scoreCount) : null,
+      },
     });
   },
   onKeyInput(e) {

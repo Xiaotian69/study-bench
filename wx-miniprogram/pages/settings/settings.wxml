@@ -1,5 +1,28 @@
 <view class="page">
 
+  <!-- Learning stats -->
+  <view wx:if="{{stats && stats.kpStudied > 0}}" class="section">
+    <text class="section-title">学习统计</text>
+    <view class="stats-grid">
+      <view class="stat-cell">
+        <text class="stat-val">{{stats.kpStudied}}</text>
+        <text class="stat-lbl">已学知识点</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-val">{{stats.exAttempted}}</text>
+        <text class="stat-lbl">已做练习</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-val">{{stats.avgScore != null ? stats.avgScore : '--'}}</text>
+        <text class="stat-lbl">平均得分</text>
+      </view>
+      <view class="stat-cell">
+        <text class="stat-val">{{stats.kpTotal > 0 ? (stats.kpStudied * 100 / stats.kpTotal) | 0 : 0}}%</text>
+        <text class="stat-lbl">完成进度</text>
+      </view>
+    </view>
+  </view>
+
   <view class="section">
     <text class="section-title">AI 设置</text>
 
