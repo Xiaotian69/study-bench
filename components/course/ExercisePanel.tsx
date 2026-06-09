@@ -25,6 +25,23 @@ type GradingStatus = "idle" | "submitting" | "success" | "error";
 const maxAnswerImageSizeLabel = "8MB";
 const maxAnswerImageBytes = 8 * 1024 * 1024;
 
+function difficultyLabel(d: string) {
+  return d === "basic" ? "基础" : d === "medium" ? "中档" : "提升";
+}
+
+function difficultyClass(d: string) {
+  return d === "basic" ? "basic" : d === "medium" ? "medium" : "advanced";
+}
+
+function previewText(text: string, max = 72): string {
+  const stripped = text
+    .replace(/\$\$[\s\S]*?\$\$/g, "[式]")
+    .replace(/\$[^$\n]+\$/g, "[式]")
+    .replace(/\n+/g, " ")
+    .trim();
+  return stripped.length > max ? stripped.slice(0, max) + "…" : stripped;
+}
+
 export function ExercisePanel({
   chapterId,
   courseId,
@@ -40,7 +57,7 @@ export function ExercisePanel({
   sectionId: string;
   volumeId: string;
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [hintLevel, setHintLevel] = useState(0);
   const [answer, setAnswer] = useState("");
   const [attachments, setAttachments] = useState<AnswerImage[]>([]);
@@ -49,7 +66,7 @@ export function ExercisePanel({
   const [gradeResult, setGradeResult] = useState<TutorGradeResponse | null>(null);
   const [masteryState, setMasteryState] = useState<MasteryState>("not_started");
   const attachmentsRef = useRef<AnswerImage[]>([]);
-  const activeExercise = exercises[activeIndex];
+  const activeExercise = selectedIndex != null ? exercises[selectedIndex] : undefined;
 
   const visibleHints = useMemo(() => {
     if (!activeExercise) return [];
@@ -169,124 +186,139 @@ export function ExercisePanel({
     }
   }
 
-  if (!activeExercise) {
-    return <section className="exercise-panel">当前知识点暂无练习。</section>;
-  }
-
   return (
     <section className="exercise-panel">
       <div className="exercise-header">
-        <p className="eyebrow">练习</p>
-        <span className={`mastery-summary ${masteryState}`}>当前掌握状态：{getMasteryLabel(masteryState)}</span>
-        <div className="exercise-tabs">
+        <div>
+          <p className="eyebrow">练习</p>
+          <strong className="exercise-count">{exercises.length > 0 ? `${exercises.length} 题` : "暂无练习"}</strong>
+        </div>
+        <span className={`mastery-summary ${masteryState}`}>{getMasteryLabel(masteryState)}</span>
+      </div>
+
+      {exercises.length === 0 ? (
+        <p className="exercise-empty">当前知识点暂无练习题，请切换知识点。</p>
+      ) : (
+        <div className="exercise-list">
           {exercises.map((exercise, index) => (
             <button
-              className={index === activeIndex ? "is-active" : ""}
+              className={`exercise-card ${index === selectedIndex ? "is-selected" : ""}`}
               key={exercise.id}
               onClick={() => {
-                setActiveIndex(index);
+                setSelectedIndex(index);
                 resetAnswerState();
               }}
               type="button"
             >
-              {exercise.difficulty === "basic" ? "基础" : exercise.difficulty === "medium" ? "中档" : "提升"}
+              <span className="exercise-card-num">{index + 1}</span>
+              <div className="exercise-card-meta">
+                <span className={`difficulty-pill ${difficultyClass(exercise.difficulty)}`}>
+                  {difficultyLabel(exercise.difficulty)}
+                </span>
+                <p className="exercise-card-preview">{previewText(exercise.prompt)}</p>
+              </div>
             </button>
           ))}
         </div>
-      </div>
-      <h3>
-        <MathText text={activeExercise.prompt} />
-      </h3>
-      <textarea
-        aria-label="输入你的解答"
-        onChange={(event) => setAnswer(event.target.value)}
-        placeholder="在这里写你的思路、计算或证明..."
-        value={answer}
-      />
-      <div className="answer-upload-row">
-        <label className="upload-button">
-          拍照/上传答案
-          <input
-            accept="image/*"
-            capture="environment"
-            className="sr-only"
-            multiple
-            onChange={(event) => {
-              addAnswerImages(event.target.files);
-              event.target.value = "";
-            }}
-            type="file"
-          />
-        </label>
-        <span>支持手写答案照片，单张 {maxAnswerImageSizeLabel} 以内，可随文本答案提交给支持视觉的模型。</span>
-      </div>
-      {attachments.length > 0 && (
-        <div className="answer-image-grid">
-          {attachments.map((attachment) => (
-            <figure className="answer-image-card" key={attachment.id}>
-              <img alt={attachment.name} src={attachment.url} />
-              <figcaption>
-                <span>{attachment.name}</span>
-                <button onClick={() => removeAnswerImage(attachment.id)} type="button">
-                  移除
-                </button>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
       )}
-      <div className="exercise-actions">
-        <button onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))} type="button">
-          获取提示
-        </button>
-        <button disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
-          {gradingStatus === "submitting" ? "批改中..." : "提交给 AI 批改"}
-        </button>
-        <button type="button">对照评分要点</button>
-      </div>
-      {gradingError && <p className="grading-error">{gradingError}</p>}
-      {gradeResult && (
-        <section className={`grade-result-card ${gradeResult.verdict}`} aria-label="AI 批改结果">
-          <div className="grade-result-heading">
-            <strong>AI 批改结果</strong>
-            <span>{gradeResult.score} 分</span>
+
+      {activeExercise && (
+        <div className="exercise-workspace">
+          <h3>
+            <MathText text={activeExercise.prompt} />
+          </h3>
+          <textarea
+            aria-label="输入你的解答"
+            onChange={(event) => setAnswer(event.target.value)}
+            placeholder="在这里写你的思路、计算或证明..."
+            value={answer}
+          />
+          <div className="answer-upload-row">
+            <label className="upload-button">
+              拍照/上传答案
+              <input
+                accept="image/*"
+                capture="environment"
+                className="sr-only"
+                multiple
+                onChange={(event) => {
+                  addAnswerImages(event.target.files);
+                  event.target.value = "";
+                }}
+                type="file"
+              />
+            </label>
+            <span>支持手写答案照片，单张 {maxAnswerImageSizeLabel} 以内，可随文本答案提交给支持视觉的模型。</span>
           </div>
-          <p>
-            <MathText text={gradeResult.feedback} />
-          </p>
-          {gradeResult.missingKeyPoints.length > 0 && (
-            <div>
-              <strong>还缺这些要点</strong>
-              <ul>
-                {gradeResult.missingKeyPoints.map((item) => (
-                  <li key={item}>
-                    <MathText text={item} />
-                  </li>
-                ))}
-              </ul>
+          {attachments.length > 0 && (
+            <div className="answer-image-grid">
+              {attachments.map((attachment) => (
+                <figure className="answer-image-card" key={attachment.id}>
+                  <img alt={attachment.name} src={attachment.url} />
+                  <figcaption>
+                    <span>{attachment.name}</span>
+                    <button onClick={() => removeAnswerImage(attachment.id)} type="button">
+                      移除
+                    </button>
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           )}
-        </section>
+          <div className="exercise-actions">
+            <button onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))} type="button">
+              获取提示
+            </button>
+            <button disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
+              {gradingStatus === "submitting" ? "批改中..." : "提交给 AI 批改"}
+            </button>
+            <button type="button">对照评分要点</button>
+          </div>
+          {gradingError && <p className="grading-error">{gradingError}</p>}
+          {gradeResult && (
+            <section aria-label="AI 批改结果" className={`grade-result-card ${gradeResult.verdict}`}>
+              <div className="grade-result-heading">
+                <strong>AI 批改结果</strong>
+                <span>{gradeResult.score} 分</span>
+              </div>
+              <p>
+                <MathText text={gradeResult.feedback} />
+              </p>
+              {gradeResult.missingKeyPoints.length > 0 && (
+                <div>
+                  <strong>还缺这些要点</strong>
+                  <ul>
+                    {gradeResult.missingKeyPoints.map((item) => (
+                      <li key={item}>
+                        <MathText text={item} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          )}
+          {visibleHints.length > 0 && (
+            <ul className="hint-list">
+              {visibleHints.map((hint) => (
+                <li key={hint}>
+                  <MathText text={hint} />
+                </li>
+              ))}
+            </ul>
+          )}
+          <details>
+            <summary>评分要点</summary>
+            <ul>
+              {activeExercise.gradingRubric.map((item) => (
+                <li key={item}>
+                  <MathText text={item} />
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
       )}
-      {visibleHints.length > 0 && (
-        <ul className="hint-list">
-          {visibleHints.map((hint) => (
-            <li key={hint}>
-              <MathText text={hint} />
-            </li>
-          ))}
-        </ul>
-      )}
-      <details>
-        <summary>评分要点</summary>
-        <ul>
-          {activeExercise.gradingRubric.map((item) => (
-            <li key={item}>
-              <MathText text={item} />
-            </li>
-          ))}
-        </ul>
-      </details>
     </section>
   );
 }
