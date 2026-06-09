@@ -224,8 +224,9 @@ export function ExercisePanel({
         </div>
       )}
 
-      {activeExercise && (
+      {activeExercise && selectedIndex != null && (
         <div className="exercise-workspace">
+          <p className="exercise-num-label">第 {selectedIndex + 1} 题 · 共 {exercises.length} 题</p>
           <div className="problem-statement">
             {activeExercise.title && (
               <p className="problem-title">{activeExercise.title}</p>
