@@ -61,7 +61,7 @@
     <view class="card about-card">
       <view class="about-row">
         <text class="about-key">版本</text>
-        <text class="about-val">1.0.0</text>
+        <text class="about-val">1.1.0</text>
       </view>
       <view class="about-row">
         <text class="about-key">AI 模型</text>

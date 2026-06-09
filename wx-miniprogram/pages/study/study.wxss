@@ -55,7 +55,21 @@
   border-bottom-color: var(--accent);
 }
 
-.tab-content { padding: 32rpx 36rpx 0; }
+.tab-content { padding: 24rpx 36rpx 0; }
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid var(--rule);
+}
+.breadcrumb-ch { font-size: 22rpx; color: var(--ink-faint); }
+.breadcrumb-sep { font-size: 20rpx; color: var(--rule); }
+.breadcrumb-kp { font-size: 22rpx; color: var(--ink-soft); font-weight: 600; }
 
 /* Goals card */
 .goals-card {

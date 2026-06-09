@@ -34,6 +34,13 @@
   <!-- ===== LEARN TAB ===== -->
   <view wx:if="{{activeTab === 'learn'}}" class="tab-content">
 
+    <!-- Breadcrumb -->
+    <view class="breadcrumb">
+      <text class="breadcrumb-ch">第 {{chapter.number}} 章 {{chapter.title}}</text>
+      <text class="breadcrumb-sep">›</text>
+      <text class="breadcrumb-kp">{{kp.title}}</text>
+    </view>
+
     <!-- Learning goals -->
     <view class="goals-card" wx:if="{{kp.learningGoals.length}}">
       <text class="goals-label">本节你将掌握</text>
