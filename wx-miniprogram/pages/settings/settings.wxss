@@ -92,6 +92,9 @@
 .btn-row { display: flex; gap: 16rpx; }
 .btn-row .btn { flex: 1; }
 
+/* Danger */
+.danger-btn { width: 100%; font-size: 28rpx; color: #c62828; border-color: #ffc9c9; }
+
 /* Share */
 .share-btn { width: 100%; font-size: 28rpx; }
 

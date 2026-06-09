@@ -79,6 +79,14 @@
   </view>
 
   <view class="section">
+    <text class="section-title">数据管理</text>
+    <view class="card">
+      <text class="field-desc">清空所有已学进度、练习评分记录、AI 聊天记录（API Key 不受影响）。</text>
+      <button class="btn btn-ghost danger-btn" bindtap="resetProgress">清空学习记录</button>
+    </view>
+  </view>
+
+  <view class="section">
     <text class="section-title">分享</text>
     <view class="card">
       <button class="btn btn-ghost share-btn" open-type="share">

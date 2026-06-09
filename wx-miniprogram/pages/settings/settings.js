@@ -1,4 +1,4 @@
-const { loadApiKeyOverride, saveApiKeyOverride, loadChapterProgress, loadExerciseAttempts } = require('../../utils/progress');
+const { loadApiKeyOverride, saveApiKeyOverride, loadChapterProgress, loadExerciseAttempts, clearAllProgress } = require('../../utils/progress');
 const defaultConfig = require('../../config');
 
 Page({
@@ -68,6 +68,20 @@ Page({
         saveApiKeyOverride(null);
         this.setData({ apiKey: '', hasOverride: false, saved: false });
         wx.showToast({ title: '已重置', icon: 'success', duration: 1500 });
+      },
+    });
+  },
+  resetProgress() {
+    wx.showModal({
+      title: '清空学习记录',
+      content: '将清除所有已学进度、练习记录和聊天记录（不影响 API Key）。此操作不可撤销。',
+      confirmText: '清空',
+      confirmColor: '#c62828',
+      success: (res) => {
+        if (!res.confirm) return;
+        clearAllProgress();
+        this.setData({ stats: null });
+        wx.showToast({ title: '已清空', icon: 'success', duration: 2000 });
       },
     });
   },

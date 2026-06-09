@@ -148,6 +148,20 @@ function loadApiKeyOverride() {
   }
 }
 
+// ── Reset all progress ─────────────────────────────────────────
+
+function clearAllProgress() {
+  try {
+    const info = wx.getStorageInfoSync();
+    const keys = (info && info.keys) || [];
+    for (const key of keys) {
+      if (key.startsWith(PREFIX) && key !== API_KEY_STORAGE) {
+        wx.removeStorageSync(key);
+      }
+    }
+  } catch (e) { /* ignore */ }
+}
+
 module.exports = {
   loadKpProgress,
   markKpStudied,
@@ -159,4 +173,5 @@ module.exports = {
   loadChat,
   saveApiKeyOverride,
   loadApiKeyOverride,
+  clearAllProgress,
 };
