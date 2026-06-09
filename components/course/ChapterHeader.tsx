@@ -1,3 +1,4 @@
+import { MathText } from "@/components/math/MathText";
 import type { ChapterContent } from "@/lib/course/types";
 
 const statusLabel: Record<string, string> = {
@@ -14,7 +15,7 @@ export function ChapterHeader({ chapter }: { chapter: ChapterContent }) {
         <span className={`chapter-status-badge ${chapter.status}`}>{statusLabel[chapter.status] ?? chapter.status}</span>
       </div>
       <h1 className="chapter-header-title">{chapter.title}</h1>
-      {chapter.overview && <p className="chapter-header-overview">{chapter.overview}</p>}
+      {chapter.overview && <p className="chapter-header-overview"><MathText text={chapter.overview} /></p>}
       <p className="chapter-header-kp-count">
         {chapter.knowledgePoints.length} 个知识点
       </p>
