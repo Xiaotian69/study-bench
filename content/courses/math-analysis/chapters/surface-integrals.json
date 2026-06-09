@@ -14,7 +14,9 @@
         "能计算显式曲面 $z=z(x,y)$ 上的面积积分"
       ],
       "coreExplanation": "**第一型曲面积分定义**：$\\\\iint_S f(x,y,z)\\,\\\\mathrm{d}S$，其中 $\\\\mathrm{d}S$ 为曲面面积元素，与曲面法向量方向无关。\n**计算公式**（显式 $z=z(x,y)$）：\n$$\\\\mathrm{d}S=\\\\sqrt{1+z_x^2+z_y^2}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y,$$\n$$\\\\iint_S f(x,y,z)\\,\\\\mathrm{d}S=\\\\iint_{D_{xy}}f(x,y,z(x,y))\\\\sqrt{1+z_x^2+z_y^2}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y.$$\n其中 $D_{xy}$ 为曲面在 $xy$ 平面的投影区域。\n**参数曲面**（$\\boldsymbol{r}=\\boldsymbol{r}(u,v)$）：$\\\\mathrm{d}S=|\\boldsymbol{r}_u\\\\times\\boldsymbol{r}_v|\\,\\\\mathrm{d}u\\,\\\\mathrm{d}v$。\n**特殊情形**：\n- 球面 $x^2+y^2+z^2=R^2$：$\\\\mathrm{d}S=R^2\\\\sin\\\\varphi\\,\\\\mathrm{d}\\\\varphi\\,\\\\mathrm{d}\\\\theta$（参数化 $(\\\\varphi,\\\\theta)$）。\n- 曲面面积：$A=\\\\iint_S\\,\\\\mathrm{d}S=\\\\iint_{D_{xy}}\\\\sqrt{1+z_x^2+z_y^2}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$。\n**物理意义**：若 $f$ 为面密度，$\\\\iint_S f\\,\\\\mathrm{d}S$ 为曲面薄片的质量；$f=1$ 时为面积。",
-      "textbookRefs": ["数学分析（第5版）下册 §22.1"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §22.1"
+      ],
       "keyDefinitions": [
         {
           "term": "曲面面积元素",
@@ -40,8 +42,13 @@
         "面积元素 $\\\\mathrm{d}S=\\\\sqrt{1+z_x^2+z_y^2}\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$，不是 $\\\\mathrm{d}x\\,\\\\mathrm{d}y$",
         "第一型曲面积分与方向无关（和第一型曲线积分一样），不能加负号"
       ],
-      "exerciseIds": ["si-ex-001", "si-ex-002"],
-      "diagramIds": ["surface-integral-diagram"],
+      "exerciseIds": [
+        "si-ex-001",
+        "si-ex-002"
+      ],
+      "diagramIds": [
+        "surface-integral-diagram"
+      ],
       "masteryCriteria": [
         "能将显式曲面 $z=z(x,y)$ 上的第一型曲面积分化为二重积分并计算",
         "能计算曲面面积"
@@ -58,7 +65,9 @@
         "理解两型曲面积分的关系"
       ],
       "coreExplanation": "**第二型曲面积分**：$\\\\iint_S\\boldsymbol{F}\\cdot\\,\\\\mathrm{d}\\boldsymbol{S}=\\\\iint_S P\\,\\\\mathrm{d}y\\,\\\\mathrm{d}z+Q\\,\\\\mathrm{d}z\\,\\\\mathrm{d}x+R\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$，其中 $\\\\mathrm{d}\\boldsymbol{S}=\\boldsymbol{n}\\,\\\\mathrm{d}S$（$\\boldsymbol{n}$ 为单位外法向量）。物理意义：向量场 $\\boldsymbol{F}=(P,Q,R)$ 通过曲面的**流量**。\n**与方向有关**：反向曲面 $-S$ 的积分取负号：$\\\\iint_{-S}=-\\\\iint_S$。\n**化为二重积分**（曲面 $z=z(x,y)$，取上侧，法向量朝上）：\n$$\\\\iint_S R(x,y,z)\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y=\\\\iint_{D_{xy}}R(x,y,z(x,y))\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$$\n（取下侧则加负号）。类似地：\n$$\\\\iint_S P\\,\\\\mathrm{d}y\\,\\\\mathrm{d}z=\\\\mp\\\\iint_{D_{yz}}P(x(y,z),y,z)\\,\\\\mathrm{d}y\\,\\\\mathrm{d}z$$\n（$\\mp$：法向量朝前取 $-$，朝后取 $+$，具体看曲面方程和投影方向）。\n**两型积分关系**：若 $\\boldsymbol{n}=(\\cos\\alpha,\\cos\\beta,\\cos\\gamma)$ 为单位外法向量：\n$$\\\\iint_S P\\,\\\\mathrm{d}y\\,\\\\mathrm{d}z+Q\\,\\\\mathrm{d}z\\,\\\\mathrm{d}x+R\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y=\\\\iint_S(P\\cos\\alpha+Q\\cos\\beta+R\\cos\\gamma)\\,\\\\mathrm{d}S.$$",
-      "textbookRefs": ["数学分析（第5版）下册 §22.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §22.2"
+      ],
       "keyDefinitions": [
         {
           "term": "曲面的侧（法向量方向）",
@@ -81,8 +90,13 @@
         "$\\\\iint_S R\\,\\\\mathrm{d}x\\,\\\\mathrm{d}y$ 化为二重积分时：上侧直接代入 $z=z(x,y)$（不加负号），下侧加负号",
         "不能混淆 $\\mathrm{d}S$（正的面积元素）和 $\\mathrm{d}x\\,\\mathrm{d}y$（有向面积元素，可正可负）"
       ],
-      "exerciseIds": ["si-ex-003", "si-ex-004"],
-      "diagramIds": ["surface-integral-diagram"],
+      "exerciseIds": [
+        "si-ex-003",
+        "si-ex-004"
+      ],
+      "diagramIds": [
+        "surface-integral-diagram"
+      ],
       "masteryCriteria": [
         "能判断曲面的侧并写出第二型曲面积分化为二重积分的公式（含正负号）",
         "能计算向量场通过曲面的流量"
@@ -99,7 +113,9 @@
         "理解场论基本概念：散度和旋度"
       ],
       "coreExplanation": "**高斯公式**：设 $\\Omega$ 为空间有界闭区域，$\\partial\\Omega$ 为其外表面（外法向量为正方向），$P,Q,R$ 在 $\\Omega$ 上有连续偏导数：\n$$\\oiint_{\\partial\\Omega}P\\,\\mathrm{d}y\\,\\mathrm{d}z+Q\\,\\mathrm{d}z\\,\\mathrm{d}x+R\\,\\mathrm{d}x\\,\\mathrm{d}y=\\iiint_\\Omega\\left(\\frac{\\partial P}{\\partial x}+\\frac{\\partial Q}{\\partial y}+\\frac{\\partial R}{\\partial z}\\right)\\,\\mathrm{d}V.$$\n即：封闭曲面的通量 $=$ 内部散度的体积分。\n**散度**：$\\mathrm{div}\\,\\boldsymbol{F}=\\nabla\\cdot\\boldsymbol{F}=P_x+Q_y+R_z$（衡量向量场的」源强度」）。\n**高斯公式应用**：补面法（遇到非封闭曲面时补齐成封闭面，减去补面的贡献）；含奇点时挖球。\n**斯托克斯公式**：设 $S$ 为有向曲面，$\\partial S$ 为其边界曲线（方向与 $S$ 法向量成右手系）：\n$$\\oint_{\\partial S}P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y+R\\,\\mathrm{d}z=\\iint_S\\left(\\frac{\\partial R}{\\partial y}-\\frac{\\partial Q}{\\partial z}\\right)\\mathrm{d}y\\,\\mathrm{d}z+\\left(\\frac{\\partial P}{\\partial z}-\\frac{\\partial R}{\\partial x}\\right)\\mathrm{d}z\\,\\mathrm{d}x+\\left(\\frac{\\partial Q}{\\partial x}-\\frac{\\partial P}{\\partial y}\\right)\\mathrm{d}x\\,\\mathrm{d}y.$$\n记忆：$\\iint_S(\\nabla\\times\\boldsymbol{F})\\cdot\\,\\mathrm{d}\\boldsymbol{S}=\\oint_{\\partial S}\\boldsymbol{F}\\cdot\\,\\mathrm{d}\\boldsymbol{r}$。\n**旋度**：$\\mathrm{rot}\\,\\boldsymbol{F}=\\nabla\\times\\boldsymbol{F}=\\det\\begin{pmatrix}\\boldsymbol{i}&\\boldsymbol{j}&\\boldsymbol{k}\\\\\\\\\\partial_x&\\partial_y&\\partial_z\\\\\\\\P&Q&R\\end{pmatrix}$（衡量向量场的」旋转强度」）。\n**Green 公式为特例**：取 $S$ 为 $z=0$ 的平面区域，斯托克斯退化为 $\\oint_{\\partial D}P\\,\\mathrm{d}x+Q\\,\\mathrm{d}y=\\iint_D(Q_x-P_y)\\,\\mathrm{d}A$（Green 公式）。",
-      "textbookRefs": ["数学分析（第5版）下册 §22.3—22.4"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §22.3—22.4"
+      ],
       "keyDefinitions": [
         {
           "term": "散度",
@@ -139,8 +155,14 @@
         "斯托克斯公式的边界曲线方向：右手法则，拇指指向法向量，四指为边界正向（不能随意选向）",
         "散度 $P_x+Q_y+R_z$（各分量对各自变量偏导），不要混淆"
       ],
-      "exerciseIds": ["si-ex-005", "si-ex-006", "si-ex-007"],
-      "diagramIds": ["gauss-stokes-diagram"],
+      "exerciseIds": [
+        "si-ex-005",
+        "si-ex-006",
+        "si-ex-007"
+      ],
+      "diagramIds": [
+        "gauss-stokes-diagram"
+      ],
       "masteryCriteria": [
         "能用高斯公式计算封闭曲面积分（包括补面法）",
         "能用斯托克斯公式将空间曲线积分化为曲面积分"
@@ -157,7 +179,9 @@
         "了解调和函数与向量分析恒等式"
       ],
       "coreExplanation": "**三大场论运算**（$\\boldsymbol{F}=(P,Q,R)$，$u$ 为标量场）：\n- **梯度**：$\\mathrm{grad}\\,u=\\nabla u=(u_x,u_y,u_z)$（指向增长最快方向）。\n- **散度**：$\\mathrm{div}\\,\\boldsymbol{F}=\\nabla\\cdot\\boldsymbol{F}=P_x+Q_y+R_z$。\n- **旋度**：$\\mathrm{rot}\\,\\boldsymbol{F}=\\nabla\\times\\boldsymbol{F}$（向量）。\n**重要恒等式**：\n- $\\mathrm{div}(\\mathrm{rot}\\,\\boldsymbol{F})=\\nabla\\cdot(\\nabla\\times\\boldsymbol{F})=0$（旋度无散）。\n- $\\mathrm{rot}(\\mathrm{grad}\\,u)=\\nabla\\times\\nabla u=\\boldsymbol{0}$（梯度无旋）。\n**无旋场（保守场）**：$\\boldsymbol{F}=\\nabla u$（有势函数 $u$）的充要条件：$\\nabla\\times\\boldsymbol{F}=\\boldsymbol{0}$（单连通域中等价于线积分路径无关）。\n**调和函数**：满足 $\\Delta u=\\nabla^2 u=u_{xx}+u_{yy}+u_{zz}=0$ 的函数（Laplace 方程），是位势理论的基础。\n**Laplace 算子**：$\\Delta=\\nabla\\cdot\\nabla=\\partial_{xx}+\\partial_{yy}+\\partial_{zz}$；调和函数如静电势、稳态温度场。\n**Green 恒等式**（高斯公式推论）：$\\iiint_\\Omega u\\Delta v\\,\\mathrm{d}V=\\oiint_{\\partial\\Omega}u\\frac{\\partial v}{\\partial n}\\,\\mathrm{d}S-\\iiint_\\Omega\\nabla u\\cdot\\nabla v\\,\\mathrm{d}V$。",
-      "textbookRefs": ["数学分析（第5版）下册 §22.5"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §22.5"
+      ],
       "keyDefinitions": [
         {
           "term": "保守场（无旋场）",
@@ -186,12 +210,15 @@
         "$\\mathrm{div}\\,\\boldsymbol{F}=0$ 不意味着 $\\boldsymbol{F}=\\mathrm{rot}\\,\\boldsymbol{G}$（还需要单连通域条件）",
         "Laplace 算子 $\\Delta u=u_{xx}+u_{yy}+u_{zz}$（求和，不是乘积）"
       ],
-      "exerciseIds": ["si-ex-008"],
+      "exerciseIds": [
+        "si-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能判断三维向量场是否无旋并求势函数",
         "能验证简单函数是否为调和函数"
       ]
     }
-  ]
+  ],
+  "overview": "建立第一型与第二型曲面积分，以高斯公式（体积分与曲面积分互化）和 Stokes 公式（曲面与曲线积分互化）为核心，介绍散度与旋度。"
 }

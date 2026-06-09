@@ -16,7 +16,7 @@ function adaptChapter(raw: Record<string, unknown>, volumeChapter: VolumeChapter
     number: volumeChapter.number,
     title: volumeChapter.title,
     status: volumeChapter.status,
-    overview: "",
+    overview: typeof raw.overview === "string" ? raw.overview : "",
   } as unknown as ChapterContent;
 }
 

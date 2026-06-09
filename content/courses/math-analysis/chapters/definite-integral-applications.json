@@ -14,7 +14,9 @@
         "掌握极坐标下平面图形（扇形元素）的面积公式"
       ],
       "coreExplanation": "**直角坐标下面积**：曲线 $y=f(x)$、$y=g(x)$（$f\\\\geq g$）在 $[a,b]$ 上围成图形的面积：\n$$A=\\\\int_a^b[f(x)-g(x)]\\\\,\\\\mathrm{d}x.$$\n若图形关于 $y$ 轴方向更自然（左右曲线 $x=\\\\varphi(y)$，$x=\\\\psi(y)$），用：$A=\\\\int_c^d[\\\\varphi(y)-\\\\psi(y)]\\\\,\\\\mathrm{d}y$。\n**参数方程下面积**：曲线 $x=\\\\varphi(t)$，$y=\\\\psi(t)$，$t\\\\in[\\\\alpha,\\\\beta]$（$\\\\varphi$ 单调，$\\\\varphi(\\\\alpha)=a$，$\\\\varphi(\\\\beta)=b$），与 $x$ 轴围成面积：\n$$A=\\\\int_\\\\alpha^\\\\beta|\\\\psi(t)|\\\\cdot|\\\\varphi'(t)|\\\\,\\\\mathrm{d}t.$$\n典型例子：椭圆 $x=a\\\\cos t$，$y=b\\\\sin t$ 的面积 $=4\\\\int_0^{\\\\pi/2}b\\\\sin t\\\\cdot a\\\\sin t\\,\\\\mathrm{d}t=\\\\pi ab$。\n**极坐标下面积**：曲线 $r=r(\\\\theta)$，$\\\\theta\\\\in[\\\\alpha,\\\\beta]$ 与极点围成的扇形面积微元为 $\\\\frac{1}{2}r^2\\\\,\\\\mathrm{d}\\\\theta$，故\n$$A=\\\\frac{1}{2}\\\\int_\\\\alpha^\\\\beta r^2(\\\\theta)\\\\,\\\\mathrm{d}\\\\theta.$$\n典型例子：心形线 $r=a(1+\\\\cos\\\\theta)$ 的面积 $=\\\\frac{1}{2}\\\\int_0^{2\\\\pi}a^2(1+\\\\cos\\\\theta)^2\\\\,\\\\mathrm{d}\\\\theta=\\\\frac{3\\\\pi a^2}{2}$。",
-      "textbookRefs": ["数学分析（第5版）上册 §10.1"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §10.1"
+      ],
       "keyDefinitions": [
         {
           "term": "面积微元",
@@ -41,8 +43,13 @@
         "确定直角坐标积分区间时忘记先求交点",
         "参数方程下面积方向问题：$\\\\varphi'(t)$ 与 $|\\\\varphi'(t)|$ 的选用"
       ],
-      "exerciseIds": ["app-ex-001", "app-ex-002"],
-      "diagramIds": ["area-calculation-diagram"],
+      "exerciseIds": [
+        "app-ex-001",
+        "app-ex-002"
+      ],
+      "diagramIds": [
+        "area-calculation-diagram"
+      ],
       "masteryCriteria": [
         "能计算由两条曲线围成的面积（包括需要分段讨论的情形）",
         "能计算极坐标曲线围成的面积"
@@ -59,7 +66,9 @@
         "掌握直角坐标、参数方程、极坐标下的弧长公式"
       ],
       "coreExplanation": "**旋转体体积（圆盘法/垫圈法）**：曲线 $y=f(x)\\\\geq 0$ 在 $[a,b]$ 上绕 $x$ 轴旋转一周所得体积：\n$$V=\\\\pi\\\\int_a^b[f(x)]^2\\\\,\\\\mathrm{d}x.$$\n若是两条曲线 $f\\\\geq g\\\\geq 0$ 之间绕 $x$ 轴的区域（垫圈法）：$V=\\\\pi\\\\int_a^b([f(x)]^2-[g(x)]^2)\\\\,\\\\mathrm{d}x$。\n**柱壳法（绕 $y$ 轴）**：$V=2\\\\pi\\\\int_a^b x f(x)\\,\\\\mathrm{d}x$（$f\\\\geq 0$，$0\\\\leq a<b$）。\n**平行截面法**：若垂直于某轴（设为 $x$ 轴）的截面面积为 $A(x)$，则体积 $V=\\\\int_a^b A(x)\\,\\\\mathrm{d}x$（圆盘法是其特例）。\n**弧长公式**：\n- 直角坐标：$L=\\\\int_a^b\\\\sqrt{1+[f'(x)]^2}\\\\,\\\\mathrm{d}x$\n- 参数方程 $x=\\\\varphi(t)$，$y=\\\\psi(t)$：$L=\\\\int_\\\\alpha^\\\\beta\\\\sqrt{[\\\\varphi'(t)]^2+[\\\\psi'(t)]^2}\\\\,\\\\mathrm{d}t$\n- 极坐标 $r=r(\\\\theta)$：$L=\\\\int_\\\\alpha^\\\\beta\\\\sqrt{r^2+(r')^2}\\\\,\\\\mathrm{d}\\\\theta$",
-      "textbookRefs": ["数学分析（第5版）上册 §10.2"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §10.2"
+      ],
       "keyDefinitions": [
         {
           "term": "体积微元（圆盘法）",
@@ -90,8 +99,14 @@
         "弧长公式中 $\\\\sqrt{1+(f')^2}$ 而非 $\\\\sqrt{1+f^2}$——是导数不是函数值",
         "参数方程弧长积分上下限需与参数 $t$ 对应，而非 $x$ 值"
       ],
-      "exerciseIds": ["app-ex-003", "app-ex-004", "app-ex-005"],
-      "diagramIds": ["volume-disk-diagram"],
+      "exerciseIds": [
+        "app-ex-003",
+        "app-ex-004",
+        "app-ex-005"
+      ],
+      "diagramIds": [
+        "volume-disk-diagram"
+      ],
       "masteryCriteria": [
         "能用圆盘法计算绕坐标轴旋转体的体积",
         "能用直角坐标和参数方程弧长公式计算典型曲线弧长"
@@ -108,7 +123,9 @@
         "了解质心（重心）坐标的积分公式"
       ],
       "coreExplanation": "**微元法思路**：将问题量（功、压力、质心）分割为无穷小元素，每个元素上物理量可用简单公式近似，求和取极限得积分。\n**变力做功**：沿 $x$ 轴从 $a$ 到 $b$，力 $F(x)$ 做功：\n$$W=\\\\int_a^b F(x)\\,\\\\mathrm{d}x.$$\n典型：弹簧从自然长度拉伸 $x$，$F=kx$（Hooke 定律），拉伸 $d$ 做功 $W=\\\\frac{1}{2}kd^2$。\n**液体静压力**：宽度为 $w(h)$、深度为 $h$ 处的压强为 $\\\\rho g h$（$\\\\rho$ 为液体密度），水平细长条的压力 $\\\\mathrm{d}F=\\\\rho g h\\\\cdot w(h)\\\\,\\\\mathrm{d}h$，总压力：\n$$F=\\\\rho g\\\\int_0^H h\\\\cdot w(h)\\,\\\\mathrm{d}h.$$\n**质心坐标**：均匀密度平面薄片（面积为 $A$，区域 $D$）的质心：\n$$\\\\bar{x}=\\\\frac{1}{A}\\\\iint_D x\\,\\\\mathrm{d}A,\\\\quad\\\\bar{y}=\\\\frac{1}{A}\\\\iint_D y\\,\\\\mathrm{d}A.$$\n对由曲线 $y=f(x)$ 和 $x$ 轴围成（$f\\\\geq 0$，$x\\\\in[a,b]$）：$\\\\bar{x}=\\\\frac{1}{A}\\\\int_a^b x f(x)\\,\\\\mathrm{d}x$，$\\\\bar{y}=\\\\frac{1}{A}\\\\int_a^b\\\\frac{[f(x)]^2}{2}\\,\\\\mathrm{d}x$。",
-      "textbookRefs": ["数学分析（第5版）上册 §10.3"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §10.3"
+      ],
       "keyDefinitions": [
         {
           "term": "微元法（元素法）",
@@ -132,12 +149,17 @@
         "压力计算中混淆深度（从水面向下）与坐标轴方向，导致积分上下限颠倒",
         "弹簧问题中使用 $F=kd$（终态力）代替积分，忽略力是变量"
       ],
-      "exerciseIds": ["app-ex-006", "app-ex-007", "app-ex-008"],
+      "exerciseIds": [
+        "app-ex-006",
+        "app-ex-007",
+        "app-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能用微元法建立变力做功的积分表达式并计算",
         "能建立矩形或梯形截面水坝的压力积分"
       ]
     }
-  ]
+  ],
+  "overview": "用 Riemann 和的极限定义定积分，讨论可积条件与基本性质，最终以微积分基本定理（Newton-Leibniz 公式）将积分与微分统一起来。"
 }
