@@ -75,4 +75,16 @@ Page({
     if (!key || key.length < 8) return key;
     return key.slice(0, 5) + '·'.repeat(8) + key.slice(-4);
   },
+  shareApp() {
+    wx.showShareMenu({ withShareTicket: false, menus: ['shareAppMessage', 'shareTimeline'] });
+  },
+  onShareAppMessage() {
+    return {
+      title: '数学分析学习助手 — 22章完整讲义 · AI批改练习',
+      path: '/pages/index/index',
+    };
+  },
+  onShareTimeline() {
+    return { title: '数学分析：AI辅助的大学数学学习小程序' };
+  },
 });

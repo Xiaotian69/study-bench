@@ -76,4 +76,13 @@ Page({
   goToSettings() {
     wx.navigateTo({ url: '/pages/settings/settings' });
   },
+  onShareAppMessage() {
+    return {
+      title: '数学分析学习助手 — 22章完整讲义 · AI批改练习',
+      path: '/pages/index/index',
+    };
+  },
+  onShareTimeline() {
+    return { title: '数学分析：AI辅助的大学数学学习小程序' };
+  },
 });

@@ -79,6 +79,15 @@
   </view>
 
   <view class="section">
+    <text class="section-title">分享</text>
+    <view class="card">
+      <button class="btn btn-ghost share-btn" open-type="share">
+        <text>分享给同学</text>
+      </button>
+    </view>
+  </view>
+
+  <view class="section">
     <text class="section-title">域名配置说明</text>
     <view class="card tips-card">
       <text class="tip-text">

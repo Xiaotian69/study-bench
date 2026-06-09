@@ -92,6 +92,9 @@
 .btn-row { display: flex; gap: 16rpx; }
 .btn-row .btn { flex: 1; }
 
+/* Share */
+.share-btn { width: 100%; font-size: 28rpx; }
+
 /* About */
 .about-row {
   display: flex;
