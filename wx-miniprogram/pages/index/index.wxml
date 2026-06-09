@@ -28,6 +28,11 @@
       <text class="continue-arrow">›</text>
     </view>
 
+    <!-- First-visit hint (no progress yet) -->
+    <view wx:elif="{{!recentKp}}" class="start-hint">
+      <text class="start-hint-text">从第 1 章开始，系统掌握数学分析 →</text>
+    </view>
+
     <view wx:for="{{volumes}}" wx:key="id" class="volume-section">
       <text class="volume-title">{{item.title}}</text>
 

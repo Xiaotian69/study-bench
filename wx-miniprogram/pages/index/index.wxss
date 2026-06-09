@@ -80,6 +80,21 @@
 }
 .continue-arrow { font-size: 40rpx; color: var(--ink-faint); flex-shrink: 0; }
 
+/* First-visit hint */
+.start-hint {
+  margin: 20rpx 36rpx 0;
+  padding: 20rpx 28rpx;
+  background: var(--paper-page);
+  border: 1rpx solid var(--rule);
+  border-left: 3rpx solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.start-hint-text {
+  font-size: 26rpx;
+  color: var(--gold);
+  font-weight: 600;
+}
+
 /* Volume */
 .volume-section { padding: 32rpx 40rpx 0; }
 .volume-title {

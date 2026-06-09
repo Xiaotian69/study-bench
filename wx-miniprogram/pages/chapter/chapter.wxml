@@ -26,7 +26,10 @@
 
     <!-- KP list -->
     <view class="kp-section">
-      <text class="section-title">知识点</text>
+      <view class="section-header-row">
+        <text class="section-title">知识点</text>
+        <text wx:if="{{chapter.studiedCount === 0}}" class="section-hint">点击开始学习</text>
+      </view>
 
       <view class="kp-list">
         <view

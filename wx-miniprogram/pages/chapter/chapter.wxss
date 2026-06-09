@@ -63,16 +63,21 @@
 
 /* KP section */
 .kp-section { padding: 32rpx 40rpx 0; }
-.section-title {
-  display: block;
-  font-size: 24rpx;
-  font-weight: 700;
-  color: var(--ink-soft);
-  letter-spacing: 0.06em;
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 16rpx;
   border-bottom: 1rpx solid var(--rule);
   margin-bottom: 8rpx;
 }
+.section-title {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+}
+.section-hint { font-size: 22rpx; color: var(--gold); font-weight: 600; }
 
 /* KP list */
 .kp-row {
