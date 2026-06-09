@@ -241,7 +241,7 @@
       "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §5（无穷小阶的比较）",
       "knowledgePointIds": ["infinitesimal-and-infinite"],
       "difficulty": "hard",
-      "type": "comprehensive",
+      "type": "analysis",
       "recommendedTiming": "chapter-quiz",
       "prompt": "当 $x\\\\to 0$ 时，比较无穷小量 $1-\\\\cos x$ 与 $x\\\\sin x$ 的阶（高阶、同阶还是等价），并给出理由。",
       "gradingRubric": [
@@ -258,6 +258,181 @@
         "把“同阶”与“等价”混为一谈",
         "$x\\\\sin x$ 的阶判断错误",
         "未计算比值就凭直觉下结论"
+      ]
+    },
+    {
+      "id": "function-limit-ex-011",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1 函数极限概念",
+      "knowledgePointIds": ["function-limit-intuition"],
+      "difficulty": "medium",
+      "type": "definition-understanding",
+      "recommendedTiming": "review",
+      "prompt": "设 $f(x)=\\\\begin{cases}\\\\dfrac{x^2-4}{x-2}, & x\\\\ne 2 \\\\\\\\ 0, & x=2\\\\end{cases}$。求 $\\\\lim_{x\\\\to 2}f(x)$，并说明该极限与 $f(2)$ 为何可以不同。",
+      "gradingRubric": [
+        "$x\\\\ne 2$ 时 $f(x)=x+2$，故 $\\\\lim_{x\\\\to 2}f(x)=4$",
+        "说明极限只考察去心邻域 $0<|x-2|<\\\\delta$ 上的行为",
+        "指出 $f(2)=0$ 是人为定义，不影响极限值 $4$"
+      ],
+      "hints": [
+        "先在 $x\\\\ne 2$ 的前提下化简分式。",
+        "极限定义不要求 $x$ 取到 $2$。",
+        "比较极限值 $4$ 与 $f(2)=0$。"
+      ],
+      "commonMistakes": [
+        "把 $f(2)=0$ 当作极限",
+        "化简时未声明 $x\\\\ne 2$",
+        "认为分段点处极限一定等于函数值"
+      ]
+    },
+    {
+      "id": "function-limit-ex-012",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1（单侧极限，分段函数）",
+      "knowledgePointIds": ["one-sided-limits"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\begin{cases}x+1, & x<1 \\\\\\\\ 2x, & x\\\\ge 1\\\\end{cases}$。求 $f(1^-)$、$f(1^+)$，并判断 $\\\\lim_{x\\\\to 1}f(x)$ 是否存在。",
+      "gradingRubric": [
+        "$x\\\\to 1^-$ 时 $f(x)=x+1\\\\to 2$，故 $f(1^-)=2$",
+        "$x\\\\to 1^+$ 时 $f(x)=2x\\\\to 2$，故 $f(1^+)=2$",
+        "左右极限相等，故 $\\\\lim_{x\\\\to 1}f(x)=2$（注意 $f(1)=2$ 与极限一致）"
+      ],
+      "hints": [
+        "左极限只看 $x<1$ 的表达式。",
+        "右极限只看 $x\\\\ge 1$ 且 $x\\\\to 1^+$ 的表达式。",
+        "用双侧极限存在当且仅当左右极限相等且同为 $A$。"
+      ],
+      "commonMistakes": [
+        "左极限误用 $2x$ 的表达式",
+        "只算一侧就下结论",
+        "把 $f(1)$ 与单侧极限混为一谈"
+      ]
+    },
+    {
+      "id": "function-limit-ex-013",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §1（无穷极限）",
+      "knowledgePointIds": ["infinite-limits-and-limits-at-infinity"],
+      "difficulty": "medium",
+      "type": "definition-understanding",
+      "recommendedTiming": "review",
+      "prompt": "说明 $\\\\lim_{x\\\\to 0^+}\\\\dfrac{1}{x}=+\\\\infty$ 的含义，并简述如何用定义验证：对任意 $G>0$，应如何选取 $\\\\delta$？",
+      "gradingRubric": [
+        "正确解释：对任意 $G>0$，存在 $\\\\delta>0$，使 $0<x<\\\\delta$ 时 $\\\\frac{1}{x}>G$",
+        "由 $\\\\frac{1}{x}>G$ 得 $0<x<\\\\frac{1}{G}$，可取 $\\\\delta=\\\\frac{1}{G}$",
+        "说明这是函数值趋于 $+\\\\infty$，不同于趋于有限极限"
+      ],
+      "hints": [
+        "回忆无穷极限定义里用的是 $G$ 而非 $\\\\varepsilon$。",
+        "把 $f(x)>G$ 解成关于 $x$ 的不等式。",
+        "注意只看 $x\\\\to 0^+$ 的正侧。"
+      ],
+      "commonMistakes": [
+        "把无穷极限说成「极限存在」",
+        "用双侧 $0<|x|<\\\\delta$ 处理 $\\\\frac{1}{x}$",
+        "$\\\\delta$ 与 $G$ 的依赖关系写反"
+      ]
+    },
+    {
+      "id": "function-limit-ex-014",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §2 函数极限的性质",
+      "knowledgePointIds": ["function-limit-properties"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "利用极限四则运算法则求 $\\\\lim_{x\\\\to 1}(3x^2-2x+1)$，并说明每一步依据。",
+      "gradingRubric": [
+        "多项式在 $x=1$ 处连续，或直接写 $\\\\lim(3x^2)=3$、$\\\\lim(-2x)=-2$、$\\\\lim 1=1$",
+        "用和的法则合并得 $3-2+1=2$",
+        "说明依据为四则运算法则或连续性"
+      ],
+      "hints": [
+        "分别求各单项的极限。",
+        "常数函数的极限等于常数本身。",
+        "最后用和的法则相加。"
+      ],
+      "commonMistakes": [
+        "直接代入却未说明连续性或法则依据",
+        "幂函数极限的系数处理错误",
+        "把 $x\\\\to 1$ 与 $x\\\\to 0$ 混淆"
+      ]
+    },
+    {
+      "id": "function-limit-ex-015",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §3（归结原则）",
+      "knowledgePointIds": ["heine-definition"],
+      "difficulty": "medium",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "用归结原则说明 $\\\\lim_{x\\\\to+\\\\infty}\\\\cos x$ 不存在。",
+      "gradingRubric": [
+        "陈述归结原则：函数极限存在要求每个 $x_n\\\\to+\\\\infty$ 时 $f(x_n)$ 趋于同一值",
+        "取 $x_n=2n\\\\pi\\\\to+\\\\infty$，得 $\\\\cos x_n=1$",
+        "取 $x_n'=(2n+1)\\\\pi\\\\to+\\\\infty$，得 $\\\\cos x_n'=-1$；两列极限不同，故极限不存在"
+      ],
+      "hints": [
+        "找让 $\\\\cos x$ 取 $1$ 和 $-1$ 的数列。",
+        "两列都要趋于 $+\\\\infty$。",
+        "比较 $f(x_n)$ 与 $f(x_n')$ 的极限。"
+      ],
+      "commonMistakes": [
+        "只构造一个数列就下结论",
+        "数列未趋于 $+\\\\infty$",
+        "与 $x\\\\to 0$ 的 $\\\\sin\\\\frac{1}{x}$ 例子混淆"
+      ]
+    },
+    {
+      "id": "function-limit-ex-016",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §4（第一重要极限）",
+      "knowledgePointIds": ["two-important-limits"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求 $\\\\lim_{x\\\\to 0}\\\\dfrac{\\\\sin 5x}{x}$。",
+      "gradingRubric": [
+        "改写为 $5\\\\cdot\\\\dfrac{\\\\sin 5x}{5x}$",
+        "令 $t=5x\\\\to 0$，内层 $\\\\dfrac{\\\\sin t}{t}\\\\to 1$",
+        "得到极限 $5$"
+      ],
+      "hints": [
+        "分子分母的角变量要一致。",
+        "凑成第一重要极限的标准形。",
+        "注意外层系数 $5$。"
+      ],
+      "commonMistakes": [
+        "误把极限当作 $1$ 而漏掉系数",
+        "把 $\\\\sin 5x$ 直接换成 $5x$ 却忘记分母仍是 $x$",
+        "在角度制下套用弧度制结论"
+      ]
+    },
+    {
+      "id": "function-limit-ex-017",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 3 章 §5（无穷小阶的比较）",
+      "knowledgePointIds": ["infinitesimal-and-infinite"],
+      "difficulty": "basic",
+      "type": "definition-understanding",
+      "recommendedTiming": "after-lecture",
+      "prompt": "当 $x\\\\to 0$ 时，判断 $x^2$ 与 $x$ 的阶关系（高阶、同阶还是等价），并计算 $\\\\lim_{x\\\\to 0}\\\\dfrac{x^2}{x}$ 说明理由。",
+      "gradingRubric": [
+        "计算 $\\\\lim_{x\\\\to 0}\\\\dfrac{x^2}{x}=\\\\lim_{x\\\\to 0}x=0$",
+        "比值为 $0$，故 $x^2$ 是 $x$ 的高阶无穷小，记 $x^2=o(x)$",
+        "说明二者不同阶，更不是等价（等价要求比值为 $1$）"
+      ],
+      "hints": [
+        "比较阶就是看 $\\\\alpha/\\\\beta$ 的极限。",
+        "比值为 $0$ 表示分子趋于 $0$ 更快。",
+        "等价要求极限为 $1$。"
+      ],
+      "commonMistakes": [
+        "把高阶与同阶混为一谈",
+        "未计算比值就凭图像猜测",
+        "认为 $x^2$ 与 $x$ 等价"
       ]
     }
   ]

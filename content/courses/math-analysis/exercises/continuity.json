@@ -39,7 +39,7 @@
       "sourceType": "adapted",
       "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1",
       "knowledgePointIds": ["continuity-at-point"],
-      "difficulty": "basic",
+      "difficulty": "medium",
       "type": "computation",
       "recommendedTiming": "after-lecture",
       "prompt": "确定常数 $a$ 的值，使函数 $f(x)=\\\\begin{cases}\\\\dfrac{\\\\sin 2x}{x}, & x\\\\ne 0\\\\\\\\a, & x=0\\\\end{cases}$ 在 $x=0$ 处连续。",
@@ -259,6 +259,136 @@
         "不构造辅助函数，直接尝试对 $f$ 用零点定理（条件不满足）",
         "计算 $g(0)+g(1/2)$ 时忘记代入 $f(0)=f(1)$",
         "忽略 $g(0)=0$ 或 $g(1/2)=0$ 的边界情况"
+      ]
+    },
+    {
+      "id": "continuity-ex-011",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §1（单侧连续）",
+      "knowledgePointIds": ["one-sided-continuity"],
+      "difficulty": "medium",
+      "type": "judgment",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\begin{cases}x+1, & x<0\\\\\\\\2, & x=0\\\\\\\\x^2+1, & x>0\\\\end{cases}$。判断 $f$ 在 $x=0$ 处是否连续；若不连续，说明它是左连续、右连续，还是两侧均不连续。",
+      "gradingRubric": [
+        "左极限：$f(0^-)=\\\\lim_{x\\\\to 0^-}(x+1)=1$",
+        "右极限：$f(0^+)=\\\\lim_{x\\\\to 0^+}(x^2+1)=1$",
+        "函数值：$f(0)=2$",
+        "$f(0^-)=f(0^+)=1\\\\ne f(0)=2$，双侧极限存在但均不等于函数值，故不连续；左、右均不连续（两侧极限均不等于 $f(0)$）"
+      ],
+      "hints": [
+        "分别用 $x<0$、$x>0$ 两段计算左右极限。",
+        "中间定义给出 $f(0)$ 的值。",
+        "单侧连续要求单侧极限等于函数值，不是仅极限存在。"
+      ],
+      "commonMistakes": [
+        "只比较左右极限相等就断言连续，忘记与 $f(0)$ 比较",
+        "把 $f(0)=2$ 误当作右极限",
+        "认为左右极限相等就足以保证连续"
+      ]
+    },
+    {
+      "id": "continuity-ex-012",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §2 连续函数的性质",
+      "knowledgePointIds": ["continuity-operations"],
+      "difficulty": "medium",
+      "type": "judgment",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\dfrac{1}{x}$，$g(x)=\\\\sin x$。判断 $h_1(x)=f(x)+g(x)$、$h_2(x)=f(x)\\\\cdot g(x)$、$h_3(x)=\\\\dfrac{g(x)}{f(x)}$ 在 $x=0$ 处是否连续，并说明依据。",
+      "gradingRubric": [
+        "$f$、$g$ 在 $x=0$ 处各自连续（$\\\\sin x$ 处处连续，$1/x$ 在 $x=0$ 无定义故不连续）",
+        "$h_1=f+g$：$f$ 在 $0$ 无定义，故 $h_1$ 在 $0$ 无定义，不连续",
+        "$h_2=f\\\\cdot g$：同理在 $0$ 无定义，不连续",
+        "$h_3=g/f$：在 $x=0$ 处 $f(0)$ 无定义，$h_3$ 无定义；在 $x\\\\ne 0$ 处由连续函数之商（分母非零）知连续"
+      ],
+      "hints": [
+        "先分别判断 $f$、$g$ 在 $x=0$ 的连续性。",
+        "和、积、商连续定理要求两函数在公共点均连续。",
+        "商法则还需分母在该点不为零。"
+      ],
+      "commonMistakes": [
+        "认为 $\\\\sin x$ 连续所以 $1/x+\\\\sin x$ 在 $0$ 连续",
+        "忘记 $1/x$ 在 $0$ 无定义",
+        "对 $g/f$ 在 $x=0$ 直接代入得 $\\\\sin 0/0$"
+      ]
+    },
+    {
+      "id": "continuity-ex-013",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §2（复合函数连续性）",
+      "knowledgePointIds": ["composite-continuity"],
+      "difficulty": "basic",
+      "type": "judgment",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\sqrt{x}$，$g(x)=1-x^2$。判断复合函数 $h(x)=f(g(x))=\\\\sqrt{1-x^2}$ 在 $x=0$ 处是否连续，并简述理由。",
+      "gradingRubric": [
+        "$g(x)=1-x^2$ 是多项式，在 $\\\\mathbb{R}$ 上连续，$g(0)=1$",
+        "$f(u)=\\\\sqrt{u}$ 在 $u=1>0$ 处连续",
+        "由复合函数连续性定理，$h=f\\\\circ g$ 在 $x=0$ 处连续",
+        "直接验证：$\\\\lim_{x\\\\to 0}\\\\sqrt{1-x^2}=\\\\sqrt{1}=1=h(0)$"
+      ],
+      "hints": [
+        "识别内函数 $g$ 与外函数 $f$。",
+        "检查 $g$ 在 $x=0$ 是否连续，以及 $f$ 在 $g(0)$ 是否连续。",
+        "根式函数 $\\\\sqrt{u}$ 在 $u>0$ 处连续。"
+      ],
+      "commonMistakes": [
+        "只检查 $f$ 连续、$g$ 连续，却忘记 $f$ 需在 $g(0)$ 处连续",
+        "认为 $\\\\sqrt{1-x^2}$ 不是初等函数而回避复合定理",
+        "在 $x=0$ 处误用 $\\\\sqrt{1-x^2}$ 在 $|x|>1$ 无定义来否定连续性（$0$ 在定义域内）"
+      ]
+    },
+    {
+      "id": "continuity-ex-014",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §3 初等函数的连续性",
+      "knowledgePointIds": ["elementary-function-continuity"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\displaystyle\\\\lim_{x\\\\to 2}\\\\dfrac{\\\\mathrm{e}^{x^2-4}-1}{x-2}$，并说明为何可直接代入或需先变形。",
+      "gradingRubric": [
+        "直接代入 $x=2$ 得 $\\\\dfrac{\\\\mathrm{e}^0-1}{0}=\\\\dfrac{0}{0}$，不能直接代入",
+        "令 $t=x-2$，则 $x^2-4=(x-2)(x+2)=t(t+4)$，$\\\\mathrm{e}^{x^2-4}-1=\\\\mathrm{e}^{t(t+4)}-1$",
+        "当 $t\\\\to 0$ 时 $t(t+4)\\\\to 0$，由 $\\\\mathrm{e}^u-1\\\\sim u$ 或等价无穷小：$\\\\lim_{t\\\\to 0}\\\\dfrac{\\\\mathrm{e}^{t(t+4)}-1}{t}=\\\\lim_{t\\\\to 0}\\\\dfrac{t(t+4)}{t}=4$",
+        "结论：极限为 $4$；依据是初等函数在定义域内点的连续性结合等价无穷小"
+      ],
+      "hints": [
+        "先尝试代入，若得 $0/0$ 则需变形。",
+        "把分子指数写成含 $(x-2)$ 的因式。",
+        "利用 $\\\\mathrm{e}^u$ 在 $u=0$ 连续及 $\\\\mathrm{e}^u-1\\\\sim u$（$u\\\\to 0$）。"
+      ],
+      "commonMistakes": [
+        "直接代入报告极限不存在",
+        "忘记 $x^2-4=(x-2)(x+2)$ 的因式分解",
+        "等价无穷小用错方向"
+      ]
+    },
+    {
+      "id": "continuity-ex-015",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源：数学分析（第5版）上册，第 4 章 §4 闭区间连续函数性质",
+      "knowledgePointIds": ["closed-interval-properties-preview"],
+      "difficulty": "basic",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "证明方程 $\\\\cos x=x$ 在区间 $[0,\\\\pi/2]$ 内至少有一个实根。",
+      "gradingRubric": [
+        "令 $f(x)=\\\\cos x-x$，$f$ 为初等函数，在 $[0,\\\\pi/2]$ 上连续",
+        "$f(0)=\\\\cos 0-0=1>0$",
+        "$f(\\\\pi/2)=\\\\cos(\\\\pi/2)-\\\\pi/2=0-\\\\pi/2<0$",
+        "$f(0)\\\\cdot f(\\\\pi/2)<0$，由零点定理，$\\\\exists\\\\,\\\\xi\\\\in(0,\\\\pi/2)$ 使 $f(\\\\xi)=0$，即 $\\\\cos\\\\xi=\\\\xi$"
+      ],
+      "hints": [
+        "把方程移项写成 $f(x)=0$ 的形式。",
+        "计算区间端点的函数值并比较符号。",
+        "连续 + 端点异号 $\\\\Rightarrow$ 零点定理。"
+      ],
+      "commonMistakes": [
+        "忘记说明 $f$ 在闭区间上连续",
+        "$f(\\\\pi/2)$ 计算错误（$\\\\cos(\\\\pi/2)=0$）",
+        "把开区间 $(0,\\\\pi/2)$ 与闭区间 $[0,\\\\pi/2]$ 混用"
       ]
     }
   ]

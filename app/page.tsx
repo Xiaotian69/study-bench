@@ -1,3 +1,4 @@
+import { ChapterHeader } from "@/components/course/ChapterHeader";
 import { CourseSidebar } from "@/components/course/CourseSidebar";
 import { ExercisePanel } from "@/components/course/ExercisePanel";
 import { KnowledgePointNav } from "@/components/course/KnowledgePointNav";
@@ -33,6 +34,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
     <main className="workbench-shell">
       <CourseSidebar activeChapterId={bundle.chapter.id} courseId={bundle.course.id} volumes={volumes} />
       <div className="main-column">
+        <ChapterHeader chapter={bundle.chapter} />
         <KnowledgePointNav
           activeKpIndex={kpIndex}
           chapterId={bundle.chapter.id}
