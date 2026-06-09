@@ -49,6 +49,12 @@
         </view>
       </view>
 
+      <!-- Error state with retry -->
+      <view wx:if="{{hasError}}" class="error-row">
+        <text class="error-msg">⚠ {{lastErrorMsg}}</text>
+        <view class="retry-btn" bindtap="retryLastMessage"><text>重试</text></view>
+      </view>
+
       <!-- Spacer so last message isn't hidden by input bar -->
       <view style="height:16rpx;" />
     </view>

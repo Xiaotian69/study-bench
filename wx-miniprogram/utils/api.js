@@ -55,6 +55,37 @@ function buildGradePrompt(exercise, studentAnswer) {
   ].join('\n');
 }
 
+function httpError(statusCode) {
+  const map = {
+    401: 'API Key 无效，请在设置中更新',
+    403: 'API Key 无权限',
+    429: '请求太频繁，请稍后再试',
+    500: 'DeepSeek 服务器繁忙，请稍后再试',
+    503: 'DeepSeek 服务暂时不可用',
+  };
+  return map[statusCode] || ('服务器返回错误 ' + statusCode);
+}
+
+function networkError(err) {
+  const msg = err && err.errMsg || '';
+  if (msg.includes('timeout')) return '请求超时，请检查网络';
+  if (msg.includes('dns')) return '无法连接到服务器，请检查网络';
+  return '网络错误，请检查网络连接';
+}
+
+function parseGradeJson(raw) {
+  try {
+    // Strip markdown code fences
+    let s = raw.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+    return JSON.parse(s);
+  } catch (_) { /* try extracting JSON object */ }
+  try {
+    const m = raw.match(/\{[\s\S]*\}/);
+    if (m) return JSON.parse(m[0]);
+  } catch (_) { /* ignore */ }
+  return null;
+}
+
 function chatRequest(messages, kp, callbacks) {
   const systemPrompt = buildSystemPrompt(kp);
   const apiMessages = [
@@ -80,7 +111,7 @@ function chatRequest(messages, kp, callbacks) {
     },
     success(res) {
       if (res.statusCode !== 200) {
-        callbacks.onError('服务器返回 ' + res.statusCode);
+        callbacks.onError(httpError(res.statusCode));
         return;
       }
       const content = res.data && res.data.choices && res.data.choices[0] &&
@@ -92,7 +123,7 @@ function chatRequest(messages, kp, callbacks) {
       callbacks.onSuccess(content);
     },
     fail(err) {
-      callbacks.onError('网络错误：' + (err.errMsg || '请检查网络连接'));
+      callbacks.onError(networkError(err));
     },
   });
 }
@@ -117,7 +148,7 @@ function gradeRequest(exercise, studentAnswer, callbacks) {
     },
     success(res) {
       if (res.statusCode !== 200) {
-        callbacks.onError('服务器返回 ' + res.statusCode);
+        callbacks.onError(httpError(res.statusCode));
         return;
       }
       const raw = res.data && res.data.choices && res.data.choices[0] &&
@@ -126,17 +157,15 @@ function gradeRequest(exercise, studentAnswer, callbacks) {
         callbacks.onError('AI 返回内容为空');
         return;
       }
-      try {
-        // Extract JSON from potential markdown code block
-        const jsonStr = raw.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
-        const result = JSON.parse(jsonStr);
+      const result = parseGradeJson(raw);
+      if (result) {
         callbacks.onSuccess(result);
-      } catch (e) {
-        callbacks.onError('解析批改结果失败，原始返回：' + raw.slice(0, 100));
+      } else {
+        callbacks.onError('批改结果格式错误，请重试');
       }
     },
     fail(err) {
-      callbacks.onError('网络错误：' + (err.errMsg || '请检查网络连接'));
+      callbacks.onError(networkError(err));
     },
   });
 }

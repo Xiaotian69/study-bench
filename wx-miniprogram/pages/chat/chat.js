@@ -29,6 +29,7 @@ Page({
     messages: [],
     inputText: '',
     sending: false,
+    hasError: false,
     scrollTop: 0,
     _lastScrollTop: 0,
   },
@@ -65,30 +66,37 @@ Page({
     const userMsg = { role: 'user', content: inputText.trim(), ts, timeLabel: fmtTime(ts) };
     const newMessages = [...messages, userMsg];
     wx.vibrateShort({ type: 'light' });
-    this.setData({ messages: newMessages, inputText: '', sending: true });
+    this.setData({ messages: newMessages, inputText: '', sending: true, hasError: false });
     this._scrollToBottom(true);
-
-    chatRequest(newMessages, kp, {
+    this._sendToApi(newMessages, kp);
+  },
+  _sendToApi(messages, kp) {
+    const { chapterId, kpId } = this.data;
+    chatRequest(messages, kp, {
       onSuccess: (reply) => {
         const replyTs = nowTs();
         const updated = [
           ...this.data.messages,
           { role: 'assistant', content: reply, ts: replyTs, timeLabel: fmtTime(replyTs) },
         ];
-        this.setData({ messages: updated, sending: false });
-        saveChat(this.data.chapterId, this.data.kpId, updated);
+        this.setData({ messages: updated, sending: false, hasError: false });
+        saveChat(chapterId, kpId, updated);
         this._scrollToBottom(true);
       },
       onError: (msg) => {
-        const errTs = nowTs();
-        const updated = [
-          ...this.data.messages,
-          { role: 'assistant', content: '⚠️ ' + msg + '\n\n请检查网络或稍后重试。', ts: errTs, timeLabel: fmtTime(errTs) },
-        ];
-        this.setData({ messages: updated, sending: false });
+        this.setData({ sending: false, hasError: true, lastErrorMsg: msg });
         this._scrollToBottom(true);
       },
     });
+  },
+  retryLastMessage() {
+    const { messages, kp, sending } = this.data;
+    if (sending) return;
+    // Remove any trailing error-placeholder messages and retry
+    const userMessages = messages.filter(m => m.role === 'user');
+    if (!userMessages.length) return;
+    this.setData({ sending: true, hasError: false });
+    this._sendToApi(messages, kp);
   },
   clearChat() {
     wx.showModal({
