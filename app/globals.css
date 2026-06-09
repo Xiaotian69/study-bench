@@ -558,6 +558,19 @@ button:disabled {
   cursor: progress;
 }
 
+button.is-primary {
+  background: var(--accent);
+  border-color: var(--accent-deep);
+  color: white;
+  font-weight: 600;
+}
+
+button.is-primary:hover:not(:disabled) {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: white;
+}
+
 textarea {
   width: 100%;
   min-height: 150px;
@@ -995,7 +1008,7 @@ details summary {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .exercise-card-preview {
@@ -1006,6 +1019,18 @@ details summary {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.exercise-card-title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--serif-body);
 }
 
 .difficulty-pill {
@@ -1040,6 +1065,44 @@ details summary {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid var(--rule);
+}
+
+.problem-statement {
+  margin: 0 0 20px;
+  padding: 18px 20px 16px;
+  background: var(--paper-page);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-page);
+}
+
+.problem-title {
+  margin: 0 0 10px;
+  font-family: var(--serif-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  opacity: 0.8;
+}
+
+.problem-body {
+  font-family: var(--serif-body);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.answer-label {
+  margin: 0 0 8px;
+  font-family: var(--serif-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 details summary:hover {

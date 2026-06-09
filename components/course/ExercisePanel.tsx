@@ -33,13 +33,14 @@ function difficultyClass(d: string) {
   return d === "basic" ? "basic" : d === "medium" ? "medium" : "advanced";
 }
 
-function previewText(text: string, max = 72): string {
-  const stripped = text
-    .replace(/\$\$[\s\S]*?\$\$/g, "[式]")
-    .replace(/\$[^$\n]+\$/g, "[式]")
+function cardLabel(exercise: Exercise): string {
+  if (exercise.title) return exercise.title;
+  const stripped = exercise.prompt
+    .replace(/\$\$[\s\S]*?\$\$/g, "")
+    .replace(/\$[^$\n]+\$/g, "")
     .replace(/\n+/g, " ")
     .trim();
-  return stripped.length > max ? stripped.slice(0, max) + "…" : stripped;
+  return stripped.slice(0, 64) + (stripped.length > 64 ? "…" : "");
 }
 
 export function ExercisePanel({
@@ -212,10 +213,10 @@ export function ExercisePanel({
             >
               <span className="exercise-card-num">{index + 1}</span>
               <div className="exercise-card-meta">
+                <p className="exercise-card-title">{cardLabel(exercise)}</p>
                 <span className={`difficulty-pill ${difficultyClass(exercise.difficulty)}`}>
                   {difficultyLabel(exercise.difficulty)}
                 </span>
-                <p className="exercise-card-preview">{previewText(exercise.prompt)}</p>
               </div>
             </button>
           ))}
@@ -224,9 +225,15 @@ export function ExercisePanel({
 
       {activeExercise && (
         <div className="exercise-workspace">
-          <h3>
-            <MathText text={activeExercise.prompt} />
-          </h3>
+          <div className="problem-statement">
+            {activeExercise.title && (
+              <p className="problem-title">{activeExercise.title}</p>
+            )}
+            <div className="problem-body">
+              <MathText text={activeExercise.prompt} />
+            </div>
+          </div>
+          <p className="answer-label">解答</p>
           <textarea
             aria-label="输入你的解答"
             onChange={(event) => setAnswer(event.target.value)}
@@ -269,8 +276,8 @@ export function ExercisePanel({
             <button onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))} type="button">
               获取提示
             </button>
-            <button disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
-              {gradingStatus === "submitting" ? "批改中..." : "提交给 AI 批改"}
+            <button className="is-primary" disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
+              {gradingStatus === "submitting" ? "批改中…" : "提交给 AI 批改"}
             </button>
             <button type="button">对照评分要点</button>
           </div>

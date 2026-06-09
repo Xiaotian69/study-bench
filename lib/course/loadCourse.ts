@@ -27,7 +27,10 @@ function adaptExercise(raw: unknown): Exercise {
     : typeof e.knowledgePointId === "string"
       ? [e.knowledgePointId]
       : [];
-  const prompt = typeof e.prompt === "string" ? e.prompt : typeof e.problem === "string" ? e.problem : "";
+  const prompt =
+    typeof e.prompt === "string" ? e.prompt :
+    typeof e.problem === "string" ? e.problem :
+    typeof e.problemStatement === "string" ? e.problemStatement : "";
   const gradingRubric = Array.isArray(e.gradingRubric)
     ? (e.gradingRubric as unknown[]).map((r) =>
         typeof r === "string" ? r : typeof (r as Record<string, unknown>).criterion === "string" ? ((r as Record<string, unknown>).criterion as string) : JSON.stringify(r)
