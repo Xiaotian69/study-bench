@@ -293,9 +293,9 @@ export function ExercisePanel({
                 <strong>AI 批改结果</strong>
                 <span>{gradeResult.score} 分</span>
               </div>
-              <p>
+              <div className="grade-feedback">
                 <MathText text={gradeResult.feedback} />
-              </p>
+              </div>
               {gradeResult.missingKeyPoints.length > 0 && (
                 <div>
                   <strong>还缺这些要点</strong>

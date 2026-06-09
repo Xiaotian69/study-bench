@@ -56,12 +56,12 @@ export function MathText({ className, text }: { className?: string; text: string
   }
 
   return (
-    <span className={className}>
+    <div className={className}>
       {paragraphs.map((para, i) => (
         <p key={i}>
           {renderInlineParts(para.trim(), `p${i}`)}
         </p>
       ))}
-    </span>
+    </div>
   );
 }
