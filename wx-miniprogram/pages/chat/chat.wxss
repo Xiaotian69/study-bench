@@ -114,6 +114,35 @@
   66% { opacity: 0.6; }
 }
 
+/* Suggestion chips */
+.suggestions-wrap {
+  background: var(--paper-page);
+  border-top: 1rpx solid var(--rule);
+  padding: 16rpx 0;
+  flex-shrink: 0;
+}
+.suggestions-scroll { width: 100%; }
+.suggestions-inner {
+  display: flex;
+  gap: 12rpx;
+  padding: 0 24rpx;
+  white-space: nowrap;
+}
+.suggestion-chip {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 12rpx 24rpx;
+  border: 1.5rpx solid var(--rule);
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  color: var(--ink-soft);
+  background: var(--paper);
+  max-width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Error + retry */
 .error-row {
   display: flex;

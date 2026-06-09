@@ -30,6 +30,8 @@ Page({
     inputText: '',
     sending: false,
     hasError: false,
+    suggestions: [],
+    showSuggestions: false,
     scrollTop: 0,
     _lastScrollTop: 0,
   },
@@ -46,17 +48,31 @@ Page({
       ? saved.map(m => ({ ...m, timeLabel: fmtTime(m.ts) }))
       : [{ role: 'assistant', content: buildOpeningMessage(kp), ts: nowTs(), timeLabel: fmtTime(nowTs()) }];
 
+    // Build quick-reply suggestions from KP learning goals
+    const suggestions = kp && kp.learningGoals && kp.learningGoals.length
+      ? kp.learningGoals.slice(0, 3).map(g => '「' + g + '」是什么意思？')
+      : [];
+
     this.setData({
       kp: kp || null,
       kpTitle: title,
       chapterId,
       kpId,
       messages,
+      suggestions,
+      showSuggestions: suggestions.length > 0 && messages.length <= 1,
     });
     this._scrollToBottom(false);
   },
   onInputChange(e) {
     this.setData({ inputText: e.detail.value });
+  },
+  sendSuggestion(e) {
+    const text = e.currentTarget.dataset.text;
+    if (!text) return;
+    this.setData({ inputText: text, showSuggestions: false });
+    // Send immediately
+    setTimeout(() => this.sendMessage(), 50);
   },
   sendMessage() {
     const { inputText, messages, kp, sending } = this.data;
@@ -66,7 +82,7 @@ Page({
     const userMsg = { role: 'user', content: inputText.trim(), ts, timeLabel: fmtTime(ts) };
     const newMessages = [...messages, userMsg];
     wx.vibrateShort({ type: 'light' });
-    this.setData({ messages: newMessages, inputText: '', sending: true, hasError: false });
+    this.setData({ messages: newMessages, inputText: '', sending: true, hasError: false, showSuggestions: false });
     this._scrollToBottom(true);
     this._sendToApi(newMessages, kp);
   },

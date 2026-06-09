@@ -60,6 +60,23 @@
     </view>
   </scroll-view>
 
+  <!-- Suggestion chips -->
+  <view wx:if="{{showSuggestions && suggestions.length}}" class="suggestions-wrap">
+    <scroll-view class="suggestions-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="suggestions-inner">
+        <view
+          wx:for="{{suggestions}}"
+          wx:key="*this"
+          class="suggestion-chip"
+          bindtap="sendSuggestion"
+          data-text="{{item}}"
+        >
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
   <!-- Input area -->
   <view class="input-area">
     <textarea
