@@ -10,6 +10,16 @@ function buildOpeningMessage(kp) {
     '\n\n这个知识点你目前哪里还不太清楚？或者想从哪里开始？';
 }
 
+function nowTs() { return Date.now(); }
+
+function fmtTime(ts) {
+  if (!ts) return '';
+  const d = new Date(ts);
+  const h = d.getHours().toString().padStart(2, '0');
+  const m = d.getMinutes().toString().padStart(2, '0');
+  return h + ':' + m;
+}
+
 Page({
   data: {
     kp: null,
@@ -32,8 +42,8 @@ Page({
     // Try to restore previous chat session for this KP
     const saved = loadChat(chapterId, kpId);
     const messages = (saved && saved.length > 0)
-      ? saved
-      : [{ role: 'assistant', content: buildOpeningMessage(kp) }];
+      ? saved.map(m => ({ ...m, timeLabel: fmtTime(m.ts) }))
+      : [{ role: 'assistant', content: buildOpeningMessage(kp), ts: nowTs(), timeLabel: fmtTime(nowTs()) }];
 
     this.setData({
       kp: kp || null,
@@ -51,22 +61,29 @@ Page({
     const { inputText, messages, kp, sending } = this.data;
     if (sending || !inputText.trim()) return;
 
-    const userMsg = { role: 'user', content: inputText.trim() };
+    const ts = nowTs();
+    const userMsg = { role: 'user', content: inputText.trim(), ts, timeLabel: fmtTime(ts) };
     const newMessages = [...messages, userMsg];
+    wx.vibrateShort({ type: 'light' });
     this.setData({ messages: newMessages, inputText: '', sending: true });
     this._scrollToBottom(true);
 
     chatRequest(newMessages, kp, {
       onSuccess: (reply) => {
-        const updated = [...this.data.messages, { role: 'assistant', content: reply }];
+        const replyTs = nowTs();
+        const updated = [
+          ...this.data.messages,
+          { role: 'assistant', content: reply, ts: replyTs, timeLabel: fmtTime(replyTs) },
+        ];
         this.setData({ messages: updated, sending: false });
         saveChat(this.data.chapterId, this.data.kpId, updated);
         this._scrollToBottom(true);
       },
       onError: (msg) => {
+        const errTs = nowTs();
         const updated = [
           ...this.data.messages,
-          { role: 'assistant', content: '⚠️ ' + msg + '\n\n请检查网络或稍后重试。' },
+          { role: 'assistant', content: '⚠️ ' + msg + '\n\n请检查网络或稍后重试。', ts: errTs, timeLabel: fmtTime(errTs) },
         ];
         this.setData({ messages: updated, sending: false });
         this._scrollToBottom(true);
@@ -80,7 +97,8 @@ Page({
       success: (res) => {
         if (!res.confirm) return;
         const opening = buildOpeningMessage(this.data.kp);
-        const messages = [{ role: 'assistant', content: opening }];
+        const ts = nowTs();
+        const messages = [{ role: 'assistant', content: opening, ts, timeLabel: fmtTime(ts) }];
         this.setData({ messages, inputText: '', sending: false });
         saveChat(this.data.chapterId, this.data.kpId, messages);
         this._scrollToBottom(false);

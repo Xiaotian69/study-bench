@@ -69,9 +69,18 @@
   font-weight: 700;
 }
 
+/* Bubble column (bubble + timestamp) */
+.bubble-col { display: flex; flex-direction: column; max-width: 74%; }
+.bubble-col-user { align-items: flex-end; }
+.msg-time {
+  font-size: 18rpx;
+  color: var(--ink-faint);
+  margin-top: 6rpx;
+  padding: 0 4rpx;
+}
+
 /* Bubbles */
 .bubble {
-  max-width: 74%;
   padding: 20rpx 24rpx;
   border-radius: 20rpx;
   line-height: 1.7;
@@ -86,10 +95,23 @@
   border-bottom-right-radius: 4rpx;
 }
 .thinking {
+  display: flex;
+  align-items: center;
   font-size: 26rpx;
   color: var(--ink-faint);
   font-style: italic;
   padding: 16rpx 20rpx;
+}
+.typing-dots {
+  display: inline-block;
+  animation: blink 1.2s step-start infinite;
+  letter-spacing: 0.1em;
+  margin-left: 2rpx;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  33% { opacity: 0.2; }
+  66% { opacity: 0.6; }
 }
 
 /* Input bar */

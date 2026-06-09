@@ -25,12 +25,15 @@
           <text>📚</text>
         </view>
 
-        <view class="bubble {{item.role === 'user' ? 'bubble-user' : 'bubble-ai'}}">
-          <math-text
-            text="{{item.content}}"
-            size="normal"
-            color="{{item.role === 'user' ? '#fff' : ''}}"
-          />
+        <view class="bubble-col {{item.role === 'user' ? 'bubble-col-user' : ''}}">
+          <view class="bubble {{item.role === 'user' ? 'bubble-user' : 'bubble-ai'}}">
+            <math-text
+              text="{{item.content}}"
+              size="normal"
+              color="{{item.role === 'user' ? '#fff' : ''}}"
+            />
+          </view>
+          <text wx:if="{{item.timeLabel}}" class="msg-time">{{item.timeLabel}}</text>
         </view>
 
         <view wx:if="{{item.role === 'user'}}" class="avatar user-avatar">
@@ -42,7 +45,7 @@
       <view wx:if="{{sending}}" class="msg-row is-ai">
         <view class="avatar ai-avatar"><text>📚</text></view>
         <view class="bubble bubble-ai thinking">
-          <text class="dot-anim">思考中</text>
+          <text>思考中</text><text class="typing-dots">...</text>
         </view>
       </view>
 
