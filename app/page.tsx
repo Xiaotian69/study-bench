@@ -2,7 +2,7 @@ import { CourseSidebar } from "@/components/course/CourseSidebar";
 import { ExercisePanel } from "@/components/course/ExercisePanel";
 import { LearningStepPanel } from "@/components/course/LearningStepPanel";
 import { TutorPanel } from "@/components/course/TutorPanel";
-import { loadMathAnalysisCourse } from "@/lib/course/loadCourse";
+import { getAllVolumes, loadMathAnalysisCourse } from "@/lib/course/loadCourse";
 import {
   getDiagramsForKnowledgePoint,
   getExercisesForKnowledgePoint,
@@ -10,8 +10,10 @@ import {
   getSectionForKnowledgePoint
 } from "@/lib/course/selectors";
 
-export default function HomePage() {
-  const bundle = loadMathAnalysisCourse();
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ chapter?: string }> }) {
+  const { chapter } = await searchParams;
+  const bundle = loadMathAnalysisCourse(chapter);
+  const volumes = getAllVolumes();
   const firstKnowledgePoint = getFirstReadyKnowledgePoint(bundle);
   const firstSection = getSectionForKnowledgePoint(bundle, firstKnowledgePoint.id);
   const diagrams = getDiagramsForKnowledgePoint(bundle, firstKnowledgePoint.id);
@@ -19,7 +21,7 @@ export default function HomePage() {
 
   return (
     <main className="workbench-shell">
-      <CourseSidebar activeChapterId={bundle.chapter.id} courseId={bundle.course.id} volume={bundle.volume} />
+      <CourseSidebar activeChapterId={bundle.chapter.id} courseId={bundle.course.id} volumes={volumes} />
       <div className="main-column">
         <LearningStepPanel diagrams={diagrams} knowledgePoint={firstKnowledgePoint} />
         <ExercisePanel

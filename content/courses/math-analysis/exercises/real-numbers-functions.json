@@ -155,7 +155,7 @@
       "difficulty": "medium",
       "sourceType": "self-authored",
       "sourceRef": "待核对题源：数学分析（第5版）上册，第 1 章",
-      "problem": "设 $A=\\\\{a_n\\\\}$ 为有界数列（即存在 $M$ 使 $|a_n|\\\\leq M$ 对所有 $n$ 成立），令 $B=\\\\{a_n,a_{n+1},a_{n+2},\\\\ldots\\\\}$（数列从第 $n$ 项起的"尾部"集合），定义 $\\\\beta_n=\\\\sup B_n$（其中 $B_n=\\\\{a_k:\\,k\\\\geq n\\\\}$）。\n1. 证明 $\\\\beta_n$ 存在且有限。\n2. 证明 $\\\\{\\\\beta_n\\\\}$ 单调不增（即 $\\\\beta_1\\\\geq\\\\beta_2\\\\geq\\\\cdots$）。\n（注：$\\\\lim_{n\\\\to\\\\infty}\\\\beta_n$ 即数列的"上极限" $\\\\limsup$，是数学分析中重要工具。）",
+      "problem": "设 $A=\\\\{a_n\\\\}$ 为有界数列（即存在 $M$ 使 $|a_n|\\\\leq M$ 对所有 $n$ 成立），令 $B=\\\\{a_n,a_{n+1},a_{n+2},\\\\ldots\\\\}$（数列从第 $n$ 项起的『尾部』集合），定义 $\\\\beta_n=\\\\sup B_n$（其中 $B_n=\\\\{a_k:\\,k\\\\geq n\\\\}$）。\n1. 证明 $\\\\beta_n$ 存在且有限。\n2. 证明 $\\\\{\\\\beta_n\\\\}$ 单调不增（即 $\\\\beta_1\\\\geq\\\\beta_2\\\\geq\\\\cdots$）。\n（注：$\\\\lim_{n\\\\to\\\\infty}\\\\beta_n$ 即数列的上极限 $\\\\limsup$，是数学分析中重要工具。）",
       "solution": "**1.** 数列有界：$|a_k|\\\\leq M$，故 $a_k\\\\leq M$ 对所有 $k$ 成立，特别地 $a_k\\\\leq M$ 对 $k\\\\geq n$ 也成立。\n故 $B_n=\\\\{a_k:\\,k\\\\geq n\\\\}$ 非空（含 $a_n$）且有上界 $M$。由确界原理，$\\\\beta_n=\\\\sup B_n$ 存在且 $\\\\beta_n\\\\leq M<+\\\\infty$。\n\n**2.** $B_{n+1}\\\\subset B_n$（$B_{n+1}$ 少了 $a_n$ 项）。\n设 $\\\\beta_{n+1}=\\\\sup B_{n+1}$，$\\\\beta_n=\\\\sup B_n$。\n$\\\\forall x\\\\in B_{n+1}$，$x\\\\in B_n$，故 $x\\\\leq\\\\beta_n$，即 $\\\\beta_n$ 是 $B_{n+1}$ 的上界。\n$\\\\beta_{n+1}=\\\\sup B_{n+1}\\\\leq\\\\beta_n$（上确界是最小上界，不超过任何上界 $\\\\beta_n$）。\n故 $\\\\beta_n\\\\geq\\\\beta_{n+1}$，数列 $\\\\{\\\\beta_n\\\\}$ 单调不增。",
       "gradingRubric": [
         { "criterion": "第1题：$B_n$ 非空（含 $a_n$），有上界 $M$，确界原理保证 $\\\\sup B_n$ 存在", "points": 4 },
@@ -163,7 +163,7 @@
       ],
       "hints": [
         "第1题：有界数列 $|a_k|\\\\leq M$ 意味着所有项在 $[-M,M]$ 内，$B_n\\\\subset[-M,M]$",
-        "第2题：关键：$B_{n+1}\\\\subset B_n$ 的直观意义——"尾部"集合随 $n$ 增大而缩小，上确界只会变小或不变"
+        "第2题：关键：$B_{n+1}\\\\subset B_n$ 的直观意义——尾部集合随 $n$ 增大而缩小，上确界只会变小或不变"
       ],
       "commonMistakes": [
         "$\\\\sup$ 是最小上界：若 $\\\\beta_n$ 是 $B_{n+1}$ 的上界，则 $\\\\beta_{n+1}=\\\\sup B_{n+1}\\\\leq\\\\beta_n$（不能说等于）",

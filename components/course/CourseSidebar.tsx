@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Volume } from "@/lib/course/types";
 import {
@@ -10,42 +11,66 @@ import {
   type CourseProgressRecord
 } from "@/lib/progress/masteryProgress";
 
-export function CourseSidebar({ activeChapterId, courseId, volume }: { activeChapterId: string; courseId: string; volume: Volume }) {
-  const [progress, setProgress] = useState<CourseProgressRecord>(() => loadCourseProgress(courseId, volume.id));
+export function CourseSidebar({
+  activeChapterId,
+  courseId,
+  volumes,
+}: {
+  activeChapterId: string;
+  courseId: string;
+  volumes: Volume[];
+}) {
+  const [progressMap, setProgressMap] = useState<Record<string, CourseProgressRecord>>(() =>
+    Object.fromEntries(volumes.map((v) => [v.id, loadCourseProgress(courseId, v.id)]))
+  );
 
   useEffect(() => {
     function refreshProgress() {
-      setProgress(loadCourseProgress(courseId, volume.id));
+      setProgressMap(Object.fromEntries(volumes.map((v) => [v.id, loadCourseProgress(courseId, v.id)])));
     }
-
     refreshProgress();
     window.addEventListener(progressUpdatedEventName, refreshProgress);
     return () => window.removeEventListener(progressUpdatedEventName, refreshProgress);
-  }, [courseId, volume.id]);
+  }, [courseId, volumes]);
 
   return (
     <aside className="course-sidebar">
       <div className="sidebar-heading">
         <span>课程目录</span>
-        <strong>{volume.title}</strong>
+        <strong>数学分析</strong>
       </div>
-      <nav aria-label="课程章节" className="chapter-list">
-        {volume.chapters.map((chapter) => {
-          const knowledgePointIds = chapter.sections.flatMap((section) => section.knowledgePointIds ?? []);
-          const masteryState = getChapterMasteryState(progress, knowledgePointIds);
+      {volumes.map((volume) => {
+        const progress = progressMap[volume.id] ?? {};
+        return (
+          <nav aria-label={volume.title} className="chapter-list" key={volume.id}>
+            <p className="volume-label">{volume.title}</p>
+            {volume.chapters.map((chapter) => {
+              const knowledgePointIds = chapter.sections.flatMap((section) => section.knowledgePointIds ?? []);
+              const masteryState = getChapterMasteryState(progress, knowledgePointIds);
+              const isActive = chapter.id === activeChapterId;
 
-          return (
-            <section className={`chapter-item ${chapter.id === activeChapterId ? "is-active" : ""}`} key={chapter.id}>
-              <div className="chapter-title">
-                <span>{chapter.number}</span>
-                <strong>{chapter.title}</strong>
-              </div>
-              <small>{chapter.status === "sample-ready" ? "样板完成" : "待整理"}</small>
-              {chapter.status === "sample-ready" && <span className={`progress-pill ${masteryState}`}>{getMasteryLabel(masteryState)}</span>}
-            </section>
-          );
-        })}
-      </nav>
+              return (
+                <Link
+                  className={`chapter-item ${isActive ? "is-active" : ""}`}
+                  href={`/?chapter=${chapter.id}`}
+                  key={chapter.id}
+                >
+                  <div className="chapter-title">
+                    <span>{chapter.number}</span>
+                    <strong>{chapter.title}</strong>
+                  </div>
+                  <small>
+                    {chapter.status === "sample-ready" ? "样板完成" : chapter.status === "draft" ? "草稿" : "待整理"}
+                  </small>
+                  {chapter.status === "sample-ready" && (
+                    <span className={`progress-pill ${masteryState}`}>{getMasteryLabel(masteryState)}</span>
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+        );
+      })}
     </aside>
   );
 }

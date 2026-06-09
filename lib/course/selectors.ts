@@ -3,7 +3,7 @@ import type { CourseBundle, DiagramSpec, Exercise, KnowledgePoint, VolumeSection
 export function getFirstReadyKnowledgePoint(bundle: CourseBundle): KnowledgePoint {
   const first = bundle.chapter.knowledgePoints[0];
   if (!first) {
-    throw new Error("sequence-limit chapter has no knowledge points");
+    throw new Error("chapter has no knowledge points");
   }
   return first;
 }

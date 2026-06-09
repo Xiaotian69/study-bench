@@ -6,7 +6,7 @@
     {
       "id": "surface-integral-diagram",
       "title": "曲面积分的两型与法向量方向",
-      "description": "左图：第一型曲面积分——显式曲面 $z=z(x,y)$，面积元素 $\\mathrm{d}S=\\sqrt{1+z_x^2+z_y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$，投影区域 $D_{xy}$ 在 $xy$ 平面，投影箭头示意（竖直虚线）。中图：第二型曲面积分——封闭曲面的外法向量 $\\boldsymbol{n}$ 朝外（多个箭头），流量 $\\Phi=\\oiint\\boldsymbol{F}\\cdot\\boldsymbol{n}\\,\\mathrm{d}S$；向量场 $\\boldsymbol{F}$ 用流线表示，法向量与流线夹角标注。右图：高斯公式示意——封闭曲面 $\\partial\\Omega$（外侧），内部 $\\Omega$ 的散度 $\\mathrm{div}\\,\\boldsymbol{F}$，正散度（源）用红色"+"，负散度（汇）用蓝色"−"。箭头颜色：法向量绿色，向量场橙色，投影蓝色。",
+      "description": "左图：第一型曲面积分——显式曲面 $z=z(x,y)$，面积元素 $\\mathrm{d}S=\\sqrt{1+z_x^2+z_y^2}\\,\\mathrm{d}x\\,\\mathrm{d}y$，投影区域 $D_{xy}$ 在 $xy$ 平面，投影箭头示意（竖直虚线）。中图：第二型曲面积分——封闭曲面的外法向量 $\\boldsymbol{n}$ 朝外（多个箭头），流量 $\\Phi=\\oiint\\boldsymbol{F}\\cdot\\boldsymbol{n}\\,\\mathrm{d}S$；向量场 $\\boldsymbol{F}$ 用流线表示，法向量与流线夹角标注。右图：高斯公式示意——封闭曲面 $\\partial\\Omega$（外侧），内部 $\\Omega$ 的散度 $\\mathrm{div}\\,\\boldsymbol{F}$，正散度（源）用红色」+「，负散度（汇）用蓝色」−「。箭头颜色：法向量绿色，向量场橙色，投影蓝色。",
       "mathContext": "第一型曲面积分 $\\iint_S f\\,\\mathrm{d}S$ 与曲面方向无关（面积元素 $\\mathrm{d}S>0$ 恒成立）；第二型曲面积分 $\\iint_S\\boldsymbol{F}\\cdot\\mathrm{d}\\boldsymbol{S}$ 与法向量方向有关（反向变号）。高斯公式 $\\oiint_{\\partial\\Omega}\\boldsymbol{F}\\cdot\\mathrm{d}\\boldsymbol{S}=\\iiint_\\Omega\\mathrm{div}\\,\\boldsymbol{F}\\,\\mathrm{d}V$ 将面积分化为体积分：封闭面上流量 = 内部散度之和（散度为正 = 源，净流出；散度为负 = 汇，净流入）。",
       "diagramType": "graph",
       "knowledgePointIds": ["first-type-surface-integral", "second-type-surface-integral", "gauss-stokes-formula"],
