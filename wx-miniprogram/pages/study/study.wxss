@@ -5,11 +5,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32rpx;
-  height: 80rpx;
+  padding: 12rpx 32rpx;
+  min-height: 80rpx;
   background: var(--paper-page);
   border-bottom: 1rpx solid var(--rule);
 }
+.kp-nav-badges { display: flex; align-items: center; justify-content: center; gap: 8rpx; margin-top: 4rpx; }
+.kp-badge {
+  font-size: 18rpx;
+  font-weight: 600;
+  padding: 2rpx 10rpx;
+  border-radius: 16rpx;
+}
+.kp-badge-ex { background: var(--accent-pale); color: var(--accent); }
+.kp-badge-score { background: #e8f5e9; color: #2e7d32; }
+.kp-badge-score.ok { background: #fff9c4; color: #c17900; }
+
 .kp-nav-btn {
   font-size: 26rpx;
   color: var(--accent);
@@ -17,7 +28,7 @@
   padding: 16rpx 8rpx;
 }
 .kp-nav-btn.is-disabled { color: var(--rule); }
-.kp-nav-center { flex: 1; text-align: center; }
+.kp-nav-center { flex: 1; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .kp-nav-pos { font-size: 22rpx; color: var(--ink-faint); letter-spacing: 0.08em; }
 
 /* Tab bar */
