@@ -24,6 +24,8 @@ Page({
     activeTab: 'learn', // 'learn' | 'exercise'
     // Exercise list — enriched with best score
     exercisesWithScore: [],
+    exFilter: 'all', // 'all' | 'basic' | 'medium' | 'advanced' | 'todo'
+    filteredExercises: [],
     // Exercise workspace
     selectedExIndex: -1,
     selectedEx: null,
@@ -68,6 +70,8 @@ Page({
       totalKps: chapter.knowledgePoints.length,
       kpProgress,
       exercisesWithScore,
+      filteredExercises: exercisesWithScore,
+      exFilter: 'all',
       showSocratic: false,
       showMistakes: false,
       activeTab: 'learn',
@@ -107,6 +111,21 @@ Page({
     const next = chapter.knowledgePoints[kpIndex + 1];
     this._load(chapter.id, next.id);
     wx.pageScrollTo({ scrollTop: 0, duration: 150 });
+  },
+
+  // ── Exercise filter ──────────────────────────────────────────
+  setExFilter(e) {
+    const filter = e.currentTarget.dataset.filter;
+    const { exercisesWithScore } = this.data;
+    let filtered;
+    if (filter === 'all') {
+      filtered = exercisesWithScore;
+    } else if (filter === 'todo') {
+      filtered = exercisesWithScore.filter(ex => ex.bestScore == null);
+    } else {
+      filtered = exercisesWithScore.filter(ex => ex.difficulty === filter);
+    }
+    this.setData({ exFilter: filter, filteredExercises: filtered });
   },
 
   // ── Exercises ────────────────────────────────────────────────
@@ -160,6 +179,11 @@ Page({
           bestScore: getBestScore(ex.id),
           diffLabel: ex.difficulty === 'basic' ? '基础' : ex.difficulty === 'medium' ? '中档' : '提升',
         }));
+        // Re-apply current filter
+        const { exFilter } = this.data;
+        const filteredExercises = exFilter === 'all' ? exercisesWithScore
+          : exFilter === 'todo' ? exercisesWithScore.filter(ex => ex.bestScore == null)
+          : exercisesWithScore.filter(ex => ex.difficulty === exFilter);
         const VERDICT_TITLES = {
           excellent: '非常棒！',
           good: '做得不错',
@@ -172,6 +196,7 @@ Page({
           gradeResult: enriched,
           gradingStatus: 'success',
           exercisesWithScore,
+          filteredExercises,
         });
         wx.pageScrollTo({ selector: '#grade-result', duration: 300 });
       },

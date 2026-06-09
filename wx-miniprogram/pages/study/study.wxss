@@ -149,6 +149,36 @@
 .chat-cta-sub { display: block; font-size: 22rpx; color: var(--ink-faint); margin-top: 4rpx; }
 .chat-cta-arrow { font-size: 40rpx; color: var(--ink-faint); margin-left: auto; }
 
+/* Exercise filter */
+.ex-filter-row {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+  padding: 12rpx 0 20rpx;
+  border-bottom: 1rpx solid var(--rule);
+  margin-bottom: 4rpx;
+}
+.ex-filter-chip {
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  border: 1.5rpx solid var(--rule);
+  color: var(--ink-faint);
+  background: var(--paper-page);
+}
+.ex-filter-chip.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-pale);
+}
+.filter-empty {
+  padding: 40rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: var(--ink-faint);
+}
+
 /* Exercise list */
 .ex-list {}
 .ex-card {

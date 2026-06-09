@@ -113,8 +113,22 @@
 
     <!-- Exercise list -->
     <view wx:elif="{{selectedExIndex < 0}}" class="ex-list">
+
+      <!-- Filter chips (only shown when 5+ exercises) -->
+      <view wx:if="{{kp.exercises.length >= 5}}" class="ex-filter-row">
+        <view class="ex-filter-chip {{exFilter === 'all' ? 'active' : ''}}" bindtap="setExFilter" data-filter="all">全部</view>
+        <view class="ex-filter-chip {{exFilter === 'basic' ? 'active' : ''}}" bindtap="setExFilter" data-filter="basic">基础</view>
+        <view class="ex-filter-chip {{exFilter === 'medium' ? 'active' : ''}}" bindtap="setExFilter" data-filter="medium">中档</view>
+        <view class="ex-filter-chip {{exFilter === 'advanced' ? 'active' : ''}}" bindtap="setExFilter" data-filter="advanced">提升</view>
+        <view class="ex-filter-chip {{exFilter === 'todo' ? 'active' : ''}}" bindtap="setExFilter" data-filter="todo">待做</view>
+      </view>
+
+      <view wx:if="{{filteredExercises.length === 0}}" class="filter-empty">
+        <text>没有符合筛选条件的练习</text>
+      </view>
+
       <view
-        wx:for="{{exercisesWithScore}}"
+        wx:for="{{filteredExercises}}"
         wx:key="id"
         class="ex-card"
         bindtap="selectExercise"
