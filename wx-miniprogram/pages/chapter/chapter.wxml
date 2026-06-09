@@ -11,9 +11,16 @@
       </view>
       <view class="ch-progress-row">
         <text class="ch-meta">{{chapter.knowledgePoints.length}} 个知识点</text>
-        <text wx:if="{{chapter.studiedCount > 0}}" class="ch-studied">
-          已学 {{chapter.studiedCount}}/{{chapter.knowledgePoints.length}}
+        <text wx:if="{{chapter.isComplete}}" class="ch-complete-badge">✓ 已完成</text>
+        <text wx:elif="{{chapter.studiedCount > 0}}" class="ch-studied">
+          {{chapter.studiedCount}}/{{chapter.knowledgePoints.length}} 已学
         </text>
+      </view>
+      <view wx:if="{{chapter.studiedCount > 0}}" class="ch-progress-bar-track">
+        <view
+          class="ch-progress-bar-fill {{chapter.isComplete ? 'complete' : ''}}"
+          style="width:{{chapter.progressPct}}%;"
+        />
       </view>
     </view>
 

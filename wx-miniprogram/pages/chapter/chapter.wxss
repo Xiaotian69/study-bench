@@ -38,6 +38,28 @@
 }
 .ch-meta { font-size: 24rpx; color: var(--ink-faint); }
 .ch-studied { font-size: 24rpx; color: var(--accent); font-weight: 700; }
+.ch-complete-badge {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 2rpx 14rpx;
+  border-radius: 20rpx;
+}
+.ch-progress-bar-track {
+  height: 6rpx;
+  background: var(--rule);
+  border-radius: 3rpx;
+  overflow: hidden;
+  margin-top: 14rpx;
+}
+.ch-progress-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3rpx;
+  transition: width 0.4s;
+}
+.ch-progress-bar-fill.complete { background: #2e7d32; }
 
 /* KP section */
 .kp-section { padding: 32rpx 40rpx 0; }

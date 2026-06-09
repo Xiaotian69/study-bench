@@ -35,7 +35,15 @@ Page({
       };
     });
     const studiedCount = kps.filter(k => k.studied).length;
-    return { ...chapter, knowledgePoints: kps, studiedCount };
+    const total = kps.length;
+    const progressPct = total > 0 ? Math.round(studiedCount / total * 100) : 0;
+    return {
+      ...chapter,
+      knowledgePoints: kps,
+      studiedCount,
+      progressPct,
+      isComplete: studiedCount === total && total > 0,
+    };
   },
   _refreshProgress() {
     const chapter = app.globalData.chapters[this.data.chapter.id];
