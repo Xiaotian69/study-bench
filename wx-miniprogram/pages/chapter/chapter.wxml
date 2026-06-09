@@ -1,0 +1,55 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="loading-wrap"><text>加载中…</text></view>
+
+  <block wx:elif="{{chapter}}">
+    <!-- Chapter header -->
+    <view class="chapter-header">
+      <text class="ch-eyebrow">第 {{chapter.number}} 章</text>
+      <text class="ch-title">{{chapter.title}}</text>
+      <view wx:if="{{chapter.overview}}" class="ch-overview">
+        <math-text text="{{chapter.overview}}" size="small" />
+      </view>
+      <view class="ch-progress-row">
+        <text class="ch-meta">{{chapter.knowledgePoints.length}} 个知识点</text>
+        <text wx:if="{{chapter.studiedCount > 0}}" class="ch-studied">
+          已学 {{chapter.studiedCount}}/{{chapter.knowledgePoints.length}}
+        </text>
+      </view>
+    </view>
+
+    <!-- KP list -->
+    <view class="kp-section">
+      <text class="section-title">知识点</text>
+
+      <view class="kp-list">
+        <view
+          wx:for="{{chapter.knowledgePoints}}"
+          wx:key="id"
+          class="kp-row {{item.studied ? 'is-studied' : ''}}"
+          bindtap="goToStudy"
+          data-kpid="{{item.id}}"
+          data-chapterid="{{chapter.id}}"
+        >
+          <view class="kp-index-wrap">
+            <text wx:if="{{item.studied}}" class="kp-check">✓</text>
+            <text wx:else class="kp-index">{{index + 1}}</text>
+          </view>
+          <view class="kp-info">
+            <text class="kp-title">{{item.title}}</text>
+            <view class="kp-goals" wx:if="{{item.learningGoals.length}}">
+              <text class="kp-goal-first">{{item.learningGoals[0]}}</text>
+            </view>
+            <view class="kp-stats-row">
+              <text wx:if="{{item.exercises.length}}" class="kp-ex-count">{{item.exercises.length}} 题</text>
+              <text wx:else class="kp-ex-count kp-ex-none">暂无练习</text>
+              <text wx:if="{{item.bestScore != null}}" class="kp-score {{item.bestScore >= 80 ? 'good' : 'ok'}}">
+                最高 {{item.bestScore}} 分
+              </text>
+            </view>
+          </view>
+          <text class="kp-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

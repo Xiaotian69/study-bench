@@ -1,0 +1,10 @@
+.math-text {
+  display: block;
+  line-height: 1.8;
+  color: #211c16;
+  font-family: -apple-system, 'PingFang SC', sans-serif;
+}
+
+.math-text--normal { font-size: 30rpx; }
+.math-text--small  { font-size: 26rpx; }
+.math-text--large  { font-size: 34rpx; }

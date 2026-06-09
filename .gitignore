@@ -24,3 +24,9 @@ temp/
 
 # Local git worktrees used for parallel AI development.
 .worktrees/
+
+# WeChat Mini Program — API key config (do not commit)
+wx-miniprogram/config.js
+
+# WeChat Mini Program — generated data bundle (rebuilt from content/)
+wx-miniprogram/data/all-chapters.js

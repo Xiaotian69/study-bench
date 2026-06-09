@@ -1,0 +1,58 @@
+<view class="page">
+  <!-- Header -->
+  <view class="hero">
+    <view class="hero-top">
+      <view>
+        <text class="hero-eyebrow">大学数学</text>
+        <text class="hero-title">数学分析</text>
+        <text class="hero-subtitle">22 章 · 93 知识点 · 214 练习 · AI 批改</text>
+      </view>
+      <view class="settings-btn" bindtap="goToSettings">
+        <text class="settings-icon">⚙</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <text>加载中…</text>
+  </view>
+
+  <view wx:else>
+    <view wx:for="{{volumes}}" wx:key="id" class="volume-section">
+      <text class="volume-title">{{item.title}}</text>
+
+      <view class="chapter-list">
+        <view
+          wx:for="{{item.chapters}}"
+          wx:for-item="ch"
+          wx:key="id"
+          class="chapter-row"
+          bindtap="goToChapter"
+          data-id="{{ch.id}}"
+        >
+          <view class="chapter-num-wrap">
+            <text class="chapter-num">{{ch.number}}</text>
+          </view>
+          <view class="chapter-info">
+            <text class="chapter-name">{{ch.title}}</text>
+            <view class="chapter-meta-row">
+              <text class="chapter-status {{ch.status}}">{{ch.statusLabel}}</text>
+              <view wx:if="{{ch.hasProgress}}" class="progress-tag">
+                <text>{{ch.studiedCount}}/{{ch.totalCount}} 节</text>
+              </view>
+            </view>
+            <!-- Progress bar -->
+            <view wx:if="{{ch.hasProgress}}" class="progress-bar-track">
+              <view class="progress-bar-fill {{ch.pct >= 100 ? 'complete' : ''}}" style="width:{{ch.pct}}%;" />
+            </view>
+          </view>
+          <text class="chapter-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="footer-note">
+      <text>数学符号以 LaTeX 格式显示 · AI 采用 DeepSeek 模型</text>
+    </view>
+  </view>
+</view>

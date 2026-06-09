@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/chapter/chapter",
+    "pages/study/study",
+    "pages/chat/chat",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f3ecdd",
+    "navigationBarTitleText": "数学分析",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f3ecdd"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

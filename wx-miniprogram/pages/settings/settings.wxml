@@ -1,0 +1,69 @@
+<view class="page">
+
+  <view class="section">
+    <text class="section-title">AI 设置</text>
+
+    <view class="card">
+      <text class="field-label">DeepSeek API Key</text>
+      <text class="field-desc">
+        默认使用内置 Key（供学生免费使用）。如有自己的 Key 可在此替换，优先级更高。
+      </text>
+      <input
+        class="key-input"
+        placeholder="sk-xxxxxxxxxxxxxxxx（留空使用默认）"
+        value="{{apiKey}}"
+        bindinput="onKeyInput"
+        password="{{false}}"
+        maxlength="80"
+        confirm-type="done"
+      />
+      <view class="field-status" wx:if="{{hasOverride}}">
+        <text class="status-dot active" />
+        <text class="status-text">使用自定义 Key</text>
+      </view>
+      <view class="field-status" wx:else>
+        <text class="status-dot default" />
+        <text class="status-text">使用内置默认 Key</text>
+      </view>
+
+      <view class="btn-row">
+        <button class="btn btn-primary" bindtap="saveKey">保存</button>
+        <button class="btn btn-ghost" bindtap="resetKey" wx:if="{{hasOverride}}">重置默认</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">关于</text>
+    <view class="card about-card">
+      <view class="about-row">
+        <text class="about-key">版本</text>
+        <text class="about-val">1.0.0</text>
+      </view>
+      <view class="about-row">
+        <text class="about-key">AI 模型</text>
+        <text class="about-val">DeepSeek Chat</text>
+      </view>
+      <view class="about-row">
+        <text class="about-key">内容</text>
+        <text class="about-val">数学分析 22 章 · 93 知识点 · 214 练习</text>
+      </view>
+      <view class="about-row">
+        <text class="about-key">数学渲染</text>
+        <text class="about-val">LaTeX 符号格式显示</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">域名配置说明</text>
+    <view class="card tips-card">
+      <text class="tip-text">
+        如遇「不在以下 request 合法域名列表」错误，需在微信公众平台 → 开发管理 → 服务器域名 → request 合法域名中添加：
+      </text>
+      <text class="domain-chip">https://api.deepseek.com</text>
+      <text class="tip-text">开发模式可在微信开发者工具中勾选「不校验合法域名」临时跳过。</text>
+    </view>
+  </view>
+
+</view>

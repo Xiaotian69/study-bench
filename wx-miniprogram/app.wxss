@@ -1,0 +1,118 @@
+/* Global design tokens — matches web app editorial palette */
+page {
+  --paper: #f3ecdd;
+  --paper-page: #fbf7ee;
+  --ink: #211c16;
+  --ink-soft: #4a3728;
+  --ink-faint: #8f7d6a;
+  --accent: #8a2b2b;
+  --accent-deep: #6b1e1e;
+  --accent-pale: #f7ede8;
+  --rule: #d9cebd;
+  --gold: #9a7a1e;
+  --shadow: 0 1px 4px rgba(33,28,22,0.10);
+  --radius: 6rpx;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --mono: 'Courier New', Courier, monospace;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 30rpx;
+  line-height: 1.7;
+}
+
+/* Typography */
+.eyebrow {
+  font-size: 22rpx;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 4rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 16rpx;
+}
+
+/* Shared card */
+.card {
+  background: var(--paper-page);
+  border: 1rpx solid var(--rule);
+  border-radius: var(--radius);
+  padding: 28rpx 32rpx;
+  margin-bottom: 20rpx;
+  box-shadow: var(--shadow);
+}
+
+/* Difficulty pills */
+.difficulty-pill {
+  display: inline-block;
+  padding: 2rpx 14rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.difficulty-pill.basic { background: #e8f5e9; color: #2e7d32; }
+.difficulty-pill.medium { background: #fff3e0; color: #e65100; }
+.difficulty-pill.advanced { background: #fce4ec; color: #880e4f; }
+
+/* Status badge */
+.status-badge {
+  font-size: 20rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 20rpx;
+  font-weight: 600;
+}
+.status-badge.draft { background: #fff9c4; color: #f57f17; }
+.status-badge.sample-ready { background: #e8f5e9; color: #2e7d32; }
+.status-badge.planned { background: #f3e5f5; color: #6a1b9a; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18rpx 32rpx;
+  border-radius: var(--radius);
+  border: 1.5rpx solid var(--rule);
+  background: var(--paper-page);
+  color: var(--ink);
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent-deep);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: var(--rule);
+  color: var(--ink-soft);
+}
+
+/* Loading */
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+  color: var(--ink-faint);
+  font-size: 28rpx;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: var(--ink-faint);
+  font-size: 28rpx;
+}

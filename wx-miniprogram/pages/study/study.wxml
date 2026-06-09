@@ -1,0 +1,223 @@
+<view class="page" wx:if="{{kp}}">
+
+  <!-- KP navigation bar -->
+  <view class="kp-nav-bar">
+    <view
+      class="kp-nav-btn {{kpIndex <= 0 ? 'is-disabled' : ''}}"
+      bindtap="goPrevKp"
+    >‹ 上一节</view>
+    <view class="kp-nav-center">
+      <text class="kp-nav-pos">{{kpIndex + 1}} / {{totalKps}}</text>
+    </view>
+    <view
+      class="kp-nav-btn {{kpIndex >= totalKps - 1 ? 'is-disabled' : ''}}"
+      bindtap="goNextKp"
+    >下一节 ›</view>
+  </view>
+
+  <!-- Tab bar -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'learn' ? 'is-active' : ''}}" bindtap="switchTab" data-tab="learn">
+      讲义
+    </view>
+    <view class="tab-item {{activeTab === 'exercise' ? 'is-active' : ''}}" bindtap="switchTab" data-tab="exercise">
+      练习（{{kp.exercises.length}}）
+    </view>
+  </view>
+
+  <!-- ===== LEARN TAB ===== -->
+  <view wx:if="{{activeTab === 'learn'}}" class="tab-content">
+
+    <!-- Learning goals -->
+    <view class="goals-card" wx:if="{{kp.learningGoals.length}}">
+      <text class="goals-label">本节你将掌握</text>
+      <view wx:for="{{kp.learningGoals}}" wx:key="*this" class="goal-item">
+        <text class="goal-dot">·</text>
+        <math-text text="{{item}}" size="small" />
+      </view>
+    </view>
+
+    <!-- Core explanation -->
+    <view class="explanation-block">
+      <math-text text="{{kp.coreExplanation}}" size="normal" />
+    </view>
+
+    <!-- Socratic questions -->
+    <view class="collapsible" wx:if="{{kp.socraticQuestions.length}}">
+      <view class="collapsible-header" bindtap="toggleSocratic">
+        <text class="collapsible-title">思考题 · 检验理解</text>
+        <text class="collapsible-icon">{{showSocratic ? '▲' : '▼'}}</text>
+      </view>
+      <view class="collapsible-body" wx:if="{{showSocratic}}">
+        <view wx:for="{{kp.socraticQuestions}}" wx:key="*this" class="q-item">
+          <text class="q-num">{{index + 1}}.</text>
+          <math-text text="{{item}}" size="small" />
+        </view>
+      </view>
+    </view>
+
+    <!-- Common mistakes -->
+    <view class="collapsible" wx:if="{{kp.commonMistakes.length}}">
+      <view class="collapsible-header" bindtap="toggleMistakes">
+        <text class="collapsible-title">易错提醒</text>
+        <text class="collapsible-icon">{{showMistakes ? '▲' : '▼'}}</text>
+      </view>
+      <view class="collapsible-body" wx:if="{{showMistakes}}">
+        <view wx:for="{{kp.commonMistakes}}" wx:key="*this" class="mistake-item">
+          <text class="mistake-icon">✕</text>
+          <math-text text="{{item}}" size="small" />
+        </view>
+      </view>
+    </view>
+
+    <!-- Divider -->
+    <view class="section-divider" />
+
+    <!-- AI chat CTA -->
+    <view class="chat-cta" bindtap="goToChat">
+      <text class="chat-cta-icon">💬</text>
+      <view class="chat-cta-body">
+        <text class="chat-cta-title">和 AI 老师讨论这个知识点</text>
+        <text class="chat-cta-sub">苏格拉底式追问，真正弄懂</text>
+      </view>
+      <text class="chat-cta-arrow">›</text>
+    </view>
+
+    <!-- Jump to exercises -->
+    <view wx:if="{{kp.exercises.length}}" class="jump-exercises" bindtap="switchTab" data-tab="exercise">
+      <text>去做 {{kp.exercises.length}} 道练习题 →</text>
+    </view>
+
+  </view>
+
+  <!-- ===== EXERCISE TAB ===== -->
+  <view wx:elif="{{activeTab === 'exercise'}}" class="tab-content">
+
+    <!-- Empty state -->
+    <view wx:if="{{!kp.exercises.length}}" class="empty-state">
+      <text>本知识点暂无练习题</text>
+    </view>
+
+    <!-- Exercise list -->
+    <view wx:elif="{{selectedExIndex < 0}}" class="ex-list">
+      <view
+        wx:for="{{exercisesWithScore}}"
+        wx:key="id"
+        class="ex-card"
+        bindtap="selectExercise"
+        data-index="{{index}}"
+      >
+        <view class="ex-card-left">
+          <text class="ex-card-num">{{index + 1}}</text>
+        </view>
+        <view class="ex-card-body">
+          <text class="ex-card-title">{{item.title || ('第 ' + (index + 1) + ' 题')}}</text>
+          <view class="ex-card-tags">
+            <text class="difficulty-pill {{item.difficulty}}">{{item.diffLabel}}</text>
+            <text wx:if="{{item.bestScore != null}}" class="score-badge {{item.bestScore >= 80 ? 'good' : item.bestScore >= 60 ? 'ok' : 'low'}}">
+              最高 {{item.bestScore}} 分
+            </text>
+          </view>
+        </view>
+        <text class="ex-card-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- Exercise workspace -->
+    <view wx:else class="ex-workspace">
+      <view class="back-row" bindtap="backToList">
+        <text class="back-arrow">‹</text>
+        <text class="back-label">返回题目列表</text>
+      </view>
+
+      <text class="ex-num-label">第 {{selectedExIndex + 1}} 题 · 共 {{kp.exercises.length}} 题</text>
+
+      <!-- Problem -->
+      <view class="problem-card">
+        <text wx:if="{{selectedEx.title}}" class="problem-title">{{selectedEx.title}}</text>
+        <math-text text="{{selectedEx.prompt}}" size="normal" />
+      </view>
+
+      <!-- Answer -->
+      <text class="answer-label">解答</text>
+      <textarea
+        class="answer-input"
+        placeholder="在这里写思路、计算或证明步骤…"
+        value="{{answer}}"
+        bindinput="onAnswerInput"
+        auto-height
+        maxlength="3000"
+        adjust-position
+      />
+
+      <!-- Actions row 1 -->
+      <view class="action-row">
+        <button
+          class="btn btn-ghost hint-btn"
+          bindtap="getHint"
+          disabled="{{hintLevel >= selectedEx.hints.length}}"
+        >
+          <text wx:if="{{hintLevel === 0}}">获取提示</text>
+          <text wx:elif="{{hintLevel < selectedEx.hints.length}}">再来一个提示（{{hintLevel}}/{{selectedEx.hints.length}}）</text>
+          <text wx:else>已显示全部提示</text>
+        </button>
+        <button
+          class="btn btn-primary grade-btn"
+          bindtap="submitForGrading"
+          disabled="{{gradingStatus === 'submitting'}}"
+        >{{gradingStatus === 'submitting' ? '批改中…' : '提交 AI 批改'}}</button>
+      </view>
+
+      <!-- Actions row 2 -->
+      <view class="action-row">
+        <button class="btn btn-ghost" bindtap="toggleRubric">{{showRubric ? '收起评分要点' : '对照评分要点'}}</button>
+        <button class="btn btn-ghost" bindtap="goToChat">问 AI 老师</button>
+      </view>
+
+      <!-- Error -->
+      <view wx:if="{{gradingError}}" class="grade-error"><text>{{gradingError}}</text></view>
+
+      <!-- Grade result -->
+      <view wx:if="{{gradeResult}}" id="grade-result" class="grade-result {{gradeResult.verdict}}">
+        <view class="grade-result-head">
+          <text class="grade-result-title">AI 批改结果</text>
+          <view class="grade-score-wrap">
+            <text class="grade-score">{{gradeResult.score}}</text>
+            <text class="grade-score-unit">分</text>
+          </view>
+        </view>
+        <math-text text="{{gradeResult.feedback}}" size="normal" />
+        <view wx:if="{{gradeResult.missingPoints && gradeResult.missingPoints.length}}" class="missing-points">
+          <text class="missing-label">还缺这些要点：</text>
+          <view wx:for="{{gradeResult.missingPoints}}" wx:key="*this" class="missing-item">
+            <text class="missing-bullet">·</text>
+            <math-text text="{{item}}" size="small" />
+          </view>
+        </view>
+      </view>
+
+      <!-- Hints -->
+      <view wx:if="{{hintLevel > 0}}" class="hint-list">
+        <text class="hint-list-label">提示</text>
+        <view wx:for="{{selectedEx.hints}}" wx:key="*this">
+          <view wx:if="{{index < hintLevel}}" class="hint-item">
+            <text class="hint-num">提示 {{index + 1}}：</text>
+            <math-text text="{{item}}" size="small" />
+          </view>
+        </view>
+      </view>
+
+      <!-- Rubric -->
+      <view wx:if="{{showRubric}}" class="rubric-block">
+        <text class="rubric-label">评分要点</text>
+        <view wx:for="{{selectedEx.gradingRubric}}" wx:key="*this" class="rubric-item">
+          <text class="rubric-bullet">✓</text>
+          <math-text text="{{item}}" size="small" />
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+<view wx:else class="loading-wrap"><text>加载中…</text></view>

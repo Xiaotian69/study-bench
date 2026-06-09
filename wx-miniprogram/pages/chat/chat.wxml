@@ -1,0 +1,73 @@
+<view class="chat-page">
+  <!-- Context strip -->
+  <view class="context-strip" wx:if="{{kp}}">
+    <text class="context-label">知识点：</text>
+    <text class="context-kp">{{kpTitle}}</text>
+    <text class="context-clear" bindtap="clearChat">重置</text>
+  </view>
+
+  <!-- Messages scroll area -->
+  <scroll-view
+    class="messages-area"
+    scroll-y
+    scroll-with-animation
+    scroll-top="{{scrollTop}}"
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <view class="messages-inner">
+      <view
+        wx:for="{{messages}}"
+        wx:key="{{index}}"
+        class="msg-row {{item.role === 'user' ? 'is-user' : 'is-ai'}}"
+      >
+        <view wx:if="{{item.role === 'assistant'}}" class="avatar ai-avatar">
+          <text>📚</text>
+        </view>
+
+        <view class="bubble {{item.role === 'user' ? 'bubble-user' : 'bubble-ai'}}">
+          <math-text
+            text="{{item.content}}"
+            size="normal"
+            color="{{item.role === 'user' ? '#fff' : ''}}"
+          />
+        </view>
+
+        <view wx:if="{{item.role === 'user'}}" class="avatar user-avatar">
+          <text>你</text>
+        </view>
+      </view>
+
+      <!-- Typing indicator -->
+      <view wx:if="{{sending}}" class="msg-row is-ai">
+        <view class="avatar ai-avatar"><text>📚</text></view>
+        <view class="bubble bubble-ai thinking">
+          <text class="dot-anim">思考中</text>
+        </view>
+      </view>
+
+      <!-- Spacer so last message isn't hidden by input bar -->
+      <view style="height:16rpx;" />
+    </view>
+  </scroll-view>
+
+  <!-- Input area -->
+  <view class="input-area">
+    <textarea
+      class="chat-input"
+      placeholder="问一个问题…"
+      value="{{inputText}}"
+      bindinput="onInputChange"
+      auto-height
+      maxlength="500"
+      confirm-type="send"
+      bindconfirm="sendMessage"
+      adjust-position
+    />
+    <button
+      class="send-btn {{(!inputText || sending) ? 'is-disabled' : ''}}"
+      bindtap="sendMessage"
+      disabled="{{!inputText || sending}}"
+    >发送</button>
+  </view>
+</view>
