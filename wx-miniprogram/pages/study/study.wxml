@@ -101,6 +101,17 @@
       <text>去做 {{kp.exercises.length}} 道练习题 →</text>
     </view>
 
+    <!-- Next KP button -->
+    <view class="next-kp-row">
+      <view
+        class="next-kp-btn {{kpIndex >= totalKps - 1 ? 'is-last' : ''}}"
+        bindtap="goNextKp"
+      >
+        <text wx:if="{{kpIndex < totalKps - 1}}">下一节：{{chapter.knowledgePoints[kpIndex + 1].title}} ›</text>
+        <text wx:else>✓ 本章已学完</text>
+      </view>
+    </view>
+
   </view>
 
   <!-- ===== EXERCISE TAB ===== -->

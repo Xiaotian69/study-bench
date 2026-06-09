@@ -249,6 +249,27 @@
   font-weight: 600;
 }
 
+/* Next KP row */
+.next-kp-row {
+  margin-top: 32rpx;
+  padding-bottom: 20rpx;
+}
+.next-kp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28rpx 32rpx;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 28rpx;
+  font-weight: 700;
+  text-align: center;
+}
+.next-kp-btn.is-last {
+  background: #2e7d32;
+}
+
 /* Grade score */
 .grade-score-wrap { display: flex; align-items: baseline; gap: 4rpx; }
 .grade-score { font-size: 52rpx; font-weight: 900; color: var(--accent); line-height: 1; }
