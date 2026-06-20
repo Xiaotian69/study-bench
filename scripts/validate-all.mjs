@@ -9,6 +9,7 @@ const commands = [
   ["run", "validate:vision-grading"],
   ["run", "validate:progress-state"],
   ["run", "validate:mastery-state"],
+  ["run", "validate:wx-diagrams"],
   ["run", "build"]
 ];
 

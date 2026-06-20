@@ -15,7 +15,9 @@
         "了解级数的线性性质与去有限项不影响收敛性"
       ],
       "coreExplanation": "**定义**：给定数列 $\\\\{a_n\\\\}$，称 $\\\\sum_{n=1}^{\\\\infty}a_n=a_1+a_2+\\\\cdots$ 为**无穷级数**，前 $n$ 项和 $S_n=\\\\sum_{k=1}^n a_k$ 为**部分和**。若 $\\\\lim_{n\\\\to\\\\infty}S_n=S$（有限），则称级数**收敛**，$S$ 为其和；否则称**发散**。\n**收敛必要条件**：$\\\\sum a_n$ 收敛 $\\\\Rightarrow$ $\\\\lim_{n\\\\to\\\\infty}a_n=0$（逆命题不成立：调和级数 $\\\\sum 1/n$ 的通项趋零但发散）。\n**Cauchy 准则**：$\\\\sum a_n$ 收敛 $\\\\Leftrightarrow$ 对任意 $\\\\varepsilon>0$，$\\\\exists N$，$\\\\forall m>n>N$：$|a_{n+1}+\\\\cdots+a_m|<\\\\varepsilon$。\n**基本性质**：\n1. 线性性：若 $\\\\sum a_n=A$，$\\\\sum b_n=B$，则 $\\\\sum(\\\\alpha a_n+\\\\beta b_n)=\\\\alpha A+\\\\beta B$。\n2. 改变有限项：不影响级数的收敛性（但改变和值）。\n3. 加括号：收敛级数加括号后仍收敛，和不变。反之不成立（$(1-1)+(1-1)+\\\\cdots=0$ 但 $1-1+1-1+\\\\cdots$ 发散）。\n**典型级数**：\n- 等比级数 $\\\\sum_{n=0}^{\\\\infty}q^n=\\\\frac{1}{1-q}$（$|q|<1$ 收敛，$|q|\\\\geq 1$ 发散）\n- 调和级数 $\\\\sum_{n=1}^{\\\\infty}\\\\frac{1}{n}$ 发散（分组：$\\\\frac{1}{2}+\\\\frac{1}{3}+\\\\frac{1}{4}>\\\\frac{1}{2}$，$\\\\frac{1}{5}+\\\\cdots+\\\\frac{1}{8}>\\\\frac{1}{2}$，……）\n- $p$ 级数 $\\\\sum_{n=1}^{\\\\infty}\\\\frac{1}{n^p}$：$p>1$ 收敛，$p\\\\leq 1$ 发散",
-      "textbookRefs": ["数学分析（第5版）下册 §12.1"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §12.1"
+      ],
       "keyDefinitions": [
         {
           "term": "部分和",
@@ -51,8 +53,13 @@
         "对发散级数加括号得到收敛结果，误认为级数收敛",
         "级数相乘不等于积的级数（Cauchy 乘积需要至少一个绝对收敛）"
       ],
-      "exerciseIds": ["series-ex-001", "series-ex-002"],
-      "diagramIds": ["series-partial-sum-diagram"],
+      "exerciseIds": [
+        "series-ex-001",
+        "series-ex-002"
+      ],
+      "diagramIds": [
+        "series-partial-sum-diagram"
+      ],
       "masteryCriteria": [
         "能用部分和直接计算简单级数（等比、裂项）的和",
         "能用必要条件或 Cauchy 准则判断基本级数的收敛性"
@@ -70,7 +77,9 @@
         "了解积分判别法（Cauchy-Maclaurin）"
       ],
       "coreExplanation": "设 $a_n\\\\geq 0$（正项级数），$\\\\{S_n\\\\}$ 单调不减，收敛当且仅当有界。\n**比较判别法**：若 $0\\\\leq a_n\\\\leq b_n$，$\\\\sum b_n$ 收敛则 $\\\\sum a_n$ 收敛；$\\\\sum a_n$ 发散则 $\\\\sum b_n$ 发散。\n**极限比较**：若 $\\\\lim_{n\\\\to\\\\infty}\\\\frac{a_n}{b_n}=L$，$0<L<+\\\\infty$，则 $\\\\sum a_n$ 与 $\\\\sum b_n$ 同敛散。\n**比值判别法（D'Alembert）**：$\\\\lim_{n\\\\to\\\\infty}\\\\frac{a_{n+1}}{a_n}=r$。\n- $r<1$：$\\\\sum a_n$ 收敛\n- $r>1$：$\\\\sum a_n$ 发散\n- $r=1$：不确定\n**根值判别法（Cauchy）**：$\\\\lim_{n\\\\to\\\\infty}\\\\sqrt[n]{a_n}=r$，判断规则与比值判别相同。\n根值判别法比比值判别法更强（根值确定时比值也能确定，反之不然）。\n**积分判别法**：若 $f:[1,+\\\\infty)\\\\to[0,+\\\\infty)$ 单调递减，且 $a_n=f(n)$，则 $\\\\sum_{n=1}^\\\\infty a_n$ 与 $\\\\int_1^{+\\\\infty}f(x)\\,\\\\mathrm{d}x$ 同敛散。\n典型应用：$\\\\sum n^{-p}$ 由积分判别法（$\\\\int_1^\\\\infty x^{-p}$）得 $p>1$ 收敛，$p\\\\leq 1$ 发散。",
-      "textbookRefs": ["数学分析（第5版）下册 §12.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §12.2"
+      ],
       "keyDefinitions": [
         {
           "term": "正项级数",
@@ -107,7 +116,11 @@
         "比较判别法要求 $a_n,b_n\\\\geq 0$，对一般项级数须先取绝对值",
         "积分判别法只给出同敛散性，不能用来求级数的和"
       ],
-      "exerciseIds": ["series-ex-003", "series-ex-004", "series-ex-005"],
+      "exerciseIds": [
+        "series-ex-003",
+        "series-ex-004",
+        "series-ex-005"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能对含阶乘/指数的级数用比值判别法",
@@ -126,7 +139,9 @@
         "了解 Dirichlet 判别法和 Abel 判别法"
       ],
       "coreExplanation": "**交错级数**：形如 $\\\\sum_{n=1}^\\\\infty(-1)^{n-1}a_n$（$a_n>0$）的级数。\n**Leibniz 判别法**：若 $\\\\{a_n\\\\}$ 单调递减且 $a_n\\\\to 0$，则交错级数收敛，且余项估计 $|r_n|\\\\leq a_{n+1}$。\n典型：$\\\\sum_{n=1}^\\\\infty\\\\frac{(-1)^{n-1}}{n}=\\\\ln 2$（条件收敛）。\n**绝对收敛**：若 $\\\\sum|a_n|$ 收敛，则称 $\\\\sum a_n$ 绝对收敛，且 $\\\\sum a_n$ 也收敛。\n**条件收敛**：$\\\\sum a_n$ 收敛但 $\\\\sum|a_n|$ 发散。\n**绝对收敛 vs 条件收敛**：绝对收敛的级数可以任意重排项，和不变（Riemann 重排定理：条件收敛的级数可通过重排使和为任意值！）\n**Dirichlet 判别法（级数版）**：若 $A_n=\\\\sum_{k=1}^n a_k$ 有界，$\\\\{b_n\\\\}$ 单调趋零，则 $\\\\sum a_n b_n$ 收敛。\n**Abel 判别法（级数版）**：若 $\\\\sum a_n$ 收敛，$\\\\{b_n\\\\}$ 单调有界，则 $\\\\sum a_n b_n$ 收敛。",
-      "textbookRefs": ["数学分析（第5版）下册 §12.3"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §12.3"
+      ],
       "keyDefinitions": [
         {
           "term": "绝对收敛",
@@ -162,12 +177,18 @@
         "Leibniz 判别法要求 $\\\\{a_n\\\\}$ **单调**递减，仅 $a_n\\\\to 0$ 不够（$a_n$ 振荡趋零时不适用）",
         "混淆级数的 Dirichlet/Abel 判别法与反常积分版本（条件相同但对象不同）"
       ],
-      "exerciseIds": ["series-ex-006", "series-ex-007", "series-ex-008", "series-ex-009"],
+      "exerciseIds": [
+        "series-ex-006",
+        "series-ex-007",
+        "series-ex-008",
+        "series-ex-009"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能判断交错级数的收敛性，区分绝对/条件收敛",
         "能对含 $(-1)^n$ 的级数综合运用多种判别法"
       ]
     }
-  ]
+  ],
+  "overview": "以部分和数列的收敛性定义级数，建立正项级数（比较、比值、根值判别）与一般项级数（Leibniz、绝对收敛）的系统判别理论。"
 }

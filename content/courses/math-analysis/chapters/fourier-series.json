@@ -14,7 +14,9 @@
         "能写出以 $2\\\\pi$ 为周期函数的 Fourier 级数"
       ],
       "coreExplanation": "**三角函数系的正交性**：$\\\\{1,\\\\cos x,\\\\sin x,\\\\cos 2x,\\\\sin 2x,\\\\ldots\\\\}$ 在 $[-\\\\pi,\\\\pi]$ 上两两正交：\n$$\\\\int_{-\\\\pi}^\\\\pi\\\\cos mx\\\\cos nx\\,\\\\mathrm{d}x=\\\\begin{cases}0 & m\\\\neq n\\\\\\\\\\\\pi & m=n\\\\neq 0\\\\\\\\2\\\\pi & m=n=0\\\\end{cases},\\\\quad\\\\int_{-\\\\pi}^\\\\pi\\\\cos mx\\\\sin nx\\,\\\\mathrm{d}x=0.$$\n**Fourier 系数（Euler-Fourier 公式）**：设 $f$ 在 $[-\\\\pi,\\\\pi]$ 上可积，定义\n$$a_0=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi f(x)\\,\\\\mathrm{d}x,\\\\quad a_n=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi f(x)\\\\cos nx\\,\\\\mathrm{d}x,\\\\quad b_n=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi f(x)\\\\sin nx\\,\\\\mathrm{d}x.$$\n则 $f$ 的 **Fourier 级数**为 $\\\\frac{a_0}{2}+\\\\sum_{n=1}^\\\\infty(a_n\\\\cos nx+b_n\\\\sin nx)$，记作 $f(x)\\\\sim\\\\frac{a_0}{2}+\\\\sum_{n=1}^\\\\infty(a_n\\\\cos nx+b_n\\\\sin nx)$（$\\\\sim$ 表示对应，不一定逐点相等）。\n**奇偶函数简化**：$f$ 为偶函数：$b_n=0$，$a_n=\\\\frac{2}{\\\\pi}\\\\int_0^\\\\pi f(x)\\\\cos nx\\,\\\\mathrm{d}x$（余弦级数）。$f$ 为奇函数：$a_n=0$，$b_n=\\\\frac{2}{\\\\pi}\\\\int_0^\\\\pi f(x)\\\\sin nx\\,\\\\mathrm{d}x$（正弦级数）。\n**Bessel 不等式**：$\\\\frac{a_0^2}{2}+\\\\sum_{n=1}^\\\\infty(a_n^2+b_n^2)\\\\leq\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi[f(x)]^2\\,\\\\mathrm{d}x$（等号即 Parseval 等式）。",
-      "textbookRefs": ["数学分析（第5版）下册 §15.1"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §15.1"
+      ],
       "keyDefinitions": [
         {
           "term": "三角函数系正交性",
@@ -44,8 +46,13 @@
         "$a_0$ 公式中系数是 $1/\\\\pi$，但级数中写 $a_0/2$，注意两者关系",
         "奇延拓/偶延拓时忘记将函数延伸到 $[-\\\\pi,\\\\pi]$ 的完整定义"
       ],
-      "exerciseIds": ["fourier-ex-001", "fourier-ex-002"],
-      "diagramIds": ["fourier-partial-sum-diagram"],
+      "exerciseIds": [
+        "fourier-ex-001",
+        "fourier-ex-002"
+      ],
+      "diagramIds": [
+        "fourier-partial-sum-diagram"
+      ],
       "masteryCriteria": [
         "能用 Euler-Fourier 公式计算简单函数的 Fourier 系数",
         "能利用奇偶性简化 Fourier 系数的计算"
@@ -62,7 +69,9 @@
         "掌握 Parseval 等式及其应用（求数项级数的和）"
       ],
       "coreExplanation": "**Dirichlet 收敛定理**：若 $f$ 在 $[-\\\\pi,\\\\pi]$ 上**逐段光滑**（即 $f$ 和 $f'$ 除有限个点外连续，各单侧极限存在），则 $f$ 的 Fourier 级数收敛，且\n$$\\\\frac{a_0}{2}+\\\\sum_{n=1}^\\\\infty(a_n\\\\cos nx+b_n\\\\sin nx)=\\\\frac{f(x^+)+f(x^-)}{2}.$$\n- **连续点** $x$：级数收敛到 $f(x)$（即 $(f(x^+)+f(x^-))/2=f(x)$）。\n- **跳跃不连续点** $x$：级数收敛到左右极限的均值 $(f(x^+)+f(x^-))/2$。\n- **端点** $x=\\\\pm\\\\pi$：级数收敛到 $(f(-\\\\pi^+)+f(\\\\pi^-))/2$（周期延拓后的端点值）。\n**Gibbs 现象**：在跳跃不连续点附近，Fourier 级数的部分和出现约 $9\\\\%$ 的超调（过冲），不随项数增加而消失——这是 Fourier 近似的固有局限。\n**Parseval 等式**：若 $f$ 在 $[-\\\\pi,\\\\pi]$ 上满足 Dirichlet 条件，则\n$$\\\\frac{a_0^2}{2}+\\\\sum_{n=1}^\\\\infty(a_n^2+b_n^2)=\\\\frac{1}{\\\\pi}\\\\int_{-\\\\pi}^\\\\pi[f(x)]^2\\,\\\\mathrm{d}x.$$\n**应用**：若 $f(x)=x$（$x\\\\in[-\\\\pi,\\\\pi]$），则 $b_n=(-1)^{n+1}\\\\cdot 2/n$，Parseval 等式给出 $\\\\sum 4/n^2=\\\\pi^2/3$，即 $\\\\sum 1/n^2=\\\\pi^2/6$（Basel 问题另一证明）。",
-      "textbookRefs": ["数学分析（第5版）下册 §15.1—15.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §15.1—15.2"
+      ],
       "keyDefinitions": [
         {
           "term": "逐段光滑",
@@ -93,7 +102,11 @@
         "在不连续点处直接套用 $f(x)$，应用均值 $(f(x^+)+f(x^-))/2$",
         "周期延拓时端点 $\\\\pm\\\\pi$ 处的值由单侧极限的均值确定，不一定等于原函数值"
       ],
-      "exerciseIds": ["fourier-ex-003", "fourier-ex-004", "fourier-ex-005"],
+      "exerciseIds": [
+        "fourier-ex-003",
+        "fourier-ex-004",
+        "fourier-ex-005"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能对逐段光滑函数写出 Fourier 级数并用收敛定理逐点确定级数值",
@@ -111,7 +124,9 @@
         "能灵活处理不同区间和不同周期的 Fourier 展开"
       ],
       "coreExplanation": "**周期 $2l$ 的展开**：令 $t=\\\\pi x/l$，则 $f(x)=F(t)$（$t\\\\in[-\\\\pi,\\\\pi]$）。对应 Fourier 系数：\n$$a_0=\\\\frac{1}{l}\\\\int_{-l}^l f(x)\\,\\\\mathrm{d}x,\\\\quad a_n=\\\\frac{1}{l}\\\\int_{-l}^l f(x)\\\\cos\\\\frac{n\\\\pi x}{l}\\\\,\\\\mathrm{d}x,\\\\quad b_n=\\\\frac{1}{l}\\\\int_{-l}^l f(x)\\\\sin\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x,$$\n级数为 $\\\\frac{a_0}{2}+\\\\sum_{n=1}^\\\\infty\\\\left(a_n\\\\cos\\\\frac{n\\\\pi x}{l}+b_n\\\\sin\\\\frac{n\\\\pi x}{l}\\\\right)$。\n**$[0,l]$ 上的正弦/余弦展开**：设 $f$ 仅在 $[0,l]$ 上定义。\n- **余弦级数**（偶延拓）：将 $f$ 偶延拓到 $[-l,l]$，$b_n=0$，$a_n=\\\\frac{2}{l}\\\\int_0^l f(x)\\\\cos\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x$。\n- **正弦级数**（奇延拓）：将 $f$ 奇延拓到 $[-l,l]$，$a_n=0$，$b_n=\\\\frac{2}{l}\\\\int_0^l f(x)\\\\sin\\\\frac{n\\\\pi x}{l}\\,\\\\mathrm{d}x$。\n在端点 $x=0$ 和 $x=l$：正弦级数端点值为 $0$（奇延拓跳跃到均值 $(f(0^+)+f(0^-))/2=0$）；余弦级数端点值为 $f(0)$（如 $f$ 连续）。\n**工程背景**：热传导、波动方程的边界条件（Dirichlet 边界 $u=0$ 对应正弦展开，Neumann 边界 $u'=0$ 对应余弦展开）。",
-      "textbookRefs": ["数学分析（第5版）下册 §15.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §15.2"
+      ],
       "keyDefinitions": [
         {
           "term": "奇延拓",
@@ -135,12 +150,17 @@
         "正弦展开在端点 $x=0,l$ 处级数和为零，即使 $f(0)\\\\neq 0$ 或 $f(l)\\\\neq 0$",
         "周期 $2l$ 时基频为 $\\\\pi/l$（不是 $\\\\pi$），系数公式中的自变量为 $n\\\\pi x/l$"
       ],
-      "exerciseIds": ["fourier-ex-006", "fourier-ex-007", "fourier-ex-008"],
+      "exerciseIds": [
+        "fourier-ex-006",
+        "fourier-ex-007",
+        "fourier-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能对 $[0,l]$ 上的函数分别展开为正弦级数和余弦级数",
         "能判断展开式在端点和跳跃点处的收敛值"
       ]
     }
-  ]
+  ],
+  "overview": "用三角函数系的正交性建立 Euler-Fourier 展开，讨论 Dirichlet 定理（逐点收敛条件），推广到以 l$ 为周期的正弦/余弦展开。"
 }

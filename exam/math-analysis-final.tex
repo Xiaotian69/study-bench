@@ -1,0 +1,314 @@
+% !TEX program = xelatex
+\documentclass[12pt]{ctexart}
+
+\usepackage[a4paper,margin=2.3cm,top=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\definecolor{ink}{HTML}{211C16}
+\definecolor{accent}{HTML}{8A2B2B}
+
+\setlist[enumerate]{itemsep=10pt,topsep=6pt,leftmargin=2.2em}
+
+% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small 数学分析（上）期末考试}
+\rhead{\small 第 \thepage 页}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% 题型大节标题
+\newcommand{\bigsection}[2]{%
+  \vspace{6pt}%
+  {\noindent\bfseries\large #1}\hfill{\normalsize（本大题共 #2）}\par
+  \vspace{2pt}\hrule height0.4pt\vspace{8pt}}
+
+\newcommand{\blank}[1][3cm]{\underline{\hspace{#1}}}
+
+\theoremstyle{definition}
+\newtheorem*{solution}{解}
+\newtheorem*{proofx}{证明}
+
+\linespread{1.15}
+
+\begin{document}
+
+%==================== 封面信息 ====================
+\begin{center}
+  {\Large\bfseries 数学分析（上册）期末考试试卷}\\[4pt]
+  {\small 适用范围：导数与微分、微分中值定理、实数完备性、不定积分、定积分、
+  定积分应用、反常积分；多元函数的极限与连续、多元函数微分学}\\[10pt]
+\end{center}
+
+\noindent
+\begin{tabular}{@{}p{4.5cm}p{4.5cm}p{4.5cm}@{}}
+姓名：\blank[3cm] & 学号：\blank[3cm] & 班级：\blank[3cm]
+\end{tabular}
+
+\vspace{6pt}
+\noindent\textbf{满分 100 分\qquad 考试时间 120 分钟\qquad 闭卷}
+
+\vspace{8pt}
+\noindent
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+题号 & 一 & 二 & 三 & 四 & 五 & 六 & 总分 \\\hline
+满分 & 15 & 10 & 15 & 36 & 12 & 12 & 100 \\\hline
+得分 & & & & & & & \\\hline
+\end{tabular}
+
+\vspace{14pt}
+
+%==================== 一、选择题 ====================
+\bigsection{一、选择题}{5 小题，每题 3 分，共 15 分。每题只有一个正确选项}
+
+\newcommand{\optgrid}[4]{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}p{0.45\textwidth}p{0.45\textwidth}@{}}
+  (A)~#1 & (B)~#2 \\[2pt]
+  (C)~#3 & (D)~#4
+  \end{tabular}}
+
+\begin{enumerate}[label=\arabic*.]
+\item 函数 $f(x)=|x|$ 在 $x=0$ 处（\qquad）
+  \optgrid{连续且可导}{连续但不可导}{不连续}{可导但不连续}
+
+\item 函数 $f(x)=x^{3}-3x$ 的单调递减区间是（\qquad）
+  \optgrid{$(-\infty,-1)$}{$(-1,1)$}{$(1,+\infty)$}{$(-\infty,+\infty)$}
+
+\item 反常积分 $\displaystyle\int_{1}^{+\infty}\frac{1}{x^{p}}\,\mathrm{d}x$ 收敛的充要条件是（\qquad）
+  \optgrid{$p>0$}{$p\geq 1$}{$p>1$}{$p<1$}
+
+\item 设 $S$ 为非空有上界的实数集，则它的上确界 $\sup S$（\qquad）
+  \optgrid{一定属于 $S$}{一定不属于 $S$}{可能属于也可能不属于 $S$}{不一定存在}
+
+\item 设二元函数 $z=f(x,y)$ 在点 $P_{0}$ 处可微，则在 $P_{0}$ 处必有（\qquad）
+  \optgrid{两个偏导数存在且连续}{两个偏导数存在}{取得极值}{$f$ 不一定连续}
+\end{enumerate}
+
+%==================== 二、判断题 ====================
+\bigsection{二、判断题}{5 小题，每题 2 分，共 10 分。正确打 “$\checkmark$”，错误打 “$\times$”}
+
+\begin{enumerate}[label=\arabic*.]
+\item 若 $f$ 在点 $x_{0}$ 可导，则 $f$ 在点 $x_{0}$ 连续。\hfill（\qquad）
+\item 若 $f'(x_{0})=0$，则 $x_{0}$ 一定是 $f$ 的极值点。\hfill（\qquad）
+\item 闭区间 $[a,b]$ 上的连续函数一定在 $[a,b]$ 上可积。\hfill（\qquad）
+\item 若反常积分 $\displaystyle\int_{a}^{+\infty}f(x)\,\mathrm{d}x$ 收敛，则必有 $\displaystyle\lim_{x\to+\infty}f(x)=0$。\hfill（\qquad）
+\item 若二元函数在某点处两个偏导数都存在，则该函数在该点必连续。\hfill（\qquad）
+\end{enumerate}
+
+%==================== 三、填空题 ====================
+\bigsection{三、填空题}{5 小题，每题 3 分，共 15 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 设 $f(x)=\arctan x$，则 $f'(x)=\blank[3.5cm]$。
+\item $\displaystyle\int \frac{1}{1+x^{2}}\,\mathrm{d}x=\blank[4cm]$。
+\item $\displaystyle\int_{-1}^{1} x^{3}\cos x\,\mathrm{d}x=\blank[3cm]$。
+\item 反常积分 $\displaystyle\int_{0}^{1}\frac{1}{\sqrt{x}}\,\mathrm{d}x=\blank[3cm]$。
+\item 设 $z=x^{y}\ (x>0)$，则 $\dfrac{\partial z}{\partial x}=\blank[3.5cm]$。
+\end{enumerate}
+
+%==================== 四、计算题 ====================
+\bigsection{四、计算题}{6 小题，每题 6 分，共 36 分。要求写出主要计算步骤}
+
+\begin{enumerate}[label=\arabic*.]
+\item 求极限 $\displaystyle\lim_{x\to 0}\frac{e^{x}-1-x}{x^{2}}$。
+
+\item 求不定积分 $\displaystyle\int x\ln x\,\mathrm{d}x$。
+
+\item 计算定积分 $\displaystyle\int_{0}^{1} x\sqrt{1-x^{2}}\,\mathrm{d}x$。
+
+\item 求函数 $f(x)=x^{3}-3x^{2}+1$ 的单调区间与极值。
+
+\item 设 $z=x^{2}e^{y}+y^{2}$，求一阶偏导数 $z_{x},z_{y}$ 及全部二阶偏导数
+  $z_{xx},z_{yy},z_{xy}$。
+
+\item 计算反常积分 $\displaystyle\int_{0}^{+\infty}\frac{1}{1+x^{2}}\,\mathrm{d}x$。
+\end{enumerate}
+
+%==================== 五、证明题 ====================
+\bigsection{五、证明题}{2 小题，每题 6 分，共 12 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 利用拉格朗日中值定理证明：当 $x>0$ 时，
+  \[
+  \frac{x}{1+x}<\ln(1+x)<x .
+  \]
+
+\item 设数列 $\{a_{n}\}$ 单调递增且有上界。利用实数的确界原理证明：
+  $\{a_{n}\}$ 收敛，且 $\displaystyle\lim_{n\to\infty}a_{n}=\sup_{n}a_{n}$。
+\end{enumerate}
+
+%==================== 六、应用题 ====================
+\bigsection{六、应用题}{2 小题，每题 6 分，共 12 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 求由曲线 $y=x^{2}$ 与直线 $y=x$ 所围平面图形的面积 $A$，
+  并求该图形绕 $x$ 轴旋转一周所得旋转体的体积 $V$。
+
+\item 要制作一个容积为 $16\pi\ \mathrm{cm}^{3}$ 的有盖圆柱形罐头。设底面半径为 $r$、
+  高为 $h$，问 $r,h$ 各为多少时，所用材料（即罐头表面积）最省？并求最小表面积。
+\end{enumerate}
+
+\vspace{8pt}
+\begin{center}\small —— 试卷结束，参考答案见后 ——\end{center}
+
+%==================== 参 考 答 案 ====================
+\clearpage
+\begin{center}
+  {\Large\bfseries 参考答案与评分标准}\\[2pt]
+  {\small 数学分析（上册）期末考试}
+\end{center}
+\vspace{6pt}\hrule\vspace{12pt}
+
+\noindent\textbf{一、选择题}（每题 3 分）\par\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+题号 & 1 & 2 & 3 & 4 & 5 \\\hline
+答案 & B & B & C & C & B \\\hline
+\end{tabular}
+\end{center}
+\noindent\small 简析：1.\,$|x|$ 在 $0$ 处连续但左右导数 $\mp1$ 不等，不可导。
+2.\,$f'(x)=3x^{2}-3<0\Leftrightarrow x\in(-1,1)$。
+3.\,$p$-积分在 $+\infty$ 处当且仅当 $p>1$ 收敛。
+4.\,确界存在但未必是 $S$ 中元素（如 $S=(0,1)$，$\sup S=1\notin S$）。
+5.\,可微 $\Rightarrow$ 偏导存在且 $f$ 连续，但偏导未必连续。\normalsize
+
+\vspace{10pt}
+\noindent\textbf{二、判断题}（每题 2 分）\par\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+题号 & 1 & 2 & 3 & 4 & 5 \\\hline
+答案 & $\checkmark$ & $\times$ & $\checkmark$ & $\times$ & $\times$ \\\hline
+\end{tabular}
+\end{center}
+\noindent\small 简析：2.\,反例 $f(x)=x^{3}$，$f'(0)=0$ 但 $0$ 非极值点。
+4.\,收敛不蕴含被积函数趋于 $0$（可构造在越来越窄区间上的尖峰）。
+5.\,偏导存在不能保证连续，更不能保证可微。\normalsize
+
+\vspace{10pt}
+\noindent\textbf{三、填空题}（每题 3 分）\par\vspace{4pt}
+\begin{enumerate}[label=\arabic*.,itemsep=4pt]
+\item $\dfrac{1}{1+x^{2}}$ \qquad
+\item $\arctan x+C$ \qquad
+\item $0$（被积函数为奇函数，对称区间积分为 $0$）
+\item $2$\qquad（$\int_{0}^{1}x^{-1/2}\mathrm{d}x=\big[2\sqrt{x}\big]_{0}^{1}=2$）
+\item $y\,x^{\,y-1}$
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{四、计算题}（每题 6 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=10pt]
+\item 由泰勒展开 $e^{x}=1+x+\dfrac{x^{2}}{2}+o(x^{2})$，故
+  \[
+  \frac{e^{x}-1-x}{x^{2}}=\frac{\tfrac{1}{2}x^{2}+o(x^{2})}{x^{2}}\to\frac{1}{2}.
+  \]
+  （或对 $\frac{0}{0}$ 型连用两次洛必达：$\lim\frac{e^{x}-1}{2x}=\lim\frac{e^{x}}{2}=\tfrac12$。）
+
+\item 用分部积分，取 $u=\ln x,\ \mathrm{d}v=x\,\mathrm{d}x$，则 $v=\dfrac{x^{2}}{2}$：
+  \[
+  \int x\ln x\,\mathrm{d}x=\frac{x^{2}}{2}\ln x-\int\frac{x^{2}}{2}\cdot\frac{1}{x}\,\mathrm{d}x
+  =\frac{x^{2}}{2}\ln x-\frac{x^{2}}{4}+C .
+  \]
+
+\item 令 $u=1-x^{2}$，$\mathrm{d}u=-2x\,\mathrm{d}x$；当 $x:0\to1$ 时 $u:1\to0$：
+  \[
+  \int_{0}^{1}x\sqrt{1-x^{2}}\,\mathrm{d}x
+  =\frac12\int_{0}^{1}\sqrt{u}\,\mathrm{d}u
+  =\frac12\cdot\frac{2}{3}u^{3/2}\Big|_{0}^{1}=\frac{1}{3}.
+  \]
+
+\item $f'(x)=3x^{2}-6x=3x(x-2)$。令 $f'(x)=0$ 得 $x=0,2$。
+  \[
+  \begin{array}{c|ccccc}
+   x & (-\infty,0) & 0 & (0,2) & 2 & (2,+\infty)\\\hline
+   f'(x) & + & 0 & - & 0 & +\\
+   f(x) & \nearrow & \text{极大} & \searrow & \text{极小} & \nearrow
+  \end{array}
+  \]
+  单调增区间 $(-\infty,0)$ 与 $(2,+\infty)$，单调减区间 $(0,2)$；
+  极大值 $f(0)=1$，极小值 $f(2)=-3$。
+
+\item 一阶偏导：$z_{x}=2x\,e^{y},\qquad z_{y}=x^{2}e^{y}+2y$。\\
+  二阶偏导：
+  \[
+  z_{xx}=2e^{y},\quad z_{yy}=x^{2}e^{y}+2,\quad z_{xy}=z_{yx}=2x\,e^{y}.
+  \]
+
+\item $\displaystyle\int_{0}^{+\infty}\frac{\mathrm{d}x}{1+x^{2}}
+  =\lim_{b\to+\infty}\big[\arctan x\big]_{0}^{b}
+  =\lim_{b\to+\infty}\arctan b=\frac{\pi}{2}.$
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{五、证明题}（每题 6 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=12pt]
+\item 设 $g(t)=\ln(1+t)$，它在 $[0,x]$ 上连续、在 $(0,x)$ 内可导，
+  $g'(t)=\dfrac{1}{1+t}$。由拉格朗日中值定理，存在 $\xi\in(0,x)$ 使
+  \[
+  \ln(1+x)-\ln 1=g'(\xi)\,(x-0)=\frac{x}{1+\xi}.
+  \]
+  因 $0<\xi<x$，故 $1<1+\xi<1+x$，从而
+  $\dfrac{1}{1+x}<\dfrac{1}{1+\xi}<1$，两边乘以 $x>0$ 得
+  \[
+  \frac{x}{1+x}<\frac{x}{1+\xi}=\ln(1+x)<x. \qquad\blacksquare
+  \]
+
+\item 因 $\{a_{n}\}$ 有上界，由\textbf{确界原理}，数集 $\{a_{n}\}$ 存在上确界，
+  记 $a=\sup_{n}a_{n}$。对任意 $\varepsilon>0$，由上确界的定义，
+  $a-\varepsilon$ 不是上界，故存在 $N$ 使 $a_{N}>a-\varepsilon$。
+  又 $\{a_{n}\}$ 单调递增，且 $a$ 是上界，故当 $n>N$ 时
+  \[
+  a-\varepsilon<a_{N}\leq a_{n}\leq a<a+\varepsilon,
+  \]
+  即 $|a_{n}-a|<\varepsilon$。由 $\varepsilon$ 的任意性，
+  $\displaystyle\lim_{n\to\infty}a_{n}=a=\sup_{n}a_{n}$，即 $\{a_{n}\}$ 收敛。
+  $\qquad\blacksquare$
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{六、应用题}（每题 6 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=12pt]
+\item 两曲线交点：由 $x^{2}=x$ 得 $x=0,1$，且在 $[0,1]$ 上 $x\geq x^{2}$。\\
+  面积
+  \[
+  A=\int_{0}^{1}(x-x^{2})\,\mathrm{d}x
+  =\Big[\frac{x^{2}}{2}-\frac{x^{3}}{3}\Big]_{0}^{1}
+  =\frac12-\frac13=\frac{1}{6}.
+  \]
+  绕 $x$ 轴旋转用垫圈法，外半径 $x$、内半径 $x^{2}$：
+  \[
+  V=\pi\int_{0}^{1}\big[x^{2}-(x^{2})^{2}\big]\mathrm{d}x
+  =\pi\int_{0}^{1}(x^{2}-x^{4})\mathrm{d}x
+  =\pi\Big[\frac{x^{3}}{3}-\frac{x^{5}}{5}\Big]_{0}^{1}
+  =\frac{2\pi}{15}.
+  \]
+
+\item 由容积 $\pi r^{2}h=16\pi$ 得 $h=\dfrac{16}{r^{2}}$。
+  有盖圆柱表面积
+  \[
+  S(r)=2\pi r^{2}+2\pi r h=2\pi r^{2}+\frac{32\pi}{r}\quad(r>0).
+  \]
+  求导：$S'(r)=4\pi r-\dfrac{32\pi}{r^{2}}=0\Rightarrow r^{3}=8\Rightarrow r=2$。
+  当 $0<r<2$ 时 $S'<0$，$r>2$ 时 $S'>0$，故 $r=2$ 为极小也是最小值点。
+  此时 $h=\dfrac{16}{4}=4$，最小表面积
+  \[
+  S(2)=2\pi\cdot4+\frac{32\pi}{2}=8\pi+16\pi=24\pi\ (\mathrm{cm}^{2}).
+  \]
+  即底半径 $r=2\,\mathrm{cm}$、高 $h=4\,\mathrm{cm}$ 时用料最省，最小表面积为 $24\pi\,\mathrm{cm}^{2}$。
+\end{enumerate}
+
+\end{document}

@@ -462,7 +462,9 @@ a {
 /* 教学图示卡：像贴在书页上的插图 */
 .diagram-grid {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px 18px;
+  counter-reset: fig;
 }
 
 .diagram-card {
@@ -487,6 +489,14 @@ a {
   color: var(--ink);
 }
 
+/* 教科书式图号：图 1 / 图 2 … */
+.diagram-card figcaption strong::before {
+  counter-increment: fig;
+  content: "图 " counter(fig) "　";
+  color: var(--gold);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
 .diagram-card svg {
   width: 100%;
   height: auto;
@@ -500,6 +510,50 @@ a {
   border-left: 2px solid var(--gold);
   color: var(--accent-deep);
   font-style: italic;
+}
+
+.diagram-card--concept {
+  background: var(--paper-page);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.diagram-card--concept .diagram-prompt {
+  margin-top: 14px;
+}
+
+.diagram-svg {
+  max-width: 560px;
+}
+
+.diagram-table-wrap {
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.diagram-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--serif-body);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.diagram-table th,
+.diagram-table td {
+  padding: 7px 12px;
+  border: 1px solid var(--rule);
+  text-align: left;
+}
+
+.diagram-table thead th {
+  background: var(--accent-wash);
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.diagram-table tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--paper-page) 70%, transparent);
 }
 
 /* ----------------------------------------------------------------
@@ -556,6 +610,19 @@ button.is-active {
 button:disabled {
   opacity: 0.55;
   cursor: progress;
+}
+
+button.is-primary {
+  background: var(--accent);
+  border-color: var(--accent-deep);
+  color: white;
+  font-weight: 600;
+}
+
+button.is-primary:hover:not(:disabled) {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: white;
 }
 
 textarea {
@@ -669,6 +736,20 @@ select:focus {
   flex-wrap: wrap;
   gap: 10px;
   margin: 16px 0;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.exercise-action-label {
+  width: 100%;
+  font-family: var(--serif-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 .grading-error {
@@ -746,6 +827,28 @@ select:focus {
   position: absolute;
   left: 0;
   color: var(--gold);
+}
+
+.mistake-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mistake-list li {
+  position: relative;
+  margin: 8px 0;
+  padding-left: 20px;
+  line-height: 1.65;
+}
+
+.mistake-list li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 11px;
+  top: 4px;
 }
 
 details {
@@ -995,7 +1098,7 @@ details summary {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .exercise-card-preview {
@@ -1006,6 +1109,18 @@ details summary {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.exercise-card-title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--serif-body);
 }
 
 .difficulty-pill {
@@ -1040,6 +1155,54 @@ details summary {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid var(--rule);
+}
+
+.problem-statement {
+  margin: 0 0 20px;
+  padding: 18px 20px 16px;
+  background: var(--paper-page);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-page);
+}
+
+.problem-title {
+  margin: 0 0 10px;
+  font-family: var(--serif-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  opacity: 0.8;
+}
+
+.problem-body {
+  font-family: var(--serif-body);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.answer-label {
+  margin: 0 0 8px;
+  font-family: var(--serif-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.exercise-num-label {
+  margin: 0 0 12px;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: var(--serif-display);
+  font-weight: 600;
 }
 
 details summary:hover {
@@ -1112,12 +1275,30 @@ details ul {
   margin: 0 0 10px;
 }
 
-.chapter-header-kp-count {
+.chapter-header-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   font-size: 12px;
   color: var(--ink-faint);
   margin: 0;
   font-family: var(--serif-display);
   letter-spacing: 0.06em;
+}
+
+.chapter-header-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chapter-header-stats span::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.8;
 }
 
 /* ----------------------------------------------------------------
@@ -1191,6 +1372,13 @@ details ul {
 
 .tutor-header .eyebrow {
   margin: 0;
+}
+
+.tutor-context {
+  margin: 5px 0 0;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.45;
 }
 
 .settings-toggle {

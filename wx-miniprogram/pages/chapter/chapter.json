@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "章节详情",
+  "usingComponents": {
+    "math-text": "/components/math-text/math-text"
+  }
+}

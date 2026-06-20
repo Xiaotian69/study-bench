@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "AI 老师",
+  "usingComponents": {
+    "math-text": "/components/math-text/math-text"
+  }
+}

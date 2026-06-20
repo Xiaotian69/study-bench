@@ -1,0 +1,294 @@
+% !TEX program = xelatex
+\documentclass[12pt]{ctexart}
+
+\usepackage[a4paper,margin=2.3cm,top=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+
+\setlist[enumerate]{itemsep=10pt,topsep=6pt,leftmargin=2.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small 数学分析（上）期末考试 · B 卷}
+\rhead{\small 第 \thepage 页}
+\cfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\bigsection}[2]{%
+  \vspace{6pt}%
+  {\noindent\bfseries\large #1}\hfill{\normalsize（本大题共 #2）}\par
+  \vspace{2pt}\hrule height0.4pt\vspace{8pt}}
+
+\newcommand{\blank}[1][3cm]{\underline{\hspace{#1}}}
+
+\newcommand{\optgrid}[4]{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}p{0.45\textwidth}p{0.45\textwidth}@{}}
+  (A)~#1 & (B)~#2 \\[2pt]
+  (C)~#3 & (D)~#4
+  \end{tabular}}
+
+\linespread{1.15}
+
+\begin{document}
+
+%==================== 封面信息 ====================
+\begin{center}
+  {\Large\bfseries 数学分析（上册）期末考试试卷（B 卷）}\\[4pt]
+  {\small 教材：华东师范大学数学系《数学分析》（第 5 版）\;\;|\;\;
+  范围：导数与微分、微分中值定理及其应用、实数的完备性、不定积分、定积分、
+  定积分应用、反常积分；多元函数的极限与连续、多元函数微分学}\\[10pt]
+\end{center}
+
+\noindent
+\begin{tabular}{@{}p{4.5cm}p{4.5cm}p{4.5cm}@{}}
+姓名：\blank[3cm] & 学号：\blank[3cm] & 班级：\blank[3cm]
+\end{tabular}
+
+\vspace{6pt}
+\noindent\textbf{满分 100 分\qquad 考试时间 120 分钟\qquad 闭卷}
+
+\vspace{8pt}
+\noindent
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+题号 & 一 & 二 & 三 & 四 & 五 & 六 & 总分 \\\hline
+满分 & 15 & 10 & 15 & 36 & 12 & 12 & 100 \\\hline
+得分 & & & & & & & \\\hline
+\end{tabular}
+
+\vspace{14pt}
+
+%==================== 一、选择题 ====================
+\bigsection{一、选择题}{5 小题，每题 3 分，共 15 分。每题只有一个正确选项}
+
+\begin{enumerate}[label=\arabic*.]
+\item 下列函数中，在 $x=0$ 处可导的是（\qquad）
+  \optgrid{$|x|$}{$x|x|$}{$\sqrt{|x|}$}{$\sqrt[3]{x}$}
+
+\item 函数 $f(x)=\ln x$ 在 $[1,e]$ 上满足拉格朗日中值定理，其中值点 $\xi=$（\qquad）
+  \optgrid{$1$}{$e-1$}{$\dfrac{e+1}{2}$}{$\sqrt{e}$}
+
+\item 反常积分 $\displaystyle\int_{0}^{1}\frac{1}{x^{p}}\,\mathrm{d}x$ 收敛的充要条件是（\qquad）
+  \optgrid{$p>1$}{$p<1$}{$p\geq 1$}{$p>0$}
+
+\item 数列 $\{a_{n}\}$ 收敛的充要条件是（\qquad）
+  \optgrid{$\{a_{n}\}$ 单调}{$\{a_{n}\}$ 有界}{$\{a_{n}\}$ 是柯西列}{$\{a_{n}\}$ 有收敛子列}
+
+\item 设二元函数 $z=f(x,y)$ 在点 $P_{0}$ 处两个偏导数都存在，则在 $P_{0}$ 处（\qquad）
+  \optgrid{$f$ 必连续}{$f$ 必可微}{$f$ 不一定连续}{$f$ 必取得极值}
+\end{enumerate}
+
+%==================== 二、判断题 ====================
+\bigsection{二、判断题}{5 小题，每题 2 分，共 10 分。正确打 “$\checkmark$”，错误打 “$\times$”}
+
+\begin{enumerate}[label=\arabic*.]
+\item 若 $f$ 在点 $x_{0}$ 连续，则 $f$ 在点 $x_{0}$ 必可导。\hfill（\qquad）
+\item 若 $f$ 在 $[a,b]$ 上可积，则 $f$ 在 $[a,b]$ 上必有界。\hfill（\qquad）
+\item 若 $f$ 在 $[a,b]$ 上连续，则存在 $\xi\in[a,b]$ 使
+  $\displaystyle\int_{a}^{b}f(x)\,\mathrm{d}x=f(\xi)(b-a)$。\hfill（\qquad）
+\item 反常积分 $\displaystyle\int_{1}^{+\infty}\frac{1}{x}\,\mathrm{d}x$ 收敛。\hfill（\qquad）
+\item 若二元函数在某点可微，则它在该点的两个偏导数都存在。\hfill（\qquad）
+\end{enumerate}
+
+%==================== 三、填空题 ====================
+\bigsection{三、填空题}{5 小题，每题 3 分，共 15 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 设 $f(x)=\ln(1+x^{2})$，则 $f'(x)=\blank[3.5cm]$。
+\item $\displaystyle\int \cos x\,\mathrm{d}x=\blank[4cm]$。
+\item $\displaystyle\int_{0}^{\pi}\sin x\,\mathrm{d}x=\blank[3cm]$。
+\item 反常积分 $\displaystyle\int_{1}^{+\infty}\frac{1}{x^{2}}\,\mathrm{d}x=\blank[3cm]$。
+\item 设 $z=x^{2}+xy+y^{2}$，则 $\dfrac{\partial z}{\partial x}=\blank[3.5cm]$。
+\end{enumerate}
+
+%==================== 四、计算题 ====================
+\bigsection{四、计算题}{6 小题，每题 6 分，共 36 分。要求写出主要计算步骤}
+
+\begin{enumerate}[label=\arabic*.]
+\item 求极限 $\displaystyle\lim_{x\to 0}\frac{1-\cos x}{x^{2}}$。
+
+\item 求不定积分 $\displaystyle\int \ln x\,\mathrm{d}x$。
+
+\item 计算定积分 $\displaystyle\int_{0}^{1} x\,e^{x^{2}}\,\mathrm{d}x$。
+
+\item 求函数 $f(x)=\dfrac{x}{1+x^{2}}$ 的单调区间与极值。
+
+\item 设 $z=x^{3}+y^{3}-3xy$，求一阶偏导数 $z_{x},z_{y}$ 及全部二阶偏导数
+  $z_{xx},z_{yy},z_{xy}$。
+
+\item 计算反常积分 $\displaystyle\int_{0}^{1}\frac{1}{\sqrt{1-x^{2}}}\,\mathrm{d}x$。
+\end{enumerate}
+
+%==================== 五、证明题 ====================
+\bigsection{五、证明题}{2 小题，每题 6 分，共 12 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 证明：当 $x>0$ 时，$e^{x}>1+x$。
+
+\item 设 $a_{1}=\sqrt{2}$，$a_{n+1}=\sqrt{2+a_{n}}\ (n=1,2,\dots)$。
+  利用单调有界定理证明数列 $\{a_{n}\}$ 收敛，并求其极限。
+\end{enumerate}
+
+%==================== 六、应用题 ====================
+\bigsection{六、应用题}{2 小题，每题 6 分，共 12 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 求由曲线 $y=\sqrt{x}$、直线 $x=4$ 及 $x$ 轴所围平面图形的面积 $A$，
+  并求该图形绕 $x$ 轴旋转一周所得旋转体的体积 $V$。
+
+\item 用长为 $20\ \mathrm{m}$ 的篱笆，靠一面墙围成一块矩形场地（靠墙一侧不用篱笆）。
+  问矩形的长、宽各为多少时围成的面积最大？最大面积是多少？
+\end{enumerate}
+
+\vspace{8pt}
+\begin{center}\small —— 试卷结束，参考答案见后 ——\end{center}
+
+%==================== 参 考 答 案 ====================
+\clearpage
+\begin{center}
+  {\Large\bfseries 参考答案与评分标准（B 卷）}\\[2pt]
+  {\small 数学分析（上册）期末考试}
+\end{center}
+\vspace{6pt}\hrule\vspace{12pt}
+
+\noindent\textbf{一、选择题}（每题 3 分）\par\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+题号 & 1 & 2 & 3 & 4 & 5 \\\hline
+答案 & B & B & B & C & C \\\hline
+\end{tabular}
+\end{center}
+\noindent\small 简析：1.\,$x|x|$ 在 $0$ 处左右导数均为 $0$，可导；其余三者在 $0$ 处不可导。
+2.\,$\dfrac{1}{\xi}=\dfrac{\ln e-\ln 1}{e-1}=\dfrac{1}{e-1}\Rightarrow\xi=e-1\in(1,e)$。
+3.\,瑕点在 $x=0$，$p$-积分当且仅当 $p<1$ 收敛。
+4.\,实数系中数列收敛 $\Leftrightarrow$ 为柯西列（柯西收敛准则）。
+5.\,偏导数存在不能保证连续（更不能保证可微）。\normalsize
+
+\vspace{10pt}
+\noindent\textbf{二、判断题}（每题 2 分）\par\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+题号 & 1 & 2 & 3 & 4 & 5 \\\hline
+答案 & $\times$ & $\checkmark$ & $\checkmark$ & $\times$ & $\checkmark$ \\\hline
+\end{tabular}
+\end{center}
+\noindent\small 简析：1.\,连续未必可导，反例 $|x|$ 在 $0$ 处。
+2.\,可积的必要条件是有界。3.\,积分第一中值定理。
+4.\,$\int_{1}^{+\infty}\frac1x\mathrm{d}x$ 发散（$p=1$）。
+5.\,可微 $\Rightarrow$ 偏导数存在。\normalsize
+
+\vspace{10pt}
+\noindent\textbf{三、填空题}（每题 3 分）\par\vspace{4pt}
+\begin{enumerate}[label=\arabic*.,itemsep=4pt]
+\item $\dfrac{2x}{1+x^{2}}$ \qquad
+\item $\sin x+C$ \qquad
+\item $2$（$[-\cos x]_{0}^{\pi}=1+1=2$）
+\item $1$（$[-x^{-1}]_{1}^{+\infty}=0-(-1)=1$）
+\item $2x+y$
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{四、计算题}（每题 6 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=10pt]
+\item 由 $1-\cos x=\dfrac{x^{2}}{2}+o(x^{2})$，得
+  $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^{2}}=\frac12$。
+  （或用洛必达：$\lim\dfrac{\sin x}{2x}=\dfrac12$。）
+
+\item 用分部积分，取 $u=\ln x,\ \mathrm{d}v=\mathrm{d}x$，则 $v=x$：
+  \[
+  \int\ln x\,\mathrm{d}x=x\ln x-\int x\cdot\frac1x\,\mathrm{d}x=x\ln x-x+C .
+  \]
+
+\item 令 $u=x^{2}$，$\mathrm{d}u=2x\,\mathrm{d}x$：
+  \[
+  \int_{0}^{1}x\,e^{x^{2}}\,\mathrm{d}x=\frac12\int_{0}^{1}e^{u}\,\mathrm{d}u
+  =\frac12\big(e^{u}\big)\Big|_{0}^{1}=\frac{e-1}{2}.
+  \]
+
+\item $f'(x)=\dfrac{(1+x^{2})-x\cdot 2x}{(1+x^{2})^{2}}=\dfrac{1-x^{2}}{(1+x^{2})^{2}}$。
+  令 $f'(x)=0$ 得 $x=\pm 1$。
+  \[
+  \begin{array}{c|ccccc}
+   x & (-\infty,-1) & -1 & (-1,1) & 1 & (1,+\infty)\\\hline
+   f'(x) & - & 0 & + & 0 & -\\
+   f(x) & \searrow & \text{极小} & \nearrow & \text{极大} & \searrow
+  \end{array}
+  \]
+  单调增区间 $(-1,1)$，单调减区间 $(-\infty,-1)$ 与 $(1,+\infty)$；
+  极小值 $f(-1)=-\dfrac12$，极大值 $f(1)=\dfrac12$。
+
+\item 一阶偏导：$z_{x}=3x^{2}-3y,\qquad z_{y}=3y^{2}-3x$。\\
+  二阶偏导：
+  \[
+  z_{xx}=6x,\quad z_{yy}=6y,\quad z_{xy}=z_{yx}=-3.
+  \]
+
+\item 瑕点在 $x=1$：
+  \[
+  \int_{0}^{1}\frac{\mathrm{d}x}{\sqrt{1-x^{2}}}
+  =\lim_{b\to 1^{-}}\big[\arcsin x\big]_{0}^{b}
+  =\lim_{b\to1^{-}}\arcsin b=\frac{\pi}{2}.
+  \]
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{五、证明题}（每题 6 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=12pt]
+\item 令 $g(x)=e^{x}-1-x$，则 $g(0)=0$，且当 $x>0$ 时
+  $g'(x)=e^{x}-1>0$，故 $g$ 在 $[0,+\infty)$ 上单调递增。
+  于是当 $x>0$ 时 $g(x)>g(0)=0$，即 $e^{x}>1+x$。$\qquad\blacksquare$
+
+\item \textbf{有界：} 用归纳法证 $0<a_{n}<2$。$a_{1}=\sqrt2<2$；
+  设 $a_{n}<2$，则 $a_{n+1}=\sqrt{2+a_{n}}<\sqrt{2+2}=2$。故对一切 $n$ 有 $0<a_{n}<2$，
+  即 $\{a_{n}\}$ 有上界。\\[2pt]
+  \textbf{单调递增：} 由
+  $a_{n+1}^{2}-a_{n}^{2}=(2+a_{n})-a_{n}^{2}=-(a_{n}-2)(a_{n}+1)$，
+  而 $0<a_{n}<2$ 时 $(a_{n}-2)<0,\ (a_{n}+1)>0$，故 $a_{n+1}^{2}-a_{n}^{2}>0$；
+  又 $a_{n},a_{n+1}>0$，所以 $a_{n+1}>a_{n}$，数列单调递增。\\[2pt]
+  \textbf{求极限：} 由\textbf{单调有界定理}，$\{a_{n}\}$ 收敛，设
+  $\displaystyle\lim_{n\to\infty}a_{n}=L$。在 $a_{n+1}=\sqrt{2+a_{n}}$ 两边取极限得
+  $L=\sqrt{2+L}$，即 $L^{2}-L-2=0$，$(L-2)(L+1)=0$。
+  因 $L>0$，故 $L=2$，即 $\displaystyle\lim_{n\to\infty}a_{n}=2$。$\qquad\blacksquare$
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{六、应用题}（每题 6 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=12pt]
+\item 在 $[0,4]$ 上 $y=\sqrt{x}\geq 0$，面积
+  \[
+  A=\int_{0}^{4}\sqrt{x}\,\mathrm{d}x=\Big[\frac23 x^{3/2}\Big]_{0}^{4}
+  =\frac23\cdot 8=\frac{16}{3}.
+  \]
+  绕 $x$ 轴旋转（圆盘法）：
+  \[
+  V=\pi\int_{0}^{4}(\sqrt{x})^{2}\,\mathrm{d}x=\pi\int_{0}^{4}x\,\mathrm{d}x
+  =\pi\Big[\frac{x^{2}}{2}\Big]_{0}^{4}=8\pi.
+  \]
+
+\item 设垂直于墙的两条边长为 $x$（$0<x<10$），则平行于墙的一边长为 $20-2x$，
+  面积
+  \[
+  S(x)=x(20-2x)=20x-2x^{2}.
+  \]
+  $S'(x)=20-4x=0\Rightarrow x=5$；当 $x<5$ 时 $S'>0$，$x>5$ 时 $S'<0$，
+  故 $x=5$ 为最大值点。此时平行墙的一边长 $20-2\cdot5=10$，最大面积
+  \[
+  S(5)=5\times 10=50\ (\mathrm{m}^{2}).
+  \]
+  即矩形宽（垂直墙）$5\,\mathrm{m}$、长（平行墙）$10\,\mathrm{m}$ 时面积最大，
+  为 $50\,\mathrm{m}^{2}$。
+\end{enumerate}
+
+\end{document}

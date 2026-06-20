@@ -15,7 +15,10 @@
         "能用 Newton-Leibniz 公式的推广计算反常积分"
       ],
       "coreExplanation": "**无穷限反常积分**：\n$$\\\\int_a^{+\\\\infty}f(x)\\,\\\\mathrm{d}x=\\\\lim_{b\\\\to+\\\\infty}\\\\int_a^b f(x)\\,\\\\mathrm{d}x,$$\n当极限存在（有限）时称收敛，否则称发散。类似定义 $\\\\int_{-\\\\infty}^b f$ 和 $\\\\int_{-\\\\infty}^{+\\\\infty}f$（后者须分拆为两段各自收敛）。\n**瑕积分（无界函数）**：若 $f$ 在 $[a,b)$ 上连续，$x\\\\to b^-$ 时 $|f(x)|\\\\to+\\\\infty$（$b$ 为**瑕点**），则\n$$\\\\int_a^b f(x)\\,\\\\mathrm{d}x=\\\\lim_{\\\\varepsilon\\\\to 0^+}\\\\int_a^{b-\\\\varepsilon}f(x)\\,\\\\mathrm{d}x.$$\n若瑕点在区间内部（如 $c\\\\in(a,b)$），须分拆：$\\\\int_a^b=\\\\int_a^c+\\\\int_c^b$，且两段均收敛时原积分才收敛。\n**计算方法**：若 $F$ 是 $f$ 的原函数且连续延拓到端点，则用广义 Newton-Leibniz：\n$$\\\\int_a^{+\\\\infty}f\\,\\\\mathrm{d}x=[F(x)]_a^{+\\\\infty}=\\\\lim_{x\\\\to+\\\\infty}F(x)-F(a).$$\n**典型例子**：\n- $\\\\int_1^{+\\\\infty}\\\\frac{1}{x^p}\\\\,\\\\mathrm{d}x$：$p>1$ 时收敛，值为 $\\\\frac{1}{p-1}$；$p\\\\leq 1$ 时发散（含调和级数对应 $p=1$）。\n- $\\\\int_0^1\\\\frac{1}{x^p}\\,\\\\mathrm{d}x$：$p<1$ 时收敛，值为 $\\\\frac{1}{1-p}$；$p\\\\geq 1$ 时发散。\n- $\\\\int_0^{+\\\\infty}e^{-x}\\,\\\\mathrm{d}x=1$（标准指数积分）。",
-      "textbookRefs": ["数学分析（第5版）上册 §11.1", "数学分析（第5版）上册 §11.2"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §11.1",
+        "数学分析（第5版）上册 §11.2"
+      ],
       "keyDefinitions": [
         {
           "term": "收敛（反常积分）",
@@ -54,8 +57,13 @@
         "瑕点在区间内部时忘记分拆，直接用 Newton-Leibniz 可能漏掉发散",
         "误认为 $\\\\int_a^{+\\\\infty}f\\,\\\\mathrm{d}x$ 收敛则 $f(x)\\\\to 0$（必要但不充分——见 $f(x)=\\\\sin(x^2)$ 的振幅不趋零但积分收敛）"
       ],
-      "exerciseIds": ["imp-ex-001", "imp-ex-002"],
-      "diagramIds": ["improper-integral-concept-diagram"],
+      "exerciseIds": [
+        "imp-ex-001",
+        "imp-ex-002"
+      ],
+      "diagramIds": [
+        "improper-integral-concept-diagram"
+      ],
       "masteryCriteria": [
         "能用极限定义判断 $\\\\int_1^\\\\infty x^{-p}$、$\\\\int_0^1 x^{-p}$ 的收敛性",
         "能识别并分拆含内部瑕点的积分"
@@ -73,7 +81,9 @@
         "能综合运用各判别法判断反常积分的收敛性"
       ],
       "coreExplanation": "**正值函数的比较判别法**：设 $0\\\\leq f(x)\\\\leq g(x)$，$x\\\\geq a$。\n- 若 $\\\\int_a^{+\\\\infty}g$ 收敛，则 $\\\\int_a^{+\\\\infty}f$ 收敛。\n- 若 $\\\\int_a^{+\\\\infty}f$ 发散，则 $\\\\int_a^{+\\\\infty}g$ 发散。\n**极限比较判别法**：设 $f,g\\\\geq 0$，$\\\\lim_{x\\\\to+\\\\infty}\\\\frac{f(x)}{g(x)}=L$。\n- $0<L<+\\\\infty$：$\\\\int f$ 与 $\\\\int g$ 同敛散。\n- $L=0$：$\\\\int g$ 收敛 $\\\\Rightarrow$ $\\\\int f$ 收敛。\n- $L=+\\\\infty$：$\\\\int g$ 发散 $\\\\Rightarrow$ $\\\\int f$ 发散。\n常用参考：$\\\\int_1^{+\\\\infty}x^{-p}$ 及 $\\\\int_0^1 x^{-p}$（$p$ 积分）。\n**Dirichlet 判别法**：$\\\\int_a^{+\\\\infty}f(x)g(x)\\,\\\\mathrm{d}x$ 收敛，若：$F(x)=\\\\int_a^x f(t)\\,\\\\mathrm{d}t$ 有界，且 $g(x)$ 单调趋于零。\n**Abel 判别法**：$\\\\int_a^{+\\\\infty}f(x)g(x)\\,\\\\mathrm{d}x$ 收敛，若：$\\\\int_a^{+\\\\infty}f$ 收敛，且 $g(x)$ 单调有界。\n典型：$\\\\int_1^{+\\\\infty}\\\\frac{\\\\sin x}{x}\\,\\\\mathrm{d}x$ 收敛（Dirichlet：$|\\\\int\\\\sin|\\\\leq 2$，$1/x\\\\downarrow 0$），但 $\\\\int_1^{+\\\\infty}\\\\left|\\\\frac{\\\\sin x}{x}\\\\right|\\,\\\\mathrm{d}x$ 发散（条件收敛）。",
-      "textbookRefs": ["数学分析（第5版）上册 §11.3"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §11.3"
+      ],
       "keyDefinitions": [
         {
           "term": "绝对收敛",
@@ -110,7 +120,11 @@
         "极限比较中 $L=0$ 时只能用\"$\\\\int g$ 收敛推 $\\\\int f$ 收敛\"，反向不成立",
         "误认为被积函数趋零就能推出反常积分收敛（$1/x$ 趋零但 $\\\\int 1/x$ 发散）"
       ],
-      "exerciseIds": ["imp-ex-003", "imp-ex-004", "imp-ex-005"],
+      "exerciseIds": [
+        "imp-ex-003",
+        "imp-ex-004",
+        "imp-ex-005"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能用比较判别法或极限比较法判断正值反常积分的收敛性",
@@ -128,7 +142,9 @@
         "了解 Gaussian 积分 $\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x=\\\\frac{\\\\sqrt{\\\\pi}}{2}$（结论，证明不要求）"
       ],
       "coreExplanation": "**Gamma 函数**：$\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$（$s>0$）。\n该积分在 $x=0$ 处可能为瑕积分（$s<1$ 时），在 $x\\\\to+\\\\infty$ 时为无穷限积分，需验证两端均收敛（$s>0$）。\n**递推公式**：$\\\\Gamma(s+1)=s\\\\Gamma(s)$（用分部积分：$\\\\int_0^\\\\infty x^s e^{-x}\\,\\\\mathrm{d}x$，令 $u=x^s$，$\\\\mathrm{d}v=e^{-x}\\,\\\\mathrm{d}x$）。\n**特殊值**：\n- $\\\\Gamma(1)=\\\\int_0^\\\\infty e^{-x}\\,\\\\mathrm{d}x=1$\n- 由递推：$\\\\Gamma(n+1)=n!$（$n\\\\in\\\\mathbb{N}$），故 Gamma 函数是阶乘的连续推广\n- $\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$（需用 Gaussian 积分），从而 $\\\\Gamma(3/2)=\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$\n**Gaussian 积分**（结论）：$\\\\int_0^{+\\\\infty}e^{-x^2}\\\\,\\\\mathrm{d}x=\\\\frac{\\\\sqrt{\\\\pi}}{2}$（令 $x^2=t$ 化为 $\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$）。完整证明需要重积分，在二重积分章节再给出。",
-      "textbookRefs": ["数学分析（第5版）上册 §11.4"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §11.4"
+      ],
       "keyDefinitions": [
         {
           "term": "Gamma 函数",
@@ -154,12 +170,17 @@
         "将 $\\\\Gamma(n)$ 与 $n!$ 混淆：$\\\\Gamma(n+1)=n!$（差一个）",
         "直接计算 $\\\\int_0^\\\\infty e^{-x^2}\\,\\\\mathrm{d}x$ 时，不能用初等方法求原函数——需要用 Gamma 函数或重积分"
       ],
-      "exerciseIds": ["imp-ex-006", "imp-ex-007", "imp-ex-008"],
+      "exerciseIds": [
+        "imp-ex-006",
+        "imp-ex-007",
+        "imp-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能利用递推公式计算 $\\\\Gamma(n+1/2)$ 等特殊值",
         "能将 $\\\\int_0^\\\\infty x^n e^{-x}\\,\\\\mathrm{d}x$ 等积分化为 $\\\\Gamma$ 函数并计算"
       ]
     }
-  ]
+  ],
+  "overview": "将定积分推广到无穷区间与无界被积函数的情形，建立比较判别法、Cauchy 判别法等收敛理论，并深入研究 Gamma 函数与 Beta 函数。"
 }

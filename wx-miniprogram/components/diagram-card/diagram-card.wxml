@@ -1,0 +1,85 @@
+<view class="diagram-card">
+  <view class="diagram-head">
+    <view>
+      <text class="diagram-type">{{view.typeLabel}}</text>
+      <text class="diagram-title">{{diagram.title}}</text>
+    </view>
+  </view>
+
+  <view class="diagram-visual {{view.kind}}">
+    <view wx:if="{{view.kind === 'number-line'}}" class="number-line-wrap">
+      <view class="number-axis" />
+      <view class="number-interval" style="left:{{view.numberLine.intervalLeft}}%;width:{{view.numberLine.intervalWidth}}%;" />
+      <view
+        wx:for="{{view.numberLine.markers}}"
+        wx:key="label"
+        class="number-marker {{item.tone}}"
+        style="left:{{item.left}}%;"
+      >
+        <view class="number-tick" />
+        <text class="number-label">{{item.label}}</text>
+      </view>
+    </view>
+
+    <view wx:elif="{{view.kind === 'sequence'}}" class="sequence-wrap">
+      <view class="plot-axis x" />
+      <view class="plot-axis y" />
+      <view
+        wx:for="{{view.sequenceTerms}}"
+        wx:key="n"
+        class="sequence-dot {{item.tone}}"
+        style="left:{{item.left}}%;top:{{item.top}}%;"
+      >
+        <text>{{item.label}}</text>
+      </view>
+    </view>
+
+    <view wx:elif="{{view.kind === 'cartesian'}}" class="cartesian-wrap">
+      <view class="plot-axis x" />
+      <view class="plot-axis y" />
+      <view class="epsilon-band" />
+      <view class="curve-line one" />
+      <view class="curve-line two" />
+      <view class="cartesian-tags">
+        <text wx:for="{{view.cartesian.bands}}" wx:key="*this" class="diagram-chip">{{item}}</text>
+        <text wx:for="{{view.cartesian.labels}}" wx:key="*this" class="diagram-chip muted">{{item}}</text>
+      </view>
+    </view>
+
+    <view wx:elif="{{view.kind === 'table'}}" class="diagram-table">
+      <view class="diagram-table-row head">
+        <text wx:for="{{view.table.columns}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view wx:for="{{view.table.rows}}" wx:key="*this" class="diagram-table-row">
+        <text wx:for="{{item}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
+
+    <view wx:else class="concept-wrap">
+      <view class="concept-rule" />
+      <text class="concept-label">结构示意</text>
+    </view>
+  </view>
+
+  <view class="diagram-desc" wx:if="{{diagram.description}}">
+    <math-text text="{{diagram.description}}" size="small" />
+  </view>
+
+  <view class="diagram-prompt" wx:if="{{diagram.studentPrompt}}">
+    <text class="prompt-label">想一想</text>
+    <math-text text="{{diagram.studentPrompt}}" size="small" />
+  </view>
+
+  <view wx:if="{{diagram.teacherNotes.length}}" class="diagram-notes">
+    <view class="diagram-notes-head" bindtap="toggleNotes">
+      <text>教学提示</text>
+      <text>{{notesOpen ? '收起 ▲' : '展开 ▼'}}</text>
+    </view>
+    <view wx:if="{{notesOpen}}" class="diagram-notes-body">
+      <view wx:for="{{diagram.teacherNotes}}" wx:key="*this" class="diagram-note">
+        <text class="note-dot">·</text>
+        <math-text text="{{item}}" size="small" />
+      </view>
+    </view>
+  </view>
+</view>

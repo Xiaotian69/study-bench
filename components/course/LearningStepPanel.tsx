@@ -61,7 +61,7 @@ export function LearningStepPanel({
       </div>
 
       {diagrams.length > 0 && (
-        <CollapsibleSection title="教学图示">
+        <CollapsibleSection defaultOpen title="教学图示">
           <div className="diagram-grid">
             {diagrams.map((diagram) => (
               <DiagramRenderer diagram={diagram} key={diagram.id} />
@@ -79,6 +79,18 @@ export function LearningStepPanel({
               </li>
             ))}
           </ol>
+        </CollapsibleSection>
+      )}
+
+      {knowledgePoint.commonMistakes.length > 0 && (
+        <CollapsibleSection title="易错提醒">
+          <ul className="mistake-list">
+            {knowledgePoint.commonMistakes.map((mistake) => (
+              <li key={mistake}>
+                <MathText text={mistake} />
+              </li>
+            ))}
+          </ul>
         </CollapsibleSection>
       )}
     </article>

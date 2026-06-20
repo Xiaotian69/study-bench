@@ -72,6 +72,7 @@ export interface ChapterContent {
 
 export interface Exercise {
   id: string;
+  title?: string;
   sourceType: string;
   sourceRef: string;
   knowledgePointIds: string[];

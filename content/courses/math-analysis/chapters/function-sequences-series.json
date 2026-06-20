@@ -15,7 +15,9 @@
         "了解函数项级数的一致收敛（Weierstrass M-判别法）"
       ],
       "coreExplanation": "**逐点收敛**：函数列 $\\\\{f_n\\\\}$ 在集合 $I$ 上**逐点收敛**于 $f$，若对每个 $x\\\\in I$，$\\\\lim_{n\\\\to\\\\infty}f_n(x)=f(x)$。这里 $N$ 可以依赖于 $x$，写作 $N=N(\\\\varepsilon,x)$。\n**一致收敛**：$\\\\{f_n\\\\}$ 在 $I$ 上**一致收敛**于 $f$（记 $f_n\\\\rightrightarrows f$），若：\n$$\\\\forall\\\\varepsilon>0,\\\\;\\\\exists N\\\\in\\\\mathbb{N},\\\\;\\\\forall n>N,\\\\;\\\\forall x\\\\in I:\\\\;|f_n(x)-f(x)|<\\\\varepsilon.$$\n关键：$N$ 只依赖于 $\\\\varepsilon$，不依赖于 $x$。\n**等价刻画**：$f_n\\\\rightrightarrows f$ $\\\\Leftrightarrow$ $M_n:=\\\\sup_{x\\\\in I}|f_n(x)-f(x)|\\\\to 0$（$n\\\\to\\\\infty$）。\n**否定一致收敛**：若 $\\\\exists\\\\varepsilon_0>0$，对任意 $N$，$\\\\exists n>N$，$\\\\exists x_n\\\\in I$ 使 $|f_n(x_n)-f(x)|\\\\geq\\\\varepsilon_0$，则 $f_n\\\\not\\\\rightrightarrows f$。\n**典型例子**：$f_n(x)=x^n$ 在 $[0,1)$ 上逐点收敛于 $f\\\\equiv 0$，但不一致收敛（$M_n=\\\\sup_{x\\\\in[0,1)}x^n=1\\\\not\\\\to 0$）。在 $[0,r]$（$0<r<1$）上一致收敛（$M_n=r^n\\\\to 0$）。\n**Cauchy 准则（一致收敛）**：$\\\\{f_n\\\\}$ 在 $I$ 上一致收敛 $\\\\Leftrightarrow$ $\\\\forall\\\\varepsilon>0$，$\\\\exists N$，$m,n>N\\\\Rightarrow\\\\sup_{x\\\\in I}|f_m(x)-f_n(x)|<\\\\varepsilon$。\n**函数项级数**：$\\\\sum_{n=1}^\\\\infty u_n(x)$ 一致收敛 $\\\\Leftrightarrow$ 部分和函数列 $\\\\{S_N(x)\\\\}$ 一致收敛。\n**Weierstrass M-判别法**：若 $|u_n(x)|\\\\leq M_n$（$\\\\forall x\\\\in I$），$\\\\sum M_n$ 收敛，则 $\\\\sum u_n(x)$ 在 $I$ 上一致（绝对）收敛。",
-      "textbookRefs": ["数学分析（第5版）下册 §13.1"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §13.1"
+      ],
       "keyDefinitions": [
         {
           "term": "逐点收敛",
@@ -50,8 +52,14 @@
         "M-判别法中 $M_n$ 必须是常数（与 $x$ 无关的上界），不能含 $x$",
         "混淆 $f_n$ 一致收敛与 $\\\\sum u_n$ 一致收敛（后者是部分和一致收敛）"
       ],
-      "exerciseIds": ["funseq-ex-001", "funseq-ex-002", "funseq-ex-003"],
-      "diagramIds": ["uniform-convergence-diagram"],
+      "exerciseIds": [
+        "funseq-ex-001",
+        "funseq-ex-002",
+        "funseq-ex-003"
+      ],
+      "diagramIds": [
+        "uniform-convergence-diagram"
+      ],
       "masteryCriteria": [
         "能用 $M_n$ 方法判断函数列是否一致收敛",
         "能用 Weierstrass M-判别法判断函数项级数一致收敛"
@@ -69,7 +77,9 @@
         "能判断极限与积分/微分的交换是否合法"
       ],
       "coreExplanation": "**连续性**：若 $f_n\\\\in C(I)$，$f_n\\\\rightrightarrows f$ 在 $I$ 上，则 $f\\\\in C(I)$。即：连续函数序列的一致极限仍连续。（逐点收敛不保证连续性：$x^n$ 的极限在 $[0,1]$ 上不连续。）\n**逐项积分**：若 $f_n\\\\in C[a,b]$，$f_n\\\\rightrightarrows f$ 在 $[a,b]$ 上，则\n$$\\\\lim_{n\\\\to\\\\infty}\\\\int_a^b f_n(x)\\,\\\\mathrm{d}x=\\\\int_a^b f(x)\\,\\\\mathrm{d}x\\\\quad\\\\text{（极限与积分可交换）}$$\n即 $\\\\int_a^b\\\\lim_{n\\\\to\\\\infty}f_n\\,\\\\mathrm{d}x=\\\\lim_{n\\\\to\\\\infty}\\\\int_a^b f_n\\,\\\\mathrm{d}x$。\n推论：一致收敛的函数项级数可逐项积分：$\\\\int_a^b\\\\sum u_n=\\\\sum\\\\int_a^b u_n$。\n**逐项微分**（条件更强）：若 $f_n$ 在 $[a,b]$ 上可微，$f_n'$ 在 $[a,b]$ 上一致收敛，且 $\\\\{f_n(x_0)\\\\}$ 对某个 $x_0$ 收敛，则 $f_n\\\\rightrightarrows f$（某 $f$），且 $f'=\\\\lim f_n'$。即：$\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\lim f_n=\\\\lim\\\\frac{\\\\mathrm{d}f_n}{\\\\mathrm{d}x}$ 需要导函数列一致收敛。\n**典型应用**：幂级数 $\\\\sum_{n=0}^\\\\infty a_n x^n$ 在收敛半径内的任意闭子区间上一致收敛，故可逐项积分和微分（幂级数章节的基础）。",
-      "textbookRefs": ["数学分析（第5版）下册 §13.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §13.2"
+      ],
       "keyDefinitions": [],
       "keyTheorems": [
         {
@@ -102,12 +112,19 @@
         "逐项微分条件中只要求函数列一致收敛而忘记检验导函数列一致收敛",
         "在无界区间上对有界函数用逐项积分：需要额外条件（一致收敛不足以处理无界域）"
       ],
-      "exerciseIds": ["funseq-ex-004", "funseq-ex-005", "funseq-ex-006", "funseq-ex-007", "funseq-ex-008"],
+      "exerciseIds": [
+        "funseq-ex-004",
+        "funseq-ex-005",
+        "funseq-ex-006",
+        "funseq-ex-007",
+        "funseq-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能判断何时极限与积分可交换，给出正确理由",
         "能举出逐点收敛时极限与积分不可交换的反例"
       ]
     }
-  ]
+  ],
+  "overview": "区分逐点收敛与一致收敛，建立 Weierstrass $ 判别法，证明一致收敛对连续性、逐项求导与逐项积分的保持性。"
 }

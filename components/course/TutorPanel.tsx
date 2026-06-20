@@ -96,7 +96,10 @@ export function TutorPanel({ knowledgePoint }: { knowledgePoint: KnowledgePoint 
   return (
     <aside className="tutor-panel">
       <div className="tutor-header">
-        <p className="eyebrow">AI 老师</p>
+        <div>
+          <p className="eyebrow">AI 老师</p>
+          <p className="tutor-context">正在围绕：{knowledgePoint.title}</p>
+        </div>
         <button
           aria-expanded={settingsOpen}
           className={`settings-toggle ${settingsOpen ? "is-active" : ""}`}

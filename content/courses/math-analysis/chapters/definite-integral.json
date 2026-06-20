@@ -15,7 +15,9 @@
         "了解定积分与不定积分的本质区别"
       ],
       "coreExplanation": "设 $f$ 在 $[a,b]$ 上有界。对 $[a,b]$ 作分割 $P: a=x_0<x_1<\\\\cdots<x_n=b$，令 $\\\\Delta x_i=x_i-x_{i-1}$，在每个子区间任取 $\\\\xi_i\\\\in[x_{i-1},x_i]$，作 Riemann 和\n$$S(P,\\\\xi)=\\\\sum_{i=1}^{n}f(\\\\xi_i)\\\\Delta x_i.$$\n若对任意 $\\\\varepsilon>0$，存在 $\\\\delta>0$，使得当 $\\\\|P\\\\|=\\\\max_i\\\\Delta x_i<\\\\delta$ 时，对任意取样点 $\\\\xi_i$ 均有 $|S(P,\\\\xi)-I|<\\\\varepsilon$，则称 $f$ 在 $[a,b]$ 上 **Riemann 可积**，$I$ 称为 $f$ 在 $[a,b]$ 上的**定积分**，记作\n$$I=\\\\int_a^b f(x)\\\\,\\\\mathrm{d}x.$$\n**几何意义**：若 $f\\\\geq 0$，$\\\\int_a^b f\\\\,\\\\mathrm{d}x$ 等于曲线 $y=f(x)$、$x$ 轴和直线 $x=a,x=b$ 围成的面积；若 $f$ 变号，积分是**有向面积**（$x$ 轴上方取正，下方取负）。\n**约定**：$\\\\int_a^a f\\\\,\\\\mathrm{d}x=0$；$\\\\int_b^a f\\\\,\\\\mathrm{d}x=-\\\\int_a^b f\\\\,\\\\mathrm{d}x$（上下限互换变号）。",
-      "textbookRefs": ["数学分析（第5版）上册 §9.1"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §9.1"
+      ],
       "keyDefinitions": [
         {
           "term": "Riemann 和",
@@ -54,8 +56,13 @@
         "认为 $\\\\int_a^b f\\\\,\\\\mathrm{d}x$ 一定是面积——当 $f$ 变号时是有向面积，面积需加绝对值",
         "上下限互换时忘记变号"
       ],
-      "exerciseIds": ["defint-ex-001", "defint-ex-002"],
-      "diagramIds": ["riemann-sum-illustration"],
+      "exerciseIds": [
+        "defint-ex-001",
+        "defint-ex-002"
+      ],
+      "diagramIds": [
+        "riemann-sum-illustration"
+      ],
       "masteryCriteria": [
         "能写出 $\\\\int_0^1 x\\\\,\\\\mathrm{d}x$ 对应的 Riemann 和并求极限",
         "能判断给定函数是否满足可积必要条件"
@@ -72,7 +79,9 @@
         "了解 Riemann 可积的充要条件（振幅和趋于零）"
       ],
       "coreExplanation": "**Darboux 方法**：对分割 $P$ 定义上和 $\\\\overline{S}(P)=\\\\sum M_i\\\\Delta x_i$，下和 $\\\\underline{S}(P)=\\\\sum m_i\\\\Delta x_i$（$M_i,m_i$ 为第 $i$ 段上的上/下确界）。总有 $\\\\underline{S}(P)\\\\leq S(P,\\\\xi)\\\\leq\\\\overline{S}(P)$。\n**可积充要条件（Riemann）**：$f$ 可积 $\\\\Leftrightarrow$ $\\\\lim_{\\\\|P\\\\|\\\\to 0}(\\\\overline{S}(P)-\\\\underline{S}(P))=0$，即振幅和趋零：对任意 $\\\\varepsilon>0$，$\\\\exists\\\\delta>0$ 使 $\\\\|P\\\\|<\\\\delta$ 时 $\\\\sum_{i=1}^n\\\\omega_i\\\\Delta x_i<\\\\varepsilon$（$\\\\omega_i=M_i-m_i$）。\n**三大充分条件**：\n1. **$f$ 在 $[a,b]$ 上连续** $\\\\Rightarrow$ $f$ 可积（均匀连续保证振幅可任意小）\n2. **$f$ 在 $[a,b]$ 上有界且只有有限个不连续点** $\\\\Rightarrow$ $f$ 可积\n3. **$f$ 在 $[a,b]$ 上单调有界** $\\\\Rightarrow$ $f$ 可积（振幅和 $\\\\leq (f(b)-f(a))\\\\cdot\\\\|P\\\\|\\\\to 0$）",
-      "textbookRefs": ["数学分析（第5版）上册 §9.2"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §9.2"
+      ],
       "keyDefinitions": [
         {
           "term": "Darboux 上和、下和",
@@ -107,7 +116,9 @@
         "误认为\"有界 $\\\\Rightarrow$ 可积\"——狄利克雷函数有界但不可积",
         "混淆可积充要条件与充分条件"
       ],
-      "exerciseIds": ["defint-ex-003"],
+      "exerciseIds": [
+        "defint-ex-003"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能用振幅和判断单调函数可积",
@@ -125,7 +136,9 @@
         "能利用被积函数的奇偶性/周期性简化计算"
       ],
       "coreExplanation": "**基本性质**（设 $f,g$ 在 $[a,b]$ 可积）：\n1. **线性性**：$\\\\int_a^b(\\\\alpha f+\\\\beta g)\\\\,\\\\mathrm{d}x=\\\\alpha\\\\int_a^b f\\\\,\\\\mathrm{d}x+\\\\beta\\\\int_a^b g\\\\,\\\\mathrm{d}x$\n2. **区间可加性**：$\\\\int_a^b f=\\\\int_a^c f+\\\\int_c^b f$（对任意 $c\\\\in[a,b]$，甚至 $c\\\\notin[a,b]$ 也成立）\n3. **保号性**：若 $f\\\\geq 0$ 在 $[a,b]$ 上，则 $\\\\int_a^b f\\\\,\\\\mathrm{d}x\\\\geq 0$\n4. **单调性**：若 $f\\\\leq g$ 在 $[a,b]$ 上，则 $\\\\int_a^b f\\\\leq\\\\int_a^b g$\n5. **估值不等式**：$m(b-a)\\\\leq\\\\int_a^b f\\\\,\\\\mathrm{d}x\\\\leq M(b-a)$（$m,M$ 为最小、最大值）\n6. **绝对值不等式**：$\\\\left|\\\\int_a^b f\\\\,\\\\mathrm{d}x\\\\right|\\\\leq\\\\int_a^b|f|\\\\,\\\\mathrm{d}x$\n**积分中值定理**：若 $f$ 在 $[a,b]$ 连续，则 $\\\\exists\\\\xi\\\\in(a,b)$ 使 $\\\\int_a^b f(x)\\\\,\\\\mathrm{d}x=f(\\\\xi)(b-a)$（$f(\\\\xi)$ 称为 $f$ 在 $[a,b]$ 上的**积分平均值**）。\n**奇偶性**：若 $f$ 在 $[-a,a]$ 上连续，$f$ 为奇函数则 $\\\\int_{-a}^a f=0$；$f$ 为偶函数则 $\\\\int_{-a}^a f=2\\\\int_0^a f$。\n**周期性**：若 $f$ 以 $T$ 为周期，则 $\\\\int_a^{a+T}f=\\\\int_0^T f$（积分值与起点无关）。",
-      "textbookRefs": ["数学分析（第5版）上册 §9.3"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §9.3"
+      ],
       "keyDefinitions": [
         {
           "term": "积分平均值",
@@ -153,7 +166,10 @@
         "对非连续函数套用积分中值定理（该定理要求连续）",
         "奇偶性简化计算仅适用于关于原点对称的区间 $[-a,a]$"
       ],
-      "exerciseIds": ["defint-ex-004", "defint-ex-005"],
+      "exerciseIds": [
+        "defint-ex-004",
+        "defint-ex-005"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能用估值不等式估计定积分的大小",
@@ -172,7 +188,10 @@
         "掌握定积分的换元法和分部积分法"
       ],
       "coreExplanation": "**变上限积分**：设 $f$ 在 $[a,b]$ 可积，$x\\\\in[a,b]$，定义 $\\\\Phi(x)=\\\\int_a^x f(t)\\\\,\\\\mathrm{d}t$。\n**微积分基本定理（第一部分）**：若 $f\\\\in C[a,b]$，则 $\\\\Phi'(x)=f(x)$，即 $\\\\Phi$ 是 $f$ 的一个原函数。\n**Newton-Leibniz 公式**：若 $f\\\\in C[a,b]$，$F$ 为 $f$ 的任一原函数，则\n$$\\\\int_a^b f(x)\\\\,\\\\mathrm{d}x = F(b)-F(a)=[F(x)]_a^b.$$\n**定积分换元法**：设 $f\\\\in C[a,b]$，$x=\\\\varphi(t)$ 满足 $\\\\varphi(\\\\alpha)=a$，$\\\\varphi(\\\\beta)=b$，$\\\\varphi'$ 连续且不变号，则\n$$\\\\int_a^b f(x)\\\\,\\\\mathrm{d}x=\\\\int_\\\\alpha^\\\\beta f(\\\\varphi(t))\\\\varphi'(t)\\\\,\\\\mathrm{d}t.$$\n注意：**换元后上下限同步换**，不必换回。\n**定积分分部积分法**：$\\\\int_a^b u\\\\,\\\\mathrm{d}v=[uv]_a^b-\\\\int_a^b v\\\\,\\\\mathrm{d}u$。\n**Wallis 公式**（重要推论）：\n$$\\\\int_0^{\\\\pi/2}\\\\sin^n x\\\\,\\\\mathrm{d}x=\\\\int_0^{\\\\pi/2}\\\\cos^n x\\\\,\\\\mathrm{d}x=\\\\begin{cases}\\\\dfrac{(n-1)!!}{n!!}\\\\cdot\\\\dfrac{\\\\pi}{2} & n\\\\text{ 偶},\\\\\\\\[6pt]\\\\dfrac{(n-1)!!}{n!!} & n\\\\text{ 奇}.\\\\end{cases}$$\n**变上限积分求导的推广**：$\\\\frac{\\\\mathrm{d}}{\\\\mathrm{d}x}\\\\int_{\\\\psi(x)}^{\\\\varphi(x)}f(t)\\\\,\\\\mathrm{d}t=f(\\\\varphi(x))\\\\varphi'(x)-f(\\\\psi(x))\\\\psi'(x)$。",
-      "textbookRefs": ["数学分析（第5版）上册 §9.4", "数学分析（第5版）上册 §9.5"],
+      "textbookRefs": [
+        "数学分析（第5版）上册 §9.4",
+        "数学分析（第5版）上册 §9.5"
+      ],
       "keyDefinitions": [
         {
           "term": "变上限积分",
@@ -205,13 +224,22 @@
         "变上限积分求导时忘记链式法则（上限是 $\\\\varphi(x)$ 时乘以 $\\\\varphi'(x)$）",
         "将 Newton-Leibniz 公式用于含瑕点的区间（被积函数无界时需用反常积分）"
       ],
-      "exerciseIds": ["defint-ex-006", "defint-ex-007", "defint-ex-008", "defint-ex-009", "defint-ex-010"],
-      "diagramIds": ["fundamental-theorem-diagram"],
+      "exerciseIds": [
+        "defint-ex-006",
+        "defint-ex-007",
+        "defint-ex-008",
+        "defint-ex-009",
+        "defint-ex-010"
+      ],
+      "diagramIds": [
+        "fundamental-theorem-diagram"
+      ],
       "masteryCriteria": [
         "能用 Newton-Leibniz 公式计算含基本函数的定积分",
         "能对变上限积分（含复合形式）正确求导",
         "能用换元法和分部积分法计算定积分"
       ]
     }
-  ]
+  ],
+  "overview": "用 Riemann 和的极限定义定积分，讨论可积条件与基本性质，最终以微积分基本定理（Newton-Leibniz 公式）将积分与微分统一起来。"
 }

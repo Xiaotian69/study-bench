@@ -14,7 +14,9 @@
         "掌握高阶偏导数，特别是混合偏导数的相等条件"
       ],
       "coreExplanation": "**偏导数**：$f_x(x_0,y_0)=\\\\lim_{\\\\Delta x\\\\to 0}\\\\frac{f(x_0+\\\\Delta x,y_0)-f(x_0,y_0)}{\\\\Delta x}$（固定 $y$，对 $x$ 求导）。记法：$\\\\partial f/\\\\partial x$，$f_x$，$D_1f$。\n**可微性（全微分）**：$f$ 在 $(x_0,y_0)$ 可微 $\\\\iff$ $\\\\Delta f=f_x\\\\Delta x+f_y\\\\Delta y+o(\\\\sqrt{\\\\Delta x^2+\\\\Delta y^2})$（增量可以线性近似）。全微分 $\\\\mathrm{d}f=f_x\\,\\\\mathrm{d}x+f_y\\,\\\\mathrm{d}y$。\n**可微 vs 偏导数存在**：\n- 可微 $\\\\Rightarrow$ 偏导数存在（反之不真）。\n- 偏导数存在**且连续** $\\\\Rightarrow$ 可微（充分条件，较强但常用）。\n- 可微 $\\\\Rightarrow$ 连续；偏导数存在 $\\\\not\\\\Rightarrow$ 连续。\n**高阶偏导数**：$f_{xy}=\\\\frac{\\\\partial^2 f}{\\\\partial y\\\\partial x}$（先对 $x$，再对 $y$）。\n**混合偏导数相等定理**：若 $f_{xy}$ 和 $f_{yx}$ 在 $(x_0,y_0)$ 处都连续，则 $f_{xy}(x_0,y_0)=f_{yx}(x_0,y_0)$。\n**应用：切平面与法线**：可微函数 $z=f(x,y)$ 在 $(x_0,y_0,z_0)$ 处的切平面方程：$z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$；法线方向向量 $(-f_x,-f_y,1)$。",
-      "textbookRefs": ["数学分析（第5版）下册 §17.1"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §17.1"
+      ],
       "keyDefinitions": [
         {
           "term": "全微分",
@@ -44,7 +46,10 @@
         "混淆偏导数存在（弱）和可微（强）：存在但不可微的函数有经典例子",
         "高阶混合偏导数：$f_{xy}$ 是先对 $x$ 后对 $y$（某些教材顺序相反），注意符号约定"
       ],
-      "exerciseIds": ["mvd-ex-001", "mvd-ex-002"],
+      "exerciseIds": [
+        "mvd-ex-001",
+        "mvd-ex-002"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能计算多元函数的偏导数和全微分",
@@ -62,7 +67,9 @@
         "能处理含隐函数的微分（直接法和公式法）"
       ],
       "coreExplanation": "**链式法则（基本形式）**：若 $z=f(u,v)$，$u=u(x,y)$，$v=v(x,y)$，则\n$$\\\\frac{\\\\partial z}{\\\\partial x}=\\\\frac{\\\\partial f}{\\\\partial u}\\\\frac{\\\\partial u}{\\\\partial x}+\\\\frac{\\\\partial f}{\\\\partial v}\\\\frac{\\\\partial v}{\\\\partial x},\\\\quad\\\\frac{\\\\partial z}{\\\\partial y}=\\\\frac{\\\\partial f}{\\\\partial u}\\\\frac{\\\\partial u}{\\\\partial y}+\\\\frac{\\\\partial f}{\\\\partial v}\\\\frac{\\\\partial v}{\\\\partial y}.$$\n**全导数**：若 $z=f(x,y(x))$，则 $\\\\frac{\\\\mathrm{d}z}{\\\\mathrm{d}x}=f_x+f_y\\\\frac{\\\\mathrm{d}y}{\\\\mathrm{d}x}$。\n**全微分形式不变性**：无论 $x,y$ 是自变量还是中间变量，$\\\\mathrm{d}f=f_x\\,\\\\mathrm{d}x+f_y\\,\\\\mathrm{d}y$ 形式不变（与一元相同）。\n**隐函数微分（直接法）**：$F(x,y)=0$ 两边对 $x$ 求导，$F_x+F_y\\\\frac{\\\\mathrm{d}y}{\\\\mathrm{d}x}=0$，得 $\\\\mathrm{d}y/\\\\mathrm{d}x=-F_x/F_y$（$F_y\\\\neq 0$）。二元 $F(x,y,z)=0$：$\\\\partial z/\\\\partial x=-F_x/F_z$，$\\\\partial z/\\\\partial y=-F_y/F_z$。\n**常用变量变换**：极坐标 $x=r\\\\cos\\\\theta,y=r\\\\sin\\\\theta$ 时，利用链式法则得 $\\\\partial/\\\\partial r$ 和 $\\\\partial/\\\\partial\\\\theta$ 的表达式。",
-      "textbookRefs": ["数学分析（第5版）下册 §17.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §17.2"
+      ],
       "keyDefinitions": [
         {
           "term": "全微分形式不变性",
@@ -82,7 +89,10 @@
         "链式法则中遗漏某个中间变量的贡献（尤其是 $z=f(u,v,x)$ 有直接依赖 $x$ 项）",
         "隐函数公式 $\\\\partial z/\\\\partial x=-F_x/F_z$：注意是 $-F_x/F_z$（有负号），$F_z\\\\neq 0$"
       ],
-      "exerciseIds": ["mvd-ex-003", "mvd-ex-004"],
+      "exerciseIds": [
+        "mvd-ex-003",
+        "mvd-ex-004"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能对各种复合结构用链式法则求偏导数",
@@ -100,7 +110,9 @@
         "理解梯度方向是函数增长最快的方向"
       ],
       "coreExplanation": "**方向导数**：$f$ 在 $(x_0,y_0)$ 沿方向 $\\\\boldsymbol{l}=(\\\\cos\\\\alpha,\\\\cos\\\\beta)$（单位向量）的方向导数：\n$$\\\\frac{\\\\partial f}{\\\\partial\\\\boldsymbol{l}}=\\\\lim_{t\\\\to 0^+}\\\\frac{f(x_0+t\\\\cos\\\\alpha,y_0+t\\\\cos\\\\beta)-f(x_0,y_0)}{t}.$$\n若 $f$ 在 $(x_0,y_0)$ 可微，则 $\\\\frac{\\\\partial f}{\\\\partial\\\\boldsymbol{l}}=f_x\\\\cos\\\\alpha+f_y\\\\cos\\\\beta$（与方向余弦的内积）。\n**梯度**：$\\\\nabla f=\\\\mathrm{grad}\\\\,f=(f_x,f_y)$（向量）。方向导数 $\\\\partial f/\\\\partial\\\\boldsymbol{l}=\\\\nabla f\\\\cdot\\\\boldsymbol{l}=|\\\\nabla f|\\\\cos\\\\varphi$（$\\\\varphi$ 是 $\\\\boldsymbol{l}$ 与梯度的夹角）。\n**梯度的几何意义**：\n- $\\\\varphi=0$（沿梯度方向）时方向导数最大，等于 $|\\\\nabla f|$。\n- $\\\\varphi=\\\\pi$（逆梯度）时方向导数最小（最负）。\n- $\\\\varphi=\\\\pi/2$（垂直梯度）时方向导数为零（沿等值线方向）。\n梯度方向垂直于等值线（曲面 $f=c$ 的切线），指向函数值增大方向。\n**$n$ 元推广**：$\\\\nabla f=(f_{x_1},\\\\ldots,f_{x_n})$，方向余弦 $(\\\\cos\\\\alpha_1,\\\\ldots,\\\\cos\\\\alpha_n)$（$\\\\sum\\\\cos^2\\\\alpha_i=1$）。",
-      "textbookRefs": ["数学分析（第5版）下册 §17.3"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §17.3"
+      ],
       "keyDefinitions": [
         {
           "term": "梯度",
@@ -126,8 +138,13 @@
         "方向导数公式要求 $\\\\boldsymbol{l}$ 为**单位**向量；若给的方向向量不是单位向量，需先规范化",
         "方向导数不一定等于偏导数——偏导数是沿坐标轴方向的特殊情形"
       ],
-      "exerciseIds": ["mvd-ex-005", "mvd-ex-006"],
-      "diagramIds": ["gradient-diagram"],
+      "exerciseIds": [
+        "mvd-ex-005",
+        "mvd-ex-006"
+      ],
+      "diagramIds": [
+        "gradient-diagram"
+      ],
       "masteryCriteria": [
         "能计算给定点处沿任意方向的方向导数",
         "能求函数的梯度并确定最大增长方向"
@@ -144,7 +161,9 @@
         "能求二元函数的极值"
       ],
       "coreExplanation": "**二元函数 Taylor 公式（二阶）**：$f(x_0+h,y_0+k)=f(x_0,y_0)+(f_xh+f_yk)+\\\\frac{1}{2}(f_{xx}h^2+2f_{xy}hk+f_{yy}k^2)+O(r^3)$（$r=\\\\sqrt{h^2+k^2}$）。\n**极值的必要条件**：若 $(x_0,y_0)$ 是极值点，则 $f_x(x_0,y_0)=0$，$f_y(x_0,y_0)=0$（驻点）。\n**极值的充分条件**：设 $(x_0,y_0)$ 是驻点，令 $A=f_{xx}$，$B=f_{xy}$，$C=f_{yy}$（均在 $(x_0,y_0)$ 处），$\\\\Delta=B^2-AC$：\n- $\\\\Delta<0$，$A<0$：极大值。\n- $\\\\Delta<0$，$A>0$：极小值。\n- $\\\\Delta>0$：鞍点（非极值）。\n- $\\\\Delta=0$：无法判断，需进一步分析。\n**Hessian 矩阵**：$H=\\\\begin{pmatrix}f_{xx}&f_{xy}\\\\\\\\f_{yx}&f_{yy}\\\\end{pmatrix}$，判别式 $\\\\Delta=f_{xy}^2-f_{xx}f_{yy}=-\\\\det H$。$\\\\det H>0$ 时二次型不定（鞍点）；$\\\\det H<0$ 时正定（极小）或负定（极大）。",
-      "textbookRefs": ["数学分析（第5版）下册 §17.4"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §17.4"
+      ],
       "keyDefinitions": [
         {
           "term": "驻点",
@@ -174,12 +193,16 @@
         "充分条件中 $\\\\Delta=B^2-AC$（不是 $AC-B^2$）；$\\\\Delta<0$ 时有极值",
         "驻点 $\\\\neq$ 极值点：鞍点也是驻点，需通过 $\\\\Delta$ 进一步判断"
       ],
-      "exerciseIds": ["mvd-ex-007", "mvd-ex-008"],
+      "exerciseIds": [
+        "mvd-ex-007",
+        "mvd-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能求二元函数的驻点并用判别式确定极值类型",
         "能区分极值点和鞍点"
       ]
     }
-  ]
+  ],
+  "overview": "引入偏导数与全微分，以链式法则处理复合微分，引进方向导数与梯度，建立多元 Taylor 公式与无约束极值的充要条件。"
 }

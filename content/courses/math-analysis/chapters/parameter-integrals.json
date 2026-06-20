@@ -14,7 +14,9 @@
         "掌握含参量积分的变限情形（上下限也依赖参数）"
       ],
       "coreExplanation": "**含参量正常积分**：$I(\\\\alpha)=\\\\int_a^b f(x,\\\\alpha)\\,\\\\mathrm{d}x$（$\\\\alpha$ 为参数，$a,b$ 固定）。\n**连续性**：若 $f(x,\\\\alpha)$ 在 $[a,b]\\\\times[\\\\alpha_1,\\\\alpha_2]$ 上连续，则 $I(\\\\alpha)$ 在 $[\\\\alpha_1,\\\\alpha_2]$ 上连续（可将 $\\\\lim$ 移入积分）。\n**可微性（Leibniz 积分法则）**：若 $f,f_\\\\alpha$ 在 $[a,b]\\\\times[\\\\alpha_1,\\\\alpha_2]$ 上连续，则 $I(\\\\alpha)$ 可微且\n$$I'(\\\\alpha)=\\\\int_a^b f_\\\\alpha(x,\\\\alpha)\\,\\\\mathrm{d}x.$$\n（积分号下求导：直接对参数 $\\\\alpha$ 求导移入积分。）\n**可积性**：$I(\\\\alpha)$ 在 $[\\\\alpha_1,\\\\alpha_2]$ 上可积，且可交换积分顺序：$\\\\int_{\\\\alpha_1}^{\\\\alpha_2}I(\\\\alpha)\\,\\\\mathrm{d}\\\\alpha=\\\\int_a^b\\,\\\\mathrm{d}x\\\\int_{\\\\alpha_1}^{\\\\alpha_2}f(x,\\\\alpha)\\,\\\\mathrm{d}\\\\alpha$（Fubini 定理，正常积分情形）。\n**变上限情形**：$I(\\\\alpha)=\\\\int_a^{\\\\varphi(\\\\alpha)}f(x,\\\\alpha)\\,\\\\mathrm{d}x$，则 $I'(\\\\alpha)=f(\\\\varphi(\\\\alpha),\\\\alpha)\\\\varphi'(\\\\alpha)+\\\\int_a^{\\\\varphi(\\\\alpha)}f_\\\\alpha(x,\\\\alpha)\\,\\\\mathrm{d}x$。",
-      "textbookRefs": ["数学分析（第5版）下册 §19.1"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §19.1"
+      ],
       "keyDefinitions": [
         {
           "term": "Leibniz 积分法则",
@@ -34,7 +36,10 @@
         "Leibniz 法则要求 $f_\\\\alpha$ 连续才能积分号下求导；若不连续需先验证",
         "变上限 $\\\\varphi(\\\\alpha)$ 时有额外项 $f(\\\\varphi(\\\\alpha),\\\\alpha)\\\\cdot\\\\varphi'(\\\\alpha)$（端点贡献）"
       ],
-      "exerciseIds": ["pi-ex-001", "pi-ex-002"],
+      "exerciseIds": [
+        "pi-ex-001",
+        "pi-ex-002"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能对含参量正常积分在积分号下求导",
@@ -52,7 +57,9 @@
         "掌握 Weierstrass M-检验、Dirichlet/Abel 判别法"
       ],
       "coreExplanation": "**含参量反常积分**：$I(\\\\alpha)=\\\\int_a^{+\\\\infty}f(x,\\\\alpha)\\,\\\\mathrm{d}x$（上限为无穷大，或被积函数有奇点）。\n**一致收敛定义**：$I(\\\\alpha)$ 在 $[\\\\alpha_1,\\\\alpha_2]$ 上**一致收敛** $\\\\iff$ $\\\\forall\\\\varepsilon>0,\\\\,\\\\exists A_0$，当 $A>A_0$ 时，对所有 $\\\\alpha\\\\in[\\\\alpha_1,\\\\alpha_2]$ 均有 $\\\\left|\\\\int_A^{+\\\\infty}f(x,\\\\alpha)\\,\\\\mathrm{d}x\\\\right|<\\\\varepsilon$（尾部对参数一致小）。\n**判别法**：\n- **Weierstrass M-检验**：若 $|f(x,\\\\alpha)|\\\\leq M(x)$ 且 $\\\\int_a^{+\\\\infty}M(x)\\,\\\\mathrm{d}x<\\\\infty$，则一致收敛（绝对且一致）。\n- **Dirichlet 判别法**：若 $F(x,\\\\alpha)=\\\\int_a^x f(t,\\\\alpha)\\,\\\\mathrm{d}t$ 一致有界，$g(x,\\\\alpha)$ 对 $x$ 单调趋零且一致，则 $\\\\int f\\\\cdot g$ 一致收敛。\n- **Abel 判别法**：若 $\\\\int f(x,\\\\alpha)$ 一致收敛，$g(x,\\\\alpha)$ 对 $x$ 单调且关于 $\\\\alpha$ 一致有界，则 $\\\\int f\\\\cdot g$ 一致收敛。\n**一致收敛的性质**：\n- **连续性**：若 $f(x,\\\\alpha)$ 连续且 $I(\\\\alpha)$ 一致收敛，则 $I(\\\\alpha)$ 连续。\n- **可微性**：若 $f_\\\\alpha$ 连续且 $\\\\int f_\\\\alpha$ 一致收敛，则 $I'(\\\\alpha)=\\\\int f_\\\\alpha\\,\\\\mathrm{d}x$（积分号下求导）。\n- **可积性**：一致收敛时可交换积分顺序。",
-      "textbookRefs": ["数学分析（第5版）下册 §19.2"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §19.2"
+      ],
       "keyDefinitions": [
         {
           "term": "含参量反常积分一致收敛",
@@ -76,7 +83,10 @@
         "非一致收敛时积分号下求导可能失效，要先验证一致收敛",
         "Dirichlet 判别法要求 $g\\\\to 0$ 且单调——两个条件缺一不可"
       ],
-      "exerciseIds": ["pi-ex-003", "pi-ex-004"],
+      "exerciseIds": [
+        "pi-ex-003",
+        "pi-ex-004"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能用 Weierstrass M-检验判断含参量反常积分的一致收敛性",
@@ -94,7 +104,9 @@
         "能用欧拉积分计算实际积分"
       ],
       "coreExplanation": "**Γ 函数**：$\\\\Gamma(s)=\\\\int_0^{+\\\\infty}x^{s-1}e^{-x}\\,\\\\mathrm{d}x$（$s>0$）。\n主要性质：$\\\\Gamma(s+1)=s\\\\Gamma(s)$，$\\\\Gamma(1)=1$，$\\\\Gamma(n+1)=n!$，$\\\\Gamma(1/2)=\\\\sqrt{\\\\pi}$。\n\n**B 函数**：$B(p,q)=\\\\int_0^1 t^{p-1}(1-t)^{q-1}\\,\\\\mathrm{d}t$（$p,q>0$）。\n对称性：$B(p,q)=B(q,p)$。等价表示：$B(p,q)=\\\\int_0^{+\\\\infty}\\\\frac{u^{p-1}}{(1+u)^{p+q}}\\,\\\\mathrm{d}u$（令 $t=u/(1+u)$）。\n\n**核心关系式**：$B(p,q)=\\\\dfrac{\\\\Gamma(p)\\\\Gamma(q)}{\\\\Gamma(p+q)}$。\n\n**应用**：\n- $\\\\int_0^{\\\\pi/2}\\\\sin^{2m-1}\\\\theta\\\\cos^{2n-1}\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{1}{2}B(m,n)=\\\\frac{\\\\Gamma(m)\\\\Gamma(n)}{2\\\\Gamma(m+n)}$。\n- Wallis 公式 $\\\\int_0^{\\\\pi/2}\\\\sin^n\\\\theta\\,\\\\mathrm{d}\\\\theta=\\\\frac{\\\\sqrt{\\\\pi}}{2}\\\\cdot\\\\frac{\\\\Gamma((n+1)/2)}{\\\\Gamma(n/2+1)}$。\n- 高斯积分 $\\\\int_0^{+\\\\infty}e^{-x^2}\\,\\\\mathrm{d}x=\\\\frac{1}{2}\\\\Gamma(1/2)=\\\\frac{\\\\sqrt{\\\\pi}}{2}$（令 $x^2=t$）。",
-      "textbookRefs": ["数学分析（第5版）下册 §19.3"],
+      "textbookRefs": [
+        "数学分析（第5版）下册 §19.3"
+      ],
       "keyDefinitions": [
         {
           "term": "B 函数（Beta 函数）",
@@ -124,12 +136,18 @@
         "$B(p,q)$ 中 $p,q>0$，指数 $p-1,q-1$ 可以为负（但需积分收敛，即 $p,q>0$）",
         "$\\\\Gamma(s+1)=s!$ 仅对正整数 $s$ 成立；非整数 $s$ 时 $\\\\Gamma(s)$ 是阶乘的推广"
       ],
-      "exerciseIds": ["pi-ex-005", "pi-ex-006", "pi-ex-007", "pi-ex-008"],
+      "exerciseIds": [
+        "pi-ex-005",
+        "pi-ex-006",
+        "pi-ex-007",
+        "pi-ex-008"
+      ],
       "diagramIds": [],
       "masteryCriteria": [
         "能将积分化为 B 函数或 Γ 函数的标准形式并计算",
         "能利用 B-Γ 关系式和递推公式 $\\\\Gamma(s+1)=s\\\\Gamma(s)$ 化简"
       ]
     }
-  ]
+  ],
+  "overview": "研究含参量正常积分的连续性与可微性（积分号下求导），推广到含参量反常积分的一致收敛判别，深入研究 Euler 积分。"
 }

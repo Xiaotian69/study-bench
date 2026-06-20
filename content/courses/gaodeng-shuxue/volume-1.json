@@ -1,0 +1,72 @@
+{
+  "id": "gaodeng-shuxue-volume-1",
+  "courseId": "gaodeng-shuxue",
+  "title": "高等数学 上册",
+  "statusLegend": {
+    "planned": "已列入目录，尚未整理内容",
+    "sample-ready": "样板章节，已整理为可学习的结构化内容",
+    "draft": "正在整理，内容不完整"
+  },
+  "chapters": [
+    {
+      "id": "ch-gd-function-limit",
+      "number": 1,
+      "title": "函数、极限与连续",
+      "status": "draft",
+      "chapterFile": "chapters/gd-function-limit.json",
+      "exercisesFile": "exercises/gd-function-limit.json",
+      "diagramFile": "diagrams/gd-function-limit.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-derivative",
+      "number": 2,
+      "title": "导数与微分",
+      "status": "draft",
+      "chapterFile": "chapters/gd-derivative.json",
+      "exercisesFile": "exercises/gd-derivative.json",
+      "diagramFile": "diagrams/gd-derivative.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-mean-value",
+      "number": 3,
+      "title": "微分中值定理与导数应用",
+      "status": "draft",
+      "chapterFile": "chapters/gd-mean-value.json",
+      "exercisesFile": "exercises/gd-mean-value.json",
+      "diagramFile": "diagrams/gd-mean-value.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-indefinite-integral",
+      "number": 4,
+      "title": "不定积分",
+      "status": "draft",
+      "chapterFile": "chapters/gd-indefinite-integral.json",
+      "exercisesFile": "exercises/gd-indefinite-integral.json",
+      "diagramFile": "diagrams/gd-indefinite-integral.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-definite-integral",
+      "number": 5,
+      "title": "定积分及其应用",
+      "status": "draft",
+      "chapterFile": "chapters/gd-definite-integral.json",
+      "exercisesFile": "exercises/gd-definite-integral.json",
+      "diagramFile": "diagrams/gd-definite-integral.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-ode",
+      "number": 6,
+      "title": "微分方程",
+      "status": "draft",
+      "chapterFile": "chapters/gd-ode.json",
+      "exercisesFile": "exercises/gd-ode.json",
+      "diagramFile": "diagrams/gd-ode.json",
+      "sections": []
+    }
+  ]
+}

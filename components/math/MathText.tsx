@@ -13,6 +13,15 @@ function renderLatex(latex: string, displayMode: boolean) {
   });
 }
 
+function parseMarkdownLine(line: string, key: string): ReactNode[] {
+  const parts = line.split(/(\*\*[^*\n]+\*\*|\*[^*\n]+\*)/g);
+  return parts.map((p, i) => {
+    if (p.startsWith("**") && p.endsWith("**")) return <strong key={`${key}-s${i}`}>{p.slice(2, -2)}</strong>;
+    if (p.startsWith("*") && p.endsWith("*")) return <em key={`${key}-e${i}`}>{p.slice(1, -1)}</em>;
+    return p;
+  });
+}
+
 function renderInlineParts(text: string, keyPrefix: string): ReactNode[] {
   const parts = text.split(/(\$\$[\s\S]+?\$\$|\$[^$\n]+\$)/g).filter((p) => p.length > 0);
   return parts.map((part, index) => {
@@ -30,7 +39,7 @@ function renderInlineParts(text: string, keyPrefix: string): ReactNode[] {
     return (
       <span key={`${keyPrefix}-${index}`}>
         {part.split("\n").flatMap((line, li, arr) => {
-          const nodes: ReactNode[] = [line];
+          const nodes: ReactNode[] = parseMarkdownLine(line, `${keyPrefix}-${index}-l${li}`);
           if (li < arr.length - 1) nodes.push(<br key={`${keyPrefix}-${index}-br-${li}`} />);
           return nodes;
         })}
@@ -47,12 +56,12 @@ export function MathText({ className, text }: { className?: string; text: string
   }
 
   return (
-    <span className={className}>
+    <div className={className}>
       {paragraphs.map((para, i) => (
         <p key={i}>
           {renderInlineParts(para.trim(), `p${i}`)}
         </p>
       ))}
-    </span>
+    </div>
   );
 }

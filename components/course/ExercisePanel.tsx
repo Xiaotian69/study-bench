@@ -33,13 +33,14 @@ function difficultyClass(d: string) {
   return d === "basic" ? "basic" : d === "medium" ? "medium" : "advanced";
 }
 
-function previewText(text: string, max = 72): string {
-  const stripped = text
-    .replace(/\$\$[\s\S]*?\$\$/g, "[式]")
-    .replace(/\$[^$\n]+\$/g, "[式]")
+function cardLabel(exercise: Exercise): string {
+  if (exercise.title) return exercise.title;
+  const stripped = exercise.prompt
+    .replace(/\$\$[\s\S]*?\$\$/g, "")
+    .replace(/\$[^$\n]+\$/g, "")
     .replace(/\n+/g, " ")
     .trim();
-  return stripped.length > max ? stripped.slice(0, max) + "…" : stripped;
+  return stripped.slice(0, 64) + (stripped.length > 64 ? "…" : "");
 }
 
 export function ExercisePanel({
@@ -66,6 +67,7 @@ export function ExercisePanel({
   const [gradeResult, setGradeResult] = useState<TutorGradeResponse | null>(null);
   const [masteryState, setMasteryState] = useState<MasteryState>("not_started");
   const attachmentsRef = useRef<AnswerImage[]>([]);
+  const rubricRef = useRef<HTMLDetailsElement>(null);
   const activeExercise = selectedIndex != null ? exercises[selectedIndex] : undefined;
 
   const visibleHints = useMemo(() => {
@@ -76,6 +78,13 @@ export function ExercisePanel({
   useEffect(() => {
     attachmentsRef.current = attachments;
   }, [attachments]);
+
+  useEffect(() => {
+    setSelectedIndex(exercises.length > 0 ? 0 : null);
+    resetAnswerState();
+    // Reset when the learning context changes; resetAnswerState is a local helper.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [knowledgePoint.id, exercises.length]);
 
   useEffect(() => {
     const progress = loadCourseProgress(courseId, volumeId);
@@ -193,7 +202,7 @@ export function ExercisePanel({
           <p className="eyebrow">练习</p>
           <strong className="exercise-count">{exercises.length > 0 ? `${exercises.length} 题` : "暂无练习"}</strong>
         </div>
-        <span className={`mastery-summary ${masteryState}`}>{getMasteryLabel(masteryState)}</span>
+        <span className={`mastery-summary ${masteryState}`}>当前掌握状态 · {getMasteryLabel(masteryState)}</span>
       </div>
 
       {exercises.length === 0 ? (
@@ -212,21 +221,28 @@ export function ExercisePanel({
             >
               <span className="exercise-card-num">{index + 1}</span>
               <div className="exercise-card-meta">
+                <p className="exercise-card-title">{cardLabel(exercise)}</p>
                 <span className={`difficulty-pill ${difficultyClass(exercise.difficulty)}`}>
                   {difficultyLabel(exercise.difficulty)}
                 </span>
-                <p className="exercise-card-preview">{previewText(exercise.prompt)}</p>
               </div>
             </button>
           ))}
         </div>
       )}
 
-      {activeExercise && (
+      {activeExercise && selectedIndex != null && (
         <div className="exercise-workspace">
-          <h3>
-            <MathText text={activeExercise.prompt} />
-          </h3>
+          <p className="exercise-num-label">第 {selectedIndex + 1} 题 · 共 {exercises.length} 题</p>
+          <div className="problem-statement">
+            {activeExercise.title && (
+              <p className="problem-title">{activeExercise.title}</p>
+            )}
+            <div className="problem-body">
+              <MathText text={activeExercise.prompt} />
+            </div>
+          </div>
+          <p className="answer-label">解答</p>
           <textarea
             aria-label="输入你的解答"
             onChange={(event) => setAnswer(event.target.value)}
@@ -266,13 +282,18 @@ export function ExercisePanel({
             </div>
           )}
           <div className="exercise-actions">
-            <button onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))} type="button">
-              获取提示
+            <span className="exercise-action-label">当前题操作</span>
+            <button
+              disabled={hintLevel >= activeExercise.hints.length}
+              onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))}
+              type="button"
+            >
+              {hintLevel === 0 ? "获取提示" : hintLevel < activeExercise.hints.length ? `再来一个提示 (${hintLevel}/${activeExercise.hints.length})` : `已显示全部提示`}
             </button>
-            <button disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
-              {gradingStatus === "submitting" ? "批改中..." : "提交给 AI 批改"}
+            <button className="is-primary" disabled={gradingStatus === "submitting"} onClick={submitForAiGrading} type="button">
+              {gradingStatus === "submitting" ? "批改中…" : "提交给 AI 批改"}
             </button>
-            <button type="button">对照评分要点</button>
+            <button onClick={() => { if (rubricRef.current) { rubricRef.current.open = true; rubricRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" }); } }} type="button">对照评分要点</button>
           </div>
           {gradingError && <p className="grading-error">{gradingError}</p>}
           {gradeResult && (
@@ -281,9 +302,9 @@ export function ExercisePanel({
                 <strong>AI 批改结果</strong>
                 <span>{gradeResult.score} 分</span>
               </div>
-              <p>
+              <div className="grade-feedback">
                 <MathText text={gradeResult.feedback} />
-              </p>
+              </div>
               {gradeResult.missingKeyPoints.length > 0 && (
                 <div>
                   <strong>还缺这些要点</strong>
@@ -307,7 +328,7 @@ export function ExercisePanel({
               ))}
             </ul>
           )}
-          <details>
+          <details ref={rubricRef}>
             <summary>评分要点</summary>
             <ul>
               {activeExercise.gradingRubric.map((item) => (

@@ -1,0 +1,14 @@
+{
+  "id": "gaodeng-shuxue",
+  "title": "高等数学",
+  "subtitle": "按同济第八版教材顺序学习概念、方法与习题",
+  "audience": "大学工科高等数学学习者",
+  "defaultVolumeId": "gaodeng-shuxue-volume-1",
+  "volumes": ["gaodeng-shuxue-volume-1", "gaodeng-shuxue-volume-2"],
+  "textbook": {
+    "title": "高等数学（第八版）上下册",
+    "note": "本课程依据同济版教材结构整理，原始 PDF 不进入仓库，前台仅展示整理后的课程结构、讲义与训练。"
+  },
+  "schemaVersion": 1,
+  "status": "draft"
+}

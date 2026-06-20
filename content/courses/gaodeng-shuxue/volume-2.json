@@ -1,0 +1,62 @@
+{
+  "id": "gaodeng-shuxue-volume-2",
+  "courseId": "gaodeng-shuxue",
+  "title": "高等数学 下册",
+  "statusLegend": {
+    "planned": "已列入目录，尚未整理内容",
+    "sample-ready": "样板章节，已整理为可学习的结构化内容",
+    "draft": "正在整理，内容不完整"
+  },
+  "chapters": [
+    {
+      "id": "ch-gd-vectors",
+      "number": 7,
+      "title": "向量代数与空间解析几何",
+      "status": "draft",
+      "chapterFile": "chapters/gd-vectors.json",
+      "exercisesFile": "exercises/gd-vectors.json",
+      "diagramFile": "diagrams/gd-vectors.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-multivariable-diff",
+      "number": 8,
+      "title": "多元函数微分法及其应用",
+      "status": "draft",
+      "chapterFile": "chapters/gd-multivariable-diff.json",
+      "exercisesFile": "exercises/gd-multivariable-diff.json",
+      "diagramFile": "diagrams/gd-multivariable-diff.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-multiple-integrals",
+      "number": 9,
+      "title": "重积分",
+      "status": "draft",
+      "chapterFile": "chapters/gd-multiple-integrals.json",
+      "exercisesFile": "exercises/gd-multiple-integrals.json",
+      "diagramFile": "diagrams/gd-multiple-integrals.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-line-surface",
+      "number": 10,
+      "title": "曲线积分与曲面积分",
+      "status": "draft",
+      "chapterFile": "chapters/gd-line-surface.json",
+      "exercisesFile": "exercises/gd-line-surface.json",
+      "diagramFile": "diagrams/gd-line-surface.json",
+      "sections": []
+    },
+    {
+      "id": "ch-gd-series",
+      "number": 11,
+      "title": "无穷级数",
+      "status": "draft",
+      "chapterFile": "chapters/gd-series.json",
+      "exercisesFile": "exercises/gd-series.json",
+      "diagramFile": "diagrams/gd-series.json",
+      "sections": []
+    }
+  ]
+}

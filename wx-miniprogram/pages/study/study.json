@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "知识点",
+  "usingComponents": {
+    "diagram-card": "/components/diagram-card/diagram-card",
+    "math-text": "/components/math-text/math-text"
+  }
+}
