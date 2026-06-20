@@ -5,7 +5,7 @@
       <view>
         <text class="hero-eyebrow">大学数学</text>
         <text class="hero-title">数学分析</text>
-        <text class="hero-subtitle">22 章 · 93 知识点 · 214 练习 · AI 批改</text>
+        <text class="hero-subtitle">{{stats.chapters}} 章 · {{stats.kps}} 知识点 · {{stats.diagrams}} 图示 · {{stats.exercises}} 练习 · AI 批改</text>
       </view>
       <view class="settings-btn" bindtap="goToSettings">
         <text class="settings-icon">⚙</text>

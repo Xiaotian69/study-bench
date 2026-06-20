@@ -18,6 +18,7 @@
   border-radius: 16rpx;
 }
 .kp-badge-ex { background: var(--accent-pale); color: var(--accent); }
+.kp-badge-diagram { background: #f6edd4; color: var(--gold); }
 .kp-badge-score { background: #e8f5e9; color: #2e7d32; }
 .kp-badge-score.ok { background: #fff9c4; color: #c17900; }
 
@@ -104,6 +105,10 @@
   background: var(--paper-page);
   border: 1rpx solid var(--rule);
   border-radius: var(--radius);
+}
+
+.diagram-section {
+  margin-bottom: 24rpx;
 }
 
 /* Collapsibles */

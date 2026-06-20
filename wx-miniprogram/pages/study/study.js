@@ -42,8 +42,22 @@ Page({
     this._load(chapterId, kpId);
   },
 
+  _normalizeKp(kp) {
+    return {
+      ...kp,
+      diagrams: Array.isArray(kp.diagrams) ? kp.diagrams : [],
+      exercises: Array.isArray(kp.exercises) ? kp.exercises : [],
+      learningGoals: Array.isArray(kp.learningGoals) ? kp.learningGoals : [],
+      socraticQuestions: Array.isArray(kp.socraticQuestions) ? kp.socraticQuestions : [],
+      commonMistakes: Array.isArray(kp.commonMistakes) ? kp.commonMistakes : [],
+    };
+  },
+
   _load(chapterId, kpId) {
-    const chapter = app.globalData.chapters[chapterId];
+    const rawChapter = app.globalData.chapters[chapterId];
+    const chapter = rawChapter
+      ? { ...rawChapter, knowledgePoints: rawChapter.knowledgePoints.map(kp => this._normalizeKp(kp)) }
+      : null;
     if (!chapter) { wx.showToast({ title: '章节不存在', icon: 'error' }); return; }
     const kpIndex = chapter.knowledgePoints.findIndex(k => k.id === kpId);
     if (kpIndex < 0) { wx.showToast({ title: '知识点不存在', icon: 'error' }); return; }
@@ -143,7 +157,8 @@ Page({
 
   // ── Exercises ────────────────────────────────────────────────
   selectExercise(e) {
-    const index = parseInt(e.currentTarget.dataset.index, 10);
+    const id = e.currentTarget.dataset.id;
+    const index = this.data.kp.exercises.findIndex(ex => ex.id === id);
     const ex = this.data.kp.exercises[index];
     if (!ex || index < 0) return;
     this.setData({

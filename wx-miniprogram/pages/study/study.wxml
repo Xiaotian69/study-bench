@@ -9,6 +9,7 @@
     <view class="kp-nav-center">
       <text class="kp-nav-pos">第 {{kpIndex + 1}} / {{totalKps}} 节</text>
       <view class="kp-nav-badges">
+        <text wx:if="{{kp.diagrams.length}}" class="kp-badge kp-badge-diagram">{{kp.diagrams.length}} 图</text>
         <text wx:if="{{kp.exercises.length}}" class="kp-badge kp-badge-ex">{{kp.exercises.length}} 题</text>
         <text wx:if="{{kpProgress.bestExScore != null}}" class="kp-badge kp-badge-score {{kpProgress.bestExScore >= 80 ? 'good' : 'ok'}}">
           {{kpProgress.bestExScore}} 分
@@ -53,6 +54,19 @@
     <!-- Core explanation -->
     <view class="explanation-block">
       <math-text text="{{kp.coreExplanation}}" size="normal" />
+    </view>
+
+    <!-- Teaching diagrams -->
+    <view class="diagram-section" wx:if="{{kp.diagrams.length}}">
+      <view class="section-header-row">
+        <text class="section-title">教学图示</text>
+        <text class="section-hint">{{kp.diagrams.length}} 张</text>
+      </view>
+      <diagram-card
+        wx:for="{{kp.diagrams}}"
+        wx:key="id"
+        diagram="{{item}}"
+      />
     </view>
 
     <!-- Socratic questions -->
@@ -144,6 +158,7 @@
         class="ex-card"
         bindtap="selectExercise"
         data-index="{{index}}"
+        data-id="{{item.id}}"
       >
         <view class="ex-card-left">
           <text class="ex-card-num">{{index + 1}}</text>

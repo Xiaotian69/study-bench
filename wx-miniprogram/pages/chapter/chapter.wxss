@@ -125,9 +125,10 @@
   overflow: hidden;
   display: block;
 }
-.kp-stats-row { display: flex; align-items: center; gap: 14rpx; }
+.kp-stats-row { display: flex; align-items: center; gap: 14rpx; flex-wrap: wrap; }
 .kp-ex-count { font-size: 22rpx; color: var(--accent); font-weight: 600; }
 .kp-ex-none { color: var(--ink-faint); }
+.kp-diagram-count { font-size: 22rpx; color: var(--gold); font-weight: 700; }
 .kp-score { font-size: 22rpx; font-weight: 700; }
 .kp-score.good { color: #2e7d32; }
 .kp-score.ok { color: #f57f17; }

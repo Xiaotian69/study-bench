@@ -54,6 +54,74 @@ function adaptExercise(ex) {
   };
 }
 
+const DIAGRAM_TYPE_LABELS = {
+  'number-line': '数轴图示',
+  'sequence-on-number-line': '数列数轴',
+  'two-panel-sequence-plot': '数列对比',
+  'subsequence-highlight': '子列图示',
+  'monotone-sequence-plot': '单调数列',
+  'bounded-strip': '有界性图示',
+  'cartesian-epsilon-delta': 'ε-δ 图示',
+  'function-plot-asymptote': '渐近线图示',
+  'piecewise-function-plot': '分段函数',
+  'multi-curve-plot': '函数曲线',
+  'function-plot': '函数曲线',
+  'area-under-curve': '面积图示',
+  'region-2d': '平面区域',
+  geometric: '几何图示',
+  table: '表格图示',
+};
+
+function getDiagramDisplayKind(type) {
+  if (type === 'table') return 'table';
+  if (type.includes('sequence') || type === 'bounded-strip' || type === 'subsequence-highlight') return 'sequence';
+  if (type === 'number-line') return 'number-line';
+  if (type.includes('function') || type.includes('curve') || type.includes('epsilon') || type.includes('asymptote')) return 'cartesian';
+  if (type === 'geometric' || type === 'region-2d') return 'geometric';
+  return 'concept';
+}
+
+function adaptDiagram(diagram) {
+  const type = diagram.type || 'concept';
+  return {
+    id: diagram.id,
+    title: diagram.title || '教学图示',
+    type,
+    typeLabel: DIAGRAM_TYPE_LABELS[type] || '教学图示',
+    displayKind: getDiagramDisplayKind(type),
+    description: diagram.description || '',
+    parameters: diagram.parameters || {},
+    renderHints: diagram.renderHints || {},
+    teacherNotes: Array.isArray(diagram.teacherNotes) ? diagram.teacherNotes : [],
+    studentPrompt: diagram.studentPrompt || '',
+    knowledgePointIds: Array.isArray(diagram.knowledgePointIds) ? diagram.knowledgePointIds : [],
+  };
+}
+
+function getDiagramsForKnowledgePoint(kp, allDiagrams) {
+  const explicitIds = Array.isArray(kp.diagramIds) ? kp.diagramIds : [];
+  const byId = new Map(allDiagrams.map(diagram => [diagram.id, diagram]));
+  const result = [];
+  const seen = new Set();
+
+  for (const id of explicitIds) {
+    const diagram = byId.get(id);
+    if (diagram && !seen.has(diagram.id)) {
+      result.push(diagram);
+      seen.add(diagram.id);
+    }
+  }
+
+  for (const diagram of allDiagrams) {
+    if (diagram.knowledgePointIds.includes(kp.id) && !seen.has(diagram.id)) {
+      result.push(diagram);
+      seen.add(diagram.id);
+    }
+  }
+
+  return result;
+}
+
 function buildData() {
   const output = { volumes: [], chapters: {} };
   const volumeFiles = ['volume-1.json', 'volume-2.json'];
@@ -93,6 +161,15 @@ function buildData() {
         ? exerciseData.exercises.map(adaptExercise)
         : [];
 
+      // Read teaching diagrams
+      const diagramFilePath = ch.diagramFile
+        ? path.join(CONTENT_BASE, ch.diagramFile)
+        : null;
+      const diagramData = diagramFilePath ? readJson(diagramFilePath) : null;
+      const allDiagrams = diagramData && Array.isArray(diagramData.diagrams)
+        ? diagramData.diagrams.map(adaptDiagram)
+        : [];
+
       // Build KP list
       let kps = [];
       if (chapterData && Array.isArray(chapterData.knowledgePoints)) {
@@ -109,6 +186,8 @@ function buildData() {
             coreExplanation: kp.coreExplanation || '',
             socraticQuestions: Array.isArray(kp.socraticQuestions) ? kp.socraticQuestions : [],
             commonMistakes: Array.isArray(kp.commonMistakes) ? kp.commonMistakes : [],
+            diagramIds: Array.isArray(kp.diagramIds) ? kp.diagramIds : [],
+            diagrams: getDiagramsForKnowledgePoint(kp, allDiagrams),
             exercises: kpExercises,
           };
         });
@@ -131,9 +210,10 @@ function buildData() {
       };
 
       const exCount = kps.reduce((s, k) => s + k.exercises.length, 0);
+      const diagramCount = kps.reduce((s, k) => s + k.diagrams.length, 0);
       console.log(
         '  ch' + ch.number + ' ' + ch.title +
-        ' — ' + kps.length + ' KPs, ' + exCount + ' exercises'
+        ' — ' + kps.length + ' KPs, ' + exCount + ' exercises, ' + diagramCount + ' diagrams'
       );
     }
 

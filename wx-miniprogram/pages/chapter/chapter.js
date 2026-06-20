@@ -32,15 +32,18 @@ Page({
         studied: !!prog.studied,
         bestScore: prog.bestExScore != null ? prog.bestExScore : null,
         exercisesAttempted: prog.exercisesAttempted || 0,
+        diagrams: Array.isArray(kp.diagrams) ? kp.diagrams : [],
       };
     });
     const studiedCount = kps.filter(k => k.studied).length;
     const total = kps.length;
+    const diagramCount = kps.reduce((sum, kp) => sum + kp.diagrams.length, 0);
     const progressPct = total > 0 ? Math.round(studiedCount / total * 100) : 0;
     return {
       ...chapter,
       knowledgePoints: kps,
       studiedCount,
+      diagramCount,
       progressPct,
       isComplete: studiedCount === total && total > 0,
     };

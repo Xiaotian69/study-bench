@@ -11,6 +11,7 @@ Page({
   data: {
     volumes: [],
     recentKp: null,   // { chapterId, kpId, chapterTitle, kpTitle, chapterNum }
+    stats: { chapters: 0, kps: 0, diagrams: 0, exercises: 0 },
     loading: true,
   },
   onLoad() {
@@ -61,7 +62,16 @@ Page({
       }),
     }));
 
-    this.setData({ volumes: enriched, recentKp, loading: false });
+    const stats = Object.values(chapters).reduce((acc, ch) => {
+      const kps = ch.knowledgePoints || [];
+      acc.chapters += 1;
+      acc.kps += kps.length;
+      acc.diagrams += kps.reduce((sum, kp) => sum + ((kp.diagrams || []).length), 0);
+      acc.exercises += kps.reduce((sum, kp) => sum + ((kp.exercises || []).length), 0);
+      return acc;
+    }, { chapters: 0, kps: 0, diagrams: 0, exercises: 0 });
+
+    this.setData({ volumes: enriched, recentKp, stats, loading: false });
   },
   goToChapter(e) {
     wx.navigateTo({ url: '/pages/chapter/chapter?chapterId=' + e.currentTarget.dataset.id });

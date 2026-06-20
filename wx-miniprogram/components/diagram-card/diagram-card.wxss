@@ -1,0 +1,264 @@
+.diagram-card {
+  background: var(--paper-page);
+  border: 1rpx solid var(--rule);
+  border-left: 4rpx solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.diagram-head {
+  padding: 24rpx 28rpx 14rpx;
+}
+
+.diagram-type {
+  display: block;
+  font-size: 20rpx;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6rpx;
+}
+
+.diagram-title {
+  display: block;
+  color: var(--ink);
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.diagram-visual {
+  position: relative;
+  min-height: 220rpx;
+  margin: 0 28rpx 20rpx;
+  background: #f3ecdd;
+  border: 1rpx solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.number-line-wrap,
+.sequence-wrap,
+.cartesian-wrap,
+.concept-wrap {
+  position: relative;
+  width: 100%;
+  height: 220rpx;
+}
+
+.number-axis {
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+  top: 106rpx;
+  height: 2rpx;
+  background: var(--ink-soft);
+}
+
+.number-interval {
+  position: absolute;
+  top: 88rpx;
+  height: 38rpx;
+  background: rgba(138, 43, 43, 0.14);
+  border: 1rpx solid rgba(138, 43, 43, 0.28);
+}
+
+.number-marker {
+  position: absolute;
+  top: 70rpx;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.number-tick {
+  width: 2rpx;
+  height: 62rpx;
+  margin: 0 auto 6rpx;
+  background: var(--ink-soft);
+}
+
+.number-marker.limit .number-tick { background: var(--accent); }
+.number-marker.edge .number-tick { background: var(--gold); }
+.number-label { font-size: 22rpx; color: var(--ink-soft); }
+
+.plot-axis.x {
+  position: absolute;
+  left: 28rpx;
+  right: 24rpx;
+  bottom: 42rpx;
+  height: 2rpx;
+  background: var(--rule);
+}
+
+.plot-axis.y {
+  position: absolute;
+  left: 42rpx;
+  top: 24rpx;
+  bottom: 28rpx;
+  width: 2rpx;
+  background: var(--rule);
+}
+
+.sequence-dot {
+  position: absolute;
+  width: 34rpx;
+  height: 34rpx;
+  margin-left: -17rpx;
+  margin-top: -17rpx;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18rpx;
+  font-weight: 700;
+}
+
+.sequence-dot.outside { background: var(--gold); }
+.sequence-dot.selected { background: #2f6f68; }
+
+.epsilon-band {
+  position: absolute;
+  left: 44rpx;
+  right: 22rpx;
+  top: 74rpx;
+  height: 72rpx;
+  background: rgba(138, 43, 43, 0.10);
+  border-top: 1rpx dashed var(--accent);
+  border-bottom: 1rpx dashed var(--accent);
+}
+
+.curve-line {
+  position: absolute;
+  left: 46rpx;
+  right: 28rpx;
+  height: 54rpx;
+  border-top: 5rpx solid #2f6f68;
+  border-radius: 50%;
+  transform: rotate(-7deg);
+}
+
+.curve-line.one { top: 86rpx; }
+.curve-line.two {
+  top: 122rpx;
+  border-color: var(--gold);
+  opacity: 0.85;
+  transform: rotate(8deg);
+}
+
+.cartesian-tags {
+  position: absolute;
+  left: 58rpx;
+  right: 18rpx;
+  bottom: 12rpx;
+  display: flex;
+  gap: 8rpx;
+  flex-wrap: wrap;
+}
+
+.diagram-chip {
+  display: inline-flex;
+  padding: 3rpx 12rpx;
+  border-radius: 20rpx;
+  background: var(--accent-pale);
+  color: var(--accent);
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.diagram-chip.muted {
+  background: #efe7d6;
+  color: var(--ink-soft);
+}
+
+.diagram-table {
+  padding: 12rpx;
+}
+
+.diagram-table-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1rpx solid var(--rule);
+}
+
+.diagram-table-row text {
+  padding: 12rpx;
+  font-size: 22rpx;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.diagram-table-row.head {
+  background: var(--accent-pale);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.concept-rule {
+  position: absolute;
+  left: 46rpx;
+  right: 46rpx;
+  top: 96rpx;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+}
+
+.concept-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 120rpx;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 24rpx;
+}
+
+.diagram-desc,
+.diagram-prompt {
+  padding: 0 28rpx 20rpx;
+}
+
+.diagram-prompt {
+  border-top: 1rpx solid var(--rule);
+  padding-top: 18rpx;
+}
+
+.prompt-label {
+  display: block;
+  color: var(--accent);
+  font-size: 20rpx;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 8rpx;
+}
+
+.diagram-notes {
+  border-top: 1rpx solid var(--rule);
+}
+
+.diagram-notes-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 18rpx 28rpx;
+  color: var(--ink-soft);
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.diagram-notes-body {
+  padding: 0 28rpx 18rpx;
+}
+
+.diagram-note {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 10rpx;
+}
+
+.note-dot {
+  color: var(--gold);
+  flex-shrink: 0;
+}

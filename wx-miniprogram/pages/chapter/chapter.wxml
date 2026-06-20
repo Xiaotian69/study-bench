@@ -10,7 +10,7 @@
         <math-text text="{{chapter.overview}}" size="small" />
       </view>
       <view class="ch-progress-row">
-        <text class="ch-meta">{{chapter.knowledgePoints.length}} 个知识点</text>
+        <text class="ch-meta">{{chapter.knowledgePoints.length}} 个知识点 · {{chapter.diagramCount}} 张图示</text>
         <text wx:if="{{chapter.isComplete}}" class="ch-complete-badge">✓ 已完成</text>
         <text wx:elif="{{chapter.studiedCount > 0}}" class="ch-studied">
           {{chapter.studiedCount}}/{{chapter.knowledgePoints.length}} 已学
@@ -52,6 +52,7 @@
             <view class="kp-stats-row">
               <text wx:if="{{item.exercises.length}}" class="kp-ex-count">{{item.exercises.length}} 题</text>
               <text wx:else class="kp-ex-count kp-ex-none">暂无练习</text>
+              <text wx:if="{{item.diagrams.length}}" class="kp-diagram-count">{{item.diagrams.length}} 图</text>
               <text wx:if="{{item.bestScore != null}}" class="kp-score {{item.bestScore >= 80 ? 'good' : 'ok'}}">
                 最高 {{item.bestScore}} 分
               </text>

@@ -15,6 +15,7 @@
     "validate:vision-grading": "node scripts/validate-vision-grading.mjs",
     "validate:progress-state": "node scripts/validate-progress-state.mjs",
     "validate:mastery-state": "node scripts/validate-mastery-state.mjs",
+    "validate:wx-diagrams": "node scripts/build-wx-data.js && node scripts/validate-wx-diagrams.mjs",
     "validate:all": "node scripts/validate-all.mjs"
   },
   "dependencies": {
