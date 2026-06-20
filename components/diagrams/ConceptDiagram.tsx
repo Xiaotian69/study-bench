@@ -5,7 +5,7 @@ export function ConceptDiagram({ diagram }: { diagram: DiagramSpec }) {
   return (
     <figure className="diagram-card diagram-card--concept">
       <figcaption>
-        <strong>{diagram.title}</strong>
+        <strong><MathText text={diagram.title} /></strong>
         <MathText text={diagram.description} />
       </figcaption>
       <p className="diagram-prompt">

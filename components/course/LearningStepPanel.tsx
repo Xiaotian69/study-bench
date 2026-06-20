@@ -61,7 +61,7 @@ export function LearningStepPanel({
       </div>
 
       {diagrams.length > 0 && (
-        <CollapsibleSection title="教学图示">
+        <CollapsibleSection defaultOpen title="教学图示">
           <div className="diagram-grid">
             {diagrams.map((diagram) => (
               <DiagramRenderer diagram={diagram} key={diagram.id} />

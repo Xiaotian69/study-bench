@@ -80,6 +80,13 @@ export function ExercisePanel({
   }, [attachments]);
 
   useEffect(() => {
+    setSelectedIndex(exercises.length > 0 ? 0 : null);
+    resetAnswerState();
+    // Reset when the learning context changes; resetAnswerState is a local helper.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [knowledgePoint.id, exercises.length]);
+
+  useEffect(() => {
     const progress = loadCourseProgress(courseId, volumeId);
     const record = getKnowledgePointProgress(progress, knowledgePoint.id);
     setMasteryState(record?.masteryState ?? "not_started");
@@ -195,7 +202,7 @@ export function ExercisePanel({
           <p className="eyebrow">练习</p>
           <strong className="exercise-count">{exercises.length > 0 ? `${exercises.length} 题` : "暂无练习"}</strong>
         </div>
-        <span className={`mastery-summary ${masteryState}`}>{getMasteryLabel(masteryState)}</span>
+        <span className={`mastery-summary ${masteryState}`}>当前掌握状态 · {getMasteryLabel(masteryState)}</span>
       </div>
 
       {exercises.length === 0 ? (
@@ -275,6 +282,7 @@ export function ExercisePanel({
             </div>
           )}
           <div className="exercise-actions">
+            <span className="exercise-action-label">当前题操作</span>
             <button
               disabled={hintLevel >= activeExercise.hints.length}
               onClick={() => setHintLevel((value) => Math.min(value + 1, activeExercise.hints.length))}

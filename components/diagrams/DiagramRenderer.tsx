@@ -1,18 +1,44 @@
 import type { DiagramSpec } from "@/lib/course/types";
 import { ConceptDiagram } from "./ConceptDiagram";
 import { NumberLineDiagram } from "./NumberLineDiagram";
-import { SequencePlotDiagram } from "./SequencePlotDiagram";
+import { TableDiagram } from "./TableDiagram";
+import {
+  FunctionPlotDiagram,
+  EpsilonDeltaDiagram,
+  AsymptoteDiagram,
+  PiecewiseJumpDiagram,
+  Region2DDiagram,
+  GeometricDiagram,
+} from "./CartesianDiagrams";
+import {
+  SequenceOnNumberLine,
+  TwoPanelSequence,
+  BoundedStrip,
+  MonotoneSequence,
+  SubsequenceHighlight,
+} from "./SequenceDiagrams";
 
-const SEQUENCE_TYPES = new Set([
-  "sequence-on-number-line",
-  "two-panel-sequence-plot",
-  "bounded-strip",
-  "monotone-sequence-plot",
-  "subsequence-highlight",
-]);
+type Renderer = (props: { diagram: DiagramSpec }) => React.JSX.Element;
+
+const REGISTRY: Record<string, Renderer> = {
+  "number-line": NumberLineDiagram,
+  "cartesian-epsilon-delta": EpsilonDeltaDiagram,
+  "function-plot-asymptote": AsymptoteDiagram,
+  "piecewise-function-plot": PiecewiseJumpDiagram,
+  "multi-curve-plot": FunctionPlotDiagram,
+  "function-plot": FunctionPlotDiagram,
+  "area-under-curve": FunctionPlotDiagram,
+  "region-2d": Region2DDiagram,
+  "geometric": GeometricDiagram,
+  "sequence-on-number-line": SequenceOnNumberLine,
+  "two-panel-sequence-plot": TwoPanelSequence,
+  "bounded-strip": BoundedStrip,
+  "monotone-sequence-plot": MonotoneSequence,
+  "subsequence-highlight": SubsequenceHighlight,
+  "table": TableDiagram,
+};
 
 export function DiagramRenderer({ diagram }: { diagram: DiagramSpec }) {
-  if (diagram.type === "number-line") return <NumberLineDiagram diagram={diagram} />;
-  if (SEQUENCE_TYPES.has(diagram.type)) return <SequencePlotDiagram diagram={diagram} />;
-  return <ConceptDiagram diagram={diagram} />;
+  const Component = REGISTRY[diagram.type] ?? ConceptDiagram;
+  return <Component diagram={diagram} />;
 }

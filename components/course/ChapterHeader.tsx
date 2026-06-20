@@ -8,6 +8,9 @@ const statusLabel: Record<string, string> = {
 };
 
 export function ChapterHeader({ chapter }: { chapter: ChapterContent }) {
+  const diagramCount = new Set(chapter.knowledgePoints.flatMap((kp) => kp.diagramIds)).size;
+  const exerciseCount = new Set(chapter.knowledgePoints.flatMap((kp) => kp.exerciseIds)).size;
+
   return (
     <header className="chapter-header">
       <div className="chapter-header-meta">
@@ -16,9 +19,11 @@ export function ChapterHeader({ chapter }: { chapter: ChapterContent }) {
       </div>
       <h1 className="chapter-header-title">{chapter.title}</h1>
       {chapter.overview && <p className="chapter-header-overview"><MathText text={chapter.overview} /></p>}
-      <p className="chapter-header-kp-count">
-        {chapter.knowledgePoints.length} 个知识点
-      </p>
+      <div className="chapter-header-stats" aria-label="章节学习资源">
+        <span>{chapter.knowledgePoints.length} 个知识点</span>
+        {diagramCount > 0 && <span>{diagramCount} 张教学图示</span>}
+        {exerciseCount > 0 && <span>{exerciseCount} 道练习</span>}
+      </div>
     </header>
   );
 }

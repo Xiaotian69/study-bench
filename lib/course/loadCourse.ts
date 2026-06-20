@@ -1,10 +1,14 @@
-import course from "@/content/courses/math-analysis/course.json";
-import volume1 from "@/content/courses/math-analysis/volume-1.json";
-import volume2 from "@/content/courses/math-analysis/volume-2.json";
-import { chapterRegistry } from "./chapterRegistry";
+import { getRegisteredCourse, getVolumesForCourse } from "./courseRegistry";
 import type { ChapterContent, CourseBundle, DiagramSpec, Exercise, Volume, VolumeChapter } from "./types";
 
+const DEFAULT_COURSE_ID = "math-analysis";
 const DEFAULT_CHAPTER_ID = "ch-sequence-limit";
+const DEFAULT_GD_CHAPTER_ID = "ch-gd-function-limit";
+
+const DEFAULT_CHAPTER_BY_COURSE: Record<string, string> = {
+  "math-analysis": DEFAULT_CHAPTER_ID,
+  "gaodeng-shuxue": DEFAULT_GD_CHAPTER_ID,
+};
 
 function adaptChapter(raw: Record<string, unknown>, volumeChapter: VolumeChapter): ChapterContent {
   if ("id" in raw) {
@@ -52,30 +56,63 @@ function adaptDiagram(raw: unknown): DiagramSpec {
   } as unknown as DiagramSpec;
 }
 
-export function loadMathAnalysisCourse(chapterId?: string): CourseBundle {
-  const targetId = chapterId ?? DEFAULT_CHAPTER_ID;
+function findVolumeChapter(courseId: string, chapterId: string): { volume: Volume; volumeChapter: VolumeChapter } | undefined {
+  const registered = getRegisteredCourse(courseId);
+  if (!registered) return undefined;
 
-  const vol1Chapter = (volume1 as unknown as Volume).chapters.find((c) => c.id === targetId);
-  const vol2Chapter = (volume2 as unknown as Volume).chapters.find((c) => c.id === targetId);
-  const volumeChapter = vol1Chapter ?? vol2Chapter;
-  const volume = vol1Chapter ? (volume1 as unknown as Volume) : (volume2 as unknown as Volume);
+  for (const volume of registered.volumes) {
+    const volumeChapter = volume.chapters.find((c) => c.id === chapterId);
+    if (volumeChapter) {
+      return { volume, volumeChapter };
+    }
+  }
+  return undefined;
+}
 
-  if (!volumeChapter) {
-    return loadMathAnalysisCourse(DEFAULT_CHAPTER_ID);
+export function loadCourse(courseId: string = DEFAULT_COURSE_ID, chapterId?: string): CourseBundle {
+  const registered = getRegisteredCourse(courseId);
+  if (!registered) {
+    return loadCourse(DEFAULT_COURSE_ID, DEFAULT_CHAPTER_ID);
   }
 
-  const entry = chapterRegistry[targetId];
+  const fallbackChapterId = DEFAULT_CHAPTER_BY_COURSE[courseId];
+  const targetId = chapterId ?? fallbackChapterId;
+  if (!targetId) {
+    throw new Error(`chapterId is required for course ${courseId}`);
+  }
+
+  const located = findVolumeChapter(courseId, targetId);
+  if (!located) {
+    if (fallbackChapterId && targetId !== fallbackChapterId) {
+      return loadCourse(DEFAULT_COURSE_ID, fallbackChapterId);
+    }
+    throw new Error(`chapter ${targetId} not found in course ${courseId}`);
+  }
+
+  const { volume, volumeChapter } = located;
+  const entry = registered.chapterRegistry[targetId];
   if (!entry) {
-    return loadMathAnalysisCourse(DEFAULT_CHAPTER_ID);
+    if (fallbackChapterId && targetId !== fallbackChapterId) {
+      return loadCourse(DEFAULT_COURSE_ID, fallbackChapterId);
+    }
+    throw new Error(`chapter content not registered for ${targetId} in course ${courseId}`);
   }
 
   const chapter = adaptChapter(entry.chapter, volumeChapter);
   const exercises = (entry.exercises.exercises as unknown[]).map(adaptExercise);
   const diagrams = (entry.diagrams.diagrams as unknown[]).map(adaptDiagram);
 
-  return { course: course as CourseBundle["course"], volume, chapter, exercises, diagrams };
+  return { course: registered.course, volume, chapter, exercises, diagrams };
 }
 
-export function getAllVolumes(): Volume[] {
-  return [volume1 as unknown as Volume, volume2 as unknown as Volume];
+export function loadMathAnalysisCourse(chapterId?: string): CourseBundle {
+  return loadCourse(DEFAULT_COURSE_ID, chapterId ?? DEFAULT_CHAPTER_ID);
+}
+
+export function loadGaodengShuxueCourse(chapterId?: string): CourseBundle {
+  return loadCourse("gaodeng-shuxue", chapterId ?? DEFAULT_GD_CHAPTER_ID);
+}
+
+export function getAllVolumes(courseId: string = DEFAULT_COURSE_ID): Volume[] {
+  return getVolumesForCourse(courseId);
 }

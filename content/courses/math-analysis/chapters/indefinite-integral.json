@@ -4,7 +4,7 @@
   "volumeId": "math-analysis-volume-1",
   "number": 8,
   "title": "不定积分",
-  "status": "draft",
+  "status": "sample-ready",
   "overview": "不定积分是导数的逆运算，也是下一章定积分计算的算法工具箱。本章先建立原函数（不定积分）的概念和基本性质，给出一张基本积分公式表；再系统讲授两种核心积分技法：换元积分法（用拼凑或正弦/有理式换元化简被积函数）和分部积分法（$\\\\int u\\\\,\\\\mathrm{d}v=uv-\\\\int v\\\\,\\\\mathrm{d}u$，适合乘积形式的被积函数）；最后讨论有理函数的部分分式分解，以及三角函数有理式和无理函数积分的有理化技巧。讲义、例子与题面均为自编或充分改写，公式用 LaTeX（四反斜线约定）。",
   "knowledgePoints": [
     {
@@ -46,7 +46,7 @@
       ],
       "exampleIds": [],
       "exerciseIds": ["indef-ex-001"],
-      "diagramIds": [],
+      "diagramIds": ["antiderivative-family", "basic-integral-table"],
       "masteryCriteria": [
         "能陈述原函数的定义和」差为常数」的定理。",
         "能默写 10 个以上基本积分公式。"
@@ -91,7 +91,7 @@
       ],
       "exampleIds": [],
       "exerciseIds": ["indef-ex-002", "indef-ex-003"],
-      "diagramIds": [],
+      "diagramIds": ["trig-sub-triangle"],
       "masteryCriteria": [
         "能用凑微分法处理常见形式的不定积分。",
         "能对含根号的积分选择合适的三角换元并正确换回。"
