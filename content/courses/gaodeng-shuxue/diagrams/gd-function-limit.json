@@ -1,0 +1,113 @@
+{
+  "courseId": "gaodeng-shuxue",
+  "volumeId": "gaodeng-shuxue-volume-1",
+  "chapterId": "ch-gd-function-limit",
+  "schemaVersion": 1,
+  "renderingPolicy": {
+    "preferredRenderer": "programmatic-svg",
+    "reason": "工科高数图示强调可计算、可复核的几何直观。",
+    "formulaRenderer": "KaTeX"
+  },
+  "diagrams": [
+    {
+      "id": "gd-fl-elementary-functions",
+      "title": "基本初等函数图像对照",
+      "type": "multi-curve-plot",
+      "knowledgePointIds": ["gd-function-elementary"],
+      "description": "在同一坐标系中对比幂函数、指数函数与对数函数在 $x>0$ 上的增长趋势。",
+      "parameters": {
+        "xRange": [0.1, 3],
+        "curves": [
+          { "expr": "x^2", "label": "y=x^2", "style": "solid" },
+          { "expr": "2^x", "label": "y=2^x", "style": "dashed" },
+          { "expr": "log(x)", "label": "y=ln x", "style": "dotted" }
+        ]
+      },
+      "teacherNotes": [
+        "强调定义域：$y=\\\\ln x$ 只在 $x>0$ 有意义。",
+        "工科应用中常先判断函数类型再选化简或近似方法。"
+      ],
+      "studentPrompt": "在 $x=2$ 附近，哪条曲线增长最快？为什么工程里指数模型常用来描述快速增长过程？"
+    },
+    {
+      "id": "gd-fl-limit-neighborhood",
+      "title": "数轴上的极限邻域",
+      "type": "number-line",
+      "knowledgePointIds": ["gd-function-limit-calc", "gd-sequence-limit-calc"],
+      "description": "用数轴区间展示「$x$ 趋近 $a$」时自变量落在 $(a-\\\\delta,a+\\\\delta)$ 去心邻域内的含义。",
+      "parameters": {
+        "axisMin": -1,
+        "axisMax": 5,
+        "points": [{ "x": 2, "label": "a=2" }],
+        "intervals": [
+          { "from": 1.3, "to": 2.7, "label": "\\\\delta 邻域", "open": true }
+        ]
+      },
+      "teacherNotes": [
+        "工科教学可弱化 $\\\\varepsilon$-$\\\\delta$ 证明，但邻域语言有助于理解单侧极限。",
+        "去心邻域意味着极限关心趋近过程，不必等于端点取值。"
+      ],
+      "studentPrompt": "若极限为 $2$，图中哪一段表示「$x$ 足够靠近 $2$ 但不必等于 $2$」？"
+    },
+    {
+      "id": "gd-fl-sinx-over-x",
+      "title": "重要极限 $\\\\sin x/x$ 在 $x\\\\to 0$ 的图像",
+      "type": "function-plot",
+      "knowledgePointIds": ["gd-important-limits"],
+      "description": "观察 $y=\\\\sin x/x$ 在 $x\\\\to 0$ 附近如何趋近 $1$，并对比 $y=\\\\cos x$ 辅助理解。",
+      "parameters": {
+        "xRange": [-3.5, 3.5],
+        "expr": "sin(x)/x",
+        "marks": [{ "x": 0, "label": "极限=1" }],
+        "asymptotes": []
+      },
+      "teacherNotes": [
+        "强调 $x=0$ 处无定义，但极限存在且为 $1$。",
+        "此极限是三角函数化简、振动系统小角度近似的核心工具。"
+      ],
+      "studentPrompt": "当 $|x|$ 越来越小时，$\\\\sin x/x$ 的函数值靠近哪个数？这与小角度近似 $\\\\sin x\\\\approx x$ 有何关系？"
+    },
+    {
+      "id": "gd-fl-jump-vs-removable",
+      "title": "跳跃间断与可去间断对比",
+      "type": "multi-curve-plot",
+      "knowledgePointIds": ["gd-continuity-discontinuity"],
+      "description": "对比分段函数在分界点处的左右极限关系，区分跳跃间断与可去间断。",
+      "parameters": {
+        "xRange": [-2, 2],
+        "curves": [
+          { "expr": "x+1", "label": "左支 x<0", "style": "solid" },
+          { "expr": "x+2", "label": "右支 x>0", "style": "dashed" },
+          { "expr": "(x^2-1)/(x-1)", "label": "可去型 x≠1", "style": "dotted" }
+        ]
+      },
+      "teacherNotes": [
+        "跳跃间断：左右极限都存在但不相等。",
+        "可去间断：极限存在但不等于函数值，或函数在该点无定义。"
+      ],
+      "studentPrompt": "哪条曲线在「看起来断掉」的点附近，左右极限其实相等？补一个点后能否连续？"
+    },
+    {
+      "id": "gd-fl-infinitesimal-orders",
+      "title": "无穷小阶对照表",
+      "type": "table",
+      "knowledgePointIds": ["gd-infinitesimal-comparison"],
+      "description": "当 $x\\\\to 0$ 时，常见无穷小量与 $x$、$x^2$、$\\\\sin x$ 的阶比较。",
+      "parameters": {
+        "columns": ["无穷小", "与 x 的阶关系", "x→0 时比值极限"],
+        "rows": [
+          ["x", "同阶", "1"],
+          ["x^2", "高阶", "0"],
+          ["sin x", "等价", "1"],
+          ["1-cos x", "高阶", "0"],
+          ["tan x - x", "高阶", "0"]
+        ]
+      },
+      "teacherNotes": [
+        "等价无穷小替换只在乘除结构中使用，加减一般不可直接替换。",
+        "记忆口诀：$\\\\sin x\\\\sim x$，$\\\\tan x\\\\sim x$，$1-\\\\cos x\\\\sim x^2/2$。"
+      ],
+      "studentPrompt": "为什么 $\\\\sin x$ 与 $x$ 是等价无穷小，而 $x^2$ 是比 $x$ 更高阶的无穷小？"
+    }
+  ]
+}

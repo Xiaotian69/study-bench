@@ -1,0 +1,304 @@
+% !TEX program = xelatex
+\documentclass[12pt]{ctexart}
+
+\usepackage[a4paper,margin=2.15cm,top=2.55cm,bottom=2.25cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{fancyhdr}
+
+\setlist[enumerate]{itemsep=9pt,topsep=5pt,leftmargin=2.2em}
+\linespread{1.13}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small 高等代数 I 期末复习进阶卷 · B 卷}
+\rhead{\small 第 \thepage 页}
+\setlength{\headheight}{14pt}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\rnk}{\operatorname{r}}
+\newcommand{\blank}[1][2.6cm]{\underline{\hspace{#1}}}
+\newcommand{\bigsection}[2]{%
+  \vspace{7pt}%
+  {\noindent\bfseries\large #1}\hfill{\normalsize（本大题共 #2）}\par
+  \vspace{2pt}\hrule height0.4pt\vspace{8pt}}
+\newcommand{\optgrid}[4]{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}p{0.46\linewidth}p{0.46\linewidth}@{}}
+  (A)~#1 & (B)~#2 \\[3pt]
+  (C)~#3 & (D)~#4
+  \end{tabular}}
+\newcommand{\workarea}[1]{\par\vspace{0.35em}\noindent\rule{\linewidth}{0.25pt}\par\vspace{#1}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries 高等代数 I 期末复习进阶卷（B 卷）}\\[4pt]
+  {\small 教材：北京大学数学系《高等代数》（第 6 版）为主\\
+  范围：行列式、线性方程组、向量组线性相关性、矩阵与逆矩阵、初等变换与初等矩阵、矩阵与向量组的秩}\\[8pt]
+\end{center}
+
+\noindent
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+姓名：\blank[2.8cm] & 学号：\blank[2.8cm] & 班级：\blank[2.8cm]
+\end{tabular}
+
+\vspace{6pt}
+\noindent\textbf{满分 100 分\qquad 考试时间 120 分钟\qquad 闭卷}
+
+\vspace{8pt}
+\noindent
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+题号 & 一 & 二 & 三 & 四 & 总分 \\\hline
+满分 & 30 & 20 & 10 & 40 & 100 \\\hline
+得分 & & & & & \\\hline
+\end{tabular}
+
+\vspace{12pt}
+
+\bigsection{一、单项选择题}{10 小题，每题 3 分，共 30 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 在 $5$ 阶行列式的展开式中，项 $a_{15}a_{21}a_{34}a_{42}a_{53}$ 所带的符号为（\qquad）
+  \optgrid{正号 $+$}{负号 $-$}{$0$}{无法确定}
+
+\item 设 $A$ 为 $n$ 阶方阵，且 $A^{2}-2A-3E=O$，则下列结论正确的是（\qquad）
+  \optgrid{$A^{-1}=\dfrac{2E-A}{3}$}{$A^{-1}=\dfrac{A-2E}{3}$}{$A$ 不可逆}{$A^{-1}=A+2E$}
+
+\item 设 $A$ 为 $n$ 阶矩阵，$\rnk(A)=n-1$，则其伴随矩阵 $A^{*}$ 满足（\qquad）
+  \optgrid{$A^{*}=O$}{$\rnk(A^{*})=n$}{$\rnk(A^{*})=1$}{$A^{*}$ 可逆}
+
+\item 设 $A$ 为矩阵，$\rnk(A)=r$，则下列说法正确的是（\qquad）
+  \optgrid{$A$ 的任意 $r$ 阶子式都非零}{$A$ 至少有一个 $r$ 阶子式非零，且所有 $r+1$ 阶子式全为零}{$A$ 的任意 $r+1$ 阶子式都非零}{$A$ 必有 $r$ 个非零列且其余列全为零}
+
+\item 将单位矩阵 $E$ 的第 $j$ 列加上第 $i$ 列的 $k$ 倍得到初等矩阵 $P$，则 $AP$ 等于（\qquad）
+  \optgrid{把 $A$ 的第 $j$ 列加上第 $i$ 列的 $k$ 倍}{把 $A$ 的第 $i$ 列加上第 $j$ 列的 $k$ 倍}{把 $A$ 的第 $j$ 行加上第 $i$ 行的 $k$ 倍}{把 $A$ 的第 $i$ 行加上第 $j$ 行的 $k$ 倍}
+
+\item 设 $\alpha_1,\alpha_2,\alpha_3$ 线性无关，则向量组
+  $\alpha_1+\alpha_2,\alpha_2+\alpha_3,\alpha_3+\alpha_1$（\qquad）
+  \optgrid{线性无关}{线性相关}{秩为 $2$}{是否相关由向量维数决定}
+
+\item $n$ 个方程 $n$ 个未知量的线性方程组 $Ax=b$ 有唯一解的充分必要条件是（\qquad）
+  \optgrid{$|A|\neq0$}{$|A|=0$}{$b=0$}{$A$ 的某个元素非零}
+
+\item 设 $A,B$ 为同型矩阵，则恒成立的是（\qquad）
+  \optgrid{$\rnk(A+B)=\rnk(A)+\rnk(B)$}{$\rnk(A+B)\leq \rnk(A)+\rnk(B)$}{$\rnk(A+B)\geq \rnk(A)+\rnk(B)$}{$\rnk(A+B)=\max\{\rnk(A),\rnk(B)\}$}
+
+\item 非齐次线性方程组 $Ax=b$ 有唯一解的充要条件是（\qquad）
+  \optgrid{$\rnk(A)<\rnk(A,b)$}{$\rnk(A)=\rnk(A,b)<n$}{$\rnk(A,b)<n$}{$\rnk(A)=\rnk(A,b)=n$}
+
+\item 设 $A,B$ 均为 $n$ 阶方阵，若 $AB=E$，则（\qquad）
+  \optgrid{$A+B=E$}{$BA=O$}{$BA=E$}{$A$ 或 $B$ 不可逆}
+\end{enumerate}
+
+\bigsection{二、填空题}{10 小题，每题 2 分，共 20 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 排列 $3\,6\,1\,5\,2\,4$ 的逆序数为 $\blank[2cm]$。
+\item 箭型行列式
+  $\begin{vmatrix}
+  a&1&1&1\\
+  1&b&0&0\\
+  1&0&c&0\\
+  1&0&0&d
+  \end{vmatrix}=\blank[4.2cm]$。
+\item $\begin{vmatrix}1&1&1\\2&3&5\\4&9&25\end{vmatrix}=\blank[2cm]$。
+\item 设 $A$ 为 $3$ 阶方阵且 $|A|=-2$，则 $|3A|=\blank[2.2cm]$。
+\item 同上 $A$，则 $|A^{-1}|=\blank[2.2cm]$。
+\item $6$ 元齐次线性方程组的系数矩阵秩为 $4$，则基础解系含 $\blank[2cm]$ 个向量。
+\item 若 $P,Q$ 均为 $2$ 阶方阵，$|P|=-1,\ |Q|=5$，则
+  $\begin{vmatrix}P&R\\ O&Q\end{vmatrix}=\blank[2.5cm]$。
+\item 若 $A$ 为 $n$ 阶矩阵且 $A^{*}=O$，则一般可推出 $\rnk(A)\leq\blank[2cm]$。
+\item 对任意矩阵 $A$，有 $\rnk(A^{\mathsf T})=\blank[2cm]$。
+\item 若 $A$ 为 $n$ 阶可逆矩阵，则 $A$ 的等价标准形为 $\blank[2cm]$。
+\end{enumerate}
+
+\bigsection{三、证明题}{2 小题，每题 5 分，共 10 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 设 $A$ 为 $n$ 阶方阵，且 $A^{2}=A$。证明：$E+A$ 可逆，并求 $(E+A)^{-1}$。
+\workarea{4.4cm}
+
+\item 设 $\alpha_1,\dots,\alpha_s$ 线性无关，且
+  \[
+  \beta=k_1\alpha_1+\cdots+k_s\alpha_s,\qquad k_s\neq0.
+  \]
+  证明：$\alpha_1,\dots,\alpha_{s-1},\beta$ 线性无关，并用它们线性表示 $\alpha_s$。
+\workarea{4.4cm}
+\end{enumerate}
+
+\clearpage
+\bigsection{四、计算题}{4 小题，每题 10 分，共 40 分。要求写出主要步骤}
+
+\begin{enumerate}[label=\arabic*.]
+\item 计算箭型行列式
+  \[
+  D=\begin{vmatrix}
+  a&1&1&1\\
+  1&b&0&0\\
+  1&0&c&0\\
+  1&0&0&d
+  \end{vmatrix}.
+  \]
+\workarea{5.2cm}
+
+\item $a$ 取何值时，线性方程组
+  \[
+  \begin{cases}
+  x_1+x_2+x_3=1,\\
+  x_1+2x_2+a x_3=2,\\
+  x_1+4x_2+a^{2}x_3=a^{2}
+  \end{cases}
+  \]
+  无解、有唯一解、有无穷多解？在有无穷多解时求出通解。
+\workarea{6.0cm}
+
+\clearpage
+\item 用初等行变换求矩阵
+  \[
+  A=\begin{pmatrix}
+  2&1&0\\
+  1&2&1\\
+  0&1&2
+  \end{pmatrix}
+  \]
+  的逆矩阵 $A^{-1}$。
+\workarea{6.0cm}
+
+\item 设向量组
+  \[
+  \alpha_1=(1,0,0,1),\quad \alpha_2=(0,1,0,1),\quad
+  \alpha_3=(0,0,1,1),
+  \]
+  \[
+  \alpha_4=(1,2,-1,2),\quad \alpha_5=(2,-1,1,2).
+  \]
+  求该向量组的秩与一个极大线性无关组，并把其余向量用该极大无关组线性表示。
+\workarea{5.5cm}
+\end{enumerate}
+
+\begin{center}\small 试题部分结束，参考答案见后。\end{center}
+
+\clearpage
+\begin{center}
+  {\Large\bfseries 参考答案与评分标准（B 卷）}\\[2pt]
+  {\small 高等代数 I 期末复习进阶卷}
+\end{center}
+\vspace{6pt}\hrule\vspace{12pt}
+
+\noindent\textbf{一、单项选择题}（每题 3 分）
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+题号 & 1&2&3&4&5&6&7&8&9&10\\\hline
+答案 & A&B&C&B&A&A&A&B&D&C\\\hline
+\end{tabular}
+\end{center}
+
+\noindent\small 简析：1. 列指标排列 $(5,1,4,2,3)$ 的逆序数为 $6$，故为正号。
+2. 由 $A(A-2E)=3E$ 得 $A^{-1}=(A-2E)/3$。3. 当 $\rnk(A)=n-1$ 时，$\rnk(A^{*})=1$。
+4. 秩的子式判别法。5. 右乘初等矩阵对应列变换。6. 对应的系数变换行列式为 $2\neq0$，故仍无关。
+8. 秩的次可加性。10. $AB=E$ 推出 $A,B$ 均可逆，故 $BA=E$。\normalsize
+
+\vspace{8pt}
+\noindent\textbf{二、填空题}（每题 2 分）
+\begin{enumerate}[label=\arabic*.,itemsep=3pt]
+\item $8$。
+\item $abcd-bc-bd-cd$。
+\item $6$。
+\item $-54$。
+\item $-\dfrac12$。
+\item $2$。
+\item $-5$。
+\item $n-2$。
+\item $\rnk(A)$。
+\item $E$。
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{三、证明题}（每题 5 分）
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=10pt]
+\item 因 $A^2=A$，直接计算
+  \[
+  (E+A)\left(E-\frac12A\right)
+  =E+A-\frac12A-\frac12A^2=E.
+  \]
+  同理 $\left(E-\frac12A\right)(E+A)=E$。故 $E+A$ 可逆，且
+  \[
+  (E+A)^{-1}=E-\frac12A.
+  \]
+
+\item 若
+  \[
+  c_1\alpha_1+\cdots+c_{s-1}\alpha_{s-1}+c\beta=0,
+  \]
+  代入 $\beta$ 得
+  \[
+  (c_1+ck_1)\alpha_1+\cdots+(c_{s-1}+ck_{s-1})\alpha_{s-1}
+  +ck_s\alpha_s=0.
+  \]
+  由 $\alpha_1,\dots,\alpha_s$ 线性无关，得 $ck_s=0$。又 $k_s\neq0$，故 $c=0$，继而
+  $c_1=\cdots=c_{s-1}=0$，所以 $\alpha_1,\dots,\alpha_{s-1},\beta$ 线性无关。并且
+  \[
+  \alpha_s=\frac1{k_s}\beta-\frac{k_1}{k_s}\alpha_1-\cdots-\frac{k_{s-1}}{k_s}\alpha_{s-1}.
+  \]
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{四、计算题}（每题 10 分）
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=11pt]
+\item 对第 $1$ 行展开或先将后三行对应消去，可得
+  \[
+  D=abcd-cd-bd-bc.
+  \]
+  也可写成 $D=bcd\left(a-\frac1b-\frac1c-\frac1d\right)$（在 $bcd\neq0$ 时）。
+
+\item 系数行列式
+  \[
+  \Delta=\begin{vmatrix}1&1&1\\1&2&a\\1&4&a^2\end{vmatrix}
+  =(a-1)(a-2).
+  \]
+  当 $a\neq1,2$ 时，$\Delta\neq0$，方程组有唯一解。\\
+  当 $a=1$ 时，增广矩阵化简出现矛盾行，故无解。\\
+  当 $a=2$ 时，方程组化为
+  \[
+  x_1+x_2+x_3=1,\qquad x_2+x_3=1,
+  \]
+  故有无穷多解：
+  \[
+  (x_1,x_2,x_3)=(0,1,0)+t(0,-1,1),\quad t\in\mathbb{R}.
+  \]
+
+\item 对 $(A\,|\,E)$ 作初等行变换可得
+  \[
+  A^{-1}=\frac14
+  \begin{pmatrix}
+  3&-2&1\\
+  -2&4&-2\\
+  1&-2&3
+  \end{pmatrix}.
+  \]
+  评分时要求写出主要消元步骤，结果占 $3$ 分。
+
+\item 以 $\alpha_1,\dots,\alpha_5$ 为列作矩阵
+  \[
+  M=\begin{pmatrix}
+  1&0&0&1&2\\
+  0&1&0&2&-1\\
+  0&0&1&-1&1\\
+  1&1&1&2&2
+  \end{pmatrix}.
+  \]
+  前三列线性无关，且第 $4$ 行等于前三行之和，故 $\rnk(M)=3$。
+  可取 $\{\alpha_1,\alpha_2,\alpha_3\}$ 为极大线性无关组，并且
+  \[
+  \alpha_4=\alpha_1+2\alpha_2-\alpha_3,\qquad
+  \alpha_5=2\alpha_1-\alpha_2+\alpha_3.
+  \]
+\end{enumerate}
+
+\end{document}

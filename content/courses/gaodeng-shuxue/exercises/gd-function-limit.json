@@ -1,0 +1,567 @@
+{
+  "chapterId": "ch-gd-function-limit",
+  "courseId": "gaodeng-shuxue",
+  "volumeId": "gaodeng-shuxue-volume-1",
+  "sourceTypeLegend": {
+    "textbook-example": "教材例题",
+    "textbook-exercise": "教材课后习题",
+    "adapted": "由教材题改编",
+    "bridging": "自编过渡题，仅用于衔接，不作为正式题"
+  },
+  "intakeNote": "sourceRef 为「待核对题源」表示题面已录入但题号尚未与教材核对。",
+  "exercises": [
+    {
+      "id": "gd-fl-ex-001",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 函数）",
+      "knowledgePointIds": ["gd-function-elementary"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求函数 $f(x)=\\\\sqrt{4-x^2}+\\\\ln(x+1)$ 的定义域。",
+      "gradingRubric": [
+        "由 $4-x^2\\\\geq 0$ 得 $-2\\\\leq x\\\\leq 2$",
+        "由 $x+1>0$ 得 $x>-1$",
+        "取交集得定义域 $(-1,2]$"
+      ],
+      "hints": [
+        "根式要求被开方数非负。",
+        "对数要求真数大于零。",
+        "最后写区间交集。"
+      ],
+      "commonMistakes": [
+        "只写根式条件，忽略对数条件",
+        "把开闭区间端点写错"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-002",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 函数）",
+      "knowledgePointIds": ["gd-function-elementary"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "已知 $f(x)=\\\\begin{cases}x^2,&x\\\\leq 0\\\\\\\\2^x,&x>0\\\\end{cases}$，求 $f(-1)$、$f(0)$、$f(1)$。",
+      "gradingRubric": [
+        "$f(-1)=(-1)^2=1$",
+        "$f(0)=0^2=0$",
+        "$f(1)=2^1=2$"
+      ],
+      "hints": [
+        "先看自变量落在哪个区间。",
+        "分界点 $x=0$ 属于 $x\\\\leq 0$ 分支。"
+      ],
+      "commonMistakes": [
+        "在 $x=0$ 误用指数分支",
+        "分段函数未先分类讨论"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-003",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源（第一章 函数）",
+      "knowledgePointIds": ["gd-function-elementary"],
+      "difficulty": "medium",
+      "type": "analysis",
+      "recommendedTiming": "after-lecture",
+      "prompt": "说明函数 $y=2^{x-1}+1$ 可由 $y=2^x$ 经过怎样的平移与伸缩得到，并写出其水平渐近线。",
+      "gradingRubric": [
+        "识别为指数函数平移：向右平移 1 个单位，向上平移 1 个单位",
+        "写出 $y=2^{x-1}+1$",
+        "当 $x\\\\to-\\\\infty$ 时 $y\\\\to 1$，水平渐近线为 $y=1$"
+      ],
+      "hints": [
+        "把指数部分写成 $2^{x-1}$。",
+        "平移规律：$x\\\\to x-1$ 右移，$+1$ 上移。"
+      ],
+      "commonMistakes": [
+        "把平移方向搞反",
+        "忽略 $+1$ 导致的渐近线上移"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-004",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 数列极限）",
+      "knowledgePointIds": ["gd-sequence-limit-calc"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{n\\\\to\\\\infty}\\\\frac{3n^2-n+1}{2n^2+5}$。",
+      "gradingRubric": [
+        "分子分母同除以 $n^2$",
+        "利用 $\\\\lim 1/n=0$、$\\\\lim 1/n^2=0$",
+        "得极限 $3/2$"
+      ],
+      "hints": [
+        "观察分子分母最高次幂。",
+        "同除以最高次项系数。"
+      ],
+      "commonMistakes": [
+        "直接代入 $n=\\\\infty$",
+        "只除 $n$ 而不是 $n^2$"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-005",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 数列极限）",
+      "knowledgePointIds": ["gd-sequence-limit-calc"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{n\\\\to\\\\infty}(\\\\sqrt{n^2+n}-n)$。",
+      "gradingRubric": [
+        "分子有理化：$\\\\frac{n}{\\\\sqrt{n^2+n}+n}$",
+        "分母同除以 $n$",
+        "得极限 $1/2$"
+      ],
+      "hints": [
+        "根式差型常用有理化。",
+        "注意 $\\\\sqrt{n^2+n}=n\\\\sqrt{1+1/n}$。"
+      ],
+      "commonMistakes": [
+        "有理化后忘记化简分母",
+        "把 $\\\\sqrt{n^2+n}$ 误写成 $n+\\\\sqrt{n}$"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-006",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 数列极限）",
+      "knowledgePointIds": ["gd-sequence-limit-calc"],
+      "difficulty": "advanced",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{n\\\\to\\\\infty}\\\\left(1+\\\\frac{2}{n}\\\\right)^{3n}$。",
+      "gradingRubric": [
+        "改写为 $\\\\left[\\\\left(1+\\\\frac{2}{n}\\\\right)^n\\\\right]^6$ 或令 $m=n/2$",
+        "利用 $\\\\lim(1+1/m)^m=e$",
+        "得 $e^6$"
+      ],
+      "hints": [
+        "凑重要极限 $\\\\lim(1+1/n)^n=e$ 的结构。",
+        "注意指数与底数中系数要匹配。"
+      ],
+      "commonMistakes": [
+        "直接把极限写成 $1^\\\\infty$ 而乱写结果",
+        "指数换算错误"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-007",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 函数极限）",
+      "knowledgePointIds": ["gd-function-limit-calc"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 2}\\\\frac{x^2-4}{x-2}$。",
+      "gradingRubric": [
+        "分子因式分解 $(x-2)(x+2)$",
+        "约去公因子 $x-2$（$x\\\\ne 2$）",
+        "代入得 $4$"
+      ],
+      "hints": [
+        "先判断是否为 $0/0$ 型。",
+        "因式分解后约分再代入。"
+      ],
+      "commonMistakes": [
+        "直接代入 $x=2$ 得 $0/0$ 后放弃",
+        "约分后忘记极限与函数值可不同"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-008",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 函数极限）",
+      "knowledgePointIds": ["gd-function-limit-calc"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sqrt{1+x}-\\\\sqrt{1-x}}{x}$。",
+      "gradingRubric": [
+        "分子有理化",
+        "化简得 $\\\\frac{2}{\\\\sqrt{1+x}+\\\\sqrt{1-x}}$",
+        "代入 $x=0$ 得 $1$"
+      ],
+      "hints": [
+        "根式差用共轭有理化。",
+        "化简后再令 $x\\\\to 0$。"
+      ],
+      "commonMistakes": [
+        "有理化时符号错误",
+        "未化简就代入"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-009",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 单侧极限）",
+      "knowledgePointIds": ["gd-function-limit-calc"],
+      "difficulty": "medium",
+      "type": "analysis",
+      "recommendedTiming": "after-lecture",
+      "prompt": "讨论 $f(x)=\\\\frac{|x|}{x}$（$x\\\\ne 0$）在 $x=0$ 处的左、右极限，并判断双侧极限是否存在。",
+      "gradingRubric": [
+        "$x>0$ 时 $f(x)=1$，故 $f(0^+)=1$",
+        "$x<0$ 时 $f(x)=-1$，故 $f(0^-)=-1$",
+        "左右极限不等，双侧极限不存在"
+      ],
+      "hints": [
+        "按绝对值定义分 $x>0$ 与 $x<0$。",
+        "比较 $f(0^+)$ 与 $f(0^-)$。"
+      ],
+      "commonMistakes": [
+        "只算一侧就下结论",
+        "把 $f(0)$ 的值当作极限"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-010",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 无穷小）",
+      "knowledgePointIds": ["gd-infinitesimal-infinite"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "当 $x\\\\to 0$ 时，判断 $3x^2$、$\\\\sin 5x$、$\\\\frac{1}{x}$ 中哪些是无穷小，哪些是无穷大。",
+      "gradingRubric": [
+        "$3x^2\\\\to 0$，是无穷小",
+        "$\\\\sin 5x\\\\to 0$，是无穷小",
+        "$1/x\\\\to \\\\infty$，是无穷大"
+      ],
+      "hints": [
+        "无穷小：极限为 $0$。",
+        "无穷大：绝对值无限增大。"
+      ],
+      "commonMistakes": [
+        "把趋于常数也当成无穷小",
+        "混淆无穷大与无界"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-011",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 无穷小）",
+      "knowledgePointIds": ["gd-infinitesimal-infinite"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to \\\\infty}\\\\frac{2x^3-x+1}{5x^3+4x}$。",
+      "gradingRubric": [
+        "分子分母同除以 $x^3$",
+        "低次项趋于 $0$",
+        "得极限 $2/5$"
+      ],
+      "hints": [
+        "这是 $x\\\\to\\\\infty$ 时的有理函数极限。",
+        "看最高次幂系数之比。"
+      ],
+      "commonMistakes": [
+        "只除 $x$ 而不是 $x^3$",
+        "把 $\\\\infty/\\\\infty$ 直接当作 $1$"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-012",
+      "sourceType": "bridging",
+      "sourceRef": "待核对题源（第一章 无穷小）",
+      "knowledgePointIds": ["gd-infinitesimal-infinite"],
+      "difficulty": "advanced",
+      "type": "analysis",
+      "recommendedTiming": "after-lecture",
+      "prompt": "说明为何 $\\\\lim_{x\\\\to 0^+}\\\\ln x=-\\\\infty$，并写出 $y=\\\\ln x$ 在 $x\\\\to 0^+$ 时的竖直渐近线。",
+      "gradingRubric": [
+        "说明 $x\\\\to 0^+$ 时 $\\\\ln x$ 单调递减且无下界",
+        "因此极限为 $-\\\\infty$",
+        "竖直渐近线为 $x=0$"
+      ],
+      "hints": [
+        "对数函数只在 $x>0$ 有定义。",
+        "观察 $x$ 越靠近 $0$，$\\\\ln x$ 越负。"
+      ],
+      "commonMistakes": [
+        "写成 $x\\\\to 0$ 双侧讨论",
+        "把 $y=0$ 误作渐近线"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-013",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 极限运算法则）",
+      "knowledgePointIds": ["gd-limit-arithmetic"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "已知 $\\\\lim_{x\\\\to 1}f(x)=2$，$\\\\lim_{x\\\\to 1}g(x)=-1$，求 $\\\\lim_{x\\\\to 1}[3f(x)-2g(x)]$。",
+      "gradingRubric": [
+        "使用和差法则",
+        "计算 $3\\\\cdot 2-2\\\\cdot(-1)$",
+        "得 $8$"
+      ],
+      "hints": [
+        "极限存在时，线性组合可直接分配。",
+        "先代入已知极限值。"
+      ],
+      "commonMistakes": [
+        "把极限符号拆开时漏掉系数",
+        "符号计算错误"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-014",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 极限运算法则）",
+      "knowledgePointIds": ["gd-limit-arithmetic"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 2}\\\\frac{x^2-3x+2}{x^2-4}$。",
+      "gradingRubric": [
+        "分子分母因式分解",
+        "约去公因子 $x-2$",
+        "代入 $x=2$ 得 $1/4$"
+      ],
+      "hints": [
+        "先识别 $0/0$ 型。",
+        "分子 $x^2-3x+2=(x-1)(x-2)$。"
+      ],
+      "commonMistakes": [
+        "分母为零后直接写极限不存在",
+        "约分前未先因式分解"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-015",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 极限运算法则）",
+      "knowledgePointIds": ["gd-limit-arithmetic"],
+      "difficulty": "advanced",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin 3x}{\\\\tan 2x}$。",
+      "gradingRubric": [
+        "写成 $\\\\frac{\\\\sin 3x}{3x}\\\\cdot\\\\frac{2x}{\\\\tan 2x}\\\\cdot\\\\frac{3}{2}$",
+        "利用 $\\\\sin u/u\\\\to 1$、$\\\\tan u/u\\\\to 1$",
+        "得 $3/2$"
+      ],
+      "hints": [
+        "凑 $\\\\sin u/u$ 与 $\\\\tan u/u$ 的标准形。",
+        "保持乘除结构以便用重要极限。"
+      ],
+      "commonMistakes": [
+        "在加减结构里直接替换等价无穷小",
+        "系数配比错误"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-016",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 两个重要极限）",
+      "knowledgePointIds": ["gd-important-limits"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin 5x}{x}$。",
+      "gradingRubric": [
+        "改写为 $5\\\\cdot\\\\frac{\\\\sin 5x}{5x}$",
+        "利用 $\\\\lim_{u\\\\to 0}\\\\sin u/u=1$",
+        "得 $5$"
+      ],
+      "hints": [
+        "分子分母同乘 $5$。",
+        "识别第一个重要极限。"
+      ],
+      "commonMistakes": [
+        "直接得 $\\\\sin 5x\\\\sim 5x$ 但漏乘系数",
+        "把 $x$ 与 $5x$ 混淆"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-017",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 两个重要极限）",
+      "knowledgePointIds": ["gd-important-limits"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to \\\\infty}\\\\left(1+\\\\frac{3}{x}\\\\right)^{2x}$。",
+      "gradingRubric": [
+        "改写为 $\\\\left[\\\\left(1+\\\\frac{3}{x}\\\\right)^{x/3}\\\\right]^6$",
+        "利用第二个重要极限",
+        "得 $e^6$"
+      ],
+      "hints": [
+        "令底数凑成 $1+1/t$ 形式。",
+        "指数与底数要同步变形。"
+      ],
+      "commonMistakes": [
+        "把结果写成 $e^2$ 或 $e^3$",
+        "未把指数完全配平"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-018",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 两个重要极限）",
+      "knowledgePointIds": ["gd-important-limits"],
+      "difficulty": "advanced",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 0}\\\\frac{1-\\\\cos x}{x^2}$。",
+      "gradingRubric": [
+        "利用 $1-\\\\cos x\\\\sim x^2/2$ 或恒等变形",
+        "化为 $\\\\frac{1-\\\\cos x}{x^2}\\\\to 1/2$",
+        "结论 $1/2$"
+      ],
+      "hints": [
+        "可用等价无穷小 $1-\\\\cos x\\\\sim x^2/2$。",
+        "也可用 $1-\\\\cos x=2\\\\sin^2(x/2)$。"
+      ],
+      "commonMistakes": [
+        "误用 $1-\\\\cos x\\\\sim x$",
+        "在加减结构里粗暴替换"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-019",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 无穷小比较）",
+      "knowledgePointIds": ["gd-infinitesimal-comparison"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "当 $x\\\\to 0$ 时，比较 $x$、$x^2$、$\\\\sin x$ 的阶，并求 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sin x}{x}$。",
+      "gradingRubric": [
+        "说明 $x^2$ 是比 $x$ 更高阶的无穷小",
+        "$\\\\sin x$ 与 $x$ 等价",
+        "比值极限为 $1$"
+      ],
+      "hints": [
+        "比较阶看比值极限是否为有限非零常数。",
+        "第一个重要极限直接给出 $\\\\sin x/x$。"
+      ],
+      "commonMistakes": [
+        "把高阶与等价概念混用",
+        "认为 $\\\\sin x$ 比 $x$ 高阶"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-020",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 无穷小比较）",
+      "knowledgePointIds": ["gd-infinitesimal-comparison"],
+      "difficulty": "medium",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\tan x-\\\\sin x}{x^3}$。",
+      "gradingRubric": [
+        "化为 $\\\\frac{\\\\sin x}{x}\\\\cdot\\\\frac{1-\\\\cos x}{x^2}\\\\cdot\\\\frac{1}{\\\\cos x}$",
+        "利用等价无穷小或已知极限",
+        "得 $1/2$"
+      ],
+      "hints": [
+        "先提取 $\\\\sin x$。",
+        "再用 $1-\\\\cos x\\\\sim x^2/2$。"
+      ],
+      "commonMistakes": [
+        "直接对差式用 $\\\\tan x\\\\sim x$、$\\\\sin x\\\\sim x$ 相减得 $0$",
+        "忽略 $\\\\cos x\\\\to 1$"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-021",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 无穷小比较）",
+      "knowledgePointIds": ["gd-infinitesimal-comparison"],
+      "difficulty": "advanced",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "求极限 $\\\\lim_{x\\\\to 0}\\\\frac{\\\\sqrt{1+x}-1-\\\\frac{x}{2}}{x^2}$。",
+      "gradingRubric": [
+        "用泰勒或等价变形到二阶",
+        "分子主部为 $-x^2/8+o(x^2)$",
+        "得极限 $-1/8$"
+      ],
+      "hints": [
+        "这是检验等价替换阶数是否足够的典型题。",
+        "展开到 $x^2$ 项。"
+      ],
+      "commonMistakes": [
+        "只展开到一阶导致分子误判为 $0$",
+        "把 $\\\\sqrt{1+x}-1$ 直接替换成 $x/2$ 后不再保留高阶项"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-022",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 连续性）",
+      "knowledgePointIds": ["gd-continuity-discontinuity"],
+      "difficulty": "basic",
+      "type": "computation",
+      "recommendedTiming": "after-lecture",
+      "prompt": "讨论 $f(x)=\\\\frac{x^2-1}{x-1}$ 在 $x=1$ 处的连续性；若间断，指出类型。",
+      "gradingRubric": [
+        "化简得 $f(x)=x+1$（$x\\\\ne 1$）",
+        "$\\\\lim_{x\\\\to 1}f(x)=2$ 存在",
+        "因 $x=1$ 无定义，为可去间断点"
+      ],
+      "hints": [
+        "先化简函数。",
+        "比较极限值与函数值。"
+      ],
+      "commonMistakes": [
+        "看到分母为零就断言第二型间断",
+        "未说明可去间断可通过补定义修复"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-023",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 连续性）",
+      "knowledgePointIds": ["gd-continuity-discontinuity"],
+      "difficulty": "medium",
+      "type": "analysis",
+      "recommendedTiming": "after-lecture",
+      "prompt": "设 $f(x)=\\\\begin{cases}x+1,&x<0\\\\\\\\x^2,&0\\\\leq x\\\\leq 1\\\\\\\\2-x,&x>1\\\\end{cases}$，求所有间断点并分类。",
+      "gradingRubric": [
+        "在 $x=0$：左极限 $1$，右极限 $0$，跳跃间断",
+        "在 $x=1$：左极限 $1$，右极限 $1$，且 $f(1)=1$，连续",
+        "正确列出间断点 $x=0$"
+      ],
+      "hints": [
+        "分段点 $x=0$、$x=1$ 必查。",
+        "分别算左右极限。"
+      ],
+      "commonMistakes": [
+        "只查定义域端点，不查分段点",
+        "把左右极限存在但不等误判为可去间断"
+      ]
+    },
+    {
+      "id": "gd-fl-ex-024",
+      "sourceType": "adapted",
+      "sourceRef": "待核对题源（第一章 闭区间连续函数）",
+      "knowledgePointIds": ["gd-continuity-discontinuity"],
+      "difficulty": "advanced",
+      "type": "proof",
+      "recommendedTiming": "after-lecture",
+      "prompt": "证明方程 $x^3-4x+1=0$ 在区间 $[0,1]$ 上至少有一个实根。",
+      "gradingRubric": [
+        "令 $f(x)=x^3-4x+1$，验证在 $[0,1]$ 连续",
+        "计算 $f(0)=1>0$、$f(1)=-2<0$",
+        "由零点定理得至少一个根"
+      ],
+      "hints": [
+        "多项式在闭区间上连续。",
+        "检查端点函数值异号。"
+      ],
+      "commonMistakes": [
+        "把零点定理错用到不连续函数",
+        "只说明有根但不说明使用的定理"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+% !TEX program = xelatex
+\documentclass[12pt]{ctexart}
+
+\usepackage[a4paper,margin=2.2cm,top=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{fancyhdr}
+
+\setlist[enumerate]{itemsep=9pt,topsep=5pt,leftmargin=2.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small 高等代数 I 期末考试 · B 卷}
+\rhead{\small 第 \thepage 页}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\bigsection}[2]{%
+  \vspace{6pt}%
+  {\noindent\bfseries\large #1}\hfill{\normalsize（本大题共 #2）}\par
+  \vspace{2pt}\hrule height0.4pt\vspace{8pt}}
+
+\newcommand{\blank}[1][2.6cm]{\underline{\hspace{#1}}}
+
+\newcommand{\optgrid}[4]{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}p{0.45\textwidth}p{0.45\textwidth}@{}}
+  (A)~#1 & (B)~#2 \\[3pt]
+  (C)~#3 & (D)~#4
+  \end{tabular}}
+
+\newcommand{\rank}{\operatorname{r}}
+\linespread{1.12}
+
+\begin{document}
+
+%==================== 封面 ====================
+\begin{center}
+  {\Large\bfseries 高等代数 I 期末考试试卷（B 卷）}\\[4pt]
+  {\small 教材：北京大学数学系（王萼芳、石生明）《高等代数》（第 5 版）\\
+  范围：行列式、线性方程组、向量组的线性相关性、矩阵与逆矩阵、初等变换与初等矩阵、矩阵与向量组的秩}\\[8pt]
+\end{center}
+
+\noindent
+\begin{tabular}{@{}p{4.6cm}p{4.6cm}p{4.6cm}@{}}
+姓名：\blank[2.8cm] & 学号：\blank[2.8cm] & 班级：\blank[2.8cm]
+\end{tabular}
+
+\vspace{6pt}
+\noindent\textbf{满分 100 分\qquad 考试时间 120 分钟\qquad 闭卷}
+
+\vspace{8pt}
+\noindent
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+题号 & 一 & 二 & 三 & 四 & 总分 \\\hline
+满分 & 30 & 20 & 10 & 40 & 100 \\\hline
+得分 & & & & & \\\hline
+\end{tabular}
+
+\vspace{12pt}
+
+%==================== 一、选择题 ====================
+\bigsection{一、单项选择题}{10 小题，每题 3 分，共 30 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 在 4 阶行列式的展开式中，项 $a_{14}a_{23}a_{31}a_{42}$ 所带的符号为（\qquad）
+  \optgrid{正号 $+$}{负号 $-$}{$0$}{无法确定}
+
+\item 设向量组 $\alpha,\beta,\gamma$ 线性无关，则下列向量组线性\textbf{无关}的是（\qquad）
+  \optgrid{$\alpha-\beta,\ \beta-\gamma,\ \gamma-\alpha$}{$\alpha+\beta,\ \beta+\gamma,\ \gamma+\alpha$}{$\alpha-\beta,\ \beta-\gamma,\ \alpha-\gamma$}{$\alpha,\ \beta,\ \alpha+\beta$}
+
+\item 设 $A$ 为 $n$ 阶方阵，则 $A$ \textbf{不可逆}的充要条件是（\qquad）
+  \optgrid{$|A|\neq 0$}{$\rank(A)=n$}{$Ax=0$ 只有零解}{$A$ 的列向量组线性相关}
+
+\item 设 $A,B$ 为同型矩阵，则下列恒成立的是（\qquad）
+  \optgrid{$\rank(A+B)=\rank(A)+\rank(B)$}{$\rank(A+B)\leq\rank(A)+\rank(B)$}{$\rank(AB)=\rank(A)\rank(B)$}{$\rank(A+B)\geq\rank(A)+\rank(B)$}
+
+\item 设 $A$ 为 $3$ 阶方阵且 $|A|=2$，则 $|-A|=$（\qquad）
+  \optgrid{$2$}{$-2$}{$8$}{$-8$}
+
+\item 设 $A$ 为 $n$ 阶方阵。方程组 $Ax=b$ 对任意 $b$ 都有唯一解的充要条件是（\qquad）
+  \optgrid{$|A|=0$}{$|A|\neq 0$}{$\rank(A)<n$}{$b\neq 0$}
+
+\item 交换单位矩阵 $E$ 的第 $i,j$ 两行得到初等矩阵 $P$，则 $PA$ 等于（\qquad）
+  \optgrid{交换 $A$ 的第 $i,j$ 两行}{交换 $A$ 的第 $i,j$ 两列}{$A$ 的第 $i$ 行乘 $-1$}{$A$ 不变}
+
+\item 齐次线性方程组 $\begin{cases}a x_1+x_2+x_3=0\\ x_1+a x_2+x_3=0\\ x_1+x_2+x_3=0\end{cases}$ 只有零解的充要条件是（\qquad）
+  \optgrid{$a=1$}{$a\neq 1$}{$a=0$}{对任意 $a$ 成立}
+
+\item 设 $A_{ij}$ 为 $n$ 阶行列式中元素 $a_{ij}$ 的代数余子式。当 $i\neq j$ 时，
+  $\displaystyle\sum_{k=1}^{n}a_{kj}A_{ki}=$（\qquad）
+  \optgrid{$|A|$}{$0$}{$1$}{$|A|^{2}$}
+
+\item 设 $5$ 元齐次线性方程组 $Ax=0$ 的基础解系含 $3$ 个解向量，则 $\rank(A)=$（\qquad）
+  \optgrid{$2$}{$3$}{$5$}{$8$}
+\end{enumerate}
+
+%==================== 二、填空题 ====================
+\bigsection{二、填空题}{10 小题，每题 2 分，共 20 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 行列式 $\begin{vmatrix}2&1\\1&3\end{vmatrix}=\blank$。
+\item 排列 $4\,1\,5\,2\,3$ 的逆序数为 $\blank[2cm]$。
+\item 设 $A$ 为 $4$ 阶方阵且 $|A|=3$，则 $|3A|=\blank[2.2cm]$。
+\item 同上 $A$，则 $|A^{-1}|=\blank[2cm]$。
+\item 同上 $A$，则伴随矩阵 $|A^{*}|=\blank[2cm]$。
+\item $\begin{vmatrix}1&1&1\\ 1&2&4\\ 1&3&9\end{vmatrix}=\blank[2.4cm]$。
+\item 向量组 $\alpha_1=(1,2),\ \alpha_2=(2,4),\ \alpha_3=(1,1)$ 的秩为 $\blank[2cm]$。
+\item 设 $A$ 为 $4\times 6$ 矩阵且 $\rank(A)=3$，则 $Ax=0$ 的基础解系含 $\blank[2cm]$ 个向量。
+\item 非齐次线性方程组 $Ax=b$（$A$ 为 $m\times n$ 矩阵）有无穷多解的充要条件是
+  $\rank(A)=\rank(A,b)<\blank[2cm]$。
+\item 设 $A,B$ 均为 $3$ 阶方阵，$|A|=2,\ |B|=3$，则 $|AB|=\blank[2cm]$。
+\end{enumerate}
+
+%==================== 三、证明题 ====================
+\bigsection{三、证明题}{2 小题，每题 5 分，共 10 分}
+
+\begin{enumerate}[label=\arabic*.]
+\item 设 $A$ 为 $n$ 阶方阵且 $A^{2}=A$（幂等矩阵）。证明：
+  \[
+  \rank(A)+\rank(A-E)=n .
+  \]
+
+\item 设向量组 $\alpha_1,\alpha_2,\alpha_3$ 线性无关。证明：向量组
+  $\alpha_1,\ \alpha_1+\alpha_2,\ \alpha_1+\alpha_2+\alpha_3$ 也线性无关。
+\end{enumerate}
+
+%==================== 四、计算题 ====================
+\bigsection{四、计算题}{4 小题，每题 10 分，共 40 分。要求写出主要步骤}
+
+\begin{enumerate}[label=\arabic*.]
+\item 计算箭型行列式
+  \[
+  D=\begin{vmatrix}
+  5 & 1 & 1 & 1\\
+  1 & 1 & 0 & 0\\
+  1 & 0 & 1 & 0\\
+  1 & 0 & 0 & 1
+  \end{vmatrix}.
+  \]
+
+\item $a$ 取何值时，齐次线性方程组
+  \[
+  \begin{cases}
+  x_1+x_2+x_3=0,\\
+  x_1+2x_2+a x_3=0,\\
+  x_1+4x_2+a^{2}x_3=0
+  \end{cases}
+  \]
+  只有零解？有非零解？在有非零解时求出一个基础解系。
+
+\item 用初等行变换求矩阵 $A=\begin{pmatrix}1&2&3\\ 2&5&3\\ 1&0&8\end{pmatrix}$ 的逆矩阵 $A^{-1}$。
+
+\item 设向量组
+  \[
+  \alpha_1=(1,0,1,1),\quad \alpha_2=(1,1,0,1),\quad \alpha_3=(3,1,2,3),\quad \alpha_4=(0,-1,1,0).
+  \]
+  求该向量组的秩与一个极大线性无关组，并把其余向量用该极大无关组线性表示。
+\end{enumerate}
+
+\vspace{8pt}
+\begin{center}\small —— 试卷结束，参考答案见后 ——\end{center}
+
+%==================== 参考答案 ====================
+\clearpage
+\begin{center}
+  {\Large\bfseries 参考答案与评分标准（B 卷）}\\[2pt]
+  {\small 高等代数 I 期末考试}
+\end{center}
+\vspace{6pt}\hrule\vspace{12pt}
+
+\noindent\textbf{一、单项选择题}（每题 3 分）\par\vspace{4pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+题号 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\\hline
+答案 & B & B & D & B & B & B & A & B & B & A \\\hline
+\end{tabular}
+\end{center}
+\noindent\small 简析：1.\,列指标排列 $(4,3,1,2)$ 的逆序数为 $5$（奇），取负号。
+2.\,$(\alpha+\beta)+( \gamma+\alpha)-(\beta+\gamma)=2\alpha\neq0$，且系数行列式 $=2\neq0$，故 (B) 无关；(A)(C)(D) 均线性相关。
+3.\,$A$ 不可逆 $\Leftrightarrow |A|=0\Leftrightarrow$ 列向量组线性相关。
+4.\,秩的次可加性 $\rank(A+B)\leq\rank(A)+\rank(B)$。
+5.\,$|-A|=(-1)^{3}|A|=-2$。
+8.\,系数行列式 $=(a-1)^{2}$，只有零解 $\Leftrightarrow a\neq1$。
+9.\,代数余子式按列「错位相乘」之和为 $0$。
+10.\,$\rank(A)=n-3=5-3=2$。\normalsize
+
+\vspace{10pt}
+\noindent\textbf{二、填空题}（每题 2 分）\par\vspace{4pt}
+\begin{enumerate}[label=\arabic*.,itemsep=3pt]
+\item $5$ \hfill
+\item $5$ \hfill
+\item $243$（$|3A|=3^{4}|A|=81\cdot3$）\hfill
+\item $\dfrac13$ \hfill
+\item $27$（$|A^{*}|=|A|^{n-1}=3^{3}$）
+\item $2$（范德蒙德 $(2-1)(3-1)(3-2)$）
+\item $2$ \hfill
+\item $3$（$n-\rank(A)=6-3$）
+\item $n$（未知量个数）\hfill
+\item $6$（$|AB|=|A||B|$）
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{三、证明题}（每题 5 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=11pt]
+\item 因为 $A^{2}=A$，所以 $A(A-E)=A^{2}-A=O$，于是
+  \[
+  \rank(A)+\rank(A-E)\leq n. \tag{1}
+  \]
+  又 $A-(A-E)=E$，由秩的不等式 $\rank(M)+\rank(N)\geq\rank(M-N)$，
+  \[
+  \rank(A)+\rank(A-E)\geq\rank\big(A-(A-E)\big)=\rank(E)=n. \tag{2}
+  \]
+  由 (1)(2) 得 $\rank(A)+\rank(A-E)=n$。$\qquad\blacksquare$
+
+\item 设有数 $k_1,k_2,k_3$ 使
+  \[
+  k_1\alpha_1+k_2(\alpha_1+\alpha_2)+k_3(\alpha_1+\alpha_2+\alpha_3)=0,
+  \]
+  整理得 $(k_1+k_2+k_3)\alpha_1+(k_2+k_3)\alpha_2+k_3\alpha_3=0$。
+  由 $\alpha_1,\alpha_2,\alpha_3$ 线性无关，得
+  \[
+  \begin{cases}k_1+k_2+k_3=0\\ k_2+k_3=0\\ k_3=0\end{cases}
+  \ \Rightarrow\ k_3=0,\ k_2=0,\ k_1=0.
+  \]
+  故 $\alpha_1,\alpha_1+\alpha_2,\alpha_1+\alpha_2+\alpha_3$ 线性无关。$\qquad\blacksquare$
+\end{enumerate}
+
+\vspace{6pt}
+\noindent\textbf{四、计算题}（每题 10 分）
+
+\begin{enumerate}[label=\textbf{\arabic*.},itemsep=13pt]
+\item 把第 $2,3,4$ 行都从第 $1$ 行减去（即 $r_1\to r_1-r_2-r_3-r_4$）。
+  因 $r_2+r_3+r_4=(3,1,1,1)$，故新的第 $1$ 行为
+  \[
+  (5,1,1,1)-(3,1,1,1)=(2,0,0,0).
+  \]
+  于是按第 $1$ 行展开：
+  \[
+  D=\begin{vmatrix}
+  2&0&0&0\\ 1&1&0&0\\ 1&0&1&0\\ 1&0&0&1
+  \end{vmatrix}
+  =2\cdot\begin{vmatrix}1&0&0\\0&1&0\\0&0&1\end{vmatrix}=2.
+  \]
+
+\item 系数行列式
+  \[
+  D=\begin{vmatrix}1&1&1\\1&2&a\\1&4&a^{2}\end{vmatrix}
+  \xrightarrow[r_3-r_1]{r_2-r_1}
+  \begin{vmatrix}1&1&1\\0&1&a-1\\0&3&a^{2}-1\end{vmatrix}
+  =(a^{2}-1)-3(a-1)=(a-1)(a-2).
+  \]
+  \textbf{（i）当 $a\neq1$ 且 $a\neq2$ 时}，$D\neq0$，方程组只有零解。\\[2pt]
+  \textbf{（ii）当 $a=1$ 时}，系数矩阵
+  $\begin{pmatrix}1&1&1\\1&2&1\\1&4&1\end{pmatrix}\to
+  \begin{pmatrix}1&1&1\\0&1&0\\0&0&0\end{pmatrix}$，$\rank=2$。
+  由 $x_2=0,\ x_1+x_3=0$，得基础解系 $\xi=(-1,0,1)^{\mathsf T}$。\\[2pt]
+  \textbf{（iii）当 $a=2$ 时}，系数矩阵
+  $\begin{pmatrix}1&1&1\\1&2&2\\1&4&4\end{pmatrix}\to
+  \begin{pmatrix}1&1&1\\0&1&1\\0&0&0\end{pmatrix}$，$\rank=2$。
+  由 $x_2+x_3=0,\ x_1=0$，得基础解系 $\xi=(0,-1,1)^{\mathsf T}$。
+
+\item 对 $(A\,|\,E)$ 施行初等行变换（因 $|A|=-1$，过程中保持整数）：
+  \[
+  \left(\begin{array}{ccc|ccc}
+  1&2&3&1&0&0\\ 2&5&3&0&1&0\\ 1&0&8&0&0&1
+  \end{array}\right)
+  \xrightarrow[r_3-r_1]{r_2-2r_1}
+  \left(\begin{array}{ccc|ccc}
+  1&2&3&1&0&0\\ 0&1&-3&-2&1&0\\ 0&-2&5&-1&0&1
+  \end{array}\right)
+  \]
+  \[
+  \xrightarrow{r_3+2r_2}
+  \left(\begin{array}{ccc|ccc}
+  1&2&3&1&0&0\\ 0&1&-3&-2&1&0\\ 0&0&-1&-5&2&1
+  \end{array}\right)
+  \xrightarrow{-r_3}
+  \left(\begin{array}{ccc|ccc}
+  1&2&3&1&0&0\\ 0&1&-3&-2&1&0\\ 0&0&1&5&-2&-1
+  \end{array}\right)
+  \]
+  \[
+  \xrightarrow[r_2+3r_3]{r_1-3r_3}
+  \left(\begin{array}{ccc|ccc}
+  1&2&0&-14&6&3\\ 0&1&0&13&-5&-3\\ 0&0&1&5&-2&-1
+  \end{array}\right)
+  \xrightarrow{r_1-2r_2}
+  \left(\begin{array}{ccc|ccc}
+  1&0&0&-40&16&9\\ 0&1&0&13&-5&-3\\ 0&0&1&5&-2&-1
+  \end{array}\right).
+  \]
+  故
+  \[
+  A^{-1}=\begin{pmatrix}-40&16&9\\ 13&-5&-3\\ 5&-2&-1\end{pmatrix}.
+  \]
+
+\item 以 $\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 为行作矩阵并作初等行变换：
+  \[
+  \begin{pmatrix}1&0&1&1\\1&1&0&1\\3&1&2&3\\0&-1&1&0\end{pmatrix}
+  \xrightarrow[r_3-3r_1]{r_2-r_1}
+  \begin{pmatrix}1&0&1&1\\0&1&-1&0\\0&1&-1&0\\0&-1&1&0\end{pmatrix}
+  \xrightarrow[r_4+r_2]{r_3-r_2}
+  \begin{pmatrix}1&0&1&1\\0&1&-1&0\\0&0&0&0\\0&0&0&0\end{pmatrix}.
+  \]
+  故秩为 $2$，$\{\alpha_1,\alpha_2\}$ 为一个极大线性无关组。由上面的消元过程：
+  \[
+  \alpha_3-3\alpha_1=\alpha_2-\alpha_1\ \Rightarrow\ \alpha_3=2\alpha_1+\alpha_2,\qquad
+  \alpha_4=-(\alpha_2-\alpha_1)=\alpha_1-\alpha_2.
+  \]
+  （验证：$2\alpha_1+\alpha_2=(3,1,2,3)=\alpha_3$，$\alpha_1-\alpha_2=(0,-1,1,0)=\alpha_4$。）
+\end{enumerate}
+
+\end{document}
