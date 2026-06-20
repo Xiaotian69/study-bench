@@ -18,6 +18,8 @@ build/
 *.db
 *.sqlite
 *.sqlite3
+*.log
+.superpowers/
 tmp/
 temp/
 .cache/
