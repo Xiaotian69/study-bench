@@ -28,7 +28,7 @@ for (const marker of ["use client", "loadCourseProgress", "getChapterMasteryStat
   }
 }
 
-for (const marker of ["saveExerciseAttempt", "masteryState", "当前掌握状态", "volumeId"]) {
+for (const marker of ["saveExerciseAttempt", "masteryState", "mastery-summary", "volumeId"]) {
   if (!exercisePanel.includes(marker)) {
     throw new Error(`exercise panel missing progress marker: ${marker}`);
   }

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1280, initial-scale=1" />
+    <title>Study Bench social preview</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 640px; margin: 0; overflow: hidden; }
+      body { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #f7faff; }
+      .canvas {
+        position: relative; width: 100%; height: 100%; overflow: hidden;
+        background:
+          radial-gradient(circle at 92% 6%, rgba(77, 143, 255, .42), transparent 35%),
+          linear-gradient(125deg, #07162f 0%, #0a2855 62%, #184f8a 100%);
+      }
+      .grid { position: absolute; inset: 0; opacity: .16; background-image: linear-gradient(#7dadf0 1px, transparent 1px), linear-gradient(90deg, #7dadf0 1px, transparent 1px); background-size: 56px 56px; }
+      .copy { position: absolute; z-index: 2; left: 76px; top: 70px; width: 680px; }
+      .brand { margin: 0 0 32px; color: #8dbdff; font-size: 17px; font-weight: 750; letter-spacing: .22em; }
+      h1 { margin: 0; max-width: 690px; font-size: 62px; line-height: 1.04; letter-spacing: -.043em; font-weight: 720; }
+      .loop { margin: 28px 0 0; color: #cadcff; font-size: 21px; }
+      .sequence { position: absolute; left: 78px; bottom: 54px; color: #91baff; font: 600 14px/1 ui-monospace, monospace; letter-spacing: 18px; }
+      .shot {
+        position: absolute; right: -46px; bottom: -30px; width: 545px; height: 418px; overflow: hidden;
+        border: 1px solid rgba(206,226,255,.46); border-radius: 18px; background: #f7f0e3;
+        box-shadow: 0 30px 72px rgba(0,3,18,.55); transform: rotate(-2.1deg);
+      }
+      .shot img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 27% 18%; }
+      .dot { position: absolute; z-index: 1; border-radius: 50%; background: #75acfb; box-shadow: 0 0 0 7px rgba(117,172,251,.12); }
+      .d1 { width: 9px; height: 9px; left: 830px; top: 100px; }
+      .d2 { width: 7px; height: 7px; left: 892px; top: 154px; }
+      .d3 { width: 6px; height: 6px; left: 954px; top: 121px; }
+    </style>
+  </head>
+  <body>
+    <main class="canvas">
+      <div class="grid"></div>
+      <section class="copy">
+        <p class="brand">STUDY BENCH</p>
+        <h1>AI learning, organized around the way you study.</h1>
+        <p class="loop">Lecture · Question · Practice · Feedback</p>
+      </section>
+      <span class="sequence" aria-hidden="true">x₁ x₂ x₃ ··· xₙ</span>
+      <i class="dot d1"></i><i class="dot d2"></i><i class="dot d3"></i>
+      <figure class="shot"><img src="./screenshots/learning-workbench.png" alt="Study Bench learning workbench" /></figure>
+    </main>
+  </body>
+</html>
